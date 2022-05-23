@@ -1,3 +1,27 @@
+<?php
+session_start();
+$email = $_SESSION['email'];
+if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
+{
+ header("Location:clientlogin.php"); 
+}
+include("config/config.php");
+if(isset($_POST['submit'])){
+  $subject=$_POST['subject'];
+	$description=$_POST['description'];
+$client_code=$_POST['number'];
+	
+	$sql = mysqli_query($conn,"INSERT INTO `ticket`( `user_id`,`complaint_code`, `email_id`, `subject`, `description`, `date`) VALUES ('".$_SESSION['id']."','$client_code','$email', '$subject','$description', NOw())") ;
+  if($sql==1){
+    echo "<script>alert('Register successfully'),window.location='complaintform.php';</script>";
+   
+
+  }else{
+    echo "<script>alert('something went wrong');</script>";
+  }
+
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,25 +77,48 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form>
+              <form method="post">
+                <?php $sql=mysqli_query($conn,"select * from ticket where user_id='".$_SESSION['id']."'");
+                            $query =mysqli_query($conn,"select * from agent_details where user_id='".$_SESSION['id']."'");
+                      $dnk=mysqli_num_rows($sql);
+                      $lastid=$dnk+1;
+                      $arr=mysqli_fetch_array($query);
+                      $name=$arr['agent_name'];
+                      $first=$name;
+                      
+                      $res= preg_replace('~\S\K\S*\s*~u', '', $first);
+                      if(empty($lastid)){
+						           $number=$res."-000";
+					           }else{
+						          $id=str_pad($lastid + 0, 3,0, STR_PAD_LEFT);
+					        	  $number=$res."CP"."-$id";
+					            }	
+                    
+                      
+                      					  ?>
+	  
 					<div class="card-body">
+            <div class="form-group" style="display:none">
+                    <label for="exampleInputdescription">Description</label>
+                    <input type="textbox" class="form-control" name="number" id="exampleInputdescription" value="<?php echo $number; ?>" placeholder="Enter Description">
+                  </div>
 				  <div class="form-group">
                     <label for="exampleInputsubject">Subject</label>
-                    <select class="form-control" id="exampleSelectRounded0">
-                    <option>Value 1</option>
-                    <option>Value 2</option>
-                    <option>Value 3</option>
+                    <select class="form-control" name="subject" id="exampleSelectRounded0">
+                      <?php  ?>
+                    <option value="Flat">FLat</option>
+                    <option value="Shop">Shop</option>
                   </select>
                   </div>
 				  <div class="form-group">
                     <label for="exampleInputdescription">Description</label>
-                    <input type="textbox" class="form-control" id="exampleInputdescription" placeholder="Enter Description">
+                    <input type="textbox" class="form-control" name="description" id="exampleInputdescription" placeholder="Enter Description">
                   </div>
                 </div>
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit"name="submit" class="btn btn-primary">Submit</button>
                 </div>
               </form>
             </div>
@@ -106,7 +153,6 @@
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
 <!-- Page specific script -->
 <script>
 $(function () {

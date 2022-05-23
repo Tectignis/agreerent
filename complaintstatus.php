@@ -68,7 +68,7 @@ include('config/config.php');
               <div class="card-tools">
                 <ul class="nav nav-pills ml-auto">
                   <li class="nav-item">
-                    <a class="nav-link active" href="" data-tt="tooltip" title="" data-original-title="Click here to Add New Enquiry"><i class="fa-solid fa-circle-question"></i>&nbsp; Raise a complaint</a>
+                    <a class="nav-link active" href="complaintform.php" data-tt="tooltip" title="" data-original-title="Click here to Add New Enquiry"><i class="fa-solid fa-circle-question"></i>&nbsp; Raise a complaint</a>
                   </li>
                 </ul>
               </div>				  
@@ -98,7 +98,18 @@ include('config/config.php');
                     </td>
                     <td><?php echo $arr['subject'];?></td>
                     <td> <?php echo $arr['description'];?></td>
-                    <td>X</td>
+                  <?php if($arr['status']=='0'){
+                  
+                  ?>
+                  <td><span class="badge badge-danger">OPEN</span></td>
+                  <?php }else{
+                    ?>
+                    <td><span class="badge badge-success">CLOSED</span></td>
+                    
+                    <?php
+                  }
+                  
+                    ?>
                   </tr>
                   <?php } ?>
                 

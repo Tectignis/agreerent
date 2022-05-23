@@ -19,10 +19,10 @@ if(isset($_POST["login"])){
       $_SESSION['address']=$row['office_address'];
 		}
 		else{
-			echo"<script>alert('Invalid Password'),window.location='login.php';</script>";
+			echo"<script>alert('Invalid Password'),window.location='clientlogin.php';</script>";
 		}
 	}else{
-		echo"<script>alert('Wrong email'),window.location='login.php';</script>";
+		echo"<script>alert('Wrong email'),window.location='clientlogin.php';</script>";
 	}
 	}
 
