@@ -1,13 +1,12 @@
-<?php  
-
-include("config/config.php");
-if(isset($_GET['delid'])){
-  $id=mysqli_real_escape_string($conn,$_GET['delid']);
-  $sql=mysqli_query($conn,"delete from paidleads where id='$id'");
-  if($sql=1){
-   header("location:leads.php");
-  }
+<?php
+session_start();
+if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
+{
+ header("Location:login.php"); 
 }
+include('config/config.php');
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

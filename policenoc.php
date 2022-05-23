@@ -1,3 +1,14 @@
+<?php
+session_start();
+if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
+{
+ header("Location:login.php"); 
+}
+include('config/config.php');
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,227 +71,68 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Sr. No</th>
-					<th>Document No.</th>
-                    <th>Client Name</th>
-                    <th>Mobile No.</th>
-					<th>Date of Agreement</th>
-					<th>Action</th>
-                  </tr>
+                                <th class="th-sm">Sr.No</th>
+                                <th>Document No</th>
+                                <th>Owner Name</th>
+                                <th>Tenant Name</th>
+                                <th>Date of Agreement</th>
+                                <th> Action </th>
+                              </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td>Gecko</td>
-                    <td>Camino 1.0</td>
-                    <td>OSX.2+</td>
-                    <td>1.8</td>
-                    <td>A</td>
-					<td>
-						<table>
-							<tbody>
-								<tr>
-                          <td class="p-2">
-                            <a href="" class="btn btn-default btn-xs" data-tt="tooltip" title="" data-original-title="View Police Noc">
-                              <i class="fas fa-eye"></i>
-                            </a>
-                          </td>
-									<td class="p-2">
-                            <a href="#" data-toggle="modal" data-target="#delete_policenoc" data-tt="tooltip" title="" class="btn btn-danger btn-xs delete_policenoc" data-original-title="Delete Police Noc">
-                              <i class="fas fa-trash"></i>
-                            </a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					  </td>
-                  </tr>
-                  <tr>
-                    <td>Gecko</td>
-                    <td>Camino 1.5</td>
-                    <td>OSX.3+</td>
-                    <td>1.8</td>
-                    <td>A</td>
-					  <td>
-						<table>
-							<tbody>
-								<tr>
-                          <td class="p-2">
-                            <a href="" class="btn btn-default btn-xs" data-tt="tooltip" title="" data-original-title="View Police Noc">
-                              <i class="fas fa-eye"></i>
-                            </a>
-                          </td>
-									<td class="p-2">
-                            <a href="#" data-toggle="modal" data-target="#delete_customer" data-tt="tooltip" title="" class="btn btn-danger btn-xs delete_customer" data-original-title="Delete Customer">
-                              <i class="fas fa-trash"></i>
-                            </a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					  </td>
-                  </tr>
-                  <tr>
-                    <td>Gecko</td>
-                    <td>Netscape 7.2</td>
-                    <td>Win 95+ / Mac OS 8.6-9.2</td>
-                    <td>1.7</td>
-                    <td>A</td>
-					  <td>
-						<table>
-							<tbody>
-								<tr>
-                          <td class="p-2">
-                            <a href="" class="btn btn-default btn-xs" data-tt="tooltip" title="" data-original-title="View Police Noc">
-                              <i class="fas fa-eye"></i>
-                            </a>
-                          </td>
-									<td class="p-2">
-                            <a href="#" data-toggle="modal" data-target="#delete_customer" data-tt="tooltip" title="" class="btn btn-danger btn-xs delete_customer" data-original-title="Delete Customer">
-                              <i class="fas fa-trash"></i>
-                            </a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					  </td>
-                  </tr>
-                  <tr>
-                    <td>Gecko</td>
-                    <td>Netscape Browser 8</td>
-                    <td>Win 98SE+</td>
-                    <td>1.7</td>
-                    <td>A</td>
-					  <td>
-						<table>
-							<tbody>
-								<tr>
-                          <td class="p-2">
-                            <a href="" class="btn btn-default btn-xs" data-tt="tooltip" title="" data-original-title="View Police Noc">
-                              <i class="fas fa-eye"></i>
-                            </a>
-                          </td>
-									<td class="p-2">
-                            <a href="#" data-toggle="modal" data-target="#delete_customer" data-tt="tooltip" title="" class="btn btn-danger btn-xs delete_customer" data-original-title="Delete Customer">
-                              <i class="fas fa-trash"></i>
-                            </a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					  </td>
-                  </tr>
-                  <tr>
-                    <td>Gecko</td>
-                    <td>Netscape Navigator 9</td>
-                    <td>Win 98+ / OSX.2+</td>
-                    <td>1.8</td>
-                    <td>A</td>
-					  <td>
-						<table>
-							<tbody>
-								<tr>
-                          <td class="p-2">
-                            <a href="" class="btn btn-default btn-xs" data-tt="tooltip" title="" data-original-title="View Police Noc">
-                              <i class="fas fa-eye"></i>
-                            </a>
-                          </td>
-									<td class="p-2">
-                            <a href="#" data-toggle="modal" data-target="#delete_customer" data-tt="tooltip" title="" class="btn btn-danger btn-xs delete_customer" data-original-title="Delete Customer">
-                              <i class="fas fa-trash"></i>
-                            </a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					  </td>
-                  </tr>
-                  <tr>
-                    <td>Gecko</td>
-                    <td>Mozilla 1.0</td>
-                    <td>Win 95+ / OSX.1+</td>
-                    <td>1</td>
-                    <td>A</td>
-					  <td>
-						<table>
-							<tbody>
-								<tr>
-                          <td class="p-2">
-                            <a href="" class="btn btn-default btn-xs" data-tt="tooltip" title="" data-original-title="View Police Noc">
-                              <i class="fas fa-eye"></i>
-                            </a>
-                          </td>
-									<td class="p-2">
-                            <a href="#" data-toggle="modal" data-target="#delete_customer" data-tt="tooltip" title="" class="btn btn-danger btn-xs delete_customer" data-original-title="Delete Customer">
-                              <i class="fas fa-trash"></i>
-                            </a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					  </td>
-                  </tr>
-                  <tr>
-                    <td>Gecko</td>
-                    <td>Mozilla 1.1</td>
-                    <td>Win 95+ / OSX.1+</td>
-                    <td>1.1</td>
-                    <td>A</td>
-					  <td>
-						<table>
-							<tbody>
-								<tr>
-                          <td class="p-2">
-                            <a href="" class="btn btn-default btn-xs" data-tt="tooltip" title="" data-original-title="View Police Noc">
-                              <i class="fas fa-eye"></i>
-                            </a>
-                          </td>
-									<td class="p-2">
-                            <a href="#" data-toggle="modal" data-target="#delete_customer" data-tt="tooltip" title="" class="btn btn-danger btn-xs delete_customer" data-original-title="Delete Customer">
-                              <i class="fas fa-trash"></i>
-                            </a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					  </td>
-                  </tr>
-                  <tr>
-                    <td>Gecko</td>
-                    <td>Mozilla 1.2</td>
-                    <td>Win 95+ / OSX.1+</td>
-                    <td>1.2</td>
-                    <td>A</td>
-					  <td>
-						<table>
-							<tbody>
-								<tr>
-                          <td class="p-2">
-                            <a href="" class="btn btn-default btn-xs" data-tt="tooltip" title="" data-original-title="View Police Noc">
-                              <i class="fas fa-eye"></i>
-                            </a>
-                          </td>
-									<td class="p-2">
-                            <a href="#" data-toggle="modal" data-target="#delete_customer" data-tt="tooltip" title="" class="btn btn-danger btn-xs delete_customer" data-original-title="Delete Customer">
-                              <i class="fas fa-trash"></i>
-                            </a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					  </td>
-                  </tr>
-                 
-                  </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>Sr. No</th>
-                    <th>Client Name</th>
-                    <th>Mobile No.</th>
-					<th>Email ID</th>
-                    <th>Description</th>
-					<th>Action</th>
-                  </tr>
-                  </tfoot>
+
+                            <?php 
+
+                        if(isset($_GET['search'])){
+
+                          $filterval =  $_GET['search'];
+                          $sql = "select new_agreement.date_of_agreement as doa,new_agreement.document_no as did, tenant.fullname as tname, tenant.mobile as tmobile, noc.status as nstatus, noc.document_no as nodc, owner.fullname as oname, owner.mobile as omobile from new_agreement inner join tenant on tenant.document_no=new_agreement.document_no inner join owner on owner.document_no=new_agreement.document_no inner join noc on noc.document_no=new_agreement.document_no Where noc.status='1' AND CONCAT(new_agreement.document_no) LIKE '%$filterval%'";
+                          $count=1;
+                          
+                          $query_run = mysqli_query($conn, $sql);
+
+                                        if(mysqli_num_rows($query_run) > 0)
+                                        {
+                                            foreach($query_run as $items)
+                                            {
+                                                ?>
+                                                <tr>
+                                                   <td><?php echo $count; ?></td>
+                                                    <td><?= $items['did']; ?></td>
+                                                    <td><?= $items['oname']; ?></td>
+                                                    <td><?= $items['tname']; ?></td>
+                                                    <td><?= $items['doa']; ?></td>
+                                                    <td>
+                                          <a href="policenocform.php?id=<?php echo $arr['did'] ?>"><button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-eye"></i> </button></a>
+                                          </td>
+                                        
+                                                              </tr>
+                                                <?php
+                                            }
+                                          }
+                                        }else
+                                        {
+                                            
+                                          $qer=mysqli_query($conn,"select new_agreement.date_of_agreement as doa,new_agreement.document_no as did, tenant.fullname as tname, tenant.mobile as tmobile, noc.status as nstatus, noc.document_no as nodc, owner.fullname as oname, owner.mobile as omobile from new_agreement inner join tenant on tenant.document_no=new_agreement.document_no inner join owner on owner.document_no=new_agreement.document_no inner join noc on noc.document_no=new_agreement.document_no Where noc.status='1'");
+                                          $count=1;
+                                          while($arr=mysqli_fetch_array($qer)){
+                                            ?>
+                                                <tr>
+                                                <td> <?php echo $count;?></td>
+                                                <td> <?php echo $arr['did'];?> </td>
+                                                <td> <?php echo $arr['oname'];?></td>
+                                                <td> <?php echo $arr['tname'];?></td>
+                                                <td> <?php echo $arr['doa'];?> </td>
+                                                <td>
+                                                <a href="policenocform.php?id=<?php echo $arr['did'] ?>"><button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-eye"></i> </button></a>
+                                                  <!-- <button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-file-pdf"></i> </button>--></td>
+                                              </tr>
+                                    <?php
+                                              $count++;}
+                                        }
+                                
+                                          ?>
+                                          </tbody>
                 </table>
               </div>
               <!-- /.card-body -->

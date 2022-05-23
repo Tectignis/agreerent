@@ -1,3 +1,14 @@
+<?php
+session_start();
+if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
+{
+ header("Location:login.php"); 
+}
+include('config/config.php');
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,272 +80,55 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Sr. No</th>
-					<th>Document No.</th>
-                    <th>Client Name</th>
-                    <th>Mobile No.</th>
-					<th>Email ID</th>
-					<th>Created Date</th>
-                    <th>Date of Agreement</th>
-					<th>Date of Expired</th>
-					<th>Status</th>
-					<th>Action</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-					  <tr>
-                    <td>Gecko</td>
-                    <td>Camino 1.0</td>
-                    <td>OSX.2+</td>
-                    <td>1.8</td>
-                    <td>A</td>
-					<td>Camino 1.0</td>
-                    <td>OSX.2+</td>
-                    <td>1.8</td>
-                    <td>A</td>
-					<td>
-						<table>
-							<tbody>
-								<tr>
-									<td class="p-2">
-                            <a href="" class="btn btn-default btn-xs" data-tt="tooltip" title="" data-original-title="View Agreement">
-                              <i class="fas fa-eye"></i>
-                            </a>
-                          </td>
-                          <td class="p-2">
-                            <a href="" class="btn btn-info btn-xs" data-tt="tooltip" title="" data-original-title="Edit Customer">
-                              <i class="fas fa-edit"></i>
-                            </a>      
-                          </td>
-									<td class="p-2">
-                            <a href="#" data-toggle="modal" data-target="#delete_customer" data-tt="tooltip" title="" class="btn btn-danger btn-xs delete_customer" data-original-title="Delete Customer">
-                              <i class="fas fa-trash"></i>
-                            </a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					  </td>
-                  </tr>
-					  <tr>
-                    <td>Gecko</td>
-                    <td>Camino 1.0</td>
-                    <td>OSX.2+</td>
-                    <td>1.8</td>
-                    <td>A</td>
-					<td>Camino 1.0</td>
-                    <td>OSX.2+</td>
-                    <td>1.8</td>
-                    <td>A</td>
-					<td>
-						<table>
-							<tbody>
-								<tr>
-									<td class="p-2">
-                            <a href="" class="btn btn-default btn-xs" data-tt="tooltip" title="" data-original-title="View Agreement">
-                              <i class="fas fa-eye"></i>
-                            </a>
-                          </td>
-                          <td class="p-2">
-                            <a href="" class="btn btn-info btn-xs" data-tt="tooltip" title="" data-original-title="Edit Customer">
-                              <i class="fas fa-edit"></i>
-                            </a>      
-                          </td>
-									<td class="p-2">
-                            <a href="#" data-toggle="modal" data-target="#delete_customer" data-tt="tooltip" title="" class="btn btn-danger btn-xs delete_customer" data-original-title="Delete Customer">
-                              <i class="fas fa-trash"></i>
-                            </a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					  </td>
-                  </tr>
-					  <tr>
-                    <td>Gecko</td>
-                    <td>Camino 1.0</td>
-                    <td>OSX.2+</td>
-                    <td>1.8</td>
-                    <td>A</td>
-					<td>Camino 1.0</td>
-                    <td>OSX.2+</td>
-                    <td>1.8</td>
-                    <td>A</td>
-					<td>
-						<table>
-							<tbody>
-								<tr>
-									<td class="p-2">
-                            <a href="" class="btn btn-default btn-xs" data-tt="tooltip" title="" data-original-title="View Agreement">
-                              <i class="fas fa-eye"></i>
-                            </a>
-                          </td>
-                          <td class="p-2">
-                            <a href="" class="btn btn-info btn-xs" data-tt="tooltip" title="" data-original-title="Edit Customer">
-                              <i class="fas fa-edit"></i>
-                            </a>      
-                          </td>
-									<td class="p-2">
-                            <a href="#" data-toggle="modal" data-target="#delete_customer" data-tt="tooltip" title="" class="btn btn-danger btn-xs delete_customer" data-original-title="Delete Customer">
-                              <i class="fas fa-trash"></i>
-                            </a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					  </td>
-                  </tr>
-					  <tr>
-                    <td>Gecko</td>
-                    <td>Camino 1.0</td>
-                    <td>OSX.2+</td>
-                    <td>1.8</td>
-                    <td>A</td>
-					<td>Camino 1.0</td>
-                    <td>OSX.2+</td>
-                    <td>1.8</td>
-                    <td>A</td>
-					<td>
-						<table>
-							<tbody>
-								<tr>
-									<td class="p-2">
-                            <a href="" class="btn btn-default btn-xs" data-tt="tooltip" title="" data-original-title="View Agreement">
-                              <i class="fas fa-eye"></i>
-                            </a>
-                          </td>
-                          <td class="p-2">
-                            <a href="" class="btn btn-info btn-xs" data-tt="tooltip" title="" data-original-title="Edit Customer">
-                              <i class="fas fa-edit"></i>
-                            </a>      
-                          </td>
-									<td class="p-2">
-                            <a href="#" data-toggle="modal" data-target="#delete_customer" data-tt="tooltip" title="" class="btn btn-danger btn-xs delete_customer" data-original-title="Delete Customer">
-                              <i class="fas fa-trash"></i>
-                            </a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					  </td>
-                  </tr>
-					  <tr>
-                    <td>Gecko</td>
-                    <td>Camino 1.0</td>
-                    <td>OSX.2+</td>
-                    <td>1.8</td>
-                    <td>A</td>
-					<td>Camino 1.0</td>
-                    <td>OSX.2+</td>
-                    <td>1.8</td>
-                    <td>A</td>
-					<td>
-						<table>
-							<tbody>
-								<tr>
-									<td class="p-2">
-                            <a href="" class="btn btn-default btn-xs" data-tt="tooltip" title="" data-original-title="View Agreement">
-                              <i class="fas fa-eye"></i>
-                            </a>
-                          </td>
-                          <td class="p-2">
-                            <a href="" class="btn btn-info btn-xs" data-tt="tooltip" title="" data-original-title="Edit Customer">
-                              <i class="fas fa-edit"></i>
-                            </a>      
-                          </td>
-									<td class="p-2">
-                            <a href="#" data-toggle="modal" data-target="#delete_customer" data-tt="tooltip" title="" class="btn btn-danger btn-xs delete_customer" data-original-title="Delete Customer">
-                              <i class="fas fa-trash"></i>
-                            </a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					  </td>
-                  </tr>
-					  <tr>
-                    <td>Gecko</td>
-                    <td>Camino 1.0</td>
-                    <td>OSX.2+</td>
-                    <td>1.8</td>
-                    <td>A</td>
-					<td>Camino 1.0</td>
-                    <td>OSX.2+</td>
-                    <td>1.8</td>
-                    <td>A</td>
-					<td>
-						<table>
-							<tbody>
-								<tr>
-									<td class="p-2">
-                            <a href="" class="btn btn-default btn-xs" data-tt="tooltip" title="" data-original-title="View Agreement">
-                              <i class="fas fa-eye"></i>
-                            </a>
-                          </td>
-                          <td class="p-2">
-                            <a href="" class="btn btn-info btn-xs" data-tt="tooltip" title="" data-original-title="Edit Customer">
-                              <i class="fas fa-edit"></i>
-                            </a>      
-                          </td>
-									<td class="p-2">
-                            <a href="#" data-toggle="modal" data-target="#delete_customer" data-tt="tooltip" title="" class="btn btn-danger btn-xs delete_customer" data-original-title="Delete Customer">
-                              <i class="fas fa-trash"></i>
-                            </a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					  </td>
-                  </tr>
-					  <tr>
-                    <td>Gecko</td>
-                    <td>Camino 1.0</td>
-                    <td>OSX.2+</td>
-                    <td>1.8</td>
-                    <td>A</td>
-					<td>Camino 1.0</td>
-                    <td>OSX.2+</td>
-                    <td>1.8</td>
-                    <td>A</td>
-					<td>
-						<table>
-							<tbody>
-								<tr>
-									<td class="p-2">
-                            <a href="" class="btn btn-default btn-xs" data-tt="tooltip" title="" data-original-title="View Agreement">
-                              <i class="fas fa-eye"></i>
-                            </a>
-                          </td>
-                          <td class="p-2">
-                            <a href="" class="btn btn-info btn-xs" data-tt="tooltip" title="" data-original-title="Edit Customer">
-                              <i class="fas fa-edit"></i>
-                            </a>      
-                          </td>
-									<td class="p-2">
-                            <a href="#" data-toggle="modal" data-target="#delete_customer" data-tt="tooltip" title="" class="btn btn-danger btn-xs delete_customer" data-original-title="Delete Customer">
-                              <i class="fas fa-trash"></i>
-                            </a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					  </td>
-                  </tr>
-                  </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>Sr. No</th>
-					<th>Document No.</th>
-                    <th>Client Name</th>
-                    <th>Mobile No.</th>
-					<th>Email ID</th>
-					<th>Created Date</th>
-                    <th>Date of Agreement</th>
-					<th>Date of Expired</th>
-					<th>Status</th>
-					<th>Action</th>
-                  </tr>
-                  </tfoot>
+                            <th>Sr.No</th>
+                            <th>Client Name</th>
+                            <th>Mobile No.</th>
+                            <th>Date of Aggrement</th>
+                            <th>Date of Expiry</th>
+                          
+							<th>Action</th>
+                          </tr>
+                        </thead>
+                        <?php                 
+    $sql=mysqli_query($conn,"select new_agreement.date_of_agreement as doa,new_agreement.document_no as did, date_add(date_of_agreement, INTERVAL no_of_month month)as Enddate, tenant.fullname as tname, tenant.mobile as tmobile, noc.status as nstatus from new_agreement inner join tenant on new_agreement.document_no=tenant.document_no inner join noc on 
+    new_agreement.document_no=noc.document_no");
+      $count=1;
+      while($row = mysqli_fetch_array($sql)) {
+      ?>
+                        <tbody>
+                          <tr>
+                            <td>  <?php echo $count;?> </td>
+                            <td> <?php echo $row["tname"]; ?> </td>
+                            <td><?php echo $row["tmobile"]; ?> </td>
+                            <td><?php echo $row["doa"]; ?> </td>
+                            <td><?php echo $row["Enddate"]; ?> </td>
+                            <td>
+				                   <a href="agreement.php?id=<?php echo $row['did']; ?>"> <button type="btn-icon" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-eye"></i> </button></a>
+                            <!-- <a class="btn btn-danger btn-rounded btn-icon" href="listofagreement.php?delid=<?php echo $row['did']; ?>" onclick="return checkDelete()" class="btn btn-primary btn-rounded btn-icon">
+                          <i class="mdi mdi-delete"></i>
+                          </a>  -->
+
+                      
+
+<?php
+$status=$row['nstatus'] ;
+if($status==1){
+?>
+
+<?php
+}
+elseif($status==0){
+?>
+<a href="agreement.php?id=<?php echo $row['did']; ?>"> <button type="btn-icon" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class=" mdi mdi-pen "></i> </button></a>
+<a href="listofagreement.php?gen=<?php echo $row['did']; ?>" ><button type="submit" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> Generate NOC</button> </a>
+<?php
+}
+?>
+</td>
+                          </tr>
+                        </tbody>
+                        <?php $count++; } ?>  
+
                 </table>
               </div>
               <!-- /.card-body -->

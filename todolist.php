@@ -1,3 +1,14 @@
+
+<?php
+session_start();
+if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
+{
+ header("Location:login.php"); 
+}
+include('config/config.php');
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,51 +38,51 @@
 
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper kanban">
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-sm-6">
-            <h1>TO DO LIST</h1>
-          </div>
-          <div class="col-sm-6 d-none d-sm-block">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">To Do List</li>
-            </ol>
-          </div>
-        </div>
-      </div>
-    </section>
+  <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title"> To Do List </h3>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="card px-3">
+                  <div class="card-body">
+                    <h4 class="card-title">To Do List</h4>
+                    <form method="post" action="todo.php">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Add to do</label>
+                        <input type="text" class="form-control" name="todo" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter todo">
+                      </div>
+                      <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                  
+                    <div class="list-wrapper">
+                      <ul class="d-flex flex-column-reverse todo-list">
+                        <?php 
+                        
+                        $sql=mysqli_query($conn,"select * from todo where user_id='".$_SESSION['id']."' AND status='1'");
+                         while($arr=mysqli_fetch_array($sql)){
+                        ?>
+                        <li>
+                          <div class="form-check"style="width: -webkit-fill-available;">
+                              <label> <?php echo $arr['task'];?> <i class="input-helper"></i></label>
+                          </div>
+                                                    <a href="todo.php?delid=<?php echo $arr['id'] ?>"><i class="remove mdi mdi-close-circle-outline"></i></a>
 
-    <section class="content">
-      
-        <div class="card card-primary">
-          <div class="card-header">
-            <h3 class="card-title">
-              To Do
-            </h3>
-          </div>
-          <div class="card-body">
-            <div class="card card-primary card-outline">
-              <div class="card-header">
-                <h5 class="card-title">Create first milestone</h5>
-                <div class="card-tools">
-                  <a href="#" class="btn btn-tool btn-link">#5</a>
-                  <a href="#" class="btn btn-tool">
-                    <i class="fas fa-pen"></i>
-                  </a>
+                         
+                        </li>
+                         <?php } ?>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+          <?php include("partials/footer.php"); ?>
+          <!-- partial -->
         </div>
-        
-        
-   
-    </section>
-  </div>
-
    <?php include 'include/footer.php'; ?>
 
 
