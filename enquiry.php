@@ -121,7 +121,7 @@ include('config/config.php');
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-   <?php include 'include/footer.php'; ?>
+   <?php include 'include/header.php'; ?>
   
 
   <!-- Control Sidebar -->
