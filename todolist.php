@@ -5,8 +5,26 @@ if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 {
  header("Location:login.php"); 
 }
-include('config/config.php');
+include("config/config.php");
+if(isset($_POST['submit'])){
+	$todo=$_POST['todo'];
+  $status=1;
+	
+	$sql=mysqli_query($conn,"INSERT INTO `todo`(`user_id`, `task`, `status`) VALUES ('".$_SESSION['id']."','$todo','$status')");
+	if($sql==1){	
+    header("location:todo.php");
+	}else{
+		echo "<script>alert('Something went wrong');</script>";
+	}
+}
 
+if(isset($_GET['delid'])){
+  $id=mysqli_real_escape_string($conn,$_GET['delid']);
+  $sql=mysqli_query($conn,"delete from todo where id='$id'");
+  if($sql=1){
+    header("location:todo.php");
+  }
+}
 
 ?>
 <!DOCTYPE html>
@@ -38,24 +56,42 @@ include('config/config.php');
 
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="main-panel">
-          <div class="content-wrapper">
-            <div class="page-header">
-              <h3 class="page-title"> To Do List </h3>
-            </div>
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="card px-3">
-                  <div class="card-body">
-                    <h4 class="card-title">To Do List</h4>
-                    <form method="post" action="todo.php">
-                      <div class="form-group">
-                        <label for="exampleInputEmail1">Add to do</label>
-                        <input type="text" class="form-control" name="todo" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter todo">
-                      </div>
-                      <button type="submit" class="btn btn-primary" name="submit">Submit</button>
-                  
-                    <div class="list-wrapper">
+  <div class="content-wrapper kanban">
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-6">
+            <h1>TO DO LIST</h1>
+          </div>
+          <div class="col-sm-6 d-none d-sm-block">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">To Do List</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content">
+      
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">
+              To Do
+            </h3>
+          </div>
+          <form>
+          <div class="card-body">
+            <div class="card card-primary card-outline">
+              <div class="card-header d-flex">
+                
+               
+                <input type="text" class="form-control" name="todo" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter todo">
+                <div class="card-tools">
+                <button type="submit" class="btn btn-primary" name="submit">Add</button>
+                </div>
+                <div class="list-wrapper">
                       <ul class="d-flex flex-column-reverse todo-list">
                         <?php 
                         
@@ -72,17 +108,32 @@ include('config/config.php');
                         </li>
                          <?php } ?>
                       </ul>
-                    </div>
-                  </div>
+                         </div>
+              </div>
+             
+            </div>
+          </div>
+                         </form>
+          <div class="card-body">
+            <div class="card card-primary card-outline">
+              <div class="card-header">
+                <h5 class="card-title">Create first milestone</h5>
+                <div class="card-tools">
+                  <a href="#" class="btn btn-tool btn-link">#5</a>
+                  <a href="#" class="btn btn-tool">
+                    <i class="fas fa-pen"></i>
+                  </a>
                 </div>
               </div>
             </div>
           </div>
-          <!-- content-wrapper ends -->
-          <!-- partial:../../partials/_footer.html -->
-          <?php include("partials/footer.php"); ?>
-          <!-- partial -->
         </div>
+        
+        
+   
+    </section>
+  </div>
+
    <?php include 'include/footer.php'; ?>
 
 
