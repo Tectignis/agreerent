@@ -96,7 +96,7 @@ include('config/config.php');
                                 <td> <?php echo $arr['requirement'];?></td>
                             <td> <?php echo $arr['location'];?> </td>
                             <td>
-                            <a href="paidleads.php?delid=<?php echo $arr['id']; ?>"><button type="button" class="btn btn-danger btn-rounded btn-icon" onclick="ConfirmDelete()" style="color: aliceblue"> <i class="mdi mdi-delete"></i> </button></a>
+                            <a href="paidleads.php?delid=<?php echo $arr['id']; ?>"><button type="button" class="btn btn-danger btn-rounded btn-icon" onclick="ConfirmDelete()" style="color: aliceblue"> <i class="fas fa-trash"></i> </button></a>
                               
                           </tr>
                         

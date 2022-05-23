@@ -103,7 +103,7 @@ include('config/config.php');
                             <td><?php echo $row["doa"]; ?> </td>
                             <td><?php echo $row["Enddate"]; ?> </td>
                             <td>
-				                   <a href="agreement.php?id=<?php echo $row['did']; ?>"> <button type="btn-icon" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-eye"></i> </button></a>
+				                   <a href="agreement.php?id=<?php echo $row['did']; ?>"> <button type="btn-icon" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="fas fa-eye"></i> </button></a>
                             <!-- <a class="btn btn-danger btn-rounded btn-icon" href="listofagreement.php?delid=<?php echo $row['did']; ?>" onclick="return checkDelete()" class="btn btn-primary btn-rounded btn-icon">
                           <i class="mdi mdi-delete"></i>
                           </a>  -->
@@ -119,8 +119,8 @@ if($status==1){
 }
 elseif($status==0){
 ?>
-<a href="agreement.php?id=<?php echo $row['did']; ?>"> <button type="btn-icon" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class=" mdi mdi-pen "></i> </button></a>
-<a href="listofagreement.php?gen=<?php echo $row['did']; ?>" ><button type="submit" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> Generate NOC</button> </a>
+<a href="agreement.php?id=<?php echo $row['did']; ?>"> <button type="btn-icon" class="btn btn-warning btn-rounded btn-icon" style="color: aliceblue"> <i class="fas fa-pen"></i> </button></a>
+<a href="listofagreement.php?gen=<?php echo $row['did']; ?>" ><button type="submit" class="btn btn-success btn-rounded btn-icon" style="color: aliceblue"> Generate NOC</button> </a>
 <?php
 }
 ?>
@@ -173,7 +173,6 @@ elseif($status==0){
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
 <!-- Page specific script -->
 <script>
   $(function () {

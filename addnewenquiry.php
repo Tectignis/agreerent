@@ -1,4 +1,29 @@
-<!DOCTYPE html>
+<?php
+session_start();
+if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
+{
+ header("Location:login.php"); 
+}
+
+include('config/config.php');
+if(isset($_POST['submit'])){
+	$name=$_POST['client_name'];
+	$address=$_POST['address'];
+	$mobile=$_POST['mobile_no'];
+	$requirement=$_POST['requirement'];
+	$location=$_POST['location'];
+  $type=$_POST['type'];
+$from=$_POST['from'];
+  $area=$_POST['area'];
+	
+	$sql=mysqli_query($conn,"INSERT INTO `leads`(`user_id`,`client_name`, `mobile`,`type`, `requirement`, `area`, `location`) VALUES ('".$_SESSION['id']."','$name','$mobile','$type','$requirement','$area','$location')");
+	if($sql==1){	
+    header("location:addnewenquire.php");
+	}else{
+		echo "<script>alert('Something went wrong');</script>";
+	}
+}
+?><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -54,15 +79,15 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form>
+              <form method="pot">
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputname">Client Name</label>
-                    <input type="text" class="form-control" id="exampleInputname" placeholder="Enter Client Name">
+                    <input type="text" class="form-control" id="exampleInputname"name="client_name"  placeholder="Enter Client Name">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputmobile">Mobile Name</label>
-                    <input type="phone" class="form-control" id="exampleInputmobile" placeholder="Enter Mobile No">
+                    <input type="phone" class="form-control" id="exampleInputmobile"name="mobile_no" placeholder="Enter Mobile No">
                   </div>
 				  <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
@@ -76,7 +101,7 @@
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" name="submit"class="btn btn-primary">Submit</button>
                 </div>
               </form>
             </div>

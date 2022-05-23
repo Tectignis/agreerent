@@ -69,7 +69,7 @@ include('config/config.php');
               <div class="card-tools">
                 <ul class="nav nav-pills ml-auto">
                   <li class="nav-item">
-                    <a class="nav-link active" href="" data-tt="tooltip" title="" data-original-title="Click here to Add New Enquiry"><i class="fas fa-user-friends mr-2"></i>Add New Enquiry</a>
+                    <a class="nav-link active" href="addnewenquiry" data-tt="tooltip" title="" data-original-title="Click here to Add New Enquiry"><i class="fas fa-user-friends mr-2"></i>Add New Enquiry</a>
                   </li>
                 </ul>
               </div>
@@ -101,7 +101,7 @@ include('config/config.php');
                             <td> <?php echo $arr['email'];?></td>
                             <td> <?php echo $arr['description'];?></td>
                             <td>
-                            <a href="enquiry.php?delid=<?php echo $arr['id'] ?>"><button type="button" class="btn btn-danger btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-delete"></i> </button></a>
+                            <a href="enquiry.php?delid=<?php echo $arr['id'] ?>"><button type="button" class="btn btn-danger btn-rounded btn-icon" style="color: aliceblue"> <i class="fas fa-trash"></i> </button></a>
                               <!-- <button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-file-pdf"></i> </button>--></td>
                           </tr>
                         </tbody>
@@ -152,7 +152,6 @@ include('config/config.php');
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
 <!-- Page specific script -->
 <script>
   $(function () {

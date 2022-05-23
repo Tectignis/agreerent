@@ -124,7 +124,7 @@ include('config/config.php');
                                                 <td> <?php echo $arr['tname'];?></td>
                                                 <td> <?php echo $arr['doa'];?> </td>
                                                 <td>
-                                                <a href="policenocform.php?id=<?php echo $arr['did'] ?>"><button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-eye"></i> </button></a>
+                                                <a href="policenocform.php?id=<?php echo $arr['did'] ?>"><button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="fas fa-eye"></i> </button></a>
                                                   <!-- <button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-file-pdf"></i> </button>--></td>
                                               </tr>
                                     <?php

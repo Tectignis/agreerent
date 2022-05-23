@@ -1,4 +1,33 @@
-<!DOCTYPE html>
+<?php
+session_start();
+if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
+{
+// header("Location:dashboard.php"); 
+}
+include('config/config.php');
+if(isset($_POST["login"])){
+	$password=$_POST["password"];
+	$newpassword=$_POST["newpassword"];
+$id=$_SESSION['id'];
+	$sql = mysqli_query($conn,"SELECT * FROM agent_details WHERE user_id='$id'") ;
+		$row=mysqli_fetch_assoc($sql); 
+		$verify=password_verify($password,$row['password']);
+	
+	$hashpassword=password_hash($newpassword,PASSWORD_BCRYPT);
+
+		if($verify==1){
+			$query=mysqli_query($conn,"UPDATE `agent_details` SET `password`='$hashpassword' WHERE user_id='$id' ");
+      if($query){
+        echo "<script>alert('Password Changed Successfully'),window.location='clientlogin';</script>";
+      }
+		}
+		else{
+			echo"<script>alert('Invalid Password');</script>";
+		}
+	
+	}
+
+?><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -21,26 +50,23 @@
      <h3>AGREERENT</h3>
     </div>
     <div class="card-body">
-      <p class="login-box-msg">You forgot your password? Here you can easily retrieve a new password.</p>
-      <form action="recover-password.html" method="post">
-        <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <button type="submit" class="btn btn-primary btn-block">Request new password</button>
-          </div>
-          <!-- /.col -->
-        </div>
+      <p class="login-box-msg">You You Can Change Your Password Here</p>
+      <form method="post">
+               
+                <div class="form-group">
+                  <input type="password" class="form-control form-control-lg" name="password" id="exampleInputPassword1" placeholder="Old Password">
+                </div>
+                 <div class="form-group">
+                  <input type="password" class="form-control form-control-lg" name="newpassword" id="exampleInputPassword1" placeholder="New Password">
+                </div>
+                <div class="mt-6">
+                  <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="Change Password" name="login">
+                </div>
+                <div class="my-2 d-flex justify-content-between align-items-center">
+                  
+                </div>
+                
       </form>
-      <p class="mt-3 mb-1">
-        <a href="hospitalogin.html">Login</a>
-      </p>
     </div>
     <!-- /.login-card-body -->
   </div>
