@@ -1,3 +1,13 @@
+<?php
+session_start();
+if(!isset($_SESSION['email'])) // If session is not set then redirect to Login Page
+{
+ header("Location:login.php"); 
+}
+include('config/config.php');
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,15 +86,21 @@
                   </tr>
                   </thead>
                   <tbody>
+                    <?php 
+                        
+                        $sql=mysqli_query($conn,"select * from ticket where user_id='".$_SESSION['id']."'");
+                        $count=1;
+                         while($arr=mysqli_fetch_array($sql)){
+                        ?>
                   <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                      Explorer 4.0
+                    <td><?php echo $count;?></td>
+                    <td><?php echo $arr['complaint_code'];?>
                     </td>
-                    <td>Win 95+</td>
-                    <td> 4</td>
+                    <td><?php echo $arr['subject'];?></td>
+                    <td> <?php echo $arr['description'];?></td>
                     <td>X</td>
                   </tr>
+                  <?php } ?>
                 
                   </tbody>
                 
@@ -134,9 +150,8 @@
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
 <!-- Page specific script -->
-<script>
+<!-- <script>
   $(function () {
     $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
@@ -152,6 +167,6 @@
       "responsive": true,
     });
   });
-</script>
+</script> -->
 </body>
 </html>
