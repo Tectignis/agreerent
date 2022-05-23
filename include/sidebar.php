@@ -35,7 +35,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="paidleads" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Paid Leads
@@ -45,7 +45,7 @@
           </li>
 			<li class="nav-header">Rent Agreement</li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="createnewagreement" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
                 Rent Agreement
@@ -54,7 +54,7 @@
           </li>
 			<li class="nav-header">Police Noc</li>
 			<li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="policenoc" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Police NOC
@@ -63,7 +63,7 @@
           </li>
           <li class="nav-header">Other</li>
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="todolist" class="nav-link">
               <i class="nav-icon fas fa-columns"></i>
               <p>
                 To Do
@@ -71,7 +71,7 @@
             </a>
           </li>          
 			<li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="profile" class="nav-link">
               <i class="nav-icon fas fa-person-booth"></i>
               <p>
                 Profile
@@ -79,7 +79,7 @@
             </a>
           </li>
 			<li class="nav-item">
-              <a href="" class="nav-link">
+              <a href="logout" class="nav-link">
               <i class=" nav-icon fas fa-sign-out-alt"></i> 
                 <p>
                      Logout
