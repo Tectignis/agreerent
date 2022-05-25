@@ -9,8 +9,9 @@ include("config/config.php");
 if(isset($_POST['submit'])){
 	$todo=$_POST['todo'];
   $status=1;
-	
-	$sql=mysqli_query($conn,"INSERT INTO `todo`(`user_id`, `task`, `status`) VALUES ('".$_SESSION['id']."','$todo','$status')");
+  date_default_timezone_set('Asia/Kolkata');
+  $today = date("Y-m-d H:i:s");
+	$sql=mysqli_query($conn,"INSERT INTO `todo`(`user_id`, `task`, `status`, `date`) VALUES ('".$_SESSION['id']."','$todo','$status','$today')");
 	if($sql==1){	
     header("location:todolist");
 	}else{
@@ -92,7 +93,7 @@ if(isset($_GET['delid'])){
           </div>
         </form>
         <?php                
-          $sql=mysqli_query($conn,"select * from todo where user_id='".$_SESSION['id']."' AND status='1'");
+          $sql=mysqli_query($conn,"select * from todo where user_id='".$_SESSION['id']."' AND status='1' order by id desc");
            while($arr=mysqli_fetch_array($sql)){
           ?>
           <div class="card-body">
@@ -100,7 +101,7 @@ if(isset($_GET['delid'])){
               <div class="card-header">
                 <h5 class="card-title"> <?php echo $arr['task'];?> </h5>
                 <div class="card-tools">
-                  <a href="todolist.php?delid=<?php echo $arr['id'] ?>" class="btn btn-tool">
+                  <a href="todolist.php?delid=<?php echo $arr['id'] ?>" classb="tn btn-tool">
                     <i class="fas fa-trash"></i>
                   </a>
                 </div>

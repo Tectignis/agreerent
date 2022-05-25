@@ -6,6 +6,30 @@ if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 }
 include('config/config.php');
 
+function get_time_ago( $time )
+  {
+    $time_difference = time() - $time;
+    if( $time_difference < 1 ) { return 'less than 1 second ago'; }
+    $condition = array( 12 * 30 * 24 * 60 * 60 =>  'year',
+                30 * 24 * 60 * 60       =>  'month',
+                24 * 60 * 60            =>  'day',
+                60 * 60                 =>  'hour',
+                60                      =>  'minute',
+                1                       =>  'second'
+    );
+    foreach( $condition as $secs => $str )
+    {
+        $d = $time_difference / $secs;
+
+        if( $d >= 1 )
+        {
+            $t = round( $d );
+            return 'about ' . $t . ' ' . $str . ( $t > 1 ? 's' : '' ) . ' ago';
+        }
+    }
+}
+
+
 ?>
 
 
@@ -120,7 +144,11 @@ include('config/config.php');
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>44</h3>
+                <?php
+                               $guery=mysqli_query($conn,"select * from property where property_for='sale'And type='Flat'AND user_id='".$_SESSION['id']."'");
+                                 $count4=mysqli_num_rows($guery);
+                            ?>
+                <h3><?php echo $count4; ?></h3>
 
                 <p>Total Flats for Sale</p>
               </div>
@@ -135,8 +163,11 @@ include('config/config.php');
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>65</h3>
-
+                <?php
+                               $guery=mysqli_query($conn,"select * from property where property_for='sale'And type='shop'AND user_id='".$_SESSION['id']."'");
+                                 $count3=mysqli_num_rows($guery);
+                            ?>
+                <h3><?php echo $count3; ?></h3>
                 <p>Total Shops for Sale</p>
               </div>
               <div class="icon">
@@ -167,20 +198,19 @@ include('config/config.php');
               <div class="card-body">
                 <ul class="todo-list" data-widget="todo-list">
                   <?php                
-          $sql=mysqli_query($conn,"select * from todo where user_id='".$_SESSION['id']."' AND status='1'");
-           while($arr=mysqli_fetch_array($sql)){
-
-            // $date = time_elapsed_string($arr['date']);
+     $sql=mysqli_query($conn,"select * from todo where user_id='".$_SESSION['id']."' AND status='1' order by id desc");
+       while($arr=mysqli_fetch_array($sql)){
           ?>
                   <li>
                     <!-- todo text -->
                     <span class="text"> <?php echo $arr['task'];?></span>
                     <!-- Emphasis label -->
-                    <small class="badge badge-danger"><i class="far fa-clock"></i></small>
+                    <small class="badge badge-danger"><i class="far fa-clock"></i><?php  echo get_time_ago(strtotime($arr['date']) );?></small>
                     <!-- General tools such as edit or delete-->
                     <div class="tools">
-                      <i class="fas fa-edit"></i>
-                      <i class="fas fa-trash-o"></i>
+                       <a href="todolist.php?delid=<?php echo $arr['id'] ?>" classb="tn btn-tool">
+                    <i class="fas fa-trash"></i>
+                  </a>
                     </div>
                   </li>
                  <?php } ?>
@@ -188,7 +218,10 @@ include('config/config.php');
               </div>
               <!-- /.card-body -->
               <div class="card-footer clearfix">
+                <a href="todolist">
                 <button type="button" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Add item</button>
+
+                </a>
               </div>
             </div>
             <!-- /.card -->
@@ -214,6 +247,8 @@ include('config/config.php');
 
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
+<script src="plugins/jquery/jquery.timeago.js"></script>
+
 <!-- jQuery UI 1.11.4 -->
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
