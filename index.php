@@ -1,3 +1,15 @@
+<?php
+session_start();
+if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
+{
+ header("Location:clientlogin.php"); 
+}
+include('config/config.php');
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,7 +82,11 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>150</h3>
+                <?php
+                               $query=mysqli_query($conn,"select * from enquiry where user_id='".$_SESSION['id']."'");
+                                $count1=mysqli_num_rows($query);
+                            ?>
+                <h3><?php echo $count1; ?></h3>
 
                 <p>New Enquiry</p>
               </div>
@@ -85,7 +101,12 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>53</h3>
+                <?php
+                               $Wuery=mysqli_query($conn,"select * from new_agreement where user_id='".$_SESSION['id']."'");
+                                $count2=mysqli_num_rows($Wuery);
+                            ?>
+                <h3><?php echo $count2; ?></h3>
+
                 <p>New Agreement</p>
               </div>
               <div class="icon">
@@ -141,121 +162,28 @@
                   <i class="ion ion-clipboard mr-1"></i>
                   To Do List
                 </h3>
-
-                <div class="card-tools">
-                  <ul class="pagination pagination-sm">
-                    <li class="page-item"><a href="#" class="page-link">&laquo;</a></li>
-                    <li class="page-item"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item"><a href="#" class="page-link">3</a></li>
-                    <li class="page-item"><a href="#" class="page-link">&raquo;</a></li>
-                  </ul>
-                </div>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <ul class="todo-list" data-widget="todo-list">
+                  <?php                
+          $sql=mysqli_query($conn,"select * from todo where user_id='".$_SESSION['id']."' AND status='1'");
+           while($arr=mysqli_fetch_array($sql)){
+
+            // $date = time_elapsed_string($arr['date']);
+          ?>
                   <li>
-                    <!-- drag handle -->
-                    <span class="handle">
-                      <i class="fas fa-ellipsis-v"></i>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </span>
-                    <!-- checkbox -->
-                    <div  class="icheck-primary d-inline ml-2">
-                      <input type="checkbox" value="" name="todo1" id="todoCheck1">
-                      <label for="todoCheck1"></label>
-                    </div>
                     <!-- todo text -->
-                    <span class="text">Design a nice theme</span>
+                    <span class="text"> <?php echo $arr['task'];?></span>
                     <!-- Emphasis label -->
-                    <small class="badge badge-danger"><i class="far fa-clock"></i> 2 mins</small>
+                    <small class="badge badge-danger"><i class="far fa-clock"></i></small>
                     <!-- General tools such as edit or delete-->
                     <div class="tools">
                       <i class="fas fa-edit"></i>
                       <i class="fas fa-trash-o"></i>
                     </div>
                   </li>
-                  <li>
-                    <span class="handle">
-                      <i class="fas fa-ellipsis-v"></i>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </span>
-                    <div  class="icheck-primary d-inline ml-2">
-                      <input type="checkbox" value="" name="todo2" id="todoCheck2" checked>
-                      <label for="todoCheck2"></label>
-                    </div>
-                    <span class="text">Make the theme responsive</span>
-                    <small class="badge badge-info"><i class="far fa-clock"></i> 4 hours</small>
-                    <div class="tools">
-                      <i class="fas fa-edit"></i>
-                      <i class="fas fa-trash-o"></i>
-                    </div>
-                  </li>
-                  <li>
-                    <span class="handle">
-                      <i class="fas fa-ellipsis-v"></i>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </span>
-                    <div  class="icheck-primary d-inline ml-2">
-                      <input type="checkbox" value="" name="todo3" id="todoCheck3">
-                      <label for="todoCheck3"></label>
-                    </div>
-                    <span class="text">Let theme shine like a star</span>
-                    <small class="badge badge-warning"><i class="far fa-clock"></i> 1 day</small>
-                    <div class="tools">
-                      <i class="fas fa-edit"></i>
-                      <i class="fas fa-trash-o"></i>
-                    </div>
-                  </li>
-                  <li>
-                    <span class="handle">
-                      <i class="fas fa-ellipsis-v"></i>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </span>
-                    <div  class="icheck-primary d-inline ml-2">
-                      <input type="checkbox" value="" name="todo4" id="todoCheck4">
-                      <label for="todoCheck4"></label>
-                    </div>
-                    <span class="text">Let theme shine like a star</span>
-                    <small class="badge badge-success"><i class="far fa-clock"></i> 3 days</small>
-                    <div class="tools">
-                      <i class="fas fa-edit"></i>
-                      <i class="fas fa-trash-o"></i>
-                    </div>
-                  </li>
-                  <li>
-                    <span class="handle">
-                      <i class="fas fa-ellipsis-v"></i>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </span>
-                    <div  class="icheck-primary d-inline ml-2">
-                      <input type="checkbox" value="" name="todo5" id="todoCheck5">
-                      <label for="todoCheck5"></label>
-                    </div>
-                    <span class="text">Check your messages and notifications</span>
-                    <small class="badge badge-primary"><i class="far fa-clock"></i> 1 week</small>
-                    <div class="tools">
-                      <i class="fas fa-edit"></i>
-                      <i class="fas fa-trash-o"></i>
-                    </div>
-                  </li>
-                  <li>
-                    <span class="handle">
-                      <i class="fas fa-ellipsis-v"></i>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </span>
-                    <div  class="icheck-primary d-inline ml-2">
-                      <input type="checkbox" value="" name="todo6" id="todoCheck6">
-                      <label for="todoCheck6"></label>
-                    </div>
-                    <span class="text">Let theme shine like a star</span>
-                    <small class="badge badge-secondary"><i class="far fa-clock"></i> 1 month</small>
-                    <div class="tools">
-                      <i class="fas fa-edit"></i>
-                      <i class="fas fa-trash-o"></i>
-                    </div>
-                  </li>
+                 <?php } ?>
                 </ul>
               </div>
               <!-- /.card-body -->
