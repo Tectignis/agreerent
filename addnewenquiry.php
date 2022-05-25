@@ -1,29 +1,26 @@
 <?php
 session_start();
-if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
-{
- header("Location:login.php"); 
-}
+if(isset($_SESSION['id'])) // If session is not set then redirect to Login Page
+
 
 include('config/config.php');
 if(isset($_POST['submit'])){
-	$name=$_POST['client_name'];
-	$address=$_POST['address'];
-	$mobile=$_POST['mobile_no'];
-	$requirement=$_POST['requirement'];
-	$location=$_POST['location'];
-  $type=$_POST['type'];
-$from=$_POST['from'];
-  $area=$_POST['area'];
+	$name=$_POST['name'];
+  $mob_no=$_POST['mob_no'];
+	$email=$_POST['email'];
+  $description=$_POST['description'];
+
 	
-	$sql=mysqli_query($conn,"INSERT INTO `leads`(`user_id`,`client_name`, `mobile`,`type`, `requirement`, `area`, `location`) VALUES ('".$_SESSION['id']."','$name','$mobile','$type','$requirement','$area','$location')");
+	$sql=mysqli_query($conn,"INSERT INTO `enquiry`(`name`,`mob_no`,`email`,`description`) VALUES ('$name','$mob_no','$email','$description')");
+  
 	if($sql==1){	
-    header("location:addnewenquire.php");
+    header("location:addnewenquiry.php");
 	}else{
 		echo "<script>alert('Something went wrong');</script>";
 	}
 }
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -79,29 +76,29 @@ $from=$_POST['from'];
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form method="pot">
+              <form method="post">
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputname">Client Name</label>
-                    <input type="text" class="form-control" id="exampleInputname"name="client_name"  placeholder="Enter Client Name">
+                    <input type="text" class="form-control" id="exampleInputname" name="name"  placeholder="Enter Client Name">
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputmobile">Mobile Name</label>
-                    <input type="phone" class="form-control" id="exampleInputmobile"name="mobile_no" placeholder="Enter Mobile No">
+                    <label for="exampleInputmobile">Mobile No</label>
+                    <input type="phone" class="form-control" id="exampleInputmobile" name="mob_no" placeholder="Enter Mobile No">
                   </div>
 				  <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Email">
+                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Email">
                   </div>
 				  <div class="form-group">
                     <label for="exampleInputdescription">Description</label>
-                    <input type="textbox" class="form-control" id="exampleInputdescription" placeholder="Enter Description">
+                    <input type="textbox" name="description" class="form-control" id="exampleInputdescription" placeholder="Enter Description">
                   </div>
                 </div>
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" name="submit"class="btn btn-primary">Submit</button>
+                  <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                 </div>
               </form>
             </div>
