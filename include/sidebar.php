@@ -1,10 +1,4 @@
-  <?php
-$name=$_SESSION['name'];
-$email=$_SESSION['email'];
-$address=$_SESSION['address'];
-$id=$_SESSION['id'];
-
-?>
+  
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
@@ -19,9 +13,9 @@ $id=$_SESSION['id'];
         <div class="image">
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
-        <div class="info">
+        <!-- <div class="info">
           <a href="" class="d-block"><?php echo $name; ?></a>
-        </div>
+        </div> -->
       </div>
 
       <!-- SidebarSearch Form -->
@@ -58,7 +52,22 @@ $id=$_SESSION['id'];
                 Rent Agreement
               </p>
             </a>
+            <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="createnewagreement" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>New Agreement</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="listofagreement" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>List Of Agreement</p>
+              </a>
+            </li>
+</ul>
           </li>
+          
 			<li class="nav-header">Police Noc</li>
 			<li class="nav-item">
             <a href="policenoc" class="nav-link">
@@ -76,7 +85,15 @@ $id=$_SESSION['id'];
                 To Do
               </p>
             </a>
-          </li>          
+          </li>  
+          <li class="nav-item">
+            <a href="enquiry" class="nav-link">
+              <i class="nav-icon fas fa-person-booth"></i>
+              <p>
+               Enquiry
+              </p>
+            </a>
+          </li>        
 			<li class="nav-item">
             <a href="profile" class="nav-link">
               <i class="nav-icon fas fa-person-booth"></i>
