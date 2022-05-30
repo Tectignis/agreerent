@@ -1,30 +1,18 @@
-<?php
+<?php  
 session_start();
-if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
+if(!isset($_SESSION['email'])) // If session is not set then redirect to Login Page
 {
  header("Location:login.php"); 
 }
 include("config/config.php");
-if(isset($_POST['submit'])){
-	$todo=$_POST['todo'];
-  $status=1;
-	
-	$sql=mysqli_query($conn,"INSERT INTO `todo`(`user_id`, `task`, `status`) VALUES ('".$_SESSION['id']."','$todo','$status')");
-	if($sql==1){	
-    header("location:todolist");
-	}else{
-		echo "<script>alert('Something went wrong');</script>";
-	}
-}
 
 if(isset($_GET['delid'])){
   $id=mysqli_real_escape_string($conn,$_GET['delid']);
-  $sql=mysqli_query($conn,"delete from todo where id='$id'");
+  $sql=mysqli_query($conn,"delete from agent_details where id='$id'");
   if($sql=1){
-    header("location:todolist");
+    header("location:consaltantlist.php");
   }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,7 +48,7 @@ if(isset($_GET['delid'])){
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-6">
-            <h1>TO DO LIST</h1>
+            <h1>Consultant List</h1>
           </div>
           <div class="col-sm-6 d-none d-sm-block">
             <ol class="breadcrumb float-sm-right">
@@ -80,33 +68,33 @@ if(isset($_GET['delid'])){
               To Do
             </h3>
           </div>
-        <form method="post">
-          <div class="card-body">
-              <div class="card-header d-flex">
-                 <input type="text" class="form-control" name="todo" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter todo">
-                 <div class="card-tools">
-                          <button type="submit" class="btn btn-primary" name="submit">Add</button>
-                </div>
-            </div>
-          </div>
-        </form>
-        <?php                
-          $sql=mysqli_query($conn,"select * from todo where user_id='".$_SESSION['id']."' AND status='1'");
-           while($arr=mysqli_fetch_array($sql)){
-          ?>
-          <div class="card-body">
-            <div class="card card-primary card-outline">
-              <div class="card-header">
-                <h5 class="card-title"> <?php echo $arr['task'];?> </h5>
-                <div class="card-tools">
-                  <a href="todolist.php?delid=<?php echo $arr['id'] ?>" class="btn btn-tool">
-                    <i class="fas fa-trash"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-           <?php } ?>
+          <table class="table table-bordered" style="margin:20px;">
+                        <thead>
+                          <tr>
+                            <th>Sr.No</th>
+                            <th>Agent Code</th>
+                            <th>Name</th>                            
+                            <th>Moile No</th>
+						    <th>Email id</th>
+                            <th>Rera No</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        
+                        <tbody>
+                          <tr>
+                            
+                            <!-- <a href="agentprof.php?edit=<?php echo $arr['id'] ?>"><button type="button" class="btn btn-primary  btn-md" style="color: aliceblue"> <i class="mdi mdi-grease-pencil"></i> </button></a>
+                            <a href="consultantlist.php?delid=<?php echo $arr['id'] ?>"><button type="button" class="btn btn-danger  btn-md" style="color: aliceblue"> <i class="mdi mdi-delete"></i> </button></a> -->
+
+                            <!-- <button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-file-pdf"></i> </button>--></td>
+                          </tr>
+                        </tbody>
+                      
+                      </table>
+        
+</div>
+          
         </div>
         
         
