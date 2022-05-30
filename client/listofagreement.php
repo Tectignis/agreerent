@@ -6,7 +6,13 @@ if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 }
 include('config/config.php');
 
-
+if(isset($_GET['gen'])){
+  $id=mysqli_real_escape_string($conn,$_GET['gen']);
+  $sql=mysqli_query($conn,"update noc set `status`='1' where document_no='$id'");
+  if($sql=1){
+   header("location:listofagreement.php");
+  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -172,24 +178,9 @@ elseif($status==0){
 <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
+<script src="dist/js/table.js"></script>
 <!-- AdminLTE for demo purposes -->
 <!-- Page specific script -->
-<script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script>
+
 </body>
 </html>

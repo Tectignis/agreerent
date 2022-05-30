@@ -74,7 +74,7 @@ th {
 		<tr>
 
 			<td style="width:5%">१</td>
-			<td style="width:48%">घर मालकाचे संपूर्ण नाव, सध्याचा पत्त, वय, मोबाईल क्रमांक <br>Name, Address & Mobile No. of Owner</td>
+			<td style="width:48%">घर मालकाचे संपूर्ण नाव, सध्याचा पत्ता, वय, मोबाईल क्रमांक <br>Owner Full Name, Address,Age & Mobile No. of Owner</td>
 			<?php 
                         
 						$sql=mysqli_query($conn,"select * from owner where document_no= '$fid'");
@@ -88,9 +88,9 @@ th {
 		</tr>
 		<tr>
 			<td>२</td>
-			<td>भाडेकरुचे संपूर्ण नाव, यापूर्वीचा पत्त, वय, मोबाईल क्रमांक<br>Pancard No and Aadhar Card No of Owner</td>
+			<td>घरमालकाचे पॅनकार्ड क्रमांक आणि आधार कार्ड क्रमांक<br>Pancard No and Aadhar Card No of Owner</td>
 			<td  colspan="3"><label><?php echo $arr['pan_card'];?></label></br>
-                            <label><?php echo $arr['aadhaar'];?></label></td>
+                            <label><?php echo $arr['aadhaar'];?></label></br></td>
 		</tr>
 		<?php } ?>
 		<tr>
@@ -100,14 +100,14 @@ th {
 						while($arr=mysqli_fetch_array($sql)){
 						?>
 			<td>३</td>
-			<td>भाडेकरुचे संपूर्ण नाव, यापूर्वीचा पत्त, वय, मोबाईल क्रमांक<br>Name, Previous Address & Mobile No. of Tenant</td>
+			<td>भाडेकरुचे संपूर्ण नाव, यापूर्वीचा पत्ता, वय, मोबाईल क्रमांक<br>Tenant Name, Previous Address & Mobile No. of Tenant</td>
 			<td  colspan="3"><label><?php echo $arr['fullname'];?></label></br>
 						<label><?php echo $arr['address'];?></label></br>
 						<label><?php echo $arr['mobile'];?></label></td>
 		</tr>
 		<tr>
 			<td>४</td>
-			<td>भाडेकरुचे संपूर्ण नाव, यापूर्वीचा पत्त, वय, मोबाईल क्रमांक<br>Pancard No and Aadhar Card No of Tenant</td>
+			<td>भाडेकरूचे पॅनकार्ड क्रमांक आणि आधार कार्ड क्रमांक<br>Pancard No and Aadhar Card No of Tenant</td>
 			<td  colspan="3"><label><?php echo $arr['pan_card'];?></label></br>
                             <label><?php echo $arr['aadhaar'];?></label></br></td>
 		</tr>
@@ -115,7 +115,7 @@ th {
 
 		<tr>
 			<td>५</td>
-			<td>भाडेकरुचे मूळ गावचा पत्ता, फोन नंबर<br> Permanent Address of Tenant</td>
+			<td>भाडेकरुचे मूळ गावचा पत्ता<br>Tenant Permanent Address of Tenant</td>
 			<td  colspan="3"><?php echo $arr['permanent_address'];?></td>
 		</tr>
 		<?php } ?>
@@ -147,7 +147,7 @@ th {
 		</tr>		
 		<tr>
 			<td rowspan="2">८</td>
-			<td rowspan="2">भाडेकरुचे परिवारातील सदस्यांची संख्या <br> No. of Family Members</td>    
+			<td rowspan="2">भाडेकरुचे परिवारातील सदस्यांची संख्या <br> No. of Tenant Family Members</td>    
 			
 			<td align="center">पुरुष</td>
 			<td align="center">स्त्रिया</td>
@@ -177,12 +177,12 @@ th {
 						while($arr=mysqli_fetch_array($sql)){
 						?>
 			<td>९</td>
-			<td>ई-मेल आयडी<br>E-mail ID of Tenant</td>
+			<td>भाडेकरुचे ई-मेल आयडी<br>E-mail ID of Tenant</td>
 			<td colspan="3"><label><?php echo $arr['email'];?></label></td>
 		</tr>
 		<tr>
 			<td>१०</td>
-			<td>पासपोर्ट नंबर <br> Passport No. of Tenant</td>
+			<td>भाडेकरुचे पासपोर्ट नंबर <br> Passport No. of Tenant</td>
 			<td colspan="3"><label><?php echo $arr['passport'];?></label></td>
 		</tr>
 		<tr>

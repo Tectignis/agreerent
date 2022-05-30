@@ -59,6 +59,9 @@ $id=$_SESSION['id'];
                  <div class="form-group">
                   <input type="password" class="form-control form-control-lg" name="newpassword" id="exampleInputPassword1" placeholder="New Password">
                 </div>
+                 <div class="form-group">
+                  <input type="password" class="form-control form-control-lg" name="confirmopassword"onblur="Validate()" id="confirm_password" name="confPassword" placeholder="Confirm Password">
+                </div>
                 <div class="mt-6">
                   <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="Change Password" name="login">
                 </div>
@@ -79,5 +82,13 @@ $id=$_SESSION['id'];
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
+<script type="text/javascript">
+$('#confirm_password').on('keyup', function () {
+  if ($('#password').val() == $('#confirm_password').val()) {
+    $('#message').html('Matching').css('color', 'green');
+  } else 
+    $('#message').html('Not Matching').css('color', 'red');
+});
+</script>
 </body>
 </html>

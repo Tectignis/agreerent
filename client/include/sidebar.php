@@ -68,12 +68,47 @@
 </ul>
           </li>
           
+          <li class="nav-header">Consultant</li>
+          <li class="nav-item">
+            <a href="" class="nav-link">
+              <i class="nav-icon fas fa-stroopwafel"></i>
+              <p>
+             Consultant
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="consultantregistration.php" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>New Consultant</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>List Of Consultant</p>
+              </a>
+            </li>
+           
+</ul>
+          </li>
+          
+
 			<li class="nav-header">Police Noc</li>
 			<li class="nav-item">
             <a href="policenoc" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Police NOC
+              </p>
+            </a>
+          </li>
+          <li class="nav-header">Email Configuration</li>
+			<li class="nav-item">
+            <a href="policenoc" class="nav-link">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+              Email Configuration
               </p>
             </a>
           </li>
@@ -93,10 +128,18 @@
                Enquiry
               </p>
             </a>
-          </li>        
+          </li>  
+          <li class="nav-item">
+            <a href="enquiry" class="nav-link">
+              <i class="nav-icon fas fa-person-booth"></i>
+              <p>
+               Complaint
+              </p>
+            </a>
+          </li>              
 			<li class="nav-item">
             <a href="profile" class="nav-link">
-            <i class="nav-icon fa-regular fa-id-badge"></i>
+           <i class="nav-icon fas fa-user-visor"></i>
               <p>
                 Profile
               </p>
