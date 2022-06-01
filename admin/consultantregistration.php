@@ -19,22 +19,35 @@ if(isset($_POST['sub'])){
   $rera=$_POST['rera'];
   $status=1;
   $pass= rand(100000, 999999);
-  $email=$_POST['email'];
+  $email=$row['email'];
 
-$from = 'Enquiry <kajal.patil@tectignis.in>';
+$from = 'Enquiry <'.$email.'>';
 $sendTo = 'Enquiry <'.$email_no.'>';
 $subject = 'Password';
-$fields = array('password' => 'pass','name' => 'name' );
+$fields = array( 'name' , 'email' );
 
 try{
-  $emailText = "message";
+  $emailText = "<h3>Welcome '.$agent_name.'</h3><p>Welcome to Agreerent. We’re confident that Agreerent will help you to get the best deal for your property.</p><p>Your Email ID is :- '.$email_no.'<p>
+  <p>Your Password is :- '.$pass.'</p>
+  <p>Please login with Registerd Email and Password<p><br><h3>Thanks & Regards,</p>
+Tectignis IT Solution<br>Aashiyana CHS Shop No 05,<br> Sector 11, Plot No 29, <br>Kamothe, Navi Mumbai, <br>Maharashtra 410206</h3>";
+
   foreach($_POST as $key => $value){
     if(isset($fields[$key])){
       $emailText.="$fields[$key]: $value\n";
     }
   }
-  mail($sendTo,$subject,$emailText, "From:" .$from);
-  echo "done";
+ if( mail($sendTo,$subject,$emailText, "From:" .$from)){
+  $passwordhash=password_hash($pass,PASSWORD_BCRYPT);
+
+  $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`status`) 
+   VALUES ('$user_id','$agent_name','$email_no','$passwordhash','$rera','$office_address','$mobile_no','$status')");
+   if($sql=1){
+     echo "<script>alert('Agent Registered Successfully');</script>";    }
+   else{
+     echo "<script>alert('Something Wrong');</script>";
+   }
+ }
 }
 catch(\Exception $e){
   echo "not done";
