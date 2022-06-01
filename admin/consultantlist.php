@@ -98,6 +98,8 @@ if(isset($_GET['delid'])){
                                 <td><?php echo $arr["mobile_no"]; ?></td>
                                 <td><?php echo $arr["email"]; ?></td>
                                 <td><?php echo $arr["rera_no"]; ?></td>
+                                <td><?php echo $arr["status"]; ?></td>
+
 
                                 <td>
                                     <a href="agentprof.php?edit=<?php echo $arr['status'] ?>"><button type="button"
