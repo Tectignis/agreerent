@@ -1,6 +1,7 @@
 <?php
 //new_agreement
-include('config/config.php');
+include("../config/config.php");
+
 session_start();
 
 

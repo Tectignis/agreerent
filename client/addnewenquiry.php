@@ -3,7 +3,8 @@ session_start();
 if(isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 
 
-include('config/config.php');
+include("../config/config.php");
+
 if(isset($_POST['submit'])){
 	$name=$_POST['name'];
   $mob_no=$_POST['mob_no'];
