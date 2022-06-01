@@ -7,17 +7,7 @@ if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 include("config/config.php");
 
 $res=mysqli_query($conn,"SELECT * FROM `email_configuration`");
- $row=mysqli_fetch_array($res);
-
-// use PHPMailer\PHPMailer\PHPMailer;
-// use PHPMailer\PHPMailer\SMTP;
-// use PHPMailer\PHPMailer\Exception;
-
-// //Load Composer's autoloader
-// require 'PHPMailer/src/PHPMailer.php';
-// require 'PHPMailer/src/SMTP.php';
-// require 'PHPMailer/src/Exception.php';
-	
+ $row=mysqli_fetch_array($res);	
 
 if(isset($_POST['sub'])){
 
@@ -32,7 +22,7 @@ if(isset($_POST['sub'])){
   $email=$_POST['email'];
 
 $from = 'Enquiry <'.$email.'>';
-$sendTo = 'Enquiry <'.$email_no'.>';
+$sendTo = 'Enquiry <'.$email_no.'>';
 $subject = 'Password';
 $fields = array('password' => 'pass','name' => 'name' );
 
@@ -58,31 +48,6 @@ else{
   echo $responseArray['message'];
 }
   
-  //Content
-//   $mail->isHTML(true);                               
-//   $mail->Subject = 'Password';
-//   $mail->Body    = '<h3>Welcome '.$agent_name.'</h3><p>Welcome to Agreerent. We’re confident that Agreerent will help you to get the best deal for your property.</p><p>Your Email ID is :- '.$email_no.'<p>
-//   <p>Your Password is :- '.$pass.'</p>
-//   <p>Please login with Registerd Email and Password<p><br><h3>Thanks & Regards,</p>
-// Tectignis IT Solution<br>Aashiyana CHS Shop No 05,<br> Sector 11, Plot No 29, <br>Kamothe, Navi Mumbai, <br>Maharashtra 410206</h3>';
-//   $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
-//   if($mail->send()){
-//     $passwordhash=password_hash($pass,PASSWORD_BCRYPT);
-
-//    $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`status`) 
-//     VALUES ('$user_id','$agent_name','$email_no','$passwordhash','$rera','$office_address','$mobile_no','$status')");
-//     if($sql=1){
-//       echo "<script>alert('Agent Registered Successfully');</script>";    }
-//     else{
-//       echo "<script>alert('Something Wrong');</script>";
-//     }
-  
-//   }
-  
-// } catch (Exception $e) {
-//   echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-// }
 }
 
 
