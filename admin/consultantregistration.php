@@ -6,23 +6,17 @@ if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 }
 include("config/config.php");
 
-$res=mysqli_query($conn,"SELECT * FROM `email_configuration` ");
+$res=mysqli_query($conn,"SELECT * FROM `email_configuration`");
  $row=mysqli_fetch_array($res);
 
-// if(!isset($_SESSION['username'])){
-//  //header("location:../samples/login.php");
-// }
+// use PHPMailer\PHPMailer\PHPMailer;
+// use PHPMailer\PHPMailer\SMTP;
+// use PHPMailer\PHPMailer\Exception;
 
-	//Import PHPMailer classes into the global namespace
-//These must be at the top of your script, not inside a function
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
-
-//Load Composer's autoloader
-require 'PHPMailer/src/PHPMailer.php';
-require 'PHPMailer/src/SMTP.php';
-require 'PHPMailer/src/Exception.php';
+// //Load Composer's autoloader
+// require 'PHPMailer/src/PHPMailer.php';
+// require 'PHPMailer/src/SMTP.php';
+// require 'PHPMailer/src/Exception.php';
 	
 
 if(isset($_POST['sub'])){
@@ -35,59 +29,64 @@ if(isset($_POST['sub'])){
   $rera=$_POST['rera'];
   $status=1;
   $pass= rand(100000, 999999);
+  $email=$_POST['email'];
 
+$from = 'Enquiry <'.$email.'>';
+$sendTo = 'Enquiry <'.$email_no'.>';
+$subject = 'Password';
+$fields = array('password' => 'pass','name' => 'name' );
 
-   $to=$email_no;
-   $sub="Login Details";
- 
-   $mail = new PHPMailer(true);
-    try {
-  //Server settings
-  $mail->SMTPDebug = SMTP::DEBUG_SERVER;   
-  // $mail->SMTPDebug = 0;   
- 
-  $mail->isSMTP();                             
-  $mail->Host       = $row['host'];    
-  $mail->SMTPAuth   = true;                             
-  $mail->Username   = $row['email'];           
-  $mail->Password   = $row['password'];                          
-  // $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;          
-  $mail->Port       = $row['port'];  
-  $mail->SMTPSecure = "none";
-
-  //Recipients
-  $mail->setFrom($row['email'], 'Tectignis It Solution');
-  $mail->addAddress($email_no, $agent_name);    
+try{
+  $emailText = "message";
+  foreach($_POST as $key => $value){
+    if(isset($fields[$key])){
+      $emailText.="$fields[$key]: $value\n";
+    }
+  }
+  mail($sendTo,$subject,$emailText, "From:" .$from);
+  echo "done";
+}
+catch(\Exception $e){
+  echo "not done";
+}
+if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
+  $encode=json_encode($responseArray);
+  header('content-Type: application/json');
+  echo $encoded;
+}
+else{
+  echo $responseArray['message'];
+}
   
   //Content
-  $mail->isHTML(true);                               
-  $mail->Subject = 'Password';
-  $mail->Body    = '<h3>Welcome '.$agent_name.'</h3><p>Welcome to Agreerent. We’re confident that Agreerent will help you to get the best deal for your property.</p><p>Your Email ID is :- '.$email_no.'<p>
-  <p>Your Password is :- '.$pass.'</p>
-  <p>Please login with Registerd Email and Password<p><br><h3>Thanks & Regards,</p>
-Tectignis IT Solution<br>Aashiyana CHS Shop No 05,<br> Sector 11, Plot No 29, <br>Kamothe, Navi Mumbai, <br>Maharashtra 410206</h3>';
-  $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+//   $mail->isHTML(true);                               
+//   $mail->Subject = 'Password';
+//   $mail->Body    = '<h3>Welcome '.$agent_name.'</h3><p>Welcome to Agreerent. We’re confident that Agreerent will help you to get the best deal for your property.</p><p>Your Email ID is :- '.$email_no.'<p>
+//   <p>Your Password is :- '.$pass.'</p>
+//   <p>Please login with Registerd Email and Password<p><br><h3>Thanks & Regards,</p>
+// Tectignis IT Solution<br>Aashiyana CHS Shop No 05,<br> Sector 11, Plot No 29, <br>Kamothe, Navi Mumbai, <br>Maharashtra 410206</h3>';
+//   $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
-  if($mail->send()){
-    $passwordhash=password_hash($pass,PASSWORD_BCRYPT);
+//   if($mail->send()){
+//     $passwordhash=password_hash($pass,PASSWORD_BCRYPT);
 
-   $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`status`) 
-    VALUES ('$user_id','$agent_name','$email_no','$passwordhash','$rera','$office_address','$mobile_no','$status')");
-    if($sql=1){
-      echo "<script>alert('Agent Registered Successfully');</script>";    }
-    else{
-      echo "<script>alert('Something Wrong');</script>";
-    }
+//    $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`status`) 
+//     VALUES ('$user_id','$agent_name','$email_no','$passwordhash','$rera','$office_address','$mobile_no','$status')");
+//     if($sql=1){
+//       echo "<script>alert('Agent Registered Successfully');</script>";    }
+//     else{
+//       echo "<script>alert('Something Wrong');</script>";
+//     }
   
-  }
+//   }
   
-} catch (Exception $e) {
-  echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+// } catch (Exception $e) {
+//   echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+// }
 }
 
 
-  
-}
+
 
 ?>
 <!DOCTYPE html>
