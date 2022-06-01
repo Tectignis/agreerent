@@ -2,7 +2,8 @@
 session_start();
 if(isset($_SESSION['id'])) 
 
-include('config/config.php');
+include("../config/config.php");
+
 if(isset($_POST['submit'])){
     $property_for=$_POST['property_for'];
   $client_name=$_POST['client_name'];

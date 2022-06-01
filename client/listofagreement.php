@@ -4,7 +4,8 @@ if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 {
  header("Location:login.php"); 
 }
-include('config/config.php');
+include("../config/config.php");
+
 
 if(isset($_GET['gen'])){
   $id=mysqli_real_escape_string($conn,$_GET['gen']);

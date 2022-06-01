@@ -4,7 +4,8 @@ if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 {
 // header("Location:dashboard.php"); 
 }
-include('config/config.php');
+include("../config/config.php");
+
 if(isset($_POST["login"])){
 	$password=$_POST["password"];
 	$newpassword=$_POST["newpassword"];

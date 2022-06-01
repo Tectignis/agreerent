@@ -4,7 +4,8 @@ if(!isset($_SESSION['email'])) // If session is not set then redirect to Login P
 {
  header("Location:login.php"); 
 }
-include('config/config.php');
+include("../config/config.php");
+
 
 
 ?>
