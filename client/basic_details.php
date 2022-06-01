@@ -91,7 +91,7 @@ include("../config/config.php");
 </div>
 
 
-<form method="post" action="form.php">
+<form method="post" action="form.php" style="margin:30px;">
      <div class="form-group row">
                         <label for="inputtext" class="col-sm-2 col-form-label">Document no.<span class="text-danger">*</span></label>
                         

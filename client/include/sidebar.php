@@ -54,7 +54,7 @@
             </a>
             <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="createnewagreement" class="nav-link">
+              <a href="basic_details" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>New Agreement</p>
               </a>
