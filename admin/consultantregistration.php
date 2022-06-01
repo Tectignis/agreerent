@@ -24,13 +24,16 @@ if(isset($_POST['sub'])){
 $from = 'Enquiry <'.$email.'>';
 $sendTo = 'Enquiry <'.$email_no.'>';
 $subject = 'Password';
-$fields = array( 'name' , 'email' );
+$fields = array( 'name' => 'name' );
 
 try{
-  $emailText = "<h3>Welcome '.$agent_name.'</h3><p>Welcome to Agreerent. We’re confident that Agreerent will help you to get the best deal for your property.</p><p>Your Email ID is :- '.$email_no.'<p>
-  <p>Your Password is :- '.$pass.'</p>
-  <p>Please login with Registerd Email and Password<p><br><h3>Thanks & Regards,</p>
-Tectignis IT Solution<br>Aashiyana CHS Shop No 05,<br> Sector 11, Plot No 29, <br>Kamothe, Navi Mumbai, <br>Maharashtra 410206</h3>";
+  $emailText = "<html><body><h1>Welcome $agent_name.</h1>
+   Welcome to Agreerent. We’re confident that Agreerent will help you to get the best deal for your property. Your Email ID is :- '$email_no'
+  Your Password is :- '$pass'.
+  Please login with Registerd Email and Password
+  Thanks & Regards,
+Tectignis IT Solution
+Aashiyana CHS Shop No 05, Sector 11, Plot No 29, Kamothe, Navi Mumbai, Maharashtra 410206</body></html>";
 
   foreach($_POST as $key => $value){
     if(isset($fields[$key])){
