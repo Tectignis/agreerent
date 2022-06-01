@@ -54,13 +54,13 @@
             </a>
             <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="createnewagreement" class="nav-link">
+              <a href="newagreement" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>New Agreement</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="listofagreement" class="nav-link">
+              <a href="case" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>List Of Agreement</p>
               </a>
@@ -84,7 +84,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="" class="nav-link">
+              <a href="consultantlist" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>List Of Consultant</p>
               </a>
@@ -105,7 +105,7 @@
           </li>
           <li class="nav-header">Email Configuration</li>
 			<li class="nav-item">
-            <a href="policenoc" class="nav-link">
+            <a href="emailconfig" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>
               Email Configuration

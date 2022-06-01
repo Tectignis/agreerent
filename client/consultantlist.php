@@ -77,6 +77,7 @@ if(isset($_GET['delid'])){
                             <th>Moile No</th>
 						                <th>Email id</th>
                             <th>Rera No</th>
+                            <th>Action</th>
                             <th>Status</th>
                           </tr>
                         </thead>
@@ -88,19 +89,11 @@ if(isset($_GET['delid'])){
                         ?>
                         <tbody>
                           <tr>
-                          
-                          <td>  <?php echo $count;?> </td>
-                            <td> <?php echo $arr["user_id"]; ?> </td>
-                            <td><?php echo $arr["agent_name"]; ?> </td>
-                            <td><?php echo $arr["mobile_no"]; ?> </td>
-                            <td><?php echo $arr["email"]; ?> </td>
-                            <td><?php echo $arr["rera_no"]; ?> </td>
-                         
-                            <td>
-                            <a href="agentprof.php?edit=<?php echo $arr['status'] ?>"><button type="button" class="btn btn-primary  btn-md" style="color: aliceblue"> <i class="mdi mdi-grease-pencil"></i> </button></a>
-                            <a href="consultantlist.php?delid=<?php echo $arr['id'] ?>"><button type="button" class="btn btn-danger  btn-md" style="color: aliceblue"> <i class="mdi mdi-delete"></i> </button></a>
-                         </td>
-                            <!-- <button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-file-pdf"></i> </button>-->
+                            
+                            <!-- <a href="agentprof.php?edit=<?php echo $arr['id'] ?>"><button type="button" class="btn btn-primary  btn-md" style="color: aliceblue"> <i class="mdi mdi-grease-pencil"></i> </button></a>
+                            <a href="consultantlist.php?delid=<?php echo $arr['id'] ?>"><button type="button" class="btn btn-danger  btn-md" style="color: aliceblue"> <i class="mdi mdi-delete"></i> </button></a> -->
+
+                            <!-- <button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-file-pdf"></i> </button>--></td>
                           </tr>
                         </tbody>
                         <?php $count++;} ?>

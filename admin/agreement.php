@@ -8,7 +8,7 @@ include("include/configure.inc.php");
 $fid=$_GET['id'];
 
 if($_GET['id']==''){
-    header('Location:new_agreement.php');
+    header('Location:newagreement.php');
     } 
 function AmountInWords(float $amount)
 {
