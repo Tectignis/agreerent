@@ -81,6 +81,8 @@ if(isset($_GET['delid'])){
                                 <th>Email id</th>
                                 <th>Rera No</th>
                                 <th>Status</th>
+                                <th>Action</th>
+
                             </tr>
                         </thead>
                         <?php 
@@ -98,7 +100,18 @@ if(isset($_GET['delid'])){
                                 <td><?php echo $arr["mobile_no"]; ?></td>
                                 <td><?php echo $arr["email"]; ?></td>
                                 <td><?php echo $arr["rera_no"]; ?></td>
-                                <td><?php echo $arr["status"]; ?></td>
+                                <?php if($arr['status']=='0'){
+                  
+                  ?>
+                  <td><span class="badge badge-danger">Suspended</span></td>
+                  <?php }else{
+                    ?>
+                    <td><span class="badge badge-success">Active</span></td>
+                    
+                    <?php
+                  }
+                  
+                    ?>
 
 
                                 <td>
