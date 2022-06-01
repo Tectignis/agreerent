@@ -84,12 +84,12 @@ include("../config/config.php");
             <div class="small-box bg-info">
               <div class="inner">
                 <?php
-                               $query=mysqli_query($conn,"select * from enquiry where user_id='".$_SESSION['id']."'");
+                               $query=mysqli_query($conn,"select * from agent_details");
                                 $count1=mysqli_num_rows($query);
                             ?>
                 <h3><?php echo $count1; ?></h3>
 
-                <p>New Enquiry</p>
+                <p>No of Agents</p>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>

@@ -6,7 +6,7 @@ if(isset($_POST["login"])){
 	$email=$_POST["email"];
 	$password=$_POST["password"];
 
-	$sql = mysqli_query($conn,"SELECT * FROM agent_details WHERE email='$email'") ;
+	$sql = mysqli_query($conn,"SELECT * FROM agent_details WHERE email='$email' AND status='1'") ;
 	if(mysqli_num_rows($sql)>0){
 		$row=mysqli_fetch_assoc($sql); 
 		$verify=password_verify($password,$row['password']);
