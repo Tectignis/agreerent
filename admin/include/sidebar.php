@@ -97,7 +97,7 @@
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a href="consultantlist" class="nav-link">
+                              <a href="c" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
                                   <p>List Of Consultant</p>
                               </a>
