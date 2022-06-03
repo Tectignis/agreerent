@@ -31,8 +31,9 @@ include("../config/config.php");
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <!-- Navbar -->
-  <?php include 'include/header.php'; ?>
+
   <!-- /.navbar -->
+  <?php include 'include/header.php'; ?>
 
   <!-- Main Sidebar Container -->
  <?php include 'include/sidebar.php'; ?>
@@ -65,7 +66,7 @@ include("../config/config.php");
             <!-- /.card -->
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Enquiry Details</h3>
+                <h3 class="card-title">Police Noc</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">

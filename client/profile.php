@@ -9,6 +9,7 @@ include("../config/config.php");
 <!DOCTYPE html>
 <html lang="en">
 <head>
+ 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AGREERENT | Profile</title>
@@ -19,6 +20,13 @@ include("../config/config.php");
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <style>
+.card-footer {
+  padding: 0px 0px;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-top: 0 solid rgba(0, 0, 0, 0.125);
+}
+  </style>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -36,7 +44,7 @@ include("../config/config.php");
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
+          <div class="col-sm-5">
             <h1>Profile</h1>
           </div>
           <div class="col-sm-6">
@@ -83,7 +91,7 @@ include("../config/config.php");
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="exampleInputMobile" class="col-sm-2 col-form-label">Office Address</label>
+                      <label for="exampleaddress" class="col-sm-2 col-form-label">Office Address</label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control"name="address"value="<?php echo $arr["office_address"]; ?>"readonly>
                       </div>

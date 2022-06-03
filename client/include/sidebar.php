@@ -61,7 +61,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="listofagreement" class="nav-link">
+              <a href="case" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>List Of Agreement</p>
               </a>
@@ -75,38 +75,8 @@
                           </p>
                       </a>
                   </li>
-                  <li class="nav-item">
-                      <a href="paidleads" class="nav-link">
-                          <i class="nav-icon fas fa-th"></i>
-                          <p>
-                              Paid Leads
-                              <span class="right badge badge-danger">New</span>
-                          </p>
-                      </a>
-                  </li>
-                  <li class="nav-header">Rent Agreement</li>
-                  <li class="nav-item">
-                      <a href="" class="nav-link">
-                          <i class="nav-iconbasic_details fas fa-edit"></i>
-                          <p>
-                              Rent Agreement
-                          </p>
-                      </a>
-                      <ul class="nav nav-treeview">
-                          <li class="nav-item">
-                              <a href="basic_details" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>New Agreement</p>
-                              </a>
-                          </li>
-                          <li class="nav-item">
-                              <a href="listofagreement" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>List Of Agreement</p>
-                              </a>
-                          </li>
-                      </ul>
-                  </li>
+                  
+                
 
 
 
@@ -139,8 +109,8 @@
                       </a>
                   </li>
                   <li class="nav-item">
-                      <a href="enquiry" class="nav-link">
-                          <i class="nav-icon fas fa-person-booth"></i>
+                      <a href="complaintform" class="nav-link">
+                      <i class="nav-icon fa fa-clipboard-list"></i>
                           <p>
                               Complaint
                           </p>

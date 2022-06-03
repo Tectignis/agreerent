@@ -69,13 +69,11 @@ include("../config/config.php");
             <section class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1>Enquiry Details</h1>
-                        </div>
-                        <div class="col-sm-6">
+                       
+                        <div class="col-sm-12">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Enquiry Details</li>
+                                <li class="breadcrumb-item active">Agreement Details</li>
                             </ol>
                         </div>
                     </div>
@@ -90,11 +88,11 @@ include("../config/config.php");
                             <!-- /.card -->
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Quick Example</h3>
+                                    <h3 class="card-title">New Agreement</h3>
                                 </div>
 
                                 <div class="card-body">
-                                    <form method=" post" action="form.php">
+                                    <form method="post" action="form.php">
                                         <div class="form-group row">
                                             <label for="inputtext" class="col-sm-2 col-form-label">Document no.<span
                                                     class="text-danger">*</span></label>
@@ -171,7 +169,7 @@ include("../config/config.php");
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-        <?php include 'include/header.php'; ?>
+        <?php include 'include/footer.php'; ?>
 
 
         <!-- Control Sidebar -->

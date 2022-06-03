@@ -19,6 +19,13 @@ include("../config/config.php");
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <style>
+    .card-footer {
+  padding: 0px;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-top: 0 solid rgba(0, 0, 0, 0.125);
+}
+    </style>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">

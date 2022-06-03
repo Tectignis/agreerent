@@ -71,9 +71,6 @@ include("../config/config.php");
 <div class="card-header p-0 pt-1">
 <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
 
-<!-- <li class="nav-item">
-<a class="nav-link active" id="custom-tabs-two-home-tab" data-toggle="pill" href="#basic-details" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true">Basic Details</a>
-</li> -->
 <li class="nav-item">
 <a class="nav-link active" id="custom-tabs-two-profile-tab" data-toggle="pill" href="#owner" role="tab" aria-controls="custom-tabs-two-profile" aria-selected="false">Owner Details</a>
 </li>
@@ -99,60 +96,7 @@ include("../config/config.php");
 </div>
  <div class="card-body">
 <div class="tab-content" id="custom-tabs-two-tabContent">
-<!--<div class="tab-pane fade active show" id="basic-details" role="tabpanel" aria-labelledby="custom-tabs-two-home-tab">
-<form method="post">
-     <div class="form-group row">
-                        <label for="inputtext" class="col-sm-2 col-form-label">Document no.<span class="text-danger">*</span></label>
-                        
-                        <div class="col-sm-4">
-                    
-                        <input type="text" name="no" value="<?php// echo $number;?>" class="form-control" id="exampledno" readonly>
-                      
-                      </div>
-                      </div>
-                         <div class="form-group row">
-                      <label for="exampledate" class="col-sm-2 col-form-label">Date Of Aggrement<label style="color:Red">*</label></label>
-                      <div class="col-sm-4">
-                        <input type="date" name="date" class="form-control" id="exampledate" required>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="exampleprop" class="col-sm-2 col-form-label">Total No Of Months<label style="color:Red">*</label></label>
-                      <div class="col-sm-4">
-                        <select required class="form-control" name="month" id="exampleSelectGender">
-                        <option value="" disabled selected hidden>select</option>
-                          <option>11</option>
-                          <option>22</option>
-						              <option>36</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="exampleprop" class="col-sm-2 col-form-label">Property Type<label style="color:Red">*</label></label>
-                      <div class="col-sm-4">
-                        <select class="form-control" name="type" id="exampleProperty" required>
-                        <option value="" disabled selected hidden>select</option>
-                          <option>Flat</option>
-                          <option>Shop</option>
-                        </select>
-                      </div>
-  </div>
-  <div class="form-group row">
-                      <label for="exampleprop" class="col-sm-2 col-form-label">Place Of Agreement<label style="color:Red">*</label></label>
-                      <div class="col-sm-4">
-                      <input type="text" name="place" class="form-control" style="text-transform:uppercase" id="exampleagreement" placeholder="Enter Place" required>
 
-                      </div>
-  </div>
-  <div class="">
-                  <input type="hidden" name="agreement_details" value="">
-                  <button type="submit" name="submit" id="details" class="btn btn-info" data-tt="tooltip" title="" data-original-title="Click here to Save">Save as Draft</button>&nbsp;
-				  <button type="button" name="submit" id="next" class="btn btn-info" data-tt="tooltip" title="" data-original-title="Click here to Save">Next</button>
-                </div>
-                      
-</form>
-
-</div> -->
 <div class="tab-pane fade active show" id="owner" role="tabpanel" aria-labelledby="custom-tabs-two-profile-tab">
   <div class="card-body">
                  
@@ -202,13 +146,15 @@ include("../config/config.php");
                     <div class="form-group row"> 
                       <label for="exampleaddress" class="col-sm-2 col-form-label">Residence Address<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <textarea name="address" cols="66" rows="4" placeholder="Enter Address" required id="address"></textarea>
+                        <textarea name="address" cols="66" rows="4" class="form-control" placeholder="Enter Address" required id="address"></textarea>
                       </div>
                     </div>
                    
 					<div class="col" align="right">
              <button type="button" name="submitowner"  id="subm" class="btn btn-info" data-tt="tooltip" title="" data-original-title="Click here to Save">Save as Draft</button>&nbsp;
-                     <button type="submit" class="btn btn-primary  " style="color: aliceblue"  id=""> Next<i class="mdi mdi-chevron-right"></i></button>
+    
+                     <a  class="btn btn-primary next " style="color: aliceblue"  id=""> Next<i class="mdi mdi-chevron-right"></i></a>&nbsp;
+                    
 					</div>
                   </form>
                 </div>
@@ -274,13 +220,13 @@ include("../config/config.php");
                     <div class="form-group row">
                       <label for="exampleaddress" class="col-sm-2 col-form-label">Residence Address<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                      <textarea name="address" cols="66" rows="4" placeholder="Enter Address" id="residenceAddress" required></textarea> 
+                      <textarea name="address" cols="66" rows="4" class="form-control" placeholder="Enter Address" id="residenceAddress" required></textarea> 
                       </div>
                     </div>
 					          <div class="form-group row">
                       <label for="examplepreaddress" class="col-sm-2 col-form-label">Present Address<label style="color:Red">*</label></label>
                       <div class="col-sm-10">
-                        <textarea name="permanent_address" cols="66" rows="4" placeholder="Enter Address" id="presentAddress" required></textarea>  
+                        <textarea name="permanent_address" class="form-control" cols="66" rows="4" placeholder="Enter Address" id="presentAddress" required></textarea>  
                       </div>
                     </div>
                
@@ -288,7 +234,8 @@ include("../config/config.php");
           
 						 <!-- <a href="owner.php?id=<?php //echo $id;?>"><button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue"><i class="mdi mdi-chevron-left"></i>Previous</button></a> -->
               <button type="button" name="submitenant"  id="submitenant" class="btn btn-info" data-tt="tooltip" title="" data-original-title="Click here to Save">Save as Draft</button>&nbsp;
-                     <button type="button" class="btn btn-primary " style="color: aliceblue" name="submit" id="sub">Next<i class="mdi mdi-chevron-right"></i></button>
+              <a  class="btn btn-primary previous " style="color: aliceblue"  id=""> Previous<i class="mdi mdi-chevron-left"></i></a>
+                     <a class="btn btn-primary  next" style="color: aliceblue" name="submit" id="sub">Next<i class="mdi mdi-chevron-right"></i></a>
 					</div>
                   </form>
                		 </div>
@@ -366,7 +313,8 @@ include("../config/config.php");
 					<div class="col" align="right">
 					<!-- <a href="tenant.php?id=<?php echo $did;?>"><button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue"><i class="mdi mdi-chevron-left"></i>Previous</button></a> -->
            <button type="button" name="submitproperty"  id="submitproperty" class="btn btn-info" data-tt="tooltip" title="" data-original-title="Click here to Save">Save as Draft</button>&nbsp;
-                    <button type="button" name="submit"class="btn btn-primary " style="color: aliceblue">Next<i class="mdi mdi-chevron-right"></i></button>
+           <a  class="btn btn-primary previous " style="color: aliceblue"  id=""> Previous<i class="mdi mdi-chevron-left"></i></a>
+           <a  class="btn btn-primary next " style="color: aliceblue"  id=""> Next<i class="mdi mdi-chevron-right"></i></a>
 					</div>
                   </form>
                 </div>
@@ -427,7 +375,8 @@ include("../config/config.php");
 						</div>
 					<div class="col" align="right">
            <button type="button" name="submitmember"  id="submitmember" class="btn btn-info" data-tt="tooltip" title="" data-original-title="Click here to Save">Save as Draft</button>&nbsp;
-                    <button type="button" class="btn btn-primary  " style="color: aliceblue" >Next<i class="mdi mdi-chevron-right"></i></button>
+           <a  class="btn btn-primary previous " style="color: aliceblue"  id=""> Previous<i class="mdi mdi-chevron-left"></i></a>
+           <a  class="btn btn-primary next " style="color: aliceblue"  id=""> Next<i class="mdi mdi-chevron-right"></i></a>
 					</div>
                   </form>
                 
@@ -487,7 +436,8 @@ include("../config/config.php");
                     </div>
 					<div class="col" align="right">
            <button type="button" name="submitwitness"  id="submitwitness" class="btn btn-info" data-tt="tooltip" title="" data-original-title="Click here to Save">Save as Draft</button>&nbsp;
-                    <button type="button" name="submit"class="btn btn-primary  " style="color: aliceblue" id="sub">Next</button>
+           <a  class="btn btn-primary previous " style="color: aliceblue"  id=""> Previous<i class="mdi mdi-chevron-left"></i></a>
+           <a  class="btn btn-primary next " style="color: aliceblue"  id=""> Next<i class="mdi mdi-chevron-right"></i></a>
 					</div>
                   </form>
                 </div>
@@ -522,7 +472,8 @@ include("../config/config.php");
 					<div class="col" align="right">
 					<!-- <a href="family.php?id=<?php echo $fid;?>"><button type="button" class="btn btn-primary btn-lg" style="color: aliceblue"><i class="mdi mdi-chevron-left"></i>Previous</button></a> -->
            <button type="button" name="submitaminities"  id="submitaminities" class="btn btn-info" data-tt="tooltip" title="" data-original-title="Click here to Save">Save as Draft</button>&nbsp;
-                   <button type="button" class="btn btn-primary " style="color: aliceblue" >Next<i class="mdi mdi-chevron-right"></i></button>
+            <a  class="btn btn-primary previous " style="color: aliceblue"  id=""> Previous<i class="mdi mdi-chevron-left"></i></a>
+           <a  class="btn btn-primary next " style="color: aliceblue"  id=""> Next<i class="mdi mdi-chevron-right"></i></a>
 					</div>
                   </form>
                 </div>
@@ -590,7 +541,7 @@ include("../config/config.php");
                     </div>
                     <div class="">
                   <input type="hidden" name="agreement_details" value="">
-                  
+                  <a  class="btn btn-primary previous " style="color: aliceblue"  id=""> Previous<i class="mdi mdi-chevron-left"></i></a>
                   <button type="button" name="submitpayment" id="submitpayment" class="btn btn-info" data-tt="tooltip" title="" data-original-title="Click here to Save" onclick="function()" >submit</button>&nbsp;
                 </div>
 				
@@ -680,6 +631,7 @@ $('.previous').click(function () {
     $('.nav-tabs > .nav-item > .active').parent().prev('li').find('a').trigger('click');
 });
 </script>
+
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 </html>

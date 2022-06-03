@@ -37,8 +37,8 @@ if(isset($_POST['emailSettingSubmit'])){
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <!-- Navbar -->
-    <?php include 'include/header.php'; ?>
-
+    
+  <?php include 'include/header.php'; ?>
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
@@ -80,7 +80,7 @@ if(isset($_POST['emailSettingSubmit'])){
               <form class="form-horizontal" name="emailSetupForm" id="emailSetupForm" method="post" enctype="multipart/form-data">
                             <div class="card card-info">
                                 <div class="card-header">
-                                <h3 class="card-title mt-4">Email setup</h3>
+                                <h3 class="card-title ">Email setup</h3>
                                 </div>
                                 <div class="card-body">
                                

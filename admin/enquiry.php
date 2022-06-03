@@ -17,7 +17,7 @@ include("../config/config.php");
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AGREERENT | Enquiry Details</title>
+    <title>AGREERENT | ENQUIRY DETAILS</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -93,13 +93,13 @@ include("../config/config.php");
                                                 <th> Action </th>
                                             </tr>
                                         </thead>
+                                        <tbody>
                                         <?php 
                         
                         $sql=mysqli_query($conn,"select * from enquiry");
                         $count=1;
                          while($arr=mysqli_fetch_array($sql)){
                         ?>
-                                        <tbody>
                                             <tr>
                                                 <td> <?php echo $count;?></td>
                                                 <td> <?php echo $arr['name'];?> </td>
@@ -114,8 +114,8 @@ include("../config/config.php");
                                                     <!-- <button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-file-pdf"></i> </button>-->
                                                 </td>
                                             </tr>
+                                            <?php $count++;} ?>
                                         </tbody>
-                                        <?php $count++;} ?>
                                     </table>
                                 </div>
                                 <!-- /.card-body -->
@@ -131,7 +131,7 @@ include("../config/config.php");
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-        <?php include 'include/header.php'; ?>
+     <?php include 'include/footer.php'; ?>
 
 
         <!-- Control Sidebar -->
@@ -163,13 +163,16 @@ include("../config/config.php");
     <script src="dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <!-- Page specific script -->
-    <script>
+    
+   
+</body>
+<script>
     $(function() {
         $("#example1").DataTable({
             "responsive": true,
             "lengthChange": false,
             "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            "buttons": ["copy", "csv", "excel", "pdf", "print"]
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         $('#example2').DataTable({
             "paging": true,
@@ -182,6 +185,4 @@ include("../config/config.php");
         });
     });
     </script>
-</body>
-
 </html>

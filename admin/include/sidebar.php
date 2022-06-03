@@ -36,7 +36,7 @@
                           </p>
                       </a>
                   </li>
-                  <li class="nav-item">Paid Leads</li>
+                 
                   <li class="nav-item">
                       <a href="" class="nav-link">
                           <i class="nav-icon fas fa-th"></i>
@@ -67,7 +67,7 @@
                       </a>
                       <ul class="nav nav-treeview">
                           <li class="nav-item">
-                              <a href="newagreement" class="nav-link">
+                              <a href="basic_details" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
                                   <p>New Agreement</p>
                               </a>
@@ -84,7 +84,7 @@
                   <li class="nav-header">Consultant</li>
                   <li class="nav-item">
                       <a href="" class="nav-link">
-                          <i class="nav-icon fas fa-stroopwafel"></i>
+                      <i class="nav-icon fa fa-id-badge"></i>
                           <p>
                               Consultant
                           </p>
@@ -119,7 +119,7 @@
                   <li class="nav-header">Email Configuration</li>
                   <li class="nav-item">
                       <a href="emailconfig" class="nav-link">
-                          <i class="nav-icon fas fa-book"></i>
+                        <i class="nav-icon fa fa-envelope"></i>
                           <p>
                               Email Configuration
                           </p>
@@ -143,8 +143,8 @@
                       </a>
                   </li>
                   <li class="nav-item">
-                      <a href="enquiry" class="nav-link">
-                          <i class="nav-icon fas fa-person-booth"></i>
+                      <a href="complaintform" class="nav-link">
+                         <i class="nav-icon fa fa-clipboard-list"></i>
                           <p>
                               Complaint
                           </p>
@@ -152,7 +152,7 @@
                   </li>
                   <li class="nav-item">
                       <a href="profile" class="nav-link">
-                          <i class="nav-icon fas fa-user-visor"></i>
+                          <i class="nav-icon fas fa-user"></i>
                           <p>
                               Profile
                           </p>
