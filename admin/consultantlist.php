@@ -2,7 +2,7 @@
 session_start();
 if(!isset($_SESSION['email'])) // If session is not set then redirect to Login Page
 {
- header("Location:login.php"); 
+ header("Location:clientlogin.php"); 
 }
 include("../config/config.php");
 
@@ -10,8 +10,21 @@ if(isset($_GET['delid'])){
   $id=mysqli_real_escape_string($conn,$_GET['delid']);
   $sql=mysqli_query($conn,"delete from agent_details where id='$id'");
   if($sql=1){
-    header("location:consaltantlist.php");
+    header("location:consultantlist.p");
   }
+}
+
+
+if(isset($_POST['submit'])){
+	$status=$_POST['status'];
+    $aid=$_POST['aid'];
+	$sql=mysqli_query($conn,"UPDATE `agent_details` SET `status`='$status' WHERE user_id='$aid'");
+  
+	if($sql==1){	
+    header("location:consultantlist");
+	}else{
+		echo "<script>alert('Something went wrong');</script>";
+	}
 }
 ?>
 <!DOCTYPE html>
@@ -63,9 +76,16 @@ if(isset($_GET['delid'])){
                 </div>
             </section>
 
+
             <section class="content">
 
                 <div class="card card-primary">
+                    <?php 
+                        $aid1='';
+                        $sql=mysqli_query($conn,"select * from agent_details");
+                        $count=1;
+                        ?>
+
                     <div class="card-header">
                         <h3 class="card-title">
                             To Do
@@ -85,11 +105,8 @@ if(isset($_GET['delid'])){
 
                             </tr>
                         </thead>
-                        <?php 
-                        
-                        $sql=mysqli_query($conn,"select * from agent_details");
-                        $count=1;
-                         while($arr=mysqli_fetch_array($sql)){
+                        <?php while($arr=mysqli_fetch_array($sql)){
+                             $aid1=$arr['user_id'];
                         ?>
                         <tbody>
                             <tr>
@@ -101,17 +118,28 @@ if(isset($_GET['delid'])){
                                 <td><?php echo $arr["email"]; ?></td>
                                 <td><?php echo $arr["rera_no"]; ?></td>
                                 <?php if($arr['status']=='0'){
-                  
-                  ?>
-                  <td><span class="badge badge-danger">Suspended</span></td>
-                  <?php }else{
-                    ?>
-                    <td><span class="badge badge-success">Active</span></td>
                     
-                    <?php
-                  }
-                  
                     ?>
+                                <td><span class="badge badge-danger">Suspended</span>
+                                    <button type="button" class="btn btn-default fetchid" data-toggle="modal"
+                                        data-target="#modal-default">
+                                        <i class="fas fa-wrench"></i>
+                                    </button>
+
+                                </td>
+                                <?php }else{
+                        ?>
+                                <td><span class="badge badge-success">Active</span> <button type="button"
+                                        class="btn btn-default fetchid" data-toggle="modal"
+                                        data-target="#modal-default">
+                                        <i class="fas fa-wrench"></i>
+                                    </button></td>
+
+                                <?php
+                    }
+                    
+                    
+                                    ?>
 
 
                                 <td>
@@ -126,15 +154,56 @@ if(isset($_GET['delid'])){
                             </tr>
                         </tbody>
                         <?php $count++;} ?>
+
                     </table>
 
                 </div>
 
         </div>
+        <?php
+        ?>
 
 
+        <div class="modal fade" id="modal-default" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Agent Status</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post">
+
+                            <div class="row">
+
+
+                                <div class="form-group col-12">
+                                    <label>Change Agent Status</label>
+                                    <select class="form-control" name="status">
+
+                                        <option value="0">Deactivate</option>
+                                        <option value="1">Activate</option>
+
+                                    </select>
+                                </div>
+                                <input type="text" name="aid" class="category" hidden>
+                            </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" name="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
 
         </section>
+
     </div>
 
     <?php include 'include/footer.php'; ?>
@@ -167,6 +236,15 @@ if(isset($_GET['delid'])){
     $(function() {
 
     })
+    </script>
+    <script>
+    $(document).ready(function() {
+        $(".fetchid").on('click', function() {
+            let category = $(this).closest("tr").find("td:nth-child(2)").text().trim();
+            $(".category").val(category);
+        });
+
+    });
     </script>
 </body>
 
