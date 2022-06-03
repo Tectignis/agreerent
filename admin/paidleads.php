@@ -69,12 +69,12 @@ include("../config/config.php");
                             <!-- /.card -->
                             <div class="card">
                                 <div class="card-header">
-                                 
+
                                     <div class="card-tools">
                                         <ul class="nav nav-pills ml-auto">
                                             <li class="nav-item">
-                                                <a class="nav-link active" href="" data-tt="tooltip"
-                                                    title="" data-original-title="Click here to Add New Enquiry"><i
+                                                <a class="nav-link active" href="" data-tt="tooltip" title=""
+                                                    data-original-title="Click here to Add New Enquiry"><i
                                                         class="fas fa-user-friends mr-2"></i>Add</a>
                                             </li>
                                         </ul>
@@ -84,38 +84,41 @@ include("../config/config.php");
                                 <div class="card-body">
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
-                                        <tr>
-                           <th>Sr.No</th>
-					    	<th>Client No</th>
-                            <th>Mobile No</th>
-                            <th>Property Type</th>
-                            <th>Area</th> 
-                            <th>Requirement</th> 
-                            <th>Location</th>
-                             <th>Action</th>
-                          </tr>
+                                            <tr>
+                                                <th>Sr.No</th>
+                                                <th>Client No</th>
+                                                <th>Mobile No</th>
+                                                <th>Property Type</th>
+                                                <th>Area</th>
+                                                <th>Requirement</th>
+                                                <th>Location</th>
+                                                <th>Action</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
-                                        <?php 
+                                            <?php 
                         
                         $sql=mysqli_query($conn,"select * from `paidleads`");
-                        
+                        $count=1;
                          while($arr=mysqli_fetch_array($sql)){
                         ?>
                                             <tr>
-                             <td> <?php echo $arr['id'];?> </td>
-                            <td> <?php echo $arr['client_name'];?> </td>
-                            <td> <?php echo $arr['mobile'];?></td>
-                            <td> <?php echo $arr['type'];?></td>
-                            <td> <?php echo $arr['area'];?> </td>
-                              <td> <?php echo $arr['requirement'];?></td>
-                            <td> <?php echo $arr['location'];?> </td>
-                            <td>
-                            <a href="paidleads.php?delid=<?php echo $arr['id']; ?>"><button type="button" class="btn btn-danger btn-rounded btn-icon" onclick="ConfirmDelete()" style="color: aliceblue"> <i class="fas fa-trash"></i> </button></a>
-                              
-                          </tr>
-                        
-                        <?php }; ?>
+                                                <td> <?php echo $count;?> </td>
+                                                <td> <?php echo $arr['client_name'];?> </td>
+                                                <td> <?php echo $arr['mobile'];?></td>
+                                                <td> <?php echo $arr['type'];?></td>
+                                                <td> <?php echo $arr['area'];?> </td>
+                                                <td> <?php echo $arr['requirement'];?></td>
+                                                <td> <?php echo $arr['location'];?> </td>
+                                                <td>
+                                                    <a href="paidleads.php?delid=<?php echo $arr['id']; ?>"><button
+                                                            type="button" class="btn btn-danger btn-rounded btn-icon"
+                                                            onclick="ConfirmDelete()" style="color: aliceblue"> <i
+                                                                class="fas fa-trash"></i> </button></a>
+
+                                            </tr>
+
+                                            <?php $count++; }?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -132,7 +135,7 @@ include("../config/config.php");
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-     <?php include 'include/footer.php'; ?>
+        <?php include 'include/footer.php'; ?>
 
 
         <!-- Control Sidebar -->
@@ -164,26 +167,27 @@ include("../config/config.php");
     <script src="dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <!-- Page specific script -->
-    
-   
+
+
 </body>
 <script>
-    $(function() {
-        $("#example1").DataTable({
-            "responsive": true,
-            "lengthChange": false,
-            "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print"]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-        });
+$(function() {
+    $("#example1").DataTable({
+        "responsive": true,
+        "lengthChange": false,
+        "autoWidth": false,
+        "buttons": ["copy", "csv", "excel", "pdf", "print"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
     });
-    </script>
+});
+</script>
+
 </html>
