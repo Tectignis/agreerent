@@ -91,26 +91,6 @@ if(isset($_POST['submit'])){
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-6 ">
-                    <div class="form-group row">
-                      <label for="exampleprop" class="col-sm-3 col-form-label">Consultant<label style="color:Red">*</label></label>
-                      <div class="col-sm-9">
-                      <?php 
-	
-  $sql=mysqli_query($conn,"select * from agent_details ");
-  $count=1;
-  while($arr=mysqli_fetch_array($sql)){
-?>
-                      <select class="form-control select2 select2-hidden-accessible"  name="" id="consultatnt" style="width: 100%;" data-select2-id="1" tabindex="-2" aria-hidden="true">
-                                <option ><?php echo $arr['agent_name'];?></option>
-                        
-                          
-                         
-                          <?php } ?>
-                        </select>
-                      </div>  
-                    </div>
-						</div>
 					  <div class="col-md-6 ">
                     <div class="form-group row">
                       <label for="exampledno" class="col-sm-3 col-form-label">Client Name<label style="color:Red">*</label></label>
