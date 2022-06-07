@@ -9,7 +9,7 @@ if(isset($_GET['delid'])){
   $id=mysqli_real_escape_string($conn,$_GET['delid']);
   $sql=mysqli_query($conn,"delete from agent_details where id='$id'");
   if($sql=1){
-    header("location:consultantlist.p");
+    header("location:consultant");
   }
 }
 
@@ -20,7 +20,7 @@ if(isset($_POST['submit'])){
 	$sql=mysqli_query($conn,"UPDATE `agent_details` SET `status`='$status' WHERE user_id='$aid'");
   
 	if($sql==1){	
-    header("location:c");
+    header("location:consultant");
 	}else{
 		echo "<script>alert('Something went wrong');</script>";
 	}
@@ -86,7 +86,7 @@ if(isset($_POST['submit'])){
 
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title">DataTable with default features</h3>
+                                    <h3 class="card-title"></h3>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
@@ -123,32 +123,30 @@ if(isset($_POST['submit'])){
                                                 <?php if($arr['status']=='0'){
                   
                   ?>
-                                                <td><span class="badge badge-danger">Suspended</span>
+                                                <td><span class="badge badge-danger">Deactivated</span>
 
 
                                                 </td>
                                                 <?php }else{
-                    ?>
+                                                    ?>
                                                 <td><span class="badge badge-success">Active</span></td>
 
                                                 <?php
-                  }
-                  
-                  
+                                                 }
                                 ?>
 
 
                                                 <td>
-                                                    <button type="button" class="btn btn-default fetchid"
+                                                    <button type="button" class="btn btn-default btn-sm"
                                                         data-toggle="modal" data-target="#modal-default">
                                                         <i class="fas fa-wrench"></i>
                                                     </button>
                                                     <a href="agentprof.php?edit=<?php echo $arr['status'] ?>"><button
-                                                            type="button" class="btn btn-primary  btn-md"
+                                                            type="button" class="btn btn-primary  btn-sm"
                                                             style="color: aliceblue"> <i class="fas fa-pen"></i>
                                                         </button></a>
                                                     <a href="consultantlist.php?delid=<?php echo $arr['id'] ?>"><button
-                                                            type="button" class="btn btn-danger  btn-md"
+                                                            type="button" class="btn btn-danger  btn-sm"
                                                             style="color: aliceblue"> <i class="fas fa-trash"></i>
                                                         </button></a>
                                                 </td>

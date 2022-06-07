@@ -34,7 +34,8 @@ if($sql=1){
     <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-    <!-- Theme style -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
 </head>
 
@@ -75,7 +76,7 @@ if($sql=1){
                             <!-- /.card -->
                             <div class="card">
                                 <div class="card-header">
-                                 
+
                                     <div class="card-tools">
                                         <ul class="nav nav-pills ml-auto">
                                             <li class="nav-item">
@@ -90,19 +91,19 @@ if($sql=1){
                                 <div class="card-body">
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
-                                        <tr>
-                           <th>Sr.No</th>
-					    	<th>Client No</th>
-                            <th>Mobile No</th>
-                            <th>Property Type</th>
-                            <th>Area</th> 
-                            <th>Requirement</th> 
-                            <th>Location</th>
-                             <th>Action</th>
-                          </tr>
+                                            <tr>
+                                                <th>Sr.No</th>
+                                                <th>Client No</th>
+                                                <th>Mobile No</th>
+                                                <th>Property Type</th>
+                                                <th>Area</th>
+                                                <th>Requirement</th>
+                                                <th>Location</th>
+                                                <th>Action</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
-                                        <?php 
+                                            <?php 
                         
                         $sql=mysqli_query($conn,"select * from `paidleads`");
                      
@@ -138,7 +139,7 @@ if($sql=1){
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-     <?php include 'include/footer.php'; ?>
+        <?php include 'include/footer.php'; ?>
 
 
         <!-- Control Sidebar -->
@@ -170,26 +171,22 @@ if($sql=1){
     <script src="dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <!-- Page specific script -->
-    
-   
+
+
 </body>
 <script>
-    $(function() {
-        $("#example1").DataTable({
-            "responsive": true,
-            "lengthChange": false,
-            "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print"]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-        });
-    });
-    </script>
+$(function() {
+    $("#example1").DataTable({
+        lengthMenu: [
+            [10, 25, 50, -1],
+            [10, 25, 50, 'All'],
+        ],
+        "responsive": true,
+        "lengthChange": true,
+        "autoWidth": false,
+        "buttons": ["copy", "csv", "excel", "pdf", "print"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+});
+</script>
+
 </html>
