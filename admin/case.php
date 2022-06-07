@@ -145,7 +145,7 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
                                                                         <td><?php echo $row['newdate']; ?></td>
                                                                         <td><?php echo $row['month']; ?></td>
                                                                         <td style="color:red">Pending</td>
-                                                                        <td><a href="listofagreement.php?viewid=<?php echo $row['newdoc'];?>"
+                                                                        <td><a href="agreement.php?id=<?php echo $row['newdoc'];?>"
                                                                                 class="btn btn-primary btn-rounded btn-icon"><i
                                                                                     class="fas fa-eye"></i></a>
                                                                             <a href="edit_newagreement.php?id=<?php echo $row['newdoc'];?>"
@@ -178,7 +178,7 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
                                                                 </thead>
                                                                 <tbody>
                                                                     <?php
-                                        $sql=mysqli_query($conn,"select new_agreement.document_no as newdoc,new_agreement.date_of_agreement as newdate, new_agreement.no_of_month as month,tenant.fullname as tname,owner.fullname as owname,owner.document_no as owdoc,tenant.document_no as tdoc,property_details.document_no as pdoc,family_members.document_no as memdoc,amenities.document_no as amdoc FROM new_agreement inner join owner on new_agreement.document_no=owner.document_no inner join tenant on tenant.document_no=new_agreement.document_no inner join family_members on family_members.document_no=new_agreement.document_no inner join amenities on new_agreement.document_no=amenities.document_no inner join payment on new_agreement.document_no=payment.document_no inner join  property_details on new_agreement.document_no=property_details.document_no group by new_agreement.document_no");
+                                        // $sql=mysqli_query($conn,"select new_agreement.document_no as newdoc,new_agreement.date_of_agreement as newdate, new_agreement.no_of_month as month,tenant.fullname as tname,owner.fullname as owname,owner.document_no as owdoc,tenant.document_no as tdoc,property_details.document_no as pdoc,family_members.document_no as memdoc,amenities.document_no as amdoc FROM new_agreement inner join owner on new_agreement.document_no=owner.document_no inner join tenant on tenant.document_no=new_agreement.document_no inner join family_members on family_members.document_no=new_agreement.document_no inner join amenities on new_agreement.document_no=amenities.document_no inner join payment on new_agreement.document_no=payment.document_no inner join  property_details on new_agreement.document_no=property_details.document_no group by new_agreement.document_no");
 
 
                                          $sql=mysqli_query($conn,"select new_agreement.document_no as newdoc,new_agreement.date_of_agreement as newdate, new_agreement.no_of_month as month,tenant.fullname as tname,owner.fullname as owname,owner.document_no as owdoc,tenant.document_no as tdoc,property_details.document_no as pdoc,family_members.document_no as memdoc,amenities.document_no as amdoc, noc.status as nstatus, noc.document_no as ndoc from new_agreement inner join owner on new_agreement.document_no=owner.document_no inner join tenant on tenant.document_no=new_agreement.document_no inner join family_members on family_members.document_no=new_agreement.document_no inner join amenities on new_agreement.document_no=amenities.document_no inner join payment on new_agreement.document_no=payment.document_no inner join  property_details on new_agreement.document_no=property_details.document_no inner join noc on new_agreement.document_no=noc.document_no group by new_agreement.document_no");
@@ -196,7 +196,7 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
                                                                         <td><?php echo $row['newdate']; ?></td>
                                                                         <td><?php echo $row['month']; ?></td>
                                                                         <td style="color:blue">Complete</td>
-                                                                        <td><a href="listofagreement.php?viewid=<?php echo $row['newdoc'];?>"
+                                                                        <td><a href="agreement.php?id=<?php echo $row['newdoc'];?>"
                                                                                 class="btn btn-primary btn-rounded btn-icon"><i
                                                                                     class="fas fa-eye"></i></a>
 
