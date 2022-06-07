@@ -36,9 +36,13 @@ if(isset($_POST['subm'])){
 	
 	$sql=mysqli_query($conn,"INSERT INTO `owner`(`document_no`, `abbreviation`, `fullname`,`age`, `address`, `mobile`, `aadhaar`, `pan_card`) VALUES ('$id','$abbreviation','$name','$age','$address','$mobile','$aadhaar','$pancard')");
 	if($sql==1){	
-     echo "Successfully Added";
+	
+
+	echo "200";
+
+	
 	}else{
-		echo "Something went wrong";
+	echo "Something went wrong";
 	}
 }
 
@@ -192,6 +196,7 @@ if(isset($_POST['submitaminities'])){
 
 }
 
+$sql=mysqli_query($conn,"select courses.*, instructor.* from courses inner join instructor on courses.sr_no=instructor.sr_no where courses.sr_no='$id'");
 //payment
 if(isset($_POST['submitpayment'])){
 	$idpayment=$_POST['no7'];
@@ -227,33 +232,37 @@ $document4=$arr4['document_no'];
 $query5=mysqli_query($conn,"SELECT * FROM owner order by document_no desc ");
 $arr5=mysqli_fetch_assoc($query5);
 $name1=$arr5['name1'];
-// echo "<script>alert('$document , $idpayment');</script>";
+// echo "<script>alert('$document , $idpayment');
+
 
 if($document!=$idpayment){
 echo "please fill owner details";
- }
- else if($document1!=$idpayment){
+}
+else if($document1!=$idpayment){
 echo "please fill tenant details";
- }
- else if($document3!=$idpayment){
+}
+else if($document3!=$idpayment){
 echo "please fill family details";
- }
- else if($document4!=$idpayment){
+}
+else if($document4!=$idpayment){
 echo "please fill amenities details";
- }
- else if($name1==""){
+}
+else if($name1==""){
 echo "please fill witness details";
- }
+}
 else{
-	$sql=mysqli_query($conn,"INSERT INTO `payment`(`document_no`,`security_deposit`,`rent_amount`,`bank`,`method`,`date`,`tid`) VALUES 
-  ('$idpayment','$security_deposit','$rent_amount','$bank','$method','$date','$tid')");
-	if($sql==1){	
-    echo "Successfully Added";
-  	}else{
-		echo "<script> alert('Something went wrong');</script>";
-	}
+$sql=mysqli_query($conn,"INSERT INTO
+`payment`(`document_no`,`security_deposit`,`rent_amount`,`bank`,`method`,`date`,`tid`) VALUES
+('$idpayment','$security_deposit','$rent_amount','$bank','$method','$date','$tid')");
+if($sql==1){
+echo "Successfully Added";
+}else{
+echo "<script>
+alert('Something went wrong');
+</script>";
+}
 
-	
+
 }
 }
 
