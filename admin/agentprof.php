@@ -5,6 +5,21 @@ if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 }
 include("../config/config.php");
 
+$aid=$_GET['id'];
+if(isset($_POST['edit'])){
+	$name=$_POST['name'];  
+  $email=$_POST['email'];
+  $address=$_POST['address'];
+  $mobile=$_POST['mobile'];  
+  $rera=$_POST['rera'];  
+	$sql=mysqli_query($conn,"UPDATE `agent_details` SET `agent_name`='$name',`email`='$email',`office_address`='$address',`mobile_no`='$mobile',`rera_no`='$rera' where id='$aid'");
+	if($sql==1){	
+    header("location:agentprof.php?id=$aid");
+  	}else{
+		echo "<script>alert('Something went wrong');</script>";
+	}
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,7 +89,7 @@ include("../config/config.php");
                                 <!-- form start -->
                                 <form class="forms-sample" method="post">
                                     <?php
-                  $sql=mysqli_query($conn,"select * from agent_details where user_id='".$_SESSION['id']."'");
+                  $sql=mysqli_query($conn,"select * from agent_details where id='$aid'");
                   while($arr=mysqli_fetch_array($sql)){
 
                   
@@ -85,7 +100,7 @@ include("../config/config.php");
                                                 Name</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control" name="name"
-                                                    value="<?php echo $arr["agent_name"]; ?>" readonly>
+                                                    value="<?php echo $arr["agent_name"]; ?>">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -93,7 +108,7 @@ include("../config/config.php");
                                                 Email-ID</label>
                                             <div class="col-sm-10">
                                                 <input type="email" class="form-control" name="email"
-                                                    value="<?php echo $arr["email"]; ?>" readonly>
+                                                    value="<?php echo $arr["email"]; ?>">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -101,7 +116,7 @@ include("../config/config.php");
                                                 Address</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control" name="address"
-                                                    value="<?php echo $arr["office_address"]; ?>" readonly>
+                                                    value="<?php echo $arr["office_address"]; ?>">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -109,19 +124,19 @@ include("../config/config.php");
                                                 No.</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control" name="mobile"
-                                                    value="<?php echo $arr["mobile_no"]; ?>" readonly>
+                                                    value="<?php echo $arr["mobile_no"]; ?>">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="examplepan" class="col-sm-2 col-form-label">Rera No.</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control" name="rera"
-                                                    value="<?php echo $arr["rera_no"]; ?>" readonly>
+                                                    value="<?php echo $arr["rera_no"]; ?>">
                                             </div>
                                         </div>
                                         <?php  } ?>
                                         <div class="card-footer">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                            <button type="submit" name="edit" class="btn btn-primary">Submit</button>
                                         </div>
                                     </div>
                                 </form>
