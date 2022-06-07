@@ -1,12 +1,18 @@
 <?php
-session_start();
-if(!isset($_SESSION['email'])) // If session is not set then redirect to Login Page
-{
- header("Location:login.php"); 
-}
+// session_start();
+// if(!isset($_SESSION['email'])) // If session is not set then redirect to Login Page
+// {
+//  header("Location:login.php"); 
+// }
 include("../config/config.php");
 
-
+if(isset($_GET['delid'])){
+$id=mysqli_real_escape_string($conn,$_GET['delid']);
+$sql=mysqli_query($conn,"delete from paidleads where id='$id'");
+if($sql=1){
+    header("location:paidleads.php");
+}
+}
 
 ?>
 
@@ -73,7 +79,7 @@ include("../config/config.php");
                                     <div class="card-tools">
                                         <ul class="nav nav-pills ml-auto">
                                             <li class="nav-item">
-                                                <a class="nav-link active" href="" data-tt="tooltip"
+                                                <a class="nav-link active" href="sendleads" data-tt="tooltip"
                                                     title="" data-original-title="Click here to Add New Enquiry"><i
                                                         class="fas fa-user-friends mr-2"></i>Add</a>
                                             </li>
@@ -99,7 +105,7 @@ include("../config/config.php");
                                         <?php 
                         
                         $sql=mysqli_query($conn,"select * from `paidleads`");
-                        
+                     
                          while($arr=mysqli_fetch_array($sql)){
                         ?>
                                             <tr>
@@ -115,7 +121,7 @@ include("../config/config.php");
                               
                           </tr>
                         
-                        <?php }; ?>
+                        <?php   } ?>
                                         </tbody>
                                     </table>
                                 </div>

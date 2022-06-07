@@ -7,13 +7,13 @@ if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 include("../config/config.php");
 
 
-// if(isset($_GET['gen'])){
-//   $id=mysqli_real_escape_string($conn,$_GET['gen']);
-//   $sql=mysqli_query($conn,"update noc set `status`='1' where document_no='$id'");
-//   if($sql=1){
-//    header("location:listofagreement.php");
-//   }
-// }
+if(isset($_GET['gen'])){
+  $id=mysqli_real_escape_string($conn,$_GET['gen']);
+  $sql=mysqli_query($conn,"update noc set `status`='1' where document_no='$id'");
+  if($sql=1){
+   header("location:listofagreement.php");
+  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -78,7 +78,7 @@ include("../config/config.php");
               <div class="card-tools">
                 <ul class="nav nav-pills ml-auto">
                   <li class="nav-item">
-                    <a class="nav-link active" href="" data-tt="tooltip" title="" data-original-title="Click here to Add New Enquiry"><i class="fas fa-user-friends mr-2"></i>Create New Agreement</a>
+                    <a class="nav-link active" href="basic_details" data-tt="tooltip" title="" data-original-title="Click here to Add New Enquiry"><i class="fas fa-user-friends mr-2"></i>Create New Agreement</a>
                   </li>
                 </ul>
               </div>
@@ -133,7 +133,7 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
                                             <td><?php echo $row['newdate']; ?></td>
                                             <td><?php echo $row['month']; ?></td>
                                             <td style="color:red">Pending</td>
-                                            <td><a href="listofagreement.php?viewid=<?php echo $row['newdoc'];?>"  class="btn btn-primary btn-rounded btn-icon"><i class="fas fa-eye"></i></a>
+                                            <td><a href="agreement.php?viewid=<?php echo $row['newdoc'];?>"  class="btn btn-primary btn-rounded btn-icon"><i class="fas fa-eye"></i></a>
                                         <a href="edit_newagreement.php?id=<?php echo $row['newdoc'];?>"  class="btn btn-warning btn-rounded btn-icon" style="color: aliceblue"><i class="fas fa-pen"></i></i></a>
                                     <a href="listofagreement.php?eid=<?php echo $row['newdoc'];?>"  class="btn btn-success btn-rounded btn-icon"> Generate NOC</a></td>
                                         </tr>
@@ -170,7 +170,7 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
                                             <td><?php echo $row['newdate']; ?></td>
                                             <td><?php echo $row['month']; ?></td>
                                             <td style="color:blue">Complete</td>
-                                            <td><a href="listofagreement.php?viewid=<?php echo $row['newdoc'];?>"  class="btn btn-primary btn-rounded btn-icon"><i class="fas fa-eye"></i></a>
+                                            <td><a href="agreement.php?viewid=<?php echo $row['newdoc'];?>"  class="btn btn-primary btn-rounded btn-icon"><i class="fas fa-eye"></i></a>
                                         <a href="edit_newagreement.php?id=<?php echo $row['newdoc'];?>"  class="btn btn-warning btn-rounded btn-icon" style="color: aliceblue"><i class="fas fa-pen"></i></i></a>
                                     <a href="listofagreement.php?eid=<?php echo $row['newdoc'];?>"  class="btn btn-success btn-rounded btn-icon"> Generate NOC</a></td>
                                         </tr>

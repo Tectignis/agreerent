@@ -27,7 +27,7 @@ $(document).ready(function () {
       },
       cache: false,
       success: function (res) {
-         alert(res);
+  
       },
     });
   });
@@ -66,7 +66,7 @@ $(document).ready(function () {
       },
       cache: false,
       success: function (res2) {
-         alert(res2);
+    
       },
     });
   });  
@@ -129,7 +129,6 @@ $(document).ready(function () {
          cache: false,
            success: function (res4) {
                $("#displayfamily").html(res4);
-               alert(res4);
          },
        });
          
@@ -182,7 +181,7 @@ $(document).ready(function () {
          cache: false,
            success: function (res6) {
                $("#displayaminities").html(res6);
-               alert(res6);
+              
          },
        });
      });

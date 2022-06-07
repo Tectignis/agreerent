@@ -153,7 +153,7 @@ include("../config/config.php");
 					<div class="col" align="right">
              <button type="button" name="submitowner"  id="subm" class="btn btn-info" data-tt="tooltip" title="" data-original-title="Click here to Save">Save as Draft</button>&nbsp;
     
-                     <a  class="btn btn-primary next " style="color: aliceblue"  id=""> Next<i class="mdi mdi-chevron-right"></i></a>&nbsp;
+                     <a  class="btn btn-primary next " style="color: aliceblue"  id="btn"> Next<i class="mdi mdi-chevron-right"></i></a>&nbsp;
                     
 					</div>
                   </form>
@@ -234,7 +234,7 @@ include("../config/config.php");
           
 						 <!-- <a href="owner.php?id=<?php //echo $id;?>"><button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue"><i class="mdi mdi-chevron-left"></i>Previous</button></a> -->
               <button type="button" name="submitenant"  id="submitenant" class="btn btn-info" data-tt="tooltip" title="" data-original-title="Click here to Save">Save as Draft</button>&nbsp;
-              <a  class="btn btn-primary previous " style="color: aliceblue"  id=""> Previous<i class="mdi mdi-chevron-left"></i></a>
+              <a  class="btn btn-primary previous " style="color: aliceblue"  id="btn1"> Previous<i class="mdi mdi-chevron-left"></i></a>
                      <a class="btn btn-primary  next" style="color: aliceblue" name="submit" id="sub">Next<i class="mdi mdi-chevron-right"></i></a>
 					</div>
                   </form>
@@ -314,7 +314,7 @@ include("../config/config.php");
 					<!-- <a href="tenant.php?id=<?php echo $did;?>"><button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue"><i class="mdi mdi-chevron-left"></i>Previous</button></a> -->
            <button type="button" name="submitproperty"  id="submitproperty" class="btn btn-info" data-tt="tooltip" title="" data-original-title="Click here to Save">Save as Draft</button>&nbsp;
            <a  class="btn btn-primary previous " style="color: aliceblue"  id=""> Previous<i class="mdi mdi-chevron-left"></i></a>
-           <a  class="btn btn-primary next " style="color: aliceblue"  id=""> Next<i class="mdi mdi-chevron-right"></i></a>
+           <a  class="btn btn-primary next " style="color: aliceblue"  id="btn2"> Next<i class="mdi mdi-chevron-right"></i></a>
 					</div>
                   </form>
                 </div>
@@ -376,7 +376,7 @@ include("../config/config.php");
 					<div class="col" align="right">
            <button type="button" name="submitmember"  id="submitmember" class="btn btn-info" data-tt="tooltip" title="" data-original-title="Click here to Save">Save as Draft</button>&nbsp;
            <a  class="btn btn-primary previous " style="color: aliceblue"  id=""> Previous<i class="mdi mdi-chevron-left"></i></a>
-           <a  class="btn btn-primary next " style="color: aliceblue"  id=""> Next<i class="mdi mdi-chevron-right"></i></a>
+           <a  class="btn btn-primary next " style="color: aliceblue"  id="btn3"> Next<i class="mdi mdi-chevron-right"></i></a>
 					</div>
                   </form>
                 
@@ -437,7 +437,7 @@ include("../config/config.php");
 					<div class="col" align="right">
            <button type="button" name="submitwitness"  id="submitwitness" class="btn btn-info" data-tt="tooltip" title="" data-original-title="Click here to Save">Save as Draft</button>&nbsp;
            <a  class="btn btn-primary previous " style="color: aliceblue"  id=""> Previous<i class="mdi mdi-chevron-left"></i></a>
-           <a  class="btn btn-primary next " style="color: aliceblue"  id=""> Next<i class="mdi mdi-chevron-right"></i></a>
+           <a  class="btn btn-primary next " style="color: aliceblue"  id="btn5"> Next<i class="mdi mdi-chevron-right"></i></a>
 					</div>
                   </form>
                 </div>
@@ -473,7 +473,7 @@ include("../config/config.php");
 					<!-- <a href="family.php?id=<?php echo $fid;?>"><button type="button" class="btn btn-primary btn-lg" style="color: aliceblue"><i class="mdi mdi-chevron-left"></i>Previous</button></a> -->
            <button type="button" name="submitaminities"  id="submitaminities" class="btn btn-info" data-tt="tooltip" title="" data-original-title="Click here to Save">Save as Draft</button>&nbsp;
             <a  class="btn btn-primary previous " style="color: aliceblue"  id=""> Previous<i class="mdi mdi-chevron-left"></i></a>
-           <a  class="btn btn-primary next " style="color: aliceblue"  id=""> Next<i class="mdi mdi-chevron-right"></i></a>
+           <a  class="btn btn-primary next " style="color: aliceblue"  id="btn"> Next<i class="mdi mdi-chevron-right"></i></a>
 					</div>
                   </form>
                 </div>
@@ -542,7 +542,7 @@ include("../config/config.php");
                     <div class="">
                   <input type="hidden" name="agreement_details" value="">
                   <a  class="btn btn-primary previous " style="color: aliceblue"  id=""> Previous<i class="mdi mdi-chevron-left"></i></a>
-                  <button type="button" name="submitpayment" id="submitpayment" class="btn btn-info" data-tt="tooltip" title="" data-original-title="Click here to Save" onclick="function()" >submit</button>&nbsp;
+                <a href="case">  <button type="button" name="submitpayment" id="submitpayment" class="btn btn-info" data-tt="tooltip" title=""  data-original-title="Click here to Save" onclick="function()" >submit</button>&nbsp;</a>
                 </div>
 				
 
@@ -592,6 +592,7 @@ include("../config/config.php");
 <script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
@@ -632,6 +633,51 @@ $('.previous').click(function () {
 });
 </script>
 
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+<script>
+let subm = document.getElementById("subm");
+subm.addEventListener("click", function(){
+let no1 = document.getElementById("no").value;
+let abbreviation = document.getElementById("examplemr").value;
+let name = document.getElementById("txtname").value;
+let age = document.getElementById("id1").value;
+let mobile = document.getElementById("mobile").value;
+let aadhaar = document.getElementById("txAdhar").value;
+let pancard = document.getElementById("txtPANCard").value;
+let address = document.getElementById("address").value;
+if(no == "" || examplemr == "" || txtname == "" || id1 == "" || mobile == "" || txAdhar == "" || txtPANCard == "" || address == ""){
+      swal("Oops...", "Please fill all the fields", "error");
+    }
+    else{
+      swal("Good job!", "Agreement Submitted", "success");
+    }
+});
+</script>
+
+<script>
+let submitenant = document.getElementById("submitenant");
+submitenant.addEventListener("click", function(){
+let no2 = document.getElementById("exampledno").value;
+let exampleSelectmr = document.getElementById("exampleSelectmr").value;
+let name1 = document.getElementById("txtname3").value;
+let mobile = document.getElementById("phone").value;
+let email = document.getElementById("emailcheck").value;
+let passport = document.getElementById("passport").value;
+let aadhar = document.getElementById("txtAadhar1").value;
+let age = document.getElementById("id2").value;
+let pancard = document.getElementById("txtPANCard1").value;
+let address = document.getElementById("residenceAddress").value;
+let p_address = document.getElementById("presentAddress").value;
+if(no2 == "" || exampleSelectmr == "" || name1 == "" || mobile == "" || email == "" || passport == "" || aadhar == "" || age == "" || pancard == "" || address == "" || p_address == ""){
+      swal("Oops...", "Please fill all the fields", "error");
+    }
+    else{
+      swal("Good job!", "Agreement Submitted", "success");
+    }
+});
+</script>
+
+
 </body>
 </html>

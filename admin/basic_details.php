@@ -90,7 +90,7 @@ include("../config/config.php");
                             <!-- /.card -->
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Quick Example</h3>
+                                    <h3 class="card-title">Enquiry Details</h3>
                                 </div>
 
 
@@ -120,7 +120,7 @@ include("../config/config.php");
                                                 Months<label style="color:Red">*</label></label>
                                             <div class="col-sm-4">
                                                 <select required class="form-control" name="month"
-                                                    id="exampleSelectGender">
+                                                    id="exampleSelectmonth">
                                                     <option value="" disabled selected hidden>select</option>
                                                     <option>11</option>
                                                     <option>22</option>
@@ -199,6 +199,7 @@ include("../config/config.php");
     <script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- AdminLTE App -->
     <script src="dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
@@ -222,6 +223,24 @@ include("../config/config.php");
         });
     });
     </script>
+    
+    <script>
+let details = document.getElementById("details");
+details.addEventListener("click", function(){
+let Document_no = document.getElementById("exampledno").value;
+let date = document.getElementById("exampledate").value;
+let month = document.getElementById("exampleSelectmonth").value;
+let type = document.getElementById("exampleProperty").value;
+let place = document.getElementById("exampleagreement").value;
+if(exampledno == "" || exampledate == "" || exampleSelectmonth == "" || exampleProperty == "" || exampleagreement== "" ){
+    swal("Oops...", "Please fill all the fields", "error");
+}
+    else{
+      swal("Good job!", "Agreement Submitted", "success");
+    }
+});
+</script>
+        
 </body>
 
 </html>

@@ -29,10 +29,12 @@ if(isset($_GET['delid'])){
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Required meta tags -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AGREERENT | To Do List</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Agreerent </title>
+	
+  <!-- plugins:css -->
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -43,6 +45,7 @@ if(isset($_GET['delid'])){
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -75,7 +78,7 @@ if(isset($_GET['delid'])){
     <section class="content">
       
         <div class="card card-primary">
-          <div class="card-header">
+          <div class="card-header d-flex">
             <h3 class="card-title">
               To Do
             </h3>
@@ -90,6 +93,8 @@ if(isset($_GET['delid'])){
             </div>
           </div>
         </form>
+        <div class="list-wrapper">
+                      <ul class="d-flex flex-column-reverse todo-list">
         <?php                
           $sql=mysqli_query($conn,"select * from todo where user_id='".$_SESSION['id']."' AND status='1'");
            while($arr=mysqli_fetch_array($sql)){
@@ -107,8 +112,9 @@ if(isset($_GET['delid'])){
             </div>
           </div>
            <?php } ?>
-        </div>
-        
+           </ul>
+                    </div>
+                    </div>
         
    
     </section>

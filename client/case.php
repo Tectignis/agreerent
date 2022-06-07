@@ -133,7 +133,7 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
                                             <td><?php echo $row['newdate']; ?></td>
                                             <td><?php echo $row['month']; ?></td>
                                             <td style="color:red">Pending</td>
-                                            <td><a href="listofagreement.php?viewid=<?php echo $row['newdoc'];?>"  class="btn btn-primary btn-rounded btn-icon"><i class="fas fa-eye"></i></a>
+                                            <td><a href="agreement.php?viewid=<?php echo $row['newdoc'];?>"  class="btn btn-primary btn-rounded btn-icon"><i class="fas fa-eye"></i></a>
                                         <a href="edit_newagreement.php?id=<?php echo $row['newdoc'];?>"  class="btn btn-warning btn-rounded btn-icon" style="color: aliceblue"><i class="fas fa-pen"></i></i></a>
                                     <a href="listofagreement.php?eid=<?php echo $row['newdoc'];?>"  class="btn btn-success btn-rounded btn-icon"> Generate NOC</a></td>
                                         </tr>
@@ -170,7 +170,7 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
                                             <td><?php echo $row['newdate']; ?></td>
                                             <td><?php echo $row['month']; ?></td>
                                             <td style="color:blue">Complete</td>
-                                            <td><a href="listofagreement.php?viewid=<?php echo $row['newdoc'];?>"  class="btn btn-primary btn-rounded btn-icon"><i class="fas fa-eye"></i></a>
+                                            <td><a href="agreement.php?viewid=<?php echo $row['newdoc'];?>"  class="btn btn-primary btn-rounded btn-icon"><i class="fas fa-eye"></i></a>
                                         <a href="edit_newagreement.php?id=<?php echo $row['newdoc'];?>"  class="btn btn-warning btn-rounded btn-icon" style="color: aliceblue"><i class="fas fa-pen"></i></i></a>
                                     <a href="listofagreement.php?eid=<?php echo $row['newdoc'];?>"  class="btn btn-success btn-rounded btn-icon"> Generate NOC</a></td>
                                         </tr>

@@ -47,6 +47,7 @@ if(isset($_GET['delid'])){
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
@@ -69,15 +70,18 @@ if(isset($_GET['delid'])){
             <div class="row">
               <div class="col-lg-12">
                 <div class="card px-3">
-                  <div class="card-body">
-                    <h4 class="card-title">To Do List</h4>
+                  <div class="card-body a">
+                 
                     <form method="post" action="table.php">
-                   
-                      <div class="form-group">
-                       
-                        <input type="text" class="form-control" name="todo" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter todo">
-                      </div>
-                      <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                    <h4 class="card-title ">To Do </h4>
+</div>
+                    <div class="card-header d-flex">
+                 <input type="text" class="form-control" style="margin-left:5px;" name="todo" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter todo">
+                 <div class="card-tools">
+                          <button type="submit" class="btn btn-primary" name="submit">Add</button>
+                </div>
+            </div>
+                     
 </form>
                     <div class="list-wrapper">
                       <ul class="d-flex flex-column-reverse todo-list">

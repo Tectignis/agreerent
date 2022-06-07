@@ -6,7 +6,13 @@ if(!isset($_SESSION['email'])) // If session is not set then redirect to Login P
 }
 include("../config/config.php");
 
-
+if(isset($_GET['delid'])){
+    $id=mysqli_real_escape_string($conn,$_GET['delid']);
+    $sql=mysqli_query($conn,"delete from enquiry where id='$id'");
+    if($sql=1){
+        header("location:enquiry.php");
+    }
+    }
 
 ?>
 
@@ -107,10 +113,7 @@ include("../config/config.php");
                                                 <td> <?php echo $arr['email'];?></td>
                                                 <td> <?php echo $arr['description'];?></td>
                                                 <td>
-                                                    <a href="enquiry.php?delid=<?php echo $arr['id'] ?>"><button
-                                                            type="button" class="btn btn-danger btn-rounded btn-icon"
-                                                            style="color: aliceblue"> <i class="fas fa-trash"></i>
-                                                        </button></a>
+                                                <a href="enquiry.php?delid=<?php echo $arr['id']; ?>"><button type="button" class="btn btn-danger btn-rounded btn-icon" onclick="ConfirmDelete()" style="color: aliceblue"> <i class="fas fa-trash"></i> </button></a>
                                                     <!-- <button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-file-pdf"></i> </button>-->
                                                 </td>
                                             </tr>
