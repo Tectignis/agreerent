@@ -1,12 +1,18 @@
 <?php
-session_start();
-if(!isset($_SESSION['email'])) // If session is not set then redirect to Login Page
-{
- header("Location:login.php"); 
-}
+// session_start();
+// if(!isset($_SESSION['email'])) // If session is not set then redirect to Login Page
+// {
+//  header("Location:login.php"); 
+// }
 include("../config/config.php");
 
-
+if(isset($_GET['delid'])){
+$id=mysqli_real_escape_string($conn,$_GET['delid']);
+$sql=mysqli_query($conn,"delete from paidleads where id='$id'");
+if($sql=1){
+    header("location:paidleads.php");
+}
+}
 
 ?>
 
@@ -74,8 +80,8 @@ include("../config/config.php");
                                     <div class="card-tools">
                                         <ul class="nav nav-pills ml-auto">
                                             <li class="nav-item">
-                                                <a class="nav-link active" href="" data-tt="tooltip" title=""
-                                                    data-original-title="Click here to Add New Enquiry"><i
+                                                <a class="nav-link active" href="sendleads" data-tt="tooltip"
+                                                    title="" data-original-title="Click here to Add New Enquiry"><i
                                                         class="fas fa-user-friends mr-2"></i>Add</a>
                                             </li>
                                         </ul>
@@ -100,26 +106,23 @@ include("../config/config.php");
                                             <?php 
                         
                         $sql=mysqli_query($conn,"select * from `paidleads`");
-                        $count=1;
+                     
                          while($arr=mysqli_fetch_array($sql)){
                         ?>
                                             <tr>
-                                                <td> <?php echo $count;?> </td>
-                                                <td> <?php echo $arr['client_name'];?> </td>
-                                                <td> <?php echo $arr['mobile'];?></td>
-                                                <td> <?php echo $arr['type'];?></td>
-                                                <td> <?php echo $arr['area'];?> </td>
-                                                <td> <?php echo $arr['requirement'];?></td>
-                                                <td> <?php echo $arr['location'];?> </td>
-                                                <td>
-                                                    <a href="paidleads.php?delid=<?php echo $arr['id']; ?>"><button
-                                                            type="button" class="btn btn-danger btn-rounded btn-icon"
-                                                            onclick="ConfirmDelete()" style="color: aliceblue"> <i
-                                                                class="fas fa-trash"></i> </button></a>
-
-                                            </tr>
-
-                                            <?php $count++; }?>
+                             <td> <?php echo $arr['id'];?> </td>
+                            <td> <?php echo $arr['client_name'];?> </td>
+                            <td> <?php echo $arr['mobile'];?></td>
+                            <td> <?php echo $arr['type'];?></td>
+                            <td> <?php echo $arr['area'];?> </td>
+                              <td> <?php echo $arr['requirement'];?></td>
+                            <td> <?php echo $arr['location'];?> </td>
+                            <td>
+                            <a href="paidleads.php?delid=<?php echo $arr['id']; ?>"><button type="button" class="btn btn-danger btn-rounded btn-icon" onclick="ConfirmDelete()" style="color: aliceblue"> <i class="fas fa-trash"></i> </button></a>
+                              
+                          </tr>
+                        
+                        <?php   } ?>
                                         </tbody>
                                     </table>
                                 </div>

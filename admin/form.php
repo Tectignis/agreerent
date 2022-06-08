@@ -35,11 +35,7 @@ if(isset($_POST['subm'])){
   $age=$_POST['address'];
 	
 	$sql=mysqli_query($conn,"INSERT INTO `owner`(`document_no`, `abbreviation`, `fullname`,`age`, `address`, `mobile`, `aadhaar`, `pan_card`) VALUES ('$id','$abbreviation','$name','$age','$address','$mobile','$aadhaar','$pancard')");
-	if($sql==1){	
-     echo "Successfully Added";
-	}else{
-		echo "Something went wrong";
-	}
+	
 }
 
 //tenant
@@ -99,11 +95,6 @@ if(isset($_POST['submitmember'])){
 	
 	$sql=mysqli_query($conn,"INSERT INTO `family_members`(`document_no`,`name`, `age`, `relation`, `gender`) VALUES 
   ('$idfamily','$name','$age','$relation','$gender')");
-	if($sql==1){	
-    echo "Successfully Added";
-  	}else{
-			echo "Something went wrong";
-	}
 
 }
 

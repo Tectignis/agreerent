@@ -4,7 +4,7 @@ if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 {
  header("Location:login.php"); 
 }
-include("include/configure.inc.php");
+include("../config/config.php");
 $fid=$_GET['id'];
 
 if($_GET['id']==''){
