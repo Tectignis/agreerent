@@ -58,7 +58,7 @@ Aashiyana CHS Shop No 05, Sector 11, Plot No 29, Kamothe, Navi Mumbai, Maharasht
   $passwordhash=password_hash($pass,PASSWORD_BCRYPT);
 
   $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`status`,`image`) 
-   VALUES ('$user_id','$agent_name','$email_no','$passwordhash','$rera','$office_address','$mobile_no','$status','$status')");
+   VALUES ('$user_id','$agent_name','$email_no','$passwordhash','$rera','$office_address','$mobile_no','$status','$image')");
    if($sql=1){
      echo "<script>alert('Agent Registered Successfully');</script>";    }
    else{
