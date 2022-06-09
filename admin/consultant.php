@@ -137,7 +137,7 @@ if(isset($_POST['submit'])){
 
 
                                                 <td>
-                                                    <button type="button" class="btn btn-default btn-sm"
+                                                    <button type="button" class="btn btn-default btn-sm fetchid"
                                                         data-toggle="modal" data-target="#modal-default">
                                                         <i class="fas fa-wrench"></i>
                                                     </button>
@@ -190,7 +190,7 @@ if(isset($_POST['submit'])){
 
                                             </select>
                                         </div>
-                                        <input type="text" name="aid" class="category" hidden>
+                                        <input type="text" name="aid" class="category">
                                     </div>
                             </div>
                             <div class="modal-footer justify-content-between">

@@ -7,13 +7,13 @@ if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 include("../config/config.php");
 
 
-// if(isset($_GET['gen'])){
-//   $id=mysqli_real_escape_string($conn,$_GET['gen']);
-//   $sql=mysqli_query($conn,"update noc set `status`='1' where document_no='$id'");
-//   if($sql=1){
-//    header("location:listofagreement.php");
-//   }
-// }
+if(isset($_GET['gen'])){
+  $id=mysqli_real_escape_string($conn,$_GET['gen']);
+  $sql=mysqli_query($conn,"update noc set `status`='1' where document_no='$id'");
+  if($sql=1){
+   header("location:case.php");
+  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -81,8 +81,8 @@ include("../config/config.php");
                                     <div class="card-tools">
                                         <ul class="nav nav-pills ml-auto">
                                             <li class="nav-item">
-                                                <a class="nav-link active" href="newagreement" data-tt="tooltip"
-                                                    title="" data-original-title="Click here to Add New Enquiry"><i
+                                                <a class="nav-link active" href="" data-tt="tooltip" title=""
+                                                    data-original-title="Click here to Add New Enquiry"><i
                                                         class="fas fa-user-friends mr-2"></i>Create New Agreement</a>
                                             </li>
                                         </ul>
@@ -145,16 +145,16 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
                                                                         <td><?php echo $row['newdate']; ?></td>
                                                                         <td><?php echo $row['month']; ?></td>
                                                                         <td style="color:red">Pending</td>
-                                                                        <td><a href="listofagreement.php?viewid=<?php echo $row['newdoc'];?>"
+                                                                        <td><a href="agreement.php?id=<?php echo $row['newdoc'];?>"
                                                                                 class="btn btn-primary btn-rounded btn-icon"><i
                                                                                     class="fas fa-eye"></i></a>
                                                                             <a href="edit_newagreement.php?id=<?php echo $row['newdoc'];?>"
                                                                                 class="btn btn-warning btn-rounded btn-icon"
                                                                                 style="color: aliceblue"><i
                                                                                     class="fas fa-pen"></i></i></a>
-                                                                            <a href="listofagreement.php?eid=<?php echo $row['newdoc'];?>"
+                                                                            <!-- <a href="case.php?eid=<?php echo $row['newdoc'];?>"
                                                                                 class="btn btn-success btn-rounded btn-icon">
-                                                                                Generate NOC</a>
+                                                                                Generate NOC</a> -->
                                                                         </td>
                                                                     </tr>
                                                                     <?php } $count++; } ?>
@@ -178,12 +178,17 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
                                                                 </thead>
                                                                 <tbody>
                                                                     <?php
-                                        $sql=mysqli_query($conn,"select new_agreement.document_no as newdoc,new_agreement.date_of_agreement as newdate, new_agreement.no_of_month as month,tenant.fullname as tname,owner.fullname as owname,owner.document_no as owdoc,tenant.document_no as tdoc,property_details.document_no as pdoc,family_members.document_no as memdoc,amenities.document_no as amdoc FROM new_agreement inner join owner on new_agreement.document_no=owner.document_no inner join tenant on tenant.document_no=new_agreement.document_no inner join family_members on family_members.document_no=new_agreement.document_no inner join amenities on new_agreement.document_no=amenities.document_no inner join payment on new_agreement.document_no=payment.document_no inner join  property_details on new_agreement.document_no=property_details.document_no group by new_agreement.document_no");
+                                        // $sql=mysqli_query($conn,"select new_agreement.document_no as newdoc,new_agreement.date_of_agreement as newdate, new_agreement.no_of_month as month,tenant.fullname as tname,owner.fullname as owname,owner.document_no as owdoc,tenant.document_no as tdoc,property_details.document_no as pdoc,family_members.document_no as memdoc,amenities.document_no as amdoc FROM new_agreement inner join owner on new_agreement.document_no=owner.document_no inner join tenant on tenant.document_no=new_agreement.document_no inner join family_members on family_members.document_no=new_agreement.document_no inner join amenities on new_agreement.document_no=amenities.document_no inner join payment on new_agreement.document_no=payment.document_no inner join  property_details on new_agreement.document_no=property_details.document_no group by new_agreement.document_no");
+
+
+                                         $sql=mysqli_query($conn,"select new_agreement.document_no as newdoc,new_agreement.date_of_agreement as newdate, new_agreement.no_of_month as month,tenant.fullname as tname,owner.fullname as owname,owner.document_no as owdoc,tenant.document_no as tdoc,property_details.document_no as pdoc,family_members.document_no as memdoc,amenities.document_no as amdoc, noc.status as nstatus, noc.document_no as ndoc from new_agreement inner join owner on new_agreement.document_no=owner.document_no inner join tenant on tenant.document_no=new_agreement.document_no inner join family_members on family_members.document_no=new_agreement.document_no inner join amenities on new_agreement.document_no=amenities.document_no inner join payment on new_agreement.document_no=payment.document_no inner join  property_details on new_agreement.document_no=property_details.document_no inner join noc on new_agreement.document_no=noc.document_no group by new_agreement.document_no");
+
+                                        
                                         $count='1';
                                         while($row=mysqli_fetch_array($sql)){
 
                                         ?>
-                                                                    <<<<<<< HEAD <tr>
+                                                                    <tr>
                                                                         <td><?php echo $count; ?> </td>
                                                                         <td><?php echo $row['newdoc']; ?></td>
                                                                         <td><?php echo $row['tname']; ?></td>
@@ -191,19 +196,34 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
                                                                         <td><?php echo $row['newdate']; ?></td>
                                                                         <td><?php echo $row['month']; ?></td>
                                                                         <td style="color:blue">Complete</td>
-                                                                        <td><a href="listofagreement.php?viewid=<?php echo $row['newdoc'];?>"
+                                                                        <td><a href="agreement.php?id=<?php echo $row['newdoc'];?>"
                                                                                 class="btn btn-primary btn-rounded btn-icon"><i
                                                                                     class="fas fa-eye"></i></a>
+
+
+                                                                            <?php
+$status=$row['nstatus'];
+if($status==1){
+?>
+
+                                                                            <?php
+}
+elseif($status==0){
+?>
                                                                             <a href="edit_newagreement.php?id=<?php echo $row['newdoc'];?>"
                                                                                 class="btn btn-warning btn-rounded btn-icon"
                                                                                 style="color: aliceblue"><i
                                                                                     class="fas fa-pen"></i></i></a>
-                                                                            <a href="case.php?eid=<?php echo $row['newdoc'];?>"
+                                                                            <a href="case.php?gen=<?php echo $row['newdoc'];?>"
                                                                                 class="btn btn-success btn-rounded btn-icon">
                                                                                 Generate NOC</a>
+                                                                            <?php
+}
+?>
+
                                                                         </td>
-                                                                        </tr>
-                                                                        <?php $count++; } ?>
+                                                                    </tr>
+                                                                    <?php $count++; } ?>
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -215,28 +235,6 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
                                     </section>
                                 </div>
                                 <!-- /.card-body -->
-                                =======
-                                <tr>
-                                    <td><?php echo $count; ?> </td>
-                                    <td><?php echo $row['newdoc']; ?></td>
-                                    <td><?php echo $row['tname']; ?></td>
-                                    <td><?php echo $row['owname']; ?></td>
-                                    <td><?php echo $row['newdate']; ?></td>
-                                    <td><?php echo $row['month']; ?></td>
-                                    <td style="color:blue">Complete</td>
-                                    <td><a href="agreement.php?viewid=<?php echo $row['newdoc'];?>"
-                                            class="btn btn-primary btn-rounded btn-icon"><i class="fas fa-eye"></i></a>
-                                        <a href="edit_newagreement.php?id=<?php echo $row['newdoc'];?>"
-                                            class="btn btn-warning btn-rounded btn-icon" style="color: aliceblue"><i
-                                                class="fas fa-pen"></i></i></a>
-                                        <a href="listofagreement.php?eid=<?php echo $row['newdoc'];?>"
-                                            class="btn btn-success btn-rounded btn-icon"> Generate NOC</a>
-                                    </td>
-                                </tr>
-                                <?php $count++; } ?>
-                                </tbody>
-                                </table>
-                                >>>>>>> 96e17800ca9d218588c549c8d0eb261c05c0ce07
                             </div>
                             <!-- /.card -->
                         </div>

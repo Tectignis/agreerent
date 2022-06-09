@@ -70,7 +70,7 @@ else{
 <html lang="en">
 
 <head>
-    
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AGREERENT | Profile</title>
@@ -160,15 +160,15 @@ else{
 
                                     <div class="form-group row">
                                         <label for="exampleaddress" class="col-sm-2 col-form-label">Office
-                                        Address<label style="color:Red">*</label></label>
+                                            Address<label style="color:Red">*</label></label>
                                         <div class="col-sm-10">
-                                        <textarea type="text" class="form-control" name="office_address" placeholder="Enter Address"
-                                                required></textarea>
+                                            <textarea type="text" class="form-control" name="office_address"
+                                                placeholder="Enter Address" required></textarea>
                                         </div>
                                     </div>
 
 
-                                         
+
                                     <div class="form-group row">
                                         <label for="exampleaadhaar" class="col-sm-2 col-form-label">Mobile No.<label
                                                 style="color:Red">*</label></label>
