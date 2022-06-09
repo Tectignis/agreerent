@@ -34,9 +34,9 @@ $fields = array( 'name' => 'name' );
         } 
             else{
               $image=md5($image).$extension;
-        $dnk=$_FILES['file']['tmp_name'];
-        $loc="dist/img/credit/".$image;
-        move_uploaded_file($dnk,$loc);
+            $dnk=$_FILES['file']['tmp_name'];
+            $loc="dist/img/profile/".$image;
+            move_uploaded_file($dnk,$loc);
             
                 }
 
