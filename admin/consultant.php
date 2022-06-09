@@ -141,11 +141,11 @@ if(isset($_POST['submit'])){
                                                         data-toggle="modal" data-target="#modal-default">
                                                         <i class="fas fa-wrench"></i>
                                                     </button>
-                                                    <a href="agentprof.php?edit=<?php echo $arr['status'] ?>"><button
+                                                    <a href="agentprof.php?id=<?php echo $arr['id'] ?>"><button
                                                             type="button" class="btn btn-primary  btn-sm"
                                                             style="color: aliceblue"> <i class="fas fa-pen"></i>
                                                         </button></a>
-                                                    <a href="consultantlist.php?delid=<?php echo $arr['id'] ?>"><button
+                                                    <a href="consultant.php?delid=<?php echo $arr['id'] ?>"><button
                                                             type="button" class="btn btn-danger  btn-sm"
                                                             style="color: aliceblue"> <i class="fas fa-trash"></i>
                                                         </button></a>

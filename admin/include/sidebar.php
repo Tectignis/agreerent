@@ -36,7 +36,7 @@
                           </p>
                       </a>
                   </li>
-                 
+
                   <li class="nav-item">
                       <a href="" class="nav-link">
                           <i class="nav-icon fas fa-th"></i>
@@ -84,7 +84,7 @@
                   <li class="nav-header">Consultant</li>
                   <li class="nav-item">
                       <a href="" class="nav-link">
-                      <i class="nav-icon fa fa-id-badge"></i>
+                          <i class="nav-icon fa fa-id-badge"></i>
                           <p>
                               Consultant
                           </p>
@@ -97,7 +97,7 @@
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a href="c" class="nav-link">
+                              <a href="consultant" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
                                   <p>List Of Consultant</p>
                               </a>
@@ -119,7 +119,7 @@
                   <li class="nav-header">Email Configuration</li>
                   <li class="nav-item">
                       <a href="emailconfig" class="nav-link">
-                        <i class="nav-icon fa fa-envelope"></i>
+                          <i class="nav-icon fa fa-envelope"></i>
                           <p>
                               Email Configuration
                           </p>
@@ -144,7 +144,7 @@
                   </li>
                   <li class="nav-item">
                       <a href="complaintform" class="nav-link">
-                         <i class="nav-icon fa fa-clipboard-list"></i>
+                          <i class="nav-icon fa fa-clipboard-list"></i>
                           <p>
                               Complaint
                           </p>
