@@ -25,6 +25,20 @@ $from = 'Enquiry <'.$email.'>';
 $sendTo = 'Enquiry <'.$email_no.'>';
 $subject = 'Password';
 $fields = array( 'name' => 'name' );
+ $image=$_FILES['file']['name'];
+  
+        $extension=substr( $image,strlen( $image)-4,strlen( $image));
+        $all_extension = array(".jpg","jpeg",".png","gif");
+        if(!in_array($extension,$all_extension)){
+          $msg="Invalid format. Only jpg / jpeg/ png /gif format allowed";
+        } 
+            else{
+              $image=md5($image).$extension;
+        $dnk=$_FILES['file']['tmp_name'];
+        $loc="dist/img/credit/".$image;
+        move_uploaded_file($dnk,$loc);
+            
+                }
 
 try{
   $emailText = "Welcome $agent_name.
@@ -43,8 +57,8 @@ Aashiyana CHS Shop No 05, Sector 11, Plot No 29, Kamothe, Navi Mumbai, Maharasht
  if( mail($sendTo,$subject,$emailText, "From:" .$from)){
   $passwordhash=password_hash($pass,PASSWORD_BCRYPT);
 
-  $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`status`) 
-   VALUES ('$user_id','$agent_name','$email_no','$passwordhash','$rera','$office_address','$mobile_no','$status')");
+  $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`status`,`image`) 
+   VALUES ('$user_id','$agent_name','$email_no','$passwordhash','$rera','$office_address','$mobile_no','$status','$status')");
    if($sql=1){
      echo "<script>alert('Agent Registered Successfully');</script>";    }
    else{
