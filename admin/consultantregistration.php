@@ -27,7 +27,7 @@ $subject = 'Password';
 $fields = array( 'name' => 'name' );
  $image=$_FILES['file']['name'];
   
-        $extension=substr( $image,strlen( $image)-4,strlen( $image));
+        $extension=substr($image,strlen($image)-4,strlen($image));
         $all_extension = array(".jpg","jpeg",".png","gif");
         if(!in_array($extension,$all_extension)){
           $msg="Invalid format. Only jpg / jpeg/ png /gif format allowed";
