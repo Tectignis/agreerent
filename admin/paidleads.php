@@ -1,9 +1,9 @@
 <?php
-// session_start();
-// if(!isset($_SESSION['email'])) // If session is not set then redirect to Login Page
-// {
-//  header("Location:login.php"); 
-// }
+session_start();
+if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
+{
+ header("Location:clientlogin.php"); 
+}
 include("../config/config.php");
 
 if(isset($_GET['delid'])){
@@ -34,7 +34,7 @@ if($sql=1){
     <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css"> -->
 
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
 </head>
@@ -80,8 +80,8 @@ if($sql=1){
                                     <div class="card-tools">
                                         <ul class="nav nav-pills ml-auto">
                                             <li class="nav-item">
-                                                <a class="nav-link active" href="sendleads" data-tt="tooltip"
-                                                    title="" data-original-title="Click here to Add New Enquiry"><i
+                                                <a class="nav-link active" href="sendleads" data-tt="tooltip" title=""
+                                                    data-original-title="Click here to Add New Enquiry"><i
                                                         class="fas fa-user-friends mr-2"></i>Add</a>
                                             </li>
                                         </ul>
@@ -105,24 +105,27 @@ if($sql=1){
                                         <tbody>
                                             <?php 
                         
-                        $sql=mysqli_query($conn,"select * from `paidleads`");
+                        $sql=mysqli_query($conn,"select * from `paidleads` where user_id='$_SESSION[id]'");
                      
                          while($arr=mysqli_fetch_array($sql)){
                         ?>
                                             <tr>
-                             <td> <?php echo $arr['id'];?> </td>
-                            <td> <?php echo $arr['client_name'];?> </td>
-                            <td> <?php echo $arr['mobile'];?></td>
-                            <td> <?php echo $arr['type'];?></td>
-                            <td> <?php echo $arr['area'];?> </td>
-                              <td> <?php echo $arr['requirement'];?></td>
-                            <td> <?php echo $arr['location'];?> </td>
-                            <td>
-                            <a href="paidleads.php?delid=<?php echo $arr['id']; ?>"><button type="button" class="btn btn-danger btn-rounded btn-icon" onclick="ConfirmDelete()" style="color: aliceblue"> <i class="fas fa-trash"></i> </button></a>
-                              
-                          </tr>
-                        
-                        <?php   } ?>
+                                                <td> <?php echo $arr['id'];?> </td>
+                                                <td> <?php echo $arr['client_name'];?> </td>
+                                                <td> <?php echo $arr['mobile'];?></td>
+                                                <td> <?php echo $arr['type'];?></td>
+                                                <td> <?php echo $arr['area'];?> </td>
+                                                <td> <?php echo $arr['requirement'];?></td>
+                                                <td> <?php echo $arr['location'];?> </td>
+                                                <td>
+                                                    <a href="paidleads.php?delid=<?php echo $arr['id']; ?>"><button
+                                                            type="button" class="btn btn-danger btn-rounded btn-icon"
+                                                            onclick="ConfirmDelete()" style="color: aliceblue"> <i
+                                                                class="fas fa-trash"></i> </button></a>
+
+                                            </tr>
+
+                                            <?php   } ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -143,9 +146,7 @@ if($sql=1){
 
 
         <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
+
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
@@ -177,10 +178,6 @@ if($sql=1){
 <script>
 $(function() {
     $("#example1").DataTable({
-        lengthMenu: [
-            [10, 25, 50, -1],
-            [10, 25, 50, 'All'],
-        ],
         "responsive": true,
         "lengthChange": true,
         "autoWidth": false,

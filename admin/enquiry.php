@@ -48,9 +48,7 @@ if(isset($_GET['delid'])){
         <?php include 'include/sidebar.php'; ?>
 
 
-        <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
             <section class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
@@ -100,7 +98,7 @@ if(isset($_GET['delid'])){
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php 
+                                            <?php 
                         
                         $sql=mysqli_query($conn,"select * from enquiry");
                         $count=1;
@@ -113,7 +111,10 @@ if(isset($_GET['delid'])){
                                                 <td> <?php echo $arr['email'];?></td>
                                                 <td> <?php echo $arr['description'];?></td>
                                                 <td>
-                                                <a href="enquiry.php?delid=<?php echo $arr['id']; ?>"><button type="button" class="btn btn-danger btn-rounded btn-icon" onclick="ConfirmDelete()" style="color: aliceblue"> <i class="fas fa-trash"></i> </button></a>
+                                                    <a href="enquiry.php?delid=<?php echo $arr['id']; ?>"><button
+                                                            type="button" class="btn btn-danger btn-rounded btn-icon"
+                                                            onclick="ConfirmDelete()" style="color: aliceblue"> <i
+                                                                class="fas fa-trash"></i> </button></a>
                                                     <!-- <button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-file-pdf"></i> </button>-->
                                                 </td>
                                             </tr>
@@ -134,13 +135,11 @@ if(isset($_GET['delid'])){
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-     <?php include 'include/footer.php'; ?>
+        <?php include 'include/footer.php'; ?>
 
 
         <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
+
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
@@ -166,26 +165,18 @@ if(isset($_GET['delid'])){
     <script src="dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <!-- Page specific script -->
-    
-   
+
+
 </body>
 <script>
-    $(function() {
-        $("#example1").DataTable({
-            "responsive": true,
-            "lengthChange": false,
-            "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print"]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-        });
-    });
-    </script>
+$(function() {
+    $("#example1").DataTable({
+        "responsive": true,
+        "lengthChange": true,
+        "autoWidth": false,
+        "buttons": ["copy", "csv", "excel", "pdf", "print"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+});
+</script>
+
 </html>
