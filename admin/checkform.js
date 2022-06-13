@@ -212,7 +212,7 @@ $(document).ready(function () {
          },
          cache: false,
          success: function (res7) {
-           alert(res7);
+          
          },
        });
      });  
