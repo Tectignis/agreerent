@@ -502,12 +502,12 @@ include("../config/config.php");
                       <label for="exampleage" class="col-sm-2 col-form-label-sm">Payment Method<label style="color:Red">*</label></label>
                         <div class="col-sm-4">
                           <select class="form-control select2 select2-hidden-accessible" name="method" id="checkselec" style="width: 100%;" data-select2-id="3" tabindex="-1" aria-hidden="true">
-                                <option selected="selected" data-select2-id="4">Alabama</option>
-                                <option>Alaska</option>
-                                <option>California</option>
-                                <option>Delaware</option>
-                                <option>Tennessee</option>
-                                <option>Texas</option>
+                                <option selected="selected" data-select2-id="4">Cheaque</option>
+                                <option>Cash</option>
+                                <option>Bank Transfer</option>
+                                <option>Google Pay</option>
+                                <option>Phone Pay</option>
+                                <option>Bharat Pay</option>
                                 <option>Washington</option>
                         </select>
                         </div>
@@ -516,13 +516,13 @@ include("../config/config.php");
                       <label for="exampleage" class="col-sm-2 col-form-label-sm">Bank<label style="color:Red">*</label></label>
                         <div class="col-sm-4">
                           <select class="form-control select2 select2-hidden-accessible"  name="bank" id="bank" style="width: 100%;" data-select2-id="1" tabindex="-2" aria-hidden="true">
-                                <option selected="selected" data-select2-id="2">Alabama</option>
-                                <option>Alaska</option>
-                                <option>California</option>
-                                <option>Delaware</option>
-                                <option>Tennessee</option>
-                                <option>Texas</option>
-                                <option>Washington</option>
+                                <option selected="selected" data-select2-id="2">SBI</option>
+                                <option>KOTAK</option>
+                                <option>HDFC</option>
+                                <option>ICICI</option>
+                                <option>RBI</option>
+                                <option>BOI</option>
+                                <option>KARNATKA</option>
                         </select>
                         </div>
                       </div>

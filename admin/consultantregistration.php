@@ -142,11 +142,12 @@ else{
                                 <!-- form start -->
                                 <form class="forms-sample" method="post" enctype="multipart/form-data"
                                     style="margin:30px;">
-
-                                    <div class="form-group row">
-                                        <label for="exampledno" class="col-sm-2 col-form-label">Code No.<label
+<div class="row">
+    <div class="col-md-6">
+                                    
+                                        <label for="exampledno">Code No.<label
                                                 style="color:Red">*</label></label>
-                                        <div class="col-sm-10">
+                                        
                                             <?php $sql=mysqli_query($conn,"select id from agent_details order by user_id desc") or die( mysqli_error($conn));;
               $row=mysqli_fetch_array($sql);
               $lastid=$row['id'];
@@ -160,54 +161,58 @@ else{
                                             <input type="text" name="no" value="<?php echo $number; ?>"
                                                 class="form-control" id="exampledno" readonly>
                                         </div>
-                                    </div>
+                                        <div class="col-md-6">
 
 
-                                    <div class="form-group row">
-                                        <label for="exampleaddress" class="col-sm-2 col-form-label">Consultant
+                                  
+                                        <label for="exampleaddress">Consultant
                                             Name<label style="color:Red">*</label></label>
-                                        <div class="col-sm-10">
+                                       
                                             <input type="text" class="form-control" name="name" placeholder="Enter Name"
                                                 required>
                                         </div>
                                     </div>
 
-                                    <div class="form-group row">
-                                        <label for="exampleaddress" class="col-sm-2 col-form-label">Office
+
+                                    <div class="row">
+    <div class="col-md-6">
+                                        <label for="exampleaddress" >Office
                                             Address<label style="color:Red">*</label></label>
-                                        <div class="col-sm-10">
+                                        
                                             <textarea type="text" class="form-control" name="office_address"
                                                 placeholder="Enter Address" required></textarea>
-                                        </div>
+                                    
                                     </div>
 
 
 
-                                    <div class="form-group row">
-                                        <label for="exampleaadhaar" class="col-sm-2 col-form-label">Mobile No.<label
+                                    <div class="col-md-6">
+                                        <label for="exampleaadhaar" >Mobile No.<label
                                                 style="color:Red">*</label></label>
-                                        <div class="col-sm-10">
+                                       
                                             <input type="tel" class="form-control" id="examplemob" name="mobile_no"
                                                 placeholder="Enter Mobile Number" minlength="10" maxlength="10"
                                                 required>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="exampleemail" class="col-sm-2 col-form-label">Email ID<label
+
+                                  <div class="row">
+    <div class="col-md-6">
+                                        <label for="exampleemail">Email ID<label
                                                 style="color:Red">*</label></label>
-                                        <div class="col-sm-10">
+                                        
                                             <input type="email" class="form-control" name="email"
                                                 placeholder="Enter Email ID" required>
 
-                                        </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="examplepan" class="col-sm-2 col-form-label">Rera No.</label>
-                                        <div class="col-sm-10">
+                                    <div class="col-md-6">
+                                        <label for="examplepan" >Rera No.</label>
+                                       
                                             <input type="text" class="form-control" name="rera"
                                                 placeholder="Enter Number" required>
-                                        </div>
+                                        
                                     </div>
+            </div>
                                     <!-- <div class="form-group row">
               <label for="examplepan" class="col-sm-2 col-form-label">Document Prefix<label style="color:Red">*</label></label>
               <div class="col-sm-10">
@@ -215,11 +220,11 @@ else{
               </div>
             </div> -->
 
-
-                                    <div class="form-group row">
-                                        <label for="examplepan" class="col-sm-2 col-form-label">Photo<label
+<div class="row">
+            <div class="col-md-6" style="margin-top:30px;">
+                                        <label for="examplepan" >Photo<label
                                                 style="color:Red">*</label></label>
-                                        <div class="col-sm-10">
+                                        
                                             <input type="file" name="file">
                                             <!-- <a href="upload_image.php" class="btn btn-success"> Upload</a>  -->
                                         </div>
