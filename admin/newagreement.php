@@ -650,7 +650,7 @@ if(no == "" || examplemr == "" || txtname == "" || id1 == "" || mobile == "" || 
       swal("Oops...", "Please fill all the fields", "error");
     }
     else{
-      swal("Good job!", "Agreement Submitted", "success");
+      swal("saved", "Details saved", "success");
     }
 });
 </script>
@@ -673,7 +673,103 @@ if(no2 == "" || exampleSelectmr == "" || name1 == "" || mobile == "" || email ==
       swal("Oops...", "Please fill all the fields", "error");
     }
     else{
-      swal("Good job!", "Agreement Submitted", "success");
+      swal("saved", "Details saved", "success");
+    }
+});
+</script>
+
+<script>
+let submitproperty = document.getElementById("submitproperty");
+submitproperty.addEventListener("click", function(){
+let no3 = document.getElementById("no3").value;
+let type = document.getElementById("exampleproperties").value;
+let address = document.getElementById("addressPro").value;
+let sector = document.getElementById("sector").value;
+let plotno = document.getElementById("plotno").value;
+let cidco = document.getElementById("cidco").value;
+let area = document.getElementById("area").value;
+let chs = document.getElementById("chs").value;
+let node = document.getElementById("node").value;
+
+if(no3 == "" || type == "" || address == "" || sector == "" || cidco == "" || area == "" || chs == "" || node == "" ){
+      swal("Oops...", "Please fill all the fields", "error");
+    }
+    else{
+      swal("saved", "Details saved", "success");
+    }
+});
+</script>
+
+<script>
+let submitmember = document.getElementById("submitmember");
+submitmember.addEventListener("click", function(){
+let no4 = document.getElementById("no4").value;
+let name2 = document.getElementById("txtname1").value;
+let relation = document.getElementById("exampleSelectrelation").value;
+let age = document.getElementById("relativeage").value;
+let gender = document.getElementById("relativegender").value;
+
+
+if(no4 == "" || name2 == "" || relation == "" || age == "" || gender == "" ){
+      swal("Oops...", "Please fill all the fields", "error");
+    }
+    else{
+      swal("saved", "Details saved", "success");
+});
+</script>
+
+<script>
+let submitwitness = document.getElementById("submitwitness");
+submitwitness.addEventListener("click", function(){
+let no5 = document.getElementById("no5").value;
+let owitness1 = document.getElementById("nameowner").value;
+let owitness2 = document.getElementById("nameowner2").value;
+let twitness1 = document.getElementById("twitness1").value;
+let twitness2 = document.getElementById("twitness2").value;
+
+
+if(no5 == "" || owitness1 == "" || owitness2 == "" || twitness1 == "" || twitness2 == "" ){
+      swal("Oops...", "Please fill all the fields", "error");
+    }
+    else{
+      swal("saved", "Details saved", "success");
+    }
+});
+</script>
+
+<script>
+let submitaminities = document.getElementById("submitaminities");
+submitaminities.addEventListener("click", function(){
+let no6 = document.getElementById("no6").value;
+let name3 = document.getElementById("txtname2").value;
+let number = document.getElementById("itemnumbe").value;
+
+
+if(no6 == "" || name3 == "" || number == "" ){
+      swal("Oops...", "Please fill all the fields", "error");
+    }
+    else{
+      swal("saved", "Details saved", "success");
+    }
+});
+</script>
+
+<script>
+let submitpayment = document.getElementById("submitpayment");
+submitpayment.addEventListener("click", function(){
+let no7 = document.getElementById("no7").value;
+let security_deposit = document.getElementById("deposit").value;
+let rent_amount = document.getElementById("rent").value;
+let method = document.getElementById("checkselec").value;
+let bank = document.getElementById("bank").value;
+let date = document.getElementById("date").value;
+let tid = document.getElementById("tid").value;
+
+if(no7 == "" || security_deposit == "" || rent_amount == ""  || method == ""  || bank == "" || date == "" || tid == ""){
+      swal("Oops...", "Please fill all the fields", "error");
+    }
+    else{
+      swal("Submited!", " Submitted", "success");
     }
 });
 </script>

@@ -101,7 +101,7 @@ $(document).ready(function () {
          },
          cache: false,
          success: function (res3) {
-          alert(res3);
+          
          },
        });
      });  
@@ -157,7 +157,7 @@ $(document).ready(function () {
          },
          cache: false,
          success: function (res5) {
-          alert(res5);
+         
          },
        });
      });  

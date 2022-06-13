@@ -236,7 +236,7 @@ if(exampledno == "" || exampledate == "" || exampleSelectmonth == "" || exampleP
     swal("Oops...", "Please fill all the fields", "error");
 }
     else{
-      swal("Good job!", "Agreement Submitted", "success");
+      swal("saved", "Details saved", "success");
     }
 });
 </script>
