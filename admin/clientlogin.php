@@ -52,16 +52,7 @@ include("../config/config.php");
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="icheck-primary">
-                                <input type="checkbox" name="remember" id="remember">
-                                <label for="remember">
-                                    Remember Me
-                                </label>
-                            </div>
-                        </div>
-                    </div>
+
                     <div class="social-auth-links text-center mt-2 mb-3">
                         <input type="submit" name="login" value="Login" class="btn btn-block btn-primary">
                     </div>
