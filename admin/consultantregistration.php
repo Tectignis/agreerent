@@ -2,11 +2,9 @@
 session_start();
 if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 {
- header("Location:clientlogin.php"); 
+ header("Location:login.php"); 
 }
 include("../config/config.php");
-
-
 
 $res=mysqli_query($conn,"SELECT * FROM `email_configuration`");
  $row=mysqli_fetch_array($res);	
@@ -27,20 +25,6 @@ $from = 'Enquiry <'.$email.'>';
 $sendTo = 'Enquiry <'.$email_no.'>';
 $subject = 'Password';
 $fields = array( 'name' => 'name' );
- $image=$_FILES['file']['name'];
-  
-        $extension=substr($image,strlen($image)-4,strlen($image));
-        $all_extension = array(".jpg","jpeg",".png","gif");
-        if(!in_array($extension,$all_extension)){
-          $msg="Invalid format. Only jpg / jpeg/ png /gif format allowed";
-        } 
-            else{
-              $image=md5($image).$extension;
-            $dnk=$_FILES['file']['tmp_name'];
-            $loc="dist/img/profile/".$image;
-            move_uploaded_file($dnk,$loc);
-            
-                }
 
 try{
   $emailText = "Welcome $agent_name.
@@ -59,8 +43,8 @@ Aashiyana CHS Shop No 05, Sector 11, Plot No 29, Kamothe, Navi Mumbai, Maharasht
  if( mail($sendTo,$subject,$emailText, "From:" .$from)){
   $passwordhash=password_hash($pass,PASSWORD_BCRYPT);
 
-  $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`status`,`image`) 
-   VALUES ('$user_id','$agent_name','$email_no','$passwordhash','$rera','$office_address','$mobile_no','$status','$image')");
+  $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`status`) 
+   VALUES ('$user_id','$agent_name','$email_no','$passwordhash','$rera','$office_address','$mobile_no','$status')");
    if($sql=1){
      echo "<script>alert('Agent Registered Successfully');</script>";    }
    else{
@@ -86,7 +70,7 @@ else{
 <html lang="en">
 
 <head>
-
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AGREERENT | Profile</title>
@@ -144,12 +128,11 @@ else{
                                 <!-- form start -->
                                 <form class="forms-sample" method="post" enctype="multipart/form-data"
                                     style="margin:30px;">
-<div class="row">
-    <div class="col-md-6">
-                                    
-                                        <label for="exampledno">Code No.<label
+
+                                    <div class="form-group row">
+                                        <label for="exampledno" class="col-sm-2 col-form-label">Code No.<label
                                                 style="color:Red">*</label></label>
-                                        
+                                        <div class="col-sm-10">
                                             <?php $sql=mysqli_query($conn,"select id from agent_details order by user_id desc") or die( mysqli_error($conn));;
               $row=mysqli_fetch_array($sql);
               $lastid=$row['id'];
@@ -163,58 +146,54 @@ else{
                                             <input type="text" name="no" value="<?php echo $number; ?>"
                                                 class="form-control" id="exampledno" readonly>
                                         </div>
-                                        <div class="col-md-6">
+                                    </div>
 
 
-                                  
-                                        <label for="exampleaddress">Consultant
+                                    <div class="form-group row">
+                                        <label for="exampleaddress" class="col-sm-2 col-form-label">Consultant
                                             Name<label style="color:Red">*</label></label>
-                                       
-                                            <input type="text" class="form-control" name="name" id="cname" placeholder="Enter Name"
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="name" placeholder="Enter Name"
                                                 required>
                                         </div>
                                     </div>
 
-
-                                    <div class="row">
-    <div class="col-md-6">
-                                        <label for="exampleaddress" >Office
-                                            Address<label style="color:Red">*</label></label>
-                                        
-                                            <textarea type="text" class="form-control" name="office_address" id="address"
-                                                placeholder="Enter Address" required></textarea>
-                                    
+                                    <div class="form-group row">
+                                        <label for="exampleaddress" class="col-sm-2 col-form-label">Office
+                                        Address<label style="color:Red">*</label></label>
+                                        <div class="col-sm-10">
+                                        <textarea type="text" class="form-control" name="office_address" placeholder="Enter Address"
+                                                required></textarea>
+                                        </div>
                                     </div>
 
 
-
-                                    <div class="col-md-6">
-                                        <label for="exampleaadhaar" >Mobile No.<label
+                                         
+                                    <div class="form-group row">
+                                        <label for="exampleaadhaar" class="col-sm-2 col-form-label">Mobile No.<label
                                                 style="color:Red">*</label></label>
-                                       
+                                        <div class="col-sm-10">
                                             <input type="tel" class="form-control" id="examplemob" name="mobile_no"
                                                 placeholder="Enter Mobile Number" minlength="10" maxlength="10"
                                                 required>
                                         </div>
                                     </div>
-
-                                  <div class="row">
-    <div class="col-md-6">
-                                        <label for="exampleemail">Email ID<label
+                                    <div class="form-group row">
+                                        <label for="exampleemail" class="col-sm-2 col-form-label">Email ID<label
                                                 style="color:Red">*</label></label>
-                                        
-                                            <input type="email" class="form-control" name="email" id="email"
+                                        <div class="col-sm-10">
+                                            <input type="email" class="form-control" name="email"
                                                 placeholder="Enter Email ID" required>
 
+                                        </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <label for="examplepan" >Rera No.</label>
-                                       
-                                            <input type="text" class="form-control" name="rera" id="rera"
+                                    <div class="form-group row">
+                                        <label for="examplepan" class="col-sm-2 col-form-label">Rera No.</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="rera"
                                                 placeholder="Enter Number" required>
-                                        
+                                        </div>
                                     </div>
-            </div>
                                     <!-- <div class="form-group row">
               <label for="examplepan" class="col-sm-2 col-form-label">Document Prefix<label style="color:Red">*</label></label>
               <div class="col-sm-10">
@@ -222,19 +201,19 @@ else{
               </div>
             </div> -->
 
-<div class="row">
-            <div class="col-md-6" style="margin-top:30px;">
-                                        <label for="examplepan" >Photo<label
+
+                                    <div class="form-group row">
+                                        <label for="examplepan" class="col-sm-2 col-form-label">Photo<label
                                                 style="color:Red">*</label></label>
-                                        
-                                            <input type="file" id="file" name="file">
+                                        <div class="col-sm-10">
+                                            <input type="file" name="file">
                                             <!-- <a href="upload_image.php" class="btn btn-success"> Upload</a>  -->
                                         </div>
                                     </div>
 
                                     <div class="col" align="right">
-                                        <button type="submit" name="sub" id="consultantsubmit" class="btn btn-primary  btn-lg"
-                                            style="color: aliceblue" >Submit</button>
+                                        <button type="submit" name="sub" class="btn btn-primary  btn-lg"
+                                            style="color: aliceblue">Submit</button>
                                     </div>
                                 </form>
 
@@ -269,7 +248,6 @@ else{
     <script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
     <!-- AdminLTE App -->
     <script src="dist/js/adminlte.min.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <!-- Page specific script -->
     <script>
@@ -277,26 +255,6 @@ else{
         bsCustomFileInput.init();
     });
     </script>
-
-<script>
-let consultantsubmit = document.getElementById("consultantsubmit");
-consultantsubmit.addEventListener("click", function(){
-let no = document.getElementById("exampledno").value;
-let name = document.getElementById("cname").value;
-let office_address = document.getElementById("address").value;
-let mobile_no = document.getElementById("examplemob").value;
-let email = document.getElementById("email").value;
-let rera = document.getElementById("rera").value;
-let file = document.getElementById("file").value;
-
-if(no == "" || name == "" || office_address == ""  || mobile_no == ""  || email == "" || rera == "" || file == ""){
-      swal("Oops...", "Please fill all the fields", "error");
-    }
-    else{
-      swal("Submited!", " Submitted", "success");
-    }
-});
-</script>
 </body>
 
 </html>
