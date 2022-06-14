@@ -199,12 +199,12 @@ if(isset($_GET['id'])){
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Edit Agreement</h1>
+                            <h1>Create New Agreement</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Edit Agreement</li>
+                                <li class="breadcrumb-item active">Create New Agreement</li>
                             </ol>
                         </div>
                     </div>
@@ -219,7 +219,7 @@ if(isset($_GET['id'])){
                             <div class="card-header p-0 pt-1">
                                 <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
                                     <li class="pt-2 px-3">
-                                        <h3 class="card-title">Edit</h3>
+                                        <h3 class="card-title">Card Title</h3>
                                     </li>
                                     <!-- <li class="nav-item">
 <a class="nav-link active" id="custom-tabs-two-home-tab" data-toggle="pill" href="#basic-details" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true">Basic Details</a>
@@ -694,7 +694,7 @@ if(isset($_GET['id'])){
                                                             <td><?php echo $gender3; ?></td>
                                                             <td><a href="edit_newagreementform.php?familydelid=<?php echo $familyid; ?>"
                                                                     alt="delete"><i class="fas fa-trash"></i></a></td>
-                                                        </tr>";
+                                                        </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -847,7 +847,7 @@ if(isset($_GET['id'])){
                                                             <td><?php echo $number  ?></td>
                                                             <td><a href="edit_newagreementform.php?deleteid=<?php echo $amenitiesid; ?>"
                                                                     alt="delete"><i class="fas fa-trash"></i></a></td>
-                                                        </tr>";
+                                                        </tr>
                                                     </tbody>
                                                 </table>
                                             </div>

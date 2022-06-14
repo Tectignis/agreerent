@@ -195,8 +195,6 @@ if(isset($_POST['submitaminities'])){
   </table>";
 
 }
-
-$sql=mysqli_query($conn,"select courses.*, instructor.* from courses inner join instructor on courses.sr_no=instructor.sr_no where courses.sr_no='$id'");
 //payment
 if(isset($_POST['submitpayment'])){
 	$idpayment=$_POST['no7'];

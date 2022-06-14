@@ -69,10 +69,8 @@ include("../config/config.php");
             <section class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1>Enquiry Details</h1>
-                        </div>
-                        <div class="col-sm-6">
+                       
+                        <div class="col-sm-12">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                                 <li class="breadcrumb-item active">Agreement Details</li>
@@ -90,9 +88,8 @@ include("../config/config.php");
                             <!-- /.card -->
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Enquiry Details</h3>
+                                    <h3 class="card-title">New Agreement</h3>
                                 </div>
-
 
                                 <div class="card-body">
                                     <form method="post" action="form.php">
@@ -120,7 +117,7 @@ include("../config/config.php");
                                                 Months<label style="color:Red">*</label></label>
                                             <div class="col-sm-4">
                                                 <select required class="form-control" name="month"
-                                                    id="exampleSelectmonth">
+                                                    id="exampleSelectGender">
                                                     <option value="" disabled selected hidden>select</option>
                                                     <option>11</option>
                                                     <option>22</option>
@@ -153,7 +150,8 @@ include("../config/config.php");
                                             <input type="hidden" name="agreement_details" value="">
                                             <button type="submit" name="submit" id="details" class="btn btn-info"
                                                 data-tt="tooltip" title="" data-original-title="Click here to Save">Save
-                                                as Draft</button>&nbsp;
+                                                as
+                                                Draft</button>&nbsp;
                                             <!-- <button type="button" name="submit" id="next" class="btn btn-info" data-tt="tooltip" title="" data-original-title="Click here to Save">Next</button> -->
                                         </div>
 
@@ -199,7 +197,6 @@ include("../config/config.php");
     <script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- AdminLTE App -->
     <script src="dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
@@ -223,24 +220,6 @@ include("../config/config.php");
         });
     });
     </script>
-    
-    <script>
-let details = document.getElementById("details");
-details.addEventListener("click", function(){
-let Document_no = document.getElementById("exampledno").value;
-let date = document.getElementById("exampledate").value;
-let month = document.getElementById("exampleSelectmonth").value;
-let type = document.getElementById("exampleProperty").value;
-let place = document.getElementById("exampleagreement").value;
-if(exampledno == "" || exampledate == "" || exampleSelectmonth == "" || exampleProperty == "" || exampleagreement== "" ){
-    swal("Oops...", "Please fill all the fields", "error");
-}
-    else{
-      swal("saved", "Details saved", "success");
-    }
-});
-</script>
-        
 </body>
 
 </html>
