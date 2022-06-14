@@ -1,3 +1,34 @@
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@kajal281199 
+whynaidu
+/
+agreerent
+Public
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+agreerent/admin/consultantregistration.php /
+@kajal281199
+kajal281199 c
+Latest commit ed75a89 13 days ago
+ History
+ 2 contributors
+@kajal281199@whynaidu
+259 lines (228 sloc)  11 KB
+
+
+
 <?php  
 session_start();
 if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
@@ -20,20 +51,20 @@ if(isset($_POST['sub'])){
   $status=1;
   $pass= rand(100000, 999999);
   $email=$row['email'];
-smtp debug=0;
+
 $from = 'Enquiry <'.$email.'>';
 $sendTo = 'Enquiry <'.$email_no.'>';
 $subject = 'Password';
 $fields = array( 'name' => 'name' );
 
 try{
-  $emailText = "Welcome $agent_name.
+  $emailText = "<html><body><h1>Welcome $agent_name.</h1>
    Welcome to Agreerent. We’re confident that Agreerent will help you to get the best deal for your property. Your Email ID is :- '$email_no'
   Your Password is :- '$pass'.
   Please login with Registerd Email and Password
   Thanks & Regards,
 Tectignis IT Solution
-Aashiyana CHS Shop No 05, Sector 11, Plot No 29, Kamothe, Navi Mumbai, Maharashtra 410206";
+Aashiyana CHS Shop No 05, Sector 11, Plot No 29, Kamothe, Navi Mumbai, Maharashtra 410206</body></html>";
 
   foreach($_POST as $key => $value){
     if(isset($fields[$key])){
@@ -50,8 +81,6 @@ Aashiyana CHS Shop No 05, Sector 11, Plot No 29, Kamothe, Navi Mumbai, Maharasht
    else{
      echo "<script>alert('Something Wrong');</script>";
    }
- }else{
-    echo "<script>alert('email Wrong');</script>";
  }
 }
 catch(\Exception $e){
@@ -67,12 +96,15 @@ else{
 }
   
 }
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AGREERENT | Profile</title>
@@ -159,18 +191,14 @@ else{
                                                 required>
                                         </div>
                                     </div>
-
                                     <div class="form-group row">
-                                        <label for="exampleaddress" class="col-sm-2 col-form-label">Office
-                                        Address<label style="color:Red">*</label></label>
+                                        <label for="exampleInputMobile" class="col-sm-2 col-form-label">Office
+                                            Address<label style="color:Red">*</label></label>
                                         <div class="col-sm-10">
-                                        <textarea type="text" class="form-control" name="office_address" placeholder="Enter Address"
-                                                required></textarea>
+                                            <textarea name="office_address" style="width:100%;" rows="2"
+                                                placeholder="Enter Address" required></textarea>
                                         </div>
                                     </div>
-
-
-                                         
                                     <div class="form-group row">
                                         <label for="exampleaadhaar" class="col-sm-2 col-form-label">Mobile No.<label
                                                 style="color:Red">*</label></label>
@@ -260,3 +288,16 @@ else{
 </body>
 
 </html>
+© 2022 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+Loading complete
