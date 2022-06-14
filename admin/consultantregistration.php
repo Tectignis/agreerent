@@ -52,6 +52,7 @@ Aashiyana CHS Shop No 05, Sector 11, Plot No 29, Kamothe, Navi Mumbai, Maharasht
    }
  }else{
     print_r(error_get_last()['message']);
+    var_dump(error_get_last()['message']);
  }
 }
 catch(\Exception $e){
