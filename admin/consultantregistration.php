@@ -19,7 +19,7 @@ if(isset($_POST['sub'])){
   $rera=$_POST['rera'];
   $status=1;
   $pass= rand(100000, 999999);
-  $email=$row['email'];
+//   $email=$row['email'];
 
 $from = 'Enquiry <naiduvedant@gmai.com>';
 $sendTo = 'Enquiry <dkeshari094@gmail.com>';
