@@ -35,11 +35,11 @@ try{
 Tectignis IT Solution
 Aashiyana CHS Shop No 05, Sector 11, Plot No 29, Kamothe, Navi Mumbai, Maharashtra 410206";
 
-  foreach($_POST as $key => $value){
-    if(isset($fields[$key])){
-      $emailText.="$fields[$key]: $value\n";
-    }
-  }
+//   foreach($_POST as $key => $value){
+//     if(isset($fields[$key])){
+//       $emailText.="$fields[$key]: $value\n";
+//     }
+//   }
  if( mail($sendTo,$subject,$emailText, "From:" .$from)){
   $passwordhash=password_hash($pass,PASSWORD_BCRYPT);
 
