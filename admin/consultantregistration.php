@@ -1,34 +1,3 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@kajal281199 
-whynaidu
-/
-agreerent
-Public
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-agreerent/admin/consultantregistration.php /
-@kajal281199
-kajal281199 c
-Latest commit ed75a89 13 days ago
- History
- 2 contributors
-@kajal281199@whynaidu
-259 lines (228 sloc)  11 KB
-
-
-
 <?php  
 session_start();
 if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
@@ -288,16 +257,3 @@ else{
 </body>
 
 </html>
-© 2022 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-Loading complete
