@@ -2,9 +2,11 @@
 session_start();
 if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 {
- header("Location:login.php"); 
+ header("Location:clientlogin.php"); 
 }
 include("../config/config.php");
+
+
 
 $res=mysqli_query($conn,"SELECT * FROM `email_configuration`");
  $row=mysqli_fetch_array($res);	
@@ -168,7 +170,7 @@ else{
                                         <label for="exampleaddress">Consultant
                                             Name<label style="color:Red">*</label></label>
                                        
-                                            <input type="text" class="form-control" name="name" placeholder="Enter Name"
+                                            <input type="text" class="form-control" name="name" id="cname" placeholder="Enter Name"
                                                 required>
                                         </div>
                                     </div>
@@ -179,7 +181,7 @@ else{
                                         <label for="exampleaddress" >Office
                                             Address<label style="color:Red">*</label></label>
                                         
-                                            <textarea type="text" class="form-control" name="office_address"
+                                            <textarea type="text" class="form-control" name="office_address" id="address"
                                                 placeholder="Enter Address" required></textarea>
                                     
                                     </div>
@@ -201,14 +203,14 @@ else{
                                         <label for="exampleemail">Email ID<label
                                                 style="color:Red">*</label></label>
                                         
-                                            <input type="email" class="form-control" name="email"
+                                            <input type="email" class="form-control" name="email" id="email"
                                                 placeholder="Enter Email ID" required>
 
                                     </div>
                                     <div class="col-md-6">
                                         <label for="examplepan" >Rera No.</label>
                                        
-                                            <input type="text" class="form-control" name="rera"
+                                            <input type="text" class="form-control" name="rera" id="rera"
                                                 placeholder="Enter Number" required>
                                         
                                     </div>
@@ -225,14 +227,14 @@ else{
                                         <label for="examplepan" >Photo<label
                                                 style="color:Red">*</label></label>
                                         
-                                            <input type="file" name="file">
+                                            <input type="file" id="file" name="file">
                                             <!-- <a href="upload_image.php" class="btn btn-success"> Upload</a>  -->
                                         </div>
                                     </div>
 
                                     <div class="col" align="right">
-                                        <button type="submit" name="sub" class="btn btn-primary  btn-lg"
-                                            style="color: aliceblue">Submit</button>
+                                        <button type="submit" name="sub" id="consultantsubmit" class="btn btn-primary  btn-lg"
+                                            style="color: aliceblue" >Submit</button>
                                     </div>
                                 </form>
 
@@ -267,6 +269,7 @@ else{
     <script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
     <!-- AdminLTE App -->
     <script src="dist/js/adminlte.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <!-- Page specific script -->
     <script>
@@ -274,6 +277,26 @@ else{
         bsCustomFileInput.init();
     });
     </script>
+
+<script>
+let consultantsubmit = document.getElementById("consultantsubmit");
+consultantsubmit.addEventListener("click", function(){
+let no = document.getElementById("exampledno").value;
+let name = document.getElementById("cname").value;
+let office_address = document.getElementById("address").value;
+let mobile_no = document.getElementById("examplemob").value;
+let email = document.getElementById("email").value;
+let rera = document.getElementById("rera").value;
+let file = document.getElementById("file").value;
+
+if(no == "" || name == "" || office_address == ""  || mobile_no == ""  || email == "" || rera == "" || file == ""){
+      swal("Oops...", "Please fill all the fields", "error");
+    }
+    else{
+      swal("Submited!", " Submitted", "success");
+    }
+});
+</script>
 </body>
 
 </html>
