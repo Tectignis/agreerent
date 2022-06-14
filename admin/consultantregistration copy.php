@@ -21,8 +21,8 @@ if(isset($_POST['sub'])){
   $pass= rand(100000, 999999);
   $email=$row['email'];
 
-$from = 'Enquiry <naiduvedant@gmai.com>';
-$sendTo = 'Enquiry <dkeshari094@gmail.com>';
+$from = 'Enquiry <'.$email.'>';
+$sendTo = 'Enquiry <'.$email_no.'>';
 $subject = 'Password';
 $fields = array( 'name' => 'name' );
 
@@ -45,14 +45,11 @@ Aashiyana CHS Shop No 05, Sector 11, Plot No 29, Kamothe, Navi Mumbai, Maharasht
 
   $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`status`) 
    VALUES ('$user_id','$agent_name','$email_no','$passwordhash','$rera','$office_address','$mobile_no','$status')");
-   if($sql==1){
+   if($sql=1){
      echo "<script>alert('Agent Registered Successfully');</script>";    }
    else{
      echo "<script>alert('Something Wrong');</script>";
    }
- }else{
-    print_r(error_get_last()['message']);
-    var_dump(error_get_last()['message']);
  }
 }
 catch(\Exception $e){
