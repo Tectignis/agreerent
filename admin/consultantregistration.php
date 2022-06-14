@@ -21,7 +21,7 @@ if(isset($_POST['sub'])){
   $pass= rand(100000, 999999);
   $email=$row['email'];
 
-$from = 'Enquiry <'.$email.'>';
+$from = 'Enquiry <dkeshari094@gmail.com>';
 $sendTo = 'Enquiry <'.$email_no.'>';
 $subject = 'Password';
 $fields = array( 'name' => 'name' );
