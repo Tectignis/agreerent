@@ -105,6 +105,7 @@ if(isset($_POST['submitmember'])){
 	echo "<table class='table table-bordered'>
     <thead>
       <tr>
+	 
         <th>Name</th>
         <th>Relation</th>
         <th>Age</th>
@@ -114,6 +115,7 @@ if(isset($_POST['submitmember'])){
     <tbody>";
 	while($arr=mysqli_fetch_array($sql)){
      echo " <tr>
+	
         <td>". $arr['name']."</td>
         <td>". $arr['relation'] ."</td>
        <td>". $arr['age'] ."</td>
