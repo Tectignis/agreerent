@@ -15,11 +15,11 @@ if(isset($_POST['sub'])){
   $agent_name=$_POST['name'];
   $mobile_no=$_POST['mobile_no'];
   $office_address=$_POST['office_address'];
-  $email_no=$_POST['email'];
+  $email_no=$_POST['email'] === null ? 0;
   $rera=$_POST['rera'];
   $status=1;
   $pass= rand(100000, 999999);
-  $email=$row['email'];
+  $email=$row['email'] === null ? 0;
 
 $from = 'Enquiry <dkeshari094@gmail.com>';
 $sendTo = 'Enquiry <'.$email_no.'>';
