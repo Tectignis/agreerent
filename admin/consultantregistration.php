@@ -6,66 +6,89 @@ if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 }
 include("../config/config.php");
 
+
+
+
 // $res=mysqli_query($conn,"SELECT * FROM `email_configuration`");
 //  $row=mysqli_fetch_array($res);	
 
 if(isset($_POST['sub'])){
-
-  $user_id=$_POST['no'];
-  $agent_name=$_POST['name'];
-  $mobile_no=$_POST['mobile_no'];
-  $office_address=$_POST['office_address'];
-  $email_no=$_POST['email'];
-  $rera=$_POST['rera'];
-  $status=1;
-  $pass= rand(100000, 999999);
-//   $email=$row['email'];
-
-$from = 'Enquiry <naiduvedant@gmai.com>';
-$sendTo = 'Enquiry <dkeshari094@gmail.com>';
-$subject = 'Password';
-$fields = array( 'name' => 'name' );
-
-try{
-  $emailText = "Welcome $agent_name.
-   Welcome to Agreerent. We’re confident that Agreerent will help you to get the best deal for your property. Your Email ID is :- '$email_no'
-  Your Password is :- '$pass'.
-  Please login with Registerd Email and Password
-  Thanks & Regards,
-Tectignis IT Solution
-Aashiyana CHS Shop No 05, Sector 11, Plot No 29, Kamothe, Navi Mumbai, Maharashtra 410206";
-
-  foreach($_POST as $key => $value){
-    if(isset($fields[$key])){
-      $emailText.="$fields[$key]: $value\n";
+    $to = "dkeshari094@gmail.com";
+    $subject = "This is subject";
+    
+    $message = "<b>This is HTML message.</b>";
+    $message .= "<h1>This is headline.</h1>";
+    
+    $header = "From:abc@somedomain.com \r\n";
+    $header .= "Cc:afgh@somedomain.com \r\n";
+    $header .= "MIME-Version: 1.0\r\n";
+    $header .= "Content-type: text/html\r\n";
+    
+    $retval = mail ($to,$subject,$message,$header);
+    
+    if( $retval == true ) {
+       echo "Message sent successfully...";
+    }else {
+       echo "Message could not be sent...";
     }
-  }
- if( mail($sendTo,$subject,$emailText, "From:" .$from)){
-  $passwordhash=password_hash($pass,PASSWORD_BCRYPT);
+ 
 
-  $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`status`) 
-   VALUES ('$user_id','$agent_name','$email_no','$passwordhash','$rera','$office_address','$mobile_no','$status')");
-   if($sql=1){
-     echo "<script>alert('Agent Registered Successfully');</script>";    }
-   else{
-     echo "<script>alert('Something Wrong');</script>";
-   }
- }else{
-    print_r(error_get_last()['message']);
-    var_dump(error_get_last()['message']);
- }
-}
-catch(\Exception $e){
-  echo "not done";
-}
-if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
-  $encode=json_encode($responseArray);
-  header('content-Type: application/json');
-  echo $encoded;
-}
-else{
-  echo $responseArray['message'];
-}
+
+//   $user_id=$_POST['no'];
+//   $agent_name=$_POST['name'];
+//   $mobile_no=$_POST['mobile_no'];
+//   $office_address=$_POST['office_address'];
+//   $email_no=$_POST['email'];
+//   $rera=$_POST['rera'];
+//   $status=1;
+//   $pass= rand(100000, 999999);
+// //   $email=$row['email'];
+
+// $from = 'Enquiry <naiduvedant@gmai.com>';
+// $sendTo = 'Enquiry <dkeshari094@gmail.com>';
+// $subject = 'Password';
+// $fields = array( 'name' => 'name' );
+
+// try{
+//   $emailText = "Welcome $agent_name.
+//    Welcome to Agreerent. We’re confident that Agreerent will help you to get the best deal for your property. Your Email ID is :- '$email_no'
+//   Your Password is :- '$pass'.
+//   Please login with Registerd Email and Password
+//   Thanks & Regards,
+// Tectignis IT Solution
+// Aashiyana CHS Shop No 05, Sector 11, Plot No 29, Kamothe, Navi Mumbai, Maharashtra 410206";
+
+//   foreach($_POST as $key => $value){
+//     if(isset($fields[$key])){
+//       $emailText.="$fields[$key]: $value\n";
+//     }
+//   }
+//  if( mail($sendTo,$subject,$emailText, "From:" .$from)){
+//   $passwordhash=password_hash($pass,PASSWORD_BCRYPT);
+
+//   $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`status`) 
+//    VALUES ('$user_id','$agent_name','$email_no','$passwordhash','$rera','$office_address','$mobile_no','$status')");
+//    if($sql=1){
+//      echo "<script>alert('Agent Registered Successfully');</script>";    }
+//    else{
+//      echo "<script>alert('Something Wrong');</script>";
+//    }
+//  }else{
+//     print_r(error_get_last()['message']);
+//     var_dump(error_get_last()['message']);
+//  }
+// }
+// catch(\Exception $e){
+//   echo "not done";
+// }
+// if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
+//   $encode=json_encode($responseArray);
+//   header('content-Type: application/json');
+//   echo $encoded;
+// }
+// else{
+//   echo $responseArray['message'];
+// }
   
 }
 ?>
