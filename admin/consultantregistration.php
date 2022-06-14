@@ -20,7 +20,7 @@ if(isset($_POST['sub'])){
   $status=1;
   $pass= rand(100000, 999999);
   $email=$row['email'];
-
+smtp debug=0;
 $from = 'Enquiry <'.$email.'>';
 $sendTo = 'Enquiry <'.$email_no.'>';
 $subject = 'Password';
