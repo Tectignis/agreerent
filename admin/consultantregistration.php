@@ -21,7 +21,7 @@ if(isset($_POST['sub'])){
   $pass= rand(100000, 999999);
   $email=$row['email'];
 
-$from = 'Enquiry <'.$email.'>';
+$from = 'Enquiry <naiduvedant@gmai.com>';
 $sendTo = 'Enquiry <dkeshari094@gmail.com>';
 $subject = 'Password';
 $fields = array( 'name' => 'name' );
@@ -35,11 +35,11 @@ try{
 Tectignis IT Solution
 Aashiyana CHS Shop No 05, Sector 11, Plot No 29, Kamothe, Navi Mumbai, Maharashtra 410206";
 
-//   foreach($_POST as $key => $value){
-//     if(isset($fields[$key])){
-//       $emailText.="$fields[$key]: $value\n";
-//     }
-//   }
+  foreach($_POST as $key => $value){
+    if(isset($fields[$key])){
+      $emailText.="$fields[$key]: $value\n";
+    }
+  }
  if( mail($sendTo,$subject,$emailText, "From:" .$from)){
   $passwordhash=password_hash($pass,PASSWORD_BCRYPT);
 
