@@ -1,9 +1,9 @@
 <?php  
-session_start();
-if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
-{
- header("Location:login.php"); 
-}
+// session_start();
+// if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
+// {
+//  header("Location:login.php"); 
+// }
 include("../config/config.php");
 
 
