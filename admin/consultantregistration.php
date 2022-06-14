@@ -6,8 +6,8 @@ if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 }
 include("../config/config.php");
 
-$res=mysqli_query($conn,"SELECT * FROM `email_configuration`");
- $row=mysqli_fetch_array($res);	
+// $res=mysqli_query($conn,"SELECT * FROM `email_configuration`");
+//  $row=mysqli_fetch_array($res);	
 
 if(isset($_POST['sub'])){
 
