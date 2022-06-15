@@ -16,7 +16,6 @@ $basicid=$_GET['documentbasid'];
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -420,7 +419,7 @@ $basicid=$_GET['documentbasid'];
                                                 </div>
                                                 <div class="col" align="right">
                                                     <!-- <a href="tenant.php?id=<?php echo $did;?>"><button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue"><i class="mdi mdi-chevron-left"></i>Previous</button></a> -->
-                                                    <button type="button" name="submitproperty" id="submitproperty1"
+                                                    <button type="button" name="submitproperty" id="submitproperty"
                                                         class="btn btn-info" data-tt="tooltip" title=""
                                                         data-original-title="Click here to Save">Save as
                                                         Draft</button>&nbsp;
@@ -868,11 +867,10 @@ if(no2 == "" || abbreviation == "" || name1 == "" || mobile == "" || email == ""
 </script>
 
 <script>
-let submitproperty1 = document.getElementById("submitproperty1");
-submitproperty1.addEventListener("click", function(){
-let no3 = document.getElementById("no3").value;
-let exampleproperties = document.getElementById("type").value;
-let address = document.getElementById("addresspro").value;
+let submitproperty = document.getElementById("submitproperty");
+submitproperty.addEventListener("click", function(){
+let exampleproperties = document.getElementById("exampleproperties").value;
+let address = document.getElementById("addressPro").value;
 let sector = document.getElementById("sector").value;
 let plotno = document.getElementById("plotno").value;
 let cidco = document.getElementById("cidco").value;
@@ -880,7 +878,7 @@ let area = document.getElementById("area").value;
 let chs = document.getElementById("chs").value;
 let node = document.getElementById("node").value;
 
-if(no3 == "" || exampleproperties == "" || address == "" || sector == "" || plotno == "" || cidco == "" || area == "" || chs == "" || node == ""  ){
+if(exampleproperties == "" || address == "" || sector == "" || plotno == "" || cidco == "" || area == "" || chs == "" || node == ""  ){
     swal("Oops...", "Please fill all the fields", "error");
 }
     else{
