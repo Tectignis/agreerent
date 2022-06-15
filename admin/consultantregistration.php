@@ -28,7 +28,7 @@ $fields = array( 'name' => 'name' );
 
 try{
   $emailText = "<html><body><h1>Welcome $agent_name.</h1>
-   Welcome to Agreerent. We’re confident that Agreerent will help you to get the best deal for your property. Your Email ID is :- '$email_no. $email'
+   Welcome to Agreerent. We’re confident that Agreerent will help you to get the best deal for your property. Your Email ID is :- '$email_no'
   Your Password is :- '$pass'.
   Please login with Registerd Email and Password
   Thanks & Regards,
