@@ -234,7 +234,7 @@ $name1=$arr5['name1'];
 
 
 if($document!=$idpayment){
-echo "please fill owner details";
+echo "please fill owner details $document $idpayment";
 }
 else if($document1!=$idpayment){
 echo "please fill tenant details";

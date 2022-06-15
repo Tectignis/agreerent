@@ -660,7 +660,7 @@ $basicid=$_GET['documentbasid'];
                                                 <label for="examplename" class="col-sm-2 col-form-label-sm">Security
                                                     Deposit<label style="color:Red">*</label></label>
                                                 <div class="col-sm-4">
-                                                    <input type="hidden" name="no7" id="no7" value="<?php echo $basicid;?>">
+                                                    <input type="TEXT" name="no7" id="no7" value="<?php echo $basicid;?>">
                                                     <input type="number" id="deposit" class="form-control"
                                                         name="security_deposit" placeholder="Deposit" required>
                                                 </div>
