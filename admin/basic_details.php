@@ -220,6 +220,23 @@ include("../config/config.php");
         });
     });
     </script>
+   <script>
+let details = document.getElementById("details");
+details.addEventListener("click", function(){
+let document_no11 = document.getElementById("exampledno").value;
+let date = document.getElementById("exampledate").value;
+let month = document.getElementById("exampleSelectGender").value;
+let type = document.getElementById("exampleProperty").value;
+let place = document.getElementById("exampleagreement").value;
+
+if(document_no11 == "" || date == "" || month == "" || type == "" || place== ""  ){
+    swal("Oops...", "Please fill all the fields", "error");
+}
+    else{
+        swal("Saved!", "Agreement Save", "success");
+    }
+});
+</script>
 </body>
 
 </html>

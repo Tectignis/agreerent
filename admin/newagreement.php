@@ -125,7 +125,7 @@ $basicid=$_GET['documentbasid'];
                                                     <label for="examplename" class="col-sm-2 col-form-label">Full
                                                         Name<label style="color:Red">*</label> </label>
                                                     <div class="col-sm-2">
-                                                        <input type="text" id="no" name="no1"
+                                                        <input type="hidden" id="no" name="no1"
                                                             value="<?php echo $basicid;?>">
 
                                                         <select class="form-control" name="abbreviation" id="examplemr"
@@ -216,7 +216,7 @@ $basicid=$_GET['documentbasid'];
                                                     <label for="examplename" class="col-sm-2 col-form-label">Full
                                                         Name<label style="color:Red">*</label></label>
                                                     <div class="col-sm-2">
-                                                        <input type="text" id="no3" name="no3" value="<?php echo $basicid;?>"
+                                                        <input type="hidden" id="no2" name="no2" value="<?php echo $basicid;?>"
                                                             class="form-control" id="exampledno" readonly>
                                                         <select class="form-control" id="exampleSelectmr"
                                                             name="abbreviation" required>
@@ -335,7 +335,7 @@ $basicid=$_GET['documentbasid'];
                                                         Type<label style="color:Red">*</label></label>
 
                                                     <div class="col-sm-2 col-lg-2">
-                                                        <input type="text" name="no3" id="no3"
+                                                        <input type="hidden" name="no3" id="no3"
                                                             value="<?php echo $basicid;?>">
 
                                                         <!-- <input type="text" for="examplename" name="type" id="propertyTypeVal" class="form-control" readonly> -->
@@ -440,7 +440,7 @@ $basicid=$_GET['documentbasid'];
                                                 <div class="row">
                                                     <div class="col-sm-6">
                                                         <div class="form-group row">
-                                                            <input type="text" name="no4" id="no4"
+                                                            <input type="hidden" name="no4" id="no4"
                                                                 value="<?php echo $basicid;?>"> 
                                                             <label for="examplename"
                                                                 class="col-sm-3 col-form-label-sm">Name<label
@@ -681,13 +681,13 @@ $basicid=$_GET['documentbasid'];
                                                     <select class="form-control select2 select2-hidden-accessible"
                                                         name="method" id="checkselec" style="width: 100%;"
                                                         data-select2-id="3" tabindex="-1" aria-hidden="true">
-                                                        <option selected="selected" data-select2-id="4">Alabama</option>
-                                                        <option>Alaska</option>
-                                                        <option>California</option>
-                                                        <option>Delaware</option>
-                                                        <option>Tennessee</option>
-                                                        <option>Texas</option>
-                                                        <option>Washington</option>
+                                                        <option selected="selected" data-select2-id="4">CASH</option>
+                                                        <option>CHEQUE</option>
+                                                        <option>BANK TRASFER</option>
+                                                        <option>GOOGLE PAY</option>
+                                                        <option>PHONE PAY</option>
+                                                        <option>PAYTYM</option>
+                                                        
                                                     </select>
                                                 </div>
                                             </div>
@@ -698,13 +698,14 @@ $basicid=$_GET['documentbasid'];
                                                     <select class="form-control select2 select2-hidden-accessible"
                                                         name="bank" id="bank" style="width: 100%;" data-select2-id="1"
                                                         tabindex="-2" aria-hidden="true">
-                                                        <option selected="selected" data-select2-id="2">Alabama</option>
-                                                        <option>Alaska</option>
-                                                        <option>California</option>
-                                                        <option>Delaware</option>
-                                                        <option>Tennessee</option>
-                                                        <option>Texas</option>
-                                                        <option>Washington</option>
+                                                        <option selected="selected" data-select2-id="2">SBI</option>
+                                                        <option>UNION</option>
+                                                        <option>AXIS</option>
+                                                        <option>KOTAK</option>
+                                                        <option>HDFC</option>
+                                                        <option>ICICI</option>
+                                                        <option>BOI</option>
+                                                        <option>YES BANK</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -838,7 +839,104 @@ if(no1 == "" || abbreviation == "" || name == "" || age == "" || mobile == "" ||
     swal("Oops...", "Please fill all the fields", "error");
 }
     else{
-      swal("Good job!", "Agreement Submitted", "success");
+      swal("Saved!", "Agreement Save", "success");
+    }
+});
+</script>
+
+<script>
+let submitenant = document.getElementById("submitenant");
+submitenant.addEventListener("click", function(){
+let no2 = document.getElementById("no2").value;
+let abbreviation = document.getElementById("exampleSelectmr").value;
+let name1 = document.getElementById("txtname3").value;
+let mobile = document.getElementById("phone").value;
+let email = document.getElementById("emailcheck").value;
+let passport = document.getElementById("passport").value;
+let aadhaar = document.getElementById("txtAadhar1").value;
+let age = document.getElementById("id2").value;
+let pancard = document.getElementById("txtPANCard1").value;
+let address = document.getElementById("residenceAddress").value;
+let permanent_address = document.getElementById("presentAddress").value;
+if(no2 == "" || abbreviation == "" || name1 == "" || mobile == "" || email == "" || passport == "" || aadhaar == "" || age == "" || pancard == "" || address == "" || permanent_address == ""  ){
+    swal("Oops...", "Please fill all the fields", "error");
+}
+    else{
+        swal("Saved!", "Agreement Save", "success");
+    }
+});
+</script>
+
+<script>
+let submitproperty = document.getElementById("submitproperty");
+submitproperty.addEventListener("click", function(){
+let no3 = document.getElementById("no3").value;
+let exampleproperties = document.getElementById("type").value;
+let address = document.getElementById("addresspro").value;
+let sector = document.getElementById("sector").value;
+let plotno = document.getElementById("plotno").value;
+let cidco = document.getElementById("cidco").value;
+let area = document.getElementById("area").value;
+let chs = document.getElementById("chs").value;
+let node = document.getElementById("node").value;
+
+if(no3 == "" || exampleproperties == "" || address == "" || sector == "" || plotno == "" || cidco == "" || area == "" || chs == "" || node == ""  ){
+    swal("Oops...", "Please fill all the fields", "error");
+}
+    else{
+        swal("Saved!", "Agreement Save", "success");
+    }
+});
+</script>
+<script>
+let submitmember = document.getElementById("submitmember");
+submitmember.addEventListener("click", function(){
+let no4 = document.getElementById("no4").value;
+let name2 = document.getElementById("txtname1").value;
+let relation = document.getElementById("exampleSelectrelation").value;
+let age = document.getElementById("relativeage").value;
+let gender = document.getElementById("relativegender").value;
+
+if(no4 == "" || name2 == "" || relation == "" || age == "" || gender == ""  ){
+    swal("Oops...", "Please fill all the fields", "error");
+}
+    else{
+        swal("Saved!", "Agreement Save", "success");
+    }
+});
+</script>
+<script>
+let submitwitness = document.getElementById("submitwitness");
+submitwitness.addEventListener("click", function(){
+let no5 = document.getElementById("no5").value;
+let owitness1 = document.getElementById("nameowner").value;
+let owitness2 = document.getElementById("nameowner2").value;
+let twitness1 = document.getElementById("twitness1").value;
+let twitness2 = document.getElementById("twitness2").value;
+
+
+if(no5 == "" || owitness1 == "" || owitness2 == "" || twitness1 == "" || twitness2 == ""  ){
+    swal("Oops...", "Please fill all the fields", "error");
+}
+    else{
+        swal("Saved!", "Agreement Save", "success");
+    }
+});
+</script>
+<script>
+let submitaminities = document.getElementById("submitaminities");
+submitaminities.addEventListener("click", function(){
+let no6 = document.getElementById("no6").value;
+let name3 = document.getElementById("txtname2").value;
+let number = document.getElementById("itemnumbe").value;
+
+
+
+if(no6 == "" || name3 == "" || number == ""   ){
+    swal("Oops...", "Please fill all the fields", "error");
+}
+    else{
+        swal("Saved!", "Agreement Save", "success");
     }
 });
 </script>
@@ -855,7 +953,7 @@ if(no7 == "" || rent_amount == "" || method == "" || bank == "" || date== "" || 
     swal("Oops...", "Please fill all the fields", "error");
 }
     else{
-      swal("Good job!", "Agreement Submitted", "success");
+        swal("Saved!", "Agreement Save", "success");
     }
 });
 </script>

@@ -27,7 +27,7 @@ $(document).ready(function () {
       },
       cache: false,
       success: function (res) {
-        alert(res);
+        // alert(res);
       },
     });
   });
@@ -66,7 +66,7 @@ $(document).ready(function () {
       },
       cache: false,
       success: function (res2) {
-         alert(res2);
+        //  alert(res2);
       },
     });
   });  
@@ -101,7 +101,7 @@ $(document).ready(function () {
          },
          cache: false,
          success: function (res3) {
-          alert(res3);
+          // alert(res3);
          },
        });
      });  
@@ -129,7 +129,7 @@ $(document).ready(function () {
          cache: false,
            success: function (res4) {
                $("#displayfamily").html(res4);
-               alert(res4);
+              //  alert(res4);
          },
        });
          
@@ -158,7 +158,7 @@ $(document).ready(function () {
          },
          cache: false,
          success: function (res5) {
-          alert(res5);
+          // alert(res5);
          },
        });
      });  
@@ -182,7 +182,7 @@ $(document).ready(function () {
          cache: false,
            success: function (res6) {
                $("#displayaminities").html(res6);
-               alert(res6);
+              //  alert(res6);
          },
        });
      });
