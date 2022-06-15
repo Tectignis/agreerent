@@ -27,14 +27,14 @@ $(document).ready(function () {
       },
       cache: false,
       success: function (res) {
-         alert(res);
+        alert(res);
       },
     });
   });
     
     //tenant
   $("#submitenant").on("click", function () {
-    let exampledno = $("#exampledno").val();
+    let exampledno = $("#no3").val();
     let exampleSelectmr = $("#exampleSelectmr").val();
     let txtname3 = $("#txtname3").val();
     let phone = $("#phone").val();

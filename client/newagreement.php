@@ -11,7 +11,9 @@ include("../config/config.php");
 // include('form.php');
 
 $id=$_GET['id'];
+
 ?>
+
 
 
 <!DOCTYPE html>

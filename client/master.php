@@ -10,7 +10,7 @@ include("../config/config.php");
 
 // include('form.php');
 
-$basicid=$_GET['documentbasid'];
+$id=$_GET['id'];
 ?>
 
 
@@ -125,8 +125,8 @@ $basicid=$_GET['documentbasid'];
                                                     <label for="examplename" class="col-sm-2 col-form-label">Full
                                                         Name<label style="color:Red">*</label> </label>
                                                     <div class="col-sm-2">
-                                                        <input type="text" id="no" name="no1"
-                                                            value="<?php echo $basicid;?>">
+                                                        <input type="hidden" id="no" name="no1"
+                                                            value="<?php echo $id;?>">
 
                                                         <select class="form-control" name="abbreviation" id="examplemr"
                                                             required>
@@ -216,7 +216,7 @@ $basicid=$_GET['documentbasid'];
                                                     <label for="examplename" class="col-sm-2 col-form-label">Full
                                                         Name<label style="color:Red">*</label></label>
                                                     <div class="col-sm-2">
-                                                        <input type="text" id="no3" name="no3" value="<?php echo $basicid;?>"
+                                                        <input type="hidden" name="no2" value="<?php echo $id;?>"
                                                             class="form-control" id="exampledno" readonly>
                                                         <select class="form-control" id="exampleSelectmr"
                                                             name="abbreviation" required>
@@ -335,8 +335,8 @@ $basicid=$_GET['documentbasid'];
                                                         Type<label style="color:Red">*</label></label>
 
                                                     <div class="col-sm-2 col-lg-2">
-                                                        <input type="text" name="no3" id="no3"
-                                                            value="<?php echo $basicid;?>">
+                                                        <input type="hidden" name="no3" id="no3"
+                                                            value="<?php echo $id;?>">
 
                                                         <!-- <input type="text" for="examplename" name="type" id="propertyTypeVal" class="form-control" readonly> -->
                                                         <select class="form-control" name="type" id="exampleproperties"
@@ -440,8 +440,8 @@ $basicid=$_GET['documentbasid'];
                                                 <div class="row">
                                                     <div class="col-sm-6">
                                                         <div class="form-group row">
-                                                            <input type="text" name="no4" id="no4"
-                                                                value="<?php echo $basicid;?>"> 
+                                                            <input type="hidden" name="no4" id="no4"
+                                                                value="<?php echo $id;?>">
                                                             <label for="examplename"
                                                                 class="col-sm-3 col-form-label-sm">Name<label
                                                                     style="color:Red">*</label></label>
@@ -535,7 +535,7 @@ $basicid=$_GET['documentbasid'];
                                                     <h4>Owner Witness </h4>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <input type="hidden" name="no5" id="no5" value="<?php echo $basicid;?>">
+                                                    <input type="hidden" name="no5" id="no5" value="<?php echo $id;?>">
                                                     <label for="exampleInputtran"
                                                         class="col-sm-2 col-form-label">1<sup>st</sup> Person<label
                                                             style="color:Red">*</label></label>
@@ -610,7 +610,7 @@ $basicid=$_GET['documentbasid'];
                                                     <div class="col-sm-6">
                                                         <div class="form-group row">
                                                             <input type="hidden" name="no6" id="no6"
-                                                                value="<?php echo $basicid;?>">
+                                                                value="<?php echo $id;?>">
                                                             <label for="examplename"
                                                                 class="col-sm-3 col-form-label-sm">Name<label
                                                                     style="color:Red">*</label></label>
@@ -661,7 +661,7 @@ $basicid=$_GET['documentbasid'];
                                                 <label for="examplename" class="col-sm-2 col-form-label-sm">Security
                                                     Deposit<label style="color:Red">*</label></label>
                                                 <div class="col-sm-4">
-                                                    <input type="hidden" name="no7" id="no7" value="<?php echo $basicid;?>">
+                                                    <input type="hidden" name="no7" id="no7" value="<?php echo $id;?>">
                                                     <input type="number" id="deposit" class="form-control"
                                                         name="security_deposit" placeholder="Deposit" required>
                                                 </div>
@@ -784,7 +784,7 @@ $basicid=$_GET['documentbasid'];
     <script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <!-- AdminLTE App -->
     <script src="dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
@@ -823,44 +823,6 @@ $basicid=$_GET['documentbasid'];
         $('.nav-tabs > .nav-item > .active').parent().prev('li').find('a').trigger('click');
     });
     </script>
-<script>
-let subm = document.getElementById("subm");
-subm.addEventListener("click", function(){
-let no1 = document.getElementById("no").value;
-let abbreviation = document.getElementById("examplemr").value;
-let name = document.getElementById("txtname").value;
-let age = document.getElementById("id1").value;
-let mobile = document.getElementById("mobile").value;
-let aadhaar = document.getElementById("txAdhar").value;
-let pancard = document.getElementById("txtPANCard").value;
-let address = document.getElementById("address").value;
-if(no1 == "" || abbreviation == "" || name == "" || age == "" || mobile == "" || aadhaar== "" || pancard== "" || address== ""  ){
-    swal("Oops...", "Please fill all the fields", "error");
-}
-    else{
-      swal("Good job!", "Agreement Submitted", "success");
-    }
-});
-</script>
-<script>
-let submitpayment = document.getElementById("submitpayment");
-submitpayment.addEventListener("click", function(){
-let no7 = document.getElementById("no7").value;
-let rent_amount = document.getElementById("rent").value;
-let method = document.getElementById("checkselec").value;
-let bank = document.getElementById("bank").value;
-let date = document.getElementById("date").value;
-let tid = document.getElementById("tid").value;
-if(no7 == "" || rent_amount == "" || method == "" || bank == "" || date== "" || tid== "" ){
-    swal("Oops...", "Please fill all the fields", "error");
-}
-    else{
-      swal("Good job!", "Agreement Submitted", "success");
-    }
-});
-</script>
-
-
 
 </body>
 
