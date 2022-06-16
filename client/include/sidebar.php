@@ -89,7 +89,7 @@
 
                   <li class="nav-header">Other</li>
                   <li class="nav-item">
-                      <a href="todo" class="nav-link">
+                      <a href="todolist" class="nav-link">
                           <i class="nav-icon fas fa-columns"></i>
                           <p>
                               To Do
