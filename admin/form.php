@@ -35,7 +35,7 @@ if(isset($_POST['subm'])){
   $age=$_POST['address'];
 	
   $query=mysqli_query($conn,"select * from owner where document_no='$id' order by document_no desc");
-$num=mysqli_num_rows($query);
+$num=mysqli_fetch_array($query);
 $document=$num['document_no'];
 if($document==$id){
 	$sql=mysqli_query($conn,"UPDATE `owner` SET `document_no`='$id',`abbreviation`='$abbreviation',`fullname`='$name',`age`='$age',`address`='$address',`mobile`='$mobile',`aadhaar`='$aadhaar',`pan_card`='$pancard' WHERE document_no='$id'");
@@ -70,7 +70,7 @@ if(isset($_POST['tenant'])){
 	$passport=$_POST['passport'];
 	
 	$query=mysqli_query($conn,"select * from tenant where document_no='$id' order by document_no desc");
-$num=mysqli_num_rows($query);
+$num=mysqli_fetch_array($query);
 $document=$num['document_no'];
 
 	if($document!=$idtenant){
