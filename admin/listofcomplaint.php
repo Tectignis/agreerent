@@ -160,11 +160,81 @@ if($sql=1){
               </button>
             </div>
             <div class="modal-body">
-              <p>One fine body&hellip;</p>
+                <div class="row">   
+                <div class="col-4">
+                <b> Date & Time :</b><br>
+                </div>
+                <div class="col-8">
+                <p> 15/02/2022 08:00am </p>
+                </div>
+                </div>
+
+                <div class="row">   
+                 <div class="col-4">
+                <b> Client Code :</b><br>
+                </div>
+                <div class="col-8">
+                <p> 123654 </p>
+                </div>
+                </div>
+
+                <div class="row">   
+                 <div class="col-4">
+                <b> Complaint Code :</b><br>
+                </div>
+                <div class="col-8">
+                <p> 15555 </p>
+                </div>
+                </div>
+
+                <div class="row">   
+                 <div class="col-4">
+                <b> Subject :</b><br>
+                </div>
+                <div class="col-8">
+                <p> Developing </p>
+                </div>
+                </div>
+
+                <div class="row">   
+                 <div class="col-4">
+                <b> Description :</b><br>
+                </div>
+                <div class="col-8">
+                <p> Lorem ipsum dolor sit amet. </p>
+                </div>
+                </div>
+
+                <div class="row">   
+                 <div class="col-4">
+                <b> Comment :</b><br>
+                </div>
+                <div class="col-8">
+                <p> <textarea class="form-control" name="" id=""  rows="2"></textarea> </p>
+                </div>
+                </div>
+
+                <div class="row">   
+                 <div class="col-4">
+                <b> Status :</b><br>
+                </div>
+                <div class="col-8">
+                <p> <select class="form-control select2" name="gender" style="width: 100%;" required>
+                <option selected="selected" disable>Status</option>
+                                <option>Open</option>
+                                <option>In Proccess</option>
+                                <option>Hold On</option>
+                                <option>Closed</option>
+                              </select></p>
+                </div>
+                </div>
+
+
+        
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-primary">Submit</button>
             </div>
           </div>
           <!-- /.modal-content -->
@@ -206,6 +276,15 @@ if($sql=1){
 
 </body>
 <script>
+     $(function() {
+        //Initialize Select2 Elements
+        $('.select2').select2()
+
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        })
+    })
 $(function() {
     $("#example1").DataTable({
         "responsive": true,
