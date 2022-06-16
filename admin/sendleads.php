@@ -40,6 +40,13 @@ if(isset($_POST['submit'])){
     <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
+      <!-- Theme style -->
+  <!-- <link rel="stylesheet" href="dist/css/adminlte.min.css"> -->
+  <!-- <link rel="stylesheet" href="dist/css/adminlte.css"> -->
+  <!-- <link rel="stylesheet" href="dist/css/style.css"> -->
+       <!-- Select2 -->
+   <!-- <link rel="stylesheet" href="plugins/select2/css/select2.min.css"> -->
+   <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -98,7 +105,15 @@ if(isset($_POST['submit'])){
                                                 <label for="exampledno" class="col-sm-3 col-form-label">Client
                                                     Name<label style="color:Red">*</label></label>
                                                     <div class="col-sm-9">
-                                                    <select class="form-control select2 select2-hidden-accessible" name="client_name" id="exampledno" style="width: 100%;" data-select2-id="3" tabindex="-1" aria-hidden="true">
+                                                    <select class="form-control select2" name="gender" style="width: 100%;" required>
+                                                        <option selected="selected">Alaska</option>
+                                                        <option>California</option>
+                                                        <option>Delaware</option>
+                                                        <option>Tennessee</option>
+                                                        <option>Texas</option>
+                                                        <option>Washington</option>
+                                                            </select>
+                                                    <!-- <select class="form-control select2 select2-hidden-accessible" name="client_name" id="exampledno" style="width: 100%;" data-select2-id="3" tabindex="-1" aria-hidden="true">
                                                         <option selected="selected" data-select2-id="4">Alabama</option>
                                                         <option>Alaska</option>
                                                         <option>California</option>
@@ -106,7 +121,7 @@ if(isset($_POST['submit'])){
                                                         <option>Tennessee</option>
                                                         <option>Texas</option>
                                                         <option>Washington</option>
-                                                    </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="1" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1" aria-disabled="false" aria-labelledby="select2-checkselec-container"><span class="select2-selection_rendered" id="select2-checkselec-container" role="textbox" aria-readonly="true" title="Alabama">Alabama</span><span class="select2-selection_arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                                    </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="1" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1" aria-disabled="false" aria-labelledby="select2-checkselec-container"><span class="select2-selection_rendered" id="select2-checkselec-container" role="textbox" aria-readonly="true" title="Alabama">Alabama</span><span class="select2-selection_arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span> -->
                                                 </div>
                                             </div>
 						</div>					  
@@ -125,7 +140,7 @@ if(isset($_POST['submit'])){
                     <div class="form-group row">
                       <label for="exampleprop" class="col-sm-3 col-form-label">Property Type<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
-                        <select class="form-control" id="exampleSelectProperty" name="type" required>
+                        <select class="form-control select2" id="exampleSelectProperty" name="type" required>
                           <option>Flat</option>
                           <option>Shop</option>
                         </select>
@@ -205,13 +220,25 @@ if(isset($_POST['submit'])){
     <script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-
+<!-- Select2 -->
+<script src="plugins/select2/js/select2.full.min.js"></script>
     <!-- AdminLTE App -->
     <script src="dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <!-- Page specific script -->
     
-        
+    <script>
+    $(function() {
+        //Initialize Select2 Elements
+        $('.select2').select2()
+
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        })
+    })
+    
+    </script>
 </body>
 
 </html>
