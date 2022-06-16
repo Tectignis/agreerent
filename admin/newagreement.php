@@ -121,7 +121,7 @@ $basicid=$_GET['documentbasid'];
 
                                             <form class="forms-sample" method="post">
                                                  <input type="text" id="no" name="no1"
-                                                            value="<?php echo $basicid;?>">
+                                                            value="<?php echo $basicid;?>" readonly>
                                                 <div class="form-group row">
                                                      
                                                     <label for="examplename" class="col-sm-2 col-form-label">Full
