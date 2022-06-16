@@ -11,6 +11,33 @@ include("../config/config.php");
 // include('form.php');
 
 $basicid=$_GET['documentbasid'];
+
+if(isset($_GET['familydelid'])){
+$deleteid=$_GET['familydelid'];	
+ $query=mysqli_query($conn,"select * from family_members where id='$deleteid'");
+    $res=mysqli_fetch_array($query);
+    $id=$res['document_no'];
+	$sql=mysqli_query($conn,"delete from family_members where id='$deleteid'");
+   
+	if($sql==1){	
+	header("location:newagreement.php?documentbasid=$id");
+  	}else{
+		echo "<script>alert('Something went wrong');</script>";
+	}
+}
+
+if(isset($_GET['deleteid'])){
+$deleteid=$_GET['deleteid'];
+$query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
+    $res=mysqli_fetch_array($query);
+    $id=$res['document_no'];	
+	$sql=mysqli_query($conn,"delete from amenities where id='$deleteid'");
+	if($sql==1){	
+	header("location:newagreement.php?documentbasid=$id");
+  	}else{
+		echo "<script>alert('Something went wrong');</script>";
+	}
+}
 ?>
 
 
@@ -332,10 +359,10 @@ $basicid=$_GET['documentbasid'];
                                         aria-labelledby="custom-tabs-two-settings-tab">
                                         <div class="card-body">
 
-                                            <form class="forms-sample" method="post">
+                                            <form class="forms-sample" method="post" >
                                                 <div class="form-group row">
                                                     <input type="hidden" name="no3" id="no3"
-                                                            value="<?php echo $basicid;?>">
+                                                            value="<?php echo $basicid;?>" readonly>
                                                     <label for="examplename" class="col-2 col-form-label">Property
                                                         Type<label style="color:Red">*</label></label>
 
@@ -665,7 +692,7 @@ $basicid=$_GET['documentbasid'];
                                                 <label for="examplename" class="col-sm-2 col-form-label-sm">Security
                                                     Deposit<label style="color:Red">*</label></label>
                                                 <div class="col-sm-4">
-                                                    <input type="TEXT" name="no7" id="no7" value="<?php echo $basicid;?>">
+                                                    <input type="hidden" name="no7" id="no7" value="<?php echo $basicid;?>">
                                                     <input type="number" id="deposit" class="form-control"
                                                         name="security_deposit" placeholder="Deposit" required>
                                                 </div>
@@ -735,7 +762,7 @@ $basicid=$_GET['documentbasid'];
                                                 <button type="button" name="savepayment" id="savepayment"
                                                     class="btn btn-info" data-tt="tooltip" title=""
                                                     data-original-title="Click here to Save"
-                                                    >submit</button>
+                                                    >Save as Draft</button>
                                                 <input type="hidden" name="agreement_details" value="">
                                                 <a class="btn btn-primary previous " style="color: aliceblue" id="">
                                                     Previous<i class="mdi mdi-chevron-left"></i></a>

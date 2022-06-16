@@ -30,7 +30,7 @@ include("../config/config.php");
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
                 <h3><b>AGREERENT</b></h3>
-                <h6>Admin Login</h6>
+                <h6>Client Login</h6>
             </div>
             <div class="card-body">
                 <p class="login-box-msg">Sign in to start your session</p>

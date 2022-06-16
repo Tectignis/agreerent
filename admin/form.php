@@ -19,7 +19,7 @@ if(isset($_POST['submit'])){
       
 		header("location:newagreement.php?documentbasid=".$document_main);
 	}else{
-		echo "<script>alert('Something went wrong');</script>";
+		echo "<scrpt>alert('Something went wrong');</script>";
 	}
 }
 
@@ -28,11 +28,11 @@ if(isset($_POST['subm'])){
     $id=$_POST['no'];
 	$abbreviation=$_POST['examplemr'];
 	$name=$_POST['txtname'];
-	$address=$_POST['id1'];
+	$address=$_POST['address'];
 	$mobile=$_POST['mobile'];
 	$aadhaar=$_POST['txAdhar'];
 	$pancard=$_POST['txtPANCard'];
-  $age=$_POST['address'];
+  $age=$_POST['id1'];
 	
   $query=mysqli_query($conn,"select * from owner where document_no='$id' order by document_no desc");
 $num=mysqli_fetch_array($query);
@@ -69,7 +69,7 @@ if(isset($_POST['tenant'])){
   $email=$_POST['emailcheck'];
 	$passport=$_POST['passport'];
 	
-	$query1=mysqli_query($conn,"select * from tenant where document_no='$id' order by document_no desc");
+	$query1=mysqli_query($conn,"select document_no from tenant where document_no='$idtenant' order by document_no desc");
 $num1=mysqli_fetch_array($query1);
 $document1=$num1['document_no'];
 
@@ -106,21 +106,22 @@ if(isset($_POST['submitproperty'])){
   $chs=$_POST['chs'];
   $node=$_POST['node'];
 	
-  $query2=mysqli_query($conn,"select * from property_details where document_no='$id' order by document_no desc");
-$num2=mysqli_fetch_array($query2);
+  $query=mysqli_query($conn,"select * from property_details where document_no='$idproperty' order by document_no desc");
+$num2=mysqli_fetch_assoc($query);
 $document2=$num2['document_no'];
 
 if($document2==$idproperty){
-	$sql=mysqli_query($conn,"UPDATE `property_details` SET `document_no`='$idproperty',`property_type`='$type',`address`='$address',`sector`='$sector',`plot_no`='$plotno',`cidco`='$cidco',`area`='$area',`chs`='$chs',`node`='$node' WHERE document_no='$idproperty'");
+	$sql=mysqli_query($conn,"UPDATE `property_details` SET `document_no`='$idproperty',`property_type`='$type',`address`='$address',`sector`='$sector',`plot_no`='$plotno',`cidco`='$cidco',`area`='$area',`chs`='$chs',`node`='$node' WHERE document_no='$document2'");
 	if($sql==1){	
    echo "successfully updated";
   	}else{
 		echo "something went wrong";
 	}
 	
-	}
-else{
-	$sql=mysqli_query($conn,"INSERT INTO `property_details`(`document_no`,`property_type`, `address`, `sector`, `plot_no`,`cidco`, `area`, `chs`, `node`) VALUES 
+}
+
+	else{
+		$sql=mysqli_query($conn,"INSERT INTO `property_details`(`document_no`,`property_type`, `address`, `sector`, `plot_no`,`cidco`, `area`, `chs`, `node`) VALUES 
   ('$idproperty','$type','$address','$sector','$plotno','$cidco','$area','$chs','$node')");
 	if($sql==1){	
     echo "Successfully Added";
@@ -161,6 +162,7 @@ if(isset($_POST['submitmember'])){
         <th>Relation</th>
         <th>Age</th>
          <th>Gender</th>
+		 <th>Action</th>
       </tr>
     </thead>
     <tbody>";
@@ -170,6 +172,8 @@ if(isset($_POST['submitmember'])){
         <td>". $arr['relation'] ."</td>
        <td>". $arr['age'] ."</td>
        <td>". $arr['gender'] ."</td>
+	   <td><a href='newagreement.php?familydelid=".$arr['id']." ?>'
+                                                                    alt='delete'><i class='fas fa-trash'></i></a></td>
       </tr>";
        } 
     echo "</tbody>
@@ -221,6 +225,7 @@ if(isset($_POST['submitaminities'])){
       <tr>
         <th>Name</th>
         <th>Number Of Items</th>
+		<th>Action</th>
       </tr>
     </thead>
     <tbody>";
@@ -228,6 +233,8 @@ if(isset($_POST['submitaminities'])){
      echo " <tr>
         <td>". $arr['name']."</td>
         <td>". $arr['number'] ."</td>
+		<td><a href='newagreement.php?deleteid=".$arr['id']."'
+                                                                    alt='delete'><i class='fas fa-trash'></i></a></td>
       </tr>";
        } 
     echo "</tbody>
@@ -244,6 +251,18 @@ if(isset($_POST['savepayment'])){
   $date=$_POST['date'];  
   $tid=$_POST['tid'];
 
+  $query2=mysqli_query($conn,"select * from payment where document_no='$idpayment' order by document_no desc");
+$num2=mysqli_fetch_array($query2);
+$document2=$num2['document_no'];
+if($document2==$idpayment){
+$sql=mysqli_query($conn,"UPDATE `payment` SET `document_no`='$idpayment',`security_deposit`='$security_deposit',`rent_amount`='$rent_amount',`bank`='$bank',`method`='$method',`date`='$date',`tid`='$tid' WHERE document_no='$idpayment'");
+if($sql==1){
+echo "Successfully Added";
+}else{
+echo "Something went wrong";
+}	
+}
+else{
   $sql=mysqli_query($conn,"INSERT INTO `payment`(`document_no`, `security_deposit`, `rent_amount`, `bank`, `method`, `date`, `tid`) VALUES ('$idpayment','$security_deposit','$rent_amount','$bank','$method','$date','$tid')");
 if($sql==1){
 echo "Successfully Added";
@@ -251,6 +270,7 @@ echo "Successfully Added";
 echo "<script>
 alert('Something went wrong');
 </script>";
+}
 }
 }
 

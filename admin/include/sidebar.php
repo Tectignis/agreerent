@@ -151,7 +151,6 @@
                               Logout
                           </p>
                       </a>
-
                   </li>
               </ul>
           </nav>

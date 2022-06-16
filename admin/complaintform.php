@@ -110,11 +110,20 @@ $client_code=$_POST['number'];
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputsubject">Subject</label>
-                                            <select class="form-control" name="subject" id="exampleSelectRounded0">
-                                                <?php  ?>
-                                                <option value="Flat">FLat</option>
-                                                <option value="Shop">Shop</option>
-                                            </select>
+                                            <?php 
+                   $query=mysqli_query($conn,"select * from subject");
+                   ?>
+ 
+                       <select class="form-control select2" name="suject" style="width: 100%;" required>
+                         <option selected="selected" disabled>select</option>
+                         <?php
+                    while($sql=mysqli_fetch_array($query))
+                    {
+                      ?>
+
+                         <option value="<?php echo $sql['name']; ?>"> <?php echo $sql['name']; ?></option>
+                         <?php } ?>
+                       </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputdescription">Description</label>

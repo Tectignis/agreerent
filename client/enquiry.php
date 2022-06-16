@@ -35,7 +35,7 @@ include("../config/config.php");
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
         <!-- Navbar -->
-        <?php include 'include/footer.php'; ?>
+        <?php include 'include/header.php'; ?>
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
