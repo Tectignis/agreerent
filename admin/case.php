@@ -14,6 +14,9 @@ if(isset($_GET['gen'])){
    header("location:case.php");
   }
 }
+
+
+
 ?>
 
 <!DOCTYPE html>
