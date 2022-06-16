@@ -6,7 +6,13 @@ if(!isset($_SESSION['email'])) // If session is not set then redirect to Login P
 }
 include("../config/config.php");
 
-
+if(isset($_GET['delid'])){
+    $id=mysqli_real_escape_string($conn,$_GET['delid']);
+    $sql=mysqli_query($conn,"delete from leads where id='$id'");
+    if($sql=1){
+        header("location:paidleads.php");
+    }
+    }
 
 ?>
 
@@ -87,7 +93,7 @@ include("../config/config.php");
                                         <tbody>
                                         <?php 
                         
-                        $sql=mysqli_query($conn,"select * from `paidleads`");
+                        $sql=mysqli_query($conn,"select * from `leads`");
                         
                          while($arr=mysqli_fetch_array($sql)){
                         ?>
@@ -100,7 +106,7 @@ include("../config/config.php");
                               <td> <?php echo $arr['requirement'];?></td>
                             <td> <?php echo $arr['location'];?> </td>
                             <td>
-                            <a href="paidleads.php?delid=<?php echo $arr['id']; ?>"><button type="button" class="btn btn-danger btn-rounded btn-icon" onclick="ConfirmDelete()" style="color: aliceblue"> <i class="fas fa-trash"></i> </button></a>
+                            <a href="paidleads.php?delid=<?php echo $arr['id']; ?>"><button type="button" class="btn btn-danger btn-rounded btn-icon" style="color: aliceblue"> <i class="fas fa-trash"></i> </button></a>
                               
                           </tr>
                         
