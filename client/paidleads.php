@@ -81,7 +81,7 @@ if(isset($_GET['delid'])){
                                         <thead>
                                         <tr>
                            <th>Sr.No</th>
-					    	            <th>Client No</th>
+					    	<th>Client Name</th>
                             <th>Mobile No</th>
                             <th>Property Type</th>
                             <th>Area</th> 
