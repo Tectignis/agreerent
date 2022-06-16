@@ -26,7 +26,12 @@
         </a>
       </li>
       <li class="nav-item">
-                      <a class="nav-link" href="logout">
+                      <a href="profile" class="nav-link">
+                          <i class="nav-icon fas fa-user"></i>
+                      </a>
+                  </li>
+      <li class="nav-item">
+                      <a class="nav-link" href="logout" lass="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Logout">
                           <i class="fas fa-sign-out-alt"></i>
                       </a>
       </li>
