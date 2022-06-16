@@ -121,11 +121,12 @@ $basicid=$_GET['documentbasid'];
 
                                             <form class="forms-sample" method="post">
                                                 <div class="form-group row">
+                                                      <input type="text" id="no" name="no1"
+                                                            value="<?php echo $basicid;?>">
                                                     <label for="examplename" class="col-sm-2 col-form-label">Full
                                                         Name<label style="color:Red">*</label> </label>
                                                     <div class="col-sm-2">
-                                                        <input type="text" id="no" name="no1"
-                                                            value="<?php echo $basicid;?>">
+                                                      
 
                                                         <select class="form-control" name="abbreviation" id="examplemr"
                                                             required>
@@ -212,11 +213,12 @@ $basicid=$_GET['documentbasid'];
 
                                             <form class="forms-sample" method="post">
                                                 <div class="form-group row">
+                                                     <input type="hidden" id="no2" name="no2" value="<?php echo $basicid;?>"
+                                                            class="form-control" id="exampledno" readonly>
                                                     <label for="examplename" class="col-sm-2 col-form-label">Full
                                                         Name<label style="color:Red">*</label></label>
                                                     <div class="col-sm-2">
-                                                        <input type="hidden" id="no2" name="no2" value="<?php echo $basicid;?>"
-                                                            class="form-control" id="exampledno" readonly>
+                                                       
                                                         <select class="form-control" id="exampleSelectmr"
                                                             name="abbreviation" required>
                                                             <option value="" disabled selected hidden>select</option>
@@ -330,12 +332,13 @@ $basicid=$_GET['documentbasid'];
 
                                             <form class="forms-sample" method="post">
                                                 <div class="form-group row">
+                                                    <input type="hidden" name="no3" id="no3"
+                                                            value="<?php echo $basicid;?>">
                                                     <label for="examplename" class="col-2 col-form-label">Property
                                                         Type<label style="color:Red">*</label></label>
 
                                                     <div class="col-sm-2 col-lg-2">
-                                                        <input type="hidden" name="no3" id="no3"
-                                                            value="<?php echo $basicid;?>">
+                                                        
 
                                                         <!-- <input type="text" for="examplename" name="type" id="propertyTypeVal" class="form-control" readonly> -->
                                                         <select class="form-control" name="type" id="exampleproperties"
@@ -439,8 +442,8 @@ $basicid=$_GET['documentbasid'];
                                                 <div class="row">
                                                     <div class="col-sm-6">
                                                         <div class="form-group row">
-                                                            <input type="hidden" name="no4" id="no4"
-                                                                value="<?php echo $basicid;?>"> 
+                                                             <input type="hidden" name="no4" id="no4"
+                                                                value="<?php echo $basicid;?>">
                                                             <label for="examplename"
                                                                 class="col-sm-3 col-form-label-sm">Name<label
                                                                     style="color:Red">*</label></label>
