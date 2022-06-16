@@ -8,13 +8,15 @@ include("../config/config.php");
 
 if(isset($_POST['submit'])){
     $client_name=$_POST['client_name'];
+    $firm_name=$_POST['firm_name'];
     $mobile_no=$_POST['mobile_no'];
     $type=$_POST['type'];
     $requirement=$_POST['requirement'];
     $area=$_POST['area'];
     $location=$_POST['location'];
 
-    $sql = mysqli_query($conn,"INSERT INTO `paidleads`( `user_id`,`client_name`, `mobile`, `type`, `requirement`, `area`,`location`) VALUES ('".$_SESSION['id']."','$client_name','$mobile_no', '$type','$requirement','$area','$location')") ;
+
+    $sql = mysqli_query($conn,"INSERT INTO `leads`(`user_id`,`client_name`, `mobile`, `type`, `requirement`, `area`,`location`,`firm_name`) VALUES ('".$_SESSION['id']."','$client_name','$mobile_no', '$type','$requirement','$area','$location','$firm_name')");
 }
 
 
@@ -102,17 +104,28 @@ if(isset($_POST['submit'])){
                   </div>
 					  <div class="col-md-6 ">
             <div class="form-group row">
-                                                <label for="exampledno" class="col-sm-3 col-form-label">Client
+                                                <label for="exampledno" class="col-sm-3 col-form-label">Firm
                                                     Name<label style="color:Red">*</label></label>
                                                     <div class="col-sm-9">
-                                                    <select class="form-control select2" name="gender" style="width: 100%;" required>
-                                                        <option selected="selected">Alaska</option>
-                                                        <option>California</option>
-                                                        <option>Delaware</option>
-                                                        <option>Tennessee</option>
-                                                        <option>Texas</option>
-                                                        <option>Washington</option>
-                                                            </select>
+                                                    <?php 
+                  $query=mysqli_query($conn,"select * from agent_details");
+                
+                  ?>
+
+
+                      <select class="form-control select2" name="firm_name" style="width: 100%;">
+                        <option selected="selected">select</option>
+                        <?php
+                   while($sql=mysqli_fetch_array($query))
+                   {
+                     ?>
+
+
+                        ?>
+
+                        <option value="<?php echo $sql['agent_name']; ?>"> <?php echo $sql['agent_name']; ?></option>
+                        <?php } ?>
+                      </select>
                                                     <!-- <select class="form-control select2 select2-hidden-accessible" name="client_name" id="exampledno" style="width: 100%;" data-select2-id="3" tabindex="-1" aria-hidden="true">
                                                         <option selected="selected" data-select2-id="4">Alabama</option>
                                                         <option>Alaska</option>
@@ -127,13 +140,21 @@ if(isset($_POST['submit'])){
 						</div>					  
 						<div class="col-md-6 ">
                     <div class="form-group row">
+                      <label for="example" class="col-sm-3 col-form-label">Client Name<label style="color:Red">*</label></label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" id="example" name="client_name" placeholder="Enter Client Name"  required>
+                      </div>
+                    </div>
+						</div>
+
+            <div class="col-md-6 ">
+                    <div class="form-group row">
                       <label for="exampledno" class="col-sm-3 col-form-label">Mobile No.<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
                         <input type="tel" class="form-control" id="examplemob" name="mobile_no" placeholder="Enter Mobile Number" minlength="10" maxlength="10" required>
                       </div>
                     </div>
 						</div>
-
 
 
 					   <div class="col-md-6 ">
