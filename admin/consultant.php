@@ -189,7 +189,7 @@ if(isset($_POST['submit'])){
                                                 <option value="1">Activate</option>
 
                                             </select>
-                                        </div>
+                                                </div>
                                         
                                     </div>
                             </div>
