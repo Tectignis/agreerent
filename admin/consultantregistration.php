@@ -87,6 +87,11 @@ else{
     <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <!-- Bootstrap -->
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -180,13 +185,30 @@ else{
                                         </div>
                                     </div>
                                     <div class="form-group row">
+
                                         <label for="exampleemail" class="col-sm-2 col-form-label">Email ID<label
                                                 style="color:Red">*</label></label>
                                         <div class="col-sm-10">
-                                            <input type="email" class="form-control" name="email"
-                                                placeholder="Enter Email ID" required>
-
+                                           
+                                                <div class="input-group date" id="reservationdateAllowances" data-target-input="nearest">
+                                                <input type="email" class="form-control" name="email"
+                                                placeholder="Enter Email ID" required>                  
+                                              <div class="input-group-append" data-target="#reservationdateAllowances" data-toggle="datetimepicker">
+                                                <button type="button" class=" btn btn-primary" data-bs-toggle="collapse"
+                          href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Get an OTP</button>
+                                                 </div>
+                                              </div>
                                         </div>
+                                    </div>
+                                     <div class="form-group ">
+                                    <div class="collapse row" id="collapseExample">
+                                        <label for="examplepan" class="col-sm-2 ml-1 col-form-label"></label>
+                                        <input type="text" class="form-control col-4" name="rera"
+                                                placeholder="Enter OTP" required>
+                                        <div class="col-sm-2">
+                                            <button class="btn btn-primary">Submit</button>
+                                        </div>
+                                     </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="examplepan" class="col-sm-2 col-form-label">Rera No.</label>
