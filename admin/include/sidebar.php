@@ -90,13 +90,13 @@
 
                   <li class="nav-header">Consultant</li>
                   <li class="nav-item">
-                      <a href="" class="nav-link">
+                      <a href="consultant" class="nav-link">
                           <i class="nav-icon fa fa-id-badge"></i>
                           <p>
                               Consultant
                           </p>
                       </a>
-                      <ul class="nav nav-treeview">
+                      <!-- <ul class="nav nav-treeview">
                           <li class="nav-item">
                               <a href="consultantregistration.php" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
@@ -110,7 +110,7 @@
                               </a>
                           </li>
 
-                      </ul>
+                      </ul> -->
                   </li>
 
 
@@ -134,7 +134,7 @@
                   </li>
                   <li class="nav-header">Other</li>
                   <li class="nav-item">
-                      <a href="table" class="nav-link">
+                      <a href="todo" class="nav-link">
                           <i class="nav-icon fas fa-columns"></i>
                           <p>
                               To Do
