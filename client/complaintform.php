@@ -11,10 +11,11 @@ if(isset($_POST['submit'])){
   $subject=$_POST['subject'];
 	$description=$_POST['description'];
 $client_code=$_POST['number'];
-	
-	$sql = mysqli_query($conn,"INSERT INTO `ticket`( `user_id`,`complaint_code`, `email_id`, `subject`, `description`, `date`) VALUES ('".$_SESSION['id']."','$client_code','$email', '$subject','$description', NOw())") ;
+	date_default_timezone_set('Asia/Kolkata');
+    $date=date('Y-m-d H:i:s');
+	$sql = mysqli_query($conn,"INSERT INTO `ticket`( `user_id`,`complaint_code`, `email_id`, `subject`, `description`, `date`) VALUES ('".$_SESSION['id']."','$client_code','$email', '$subject','$description','$date')") ;
   if($sql==1){
-    echo "<script>alert('Register successfully'),window.location='complaintform.php';</script>";
+    echo "<script>alert('Register successfully'),window.location='listofcomplaint.php';</script>";
    
 
   }else{
@@ -83,19 +84,16 @@ $client_code=$_POST['number'];
                                 <!-- form start -->
                                 <form method="post">
                                     <?php $sql=mysqli_query($conn,"select * from ticket where user_id='".$_SESSION['id']."'");
-                            $query =mysqli_query($conn,"select * from agent_details where user_id='".$_SESSION['id']."'");
                       $dnk=mysqli_num_rows($sql);
                       $lastid=$dnk+1;
-                      $arr=mysqli_fetch_array($query);
-                      $name=$arr['agent_name'];
-                      $first=$name;
+                     
                       
                       $res= preg_replace('~\S\K\S*\s*~u', '', $first);
                       if(empty($lastid)){
-						           $number=$res."-000";
+						           $number="ARCN-000";
 					           }else{
 						          $id=str_pad($lastid + 0, 3,0, STR_PAD_LEFT);
-					        	  $number=$res."CP"."-$id";
+					        	  $number=$res."ARCN"."-$id";
 					            }	
                     
                       
@@ -110,7 +108,7 @@ $client_code=$_POST['number'];
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputsubject">Subject</label>
-                                            <label for="exampleInputsubject">Subject</label>
+                                           
                                             <?php 
                    $query=mysqli_query($conn,"select * from subject");
                    ?>
