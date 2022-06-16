@@ -105,11 +105,11 @@ if($sql=1){
                                             <?php 
                         
                         $sql=mysqli_query($conn,"select * from `ticket`");
-                     
+                     $count=1;
                          while($arr=mysqli_fetch_array($sql)){
                         ?>
                                             <tr>
-                                                <td> <?php echo $arr['id'];?> </td>
+                                                <td> <?php echo $count;?> </td>
                                                 <td> <?php echo $arr['user_id'];?> </td>
                                                 <td> <?php echo $arr['date'];?></td>
                                                 <td> <?php echo $arr['complaint_code'];?></td>
@@ -126,7 +126,7 @@ if($sql=1){
 
                                             </tr>
 
-                                            <?php   } ?>
+                                            <?php $count++;   } ?>
                                         </tbody>
                                     </table>
                                 </div>
