@@ -8,7 +8,7 @@
       <?php 
       $name=$_SESSION['name'];
       $id=$_SESSION['id'];
-      $sql="SELECT * FROM agent_details WHERE user_id='".$_SESSION['id']."'";
+      $sql="SELECT * FROM users WHERE user_id='".$_SESSION['id']."'";
         $result=mysqli_query($conn,$sql);
         $row=mysqli_fetch_assoc($result);
       ?>
@@ -17,11 +17,11 @@
           <!-- Sidebar user panel (optional) -->
           <div class="user-panel mt-3 pb-3 mb-3 d-flex">
               <div class="image">
-                  <img src="dist/img/profile/<?php echo $row['image']; ?>" class="img-circle elevation-2"
+                  <img src="dist/img/<?php echo $row['image']; ?>" class="img-circle elevation-2"
                       alt="User Image">
               </div>
               <div class="info">
-                  <a href="" class="d-block"><?php echo $name; ?></a>
+                  <a href="" class="d-block"><?php echo  $name; ?></a>
               </div>
           </div>
 
