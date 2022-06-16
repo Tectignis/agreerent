@@ -87,7 +87,6 @@ else{
     <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
-
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -167,7 +166,7 @@ else{
                                         <label for="exampleInputMobile" class="col-sm-2 col-form-label">Office
                                             Address<label style="color:Red">*</label></label>
                                         <div class="col-sm-10">
-                                            <textarea class="form-control" name="office_address" style="width:100%;" rows="2"
+                                            <textarea name="office_address" style="width:100%;" rows="2"
                                                 placeholder="Enter Address" required></textarea>
                                         </div>
                                     </div>
@@ -181,32 +180,14 @@ else{
                                         </div>
                                     </div>
                                     <div class="form-group row">
-
                                         <label for="exampleemail" class="col-sm-2 col-form-label">Email ID<label
                                                 style="color:Red">*</label></label>
                                         <div class="col-sm-10">
-                                           
-                                                <div class="input-group date" id="reservationdateAllowances" data-target-input="nearest">
-                                                <input type="email" id="email" class="form-control" name="email"
-                                                placeholder="Enter Email ID" required>                  
-                                              <div class="input-group-append" data-target="#reservationdateAllowances" data-toggle="datetimepicker">
-                                                <button type="button" id="otpBtn" class=" btn btn-primary" data-bs-toggle="collapse"
-                          href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Get an OTP</button>
-                                                 </div>
-                                              </div>
+                                            <input type="email" class="form-control" name="email"
+                                                placeholder="Enter Email ID" required>
+
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                 <div class="collapse row" id="collapseExample">
-                                     <label for="examplepan" class="col-sm-2 ml-1 col-form-label"></label>
-                                         <input type="text" class="form-control col-4" name="rera"
-                                                 placeholder="Enter OTP" required>
-                                               <div class="col-sm-2">
-                                             <button class="btn btn-primary">Submit</button>
-                                                 </div>
-                                            </div>
-                                           </div>
-                                     
                                     <div class="form-group row">
                                         <label for="examplepan" class="col-sm-2 col-form-label">Rera No.</label>
                                         <div class="col-sm-10">
@@ -275,7 +256,6 @@ else{
         bsCustomFileInput.init();
     });
     </script>
-   
 </body>
 
 </html>
