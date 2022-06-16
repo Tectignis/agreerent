@@ -124,7 +124,7 @@ $basicid=$_GET['documentbasid'];
                                                     <label for="examplename" class="col-sm-2 col-form-label">Full
                                                         Name<label style="color:Red">*</label> </label>
                                                     <div class="col-sm-2">
-                                                        <input type="hidden" id="no" name="no1"
+                                                        <input type="text" id="no" name="no1"
                                                             value="<?php echo $basicid;?>">
 
                                                         <select class="form-control" name="abbreviation" id="examplemr"
