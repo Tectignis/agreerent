@@ -34,16 +34,24 @@ if(isset($_POST['subm'])){
 	$pancard=$_POST['txtPANCard'];
   $age=$_POST['address'];
 	
+  $query=mysqli_query($conn,"select * from owner where document_no='$id'");
+$num=mysqli_num_rows($query);
+$document=$num['document_no'];
+if($document!=$id){
 	$sql=mysqli_query($conn,"INSERT INTO `owner`(`document_no`, `abbreviation`, `fullname`,`age`, `address`, `mobile`, `aadhaar`, `pan_card`) VALUES ('$id','$abbreviation','$name','$age','$address','$mobile','$aadhaar','$pancard')");
 	if($sql==1){	
-	
-
-	echo "200";
-
-	
 	}else{
 	echo "Something went wrong";
 	}
+	}
+else{
+	$sql=mysqli_query($conn,"UPDATE `owner` SET `document_no`='$id',`abbreviation`='$abbreviation',`fullname`='$name',`age`='$age',`address`='$address',`mobile`='$mobile',`aadhaar`='$aadhaar',`pan_card`='$pancard' WHERE document_no='$id'");
+	if($sql==1){	
+     echo "successfully updated";
+	}else{
+		echo "something went wrong";
+	}
+}
 }
 
 //tenant
@@ -60,6 +68,11 @@ if(isset($_POST['tenant'])){
   $email=$_POST['emailcheck'];
 	$passport=$_POST['passport'];
 	
+	$query=mysqli_query($conn,"select * from tenant where document_no='$id' order by document_no desc");
+$num=mysqli_num_rows($query);
+$document=$num['document_no'];
+
+	if($document!=$idtenant){
 	$sql=mysqli_query($conn,"INSERT INTO `tenant`(`document_no`, `abbreviation`, `fullname`,`age`, `address`,`permanent_address`, `mobile`, `email`,`passport`,`aadhaar`, `pan_card`) VALUES 
   ('$idtenant','$surname','$name','$age','$address','$permanent_address','$mobile','$email','$passport','$aadhaar','$pancard')");
 	if($sql==1){	
@@ -67,6 +80,15 @@ if(isset($_POST['tenant'])){
   	}else{
 		echo "Something went wrong";
 	}
+	}
+	else{
+	$sql=mysqli_query($conn,"UPDATE `tenant` SET `document_no`='$idtenant',`abbreviation`='$surname',`fullname`='$name',`age`='$age',`address`='$address',`permanent_address`='$permanent_address',`mobile`='$mobile',`email`='$email',`passport`='$passport',`aadhaar`='$aadhaar',`pan_card`='$pancard' WHERE document_no='$idtenant'");
+	if($sql==1){	
+     echo "successfully updated";
+  	}else{
+		echo "something went wrong";
+	}
+}
 }
 
 
@@ -82,6 +104,11 @@ if(isset($_POST['submitproperty'])){
   $chs=$_POST['chs'];
   $node=$_POST['node'];
 	
+  $query=mysqli_query($conn,"select * from property_details where document_no='$id' order by document_no desc");
+$num=mysqli_num_rows($query);
+$document=$num['document_no'];
+
+if($document!=$idproperty){
 	$sql=mysqli_query($conn,"INSERT INTO `property_details`(`document_no`,`property_type`, `address`, `sector`, `plot_no`,`cidco`, `area`, `chs`, `node`) VALUES 
   ('$idproperty','$type','$address','$sector','$plotno','$cidco','$area','$chs','$node')");
 	if($sql==1){	
@@ -89,6 +116,15 @@ if(isset($_POST['submitproperty'])){
   	}else{
 		echo "Something went wrong";
 	}
+	}
+else{
+	$sql=mysqli_query($conn,"UPDATE `property_details` SET `document_no`='$idproperty',`property_type`='$type',`address`='$address',`sector`='$sector',`plot_no`='$plotno',`cidco`='$cidco',`area`='$area',`chs`='$chs',`node`='$node' WHERE document_no='$idproperty'");
+	if($sql==1){	
+   echo "successfully updated";
+  	}else{
+		echo "something went wrong";
+	}
+}
 }
 
 
@@ -196,6 +232,26 @@ if(isset($_POST['submitaminities'])){
 
 }
 //payment
+if(isset($_POST['savepayment'])){
+	$idpayment=$_POST['no7'];
+	$security_deposit=$_POST['deposit'];  
+  $rent_amount=$_POST['rent'];
+  $method=$_POST['checkselec'];  
+  $bank=$_POST['bank'];  
+  $date=$_POST['date'];  
+  $tid=$_POST['tid'];
+
+  $sql=mysqli_query($conn,"INSERT INTO `payment`(`document_no`, `security_deposit`, `rent_amount`, `bank`, `method`, `date`, `tid`) VALUES ('$idpayment','$security_deposit','$rent_amount','$bank','$method','$date','$tid')");
+if($sql==1){
+echo "Successfully Added";
+}else{
+echo "<script>
+alert('Something went wrong');
+</script>";
+}
+}
+
+//update payment
 if(isset($_POST['submitpayment'])){
 	$idpayment=$_POST['no7'];
 	$security_deposit=$_POST['deposit'];  
@@ -249,9 +305,7 @@ else if($name1==""){
 echo "please fill witness details";
 }
 else{
-$sql=mysqli_query($conn,"INSERT INTO
-`payment`(`document_no`,`security_deposit`,`rent_amount`,`bank`,`method`,`date`,`tid`) VALUES
-('$idpayment','$security_deposit','$rent_amount','$bank','$method','$date','$tid')");
+$sql=mysqli_query($conn,"UPDATE `payment` SET `document_no`='$idpayment',`security_deposit`='$security_deposit',`rent_amount`='$rent_amount',`bank`='$bank',`method`='$method',`date`='$date',`tid`='$tid' WHERE document_no='$idpayment'");
 if($sql==1){
 echo "Successfully Added";
 }else{

@@ -284,7 +284,6 @@ elseif($status==0){
 <script>
 $(document).ready(function() {
     $('#table_id').DataTable();
-
     $('#table_check').DataTable();
 });
 </script>
