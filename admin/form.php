@@ -106,7 +106,7 @@ if(isset($_POST['submitproperty'])){
   $node=$_POST['node'];
 	
   $query=mysqli_query($conn,"select * from property_details where document_no='$id' order by document_no desc");
-$num=mysqli_num_rows($query);
+$num=mysqli_fetch_array($query);
 $document=$num['document_no'];
 
 if($document!=$idproperty){

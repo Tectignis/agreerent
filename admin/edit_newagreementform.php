@@ -17,7 +17,7 @@ if(isset($_POST['subm'])){
   $age=$_POST['id1'];
 	
 $query=mysqli_query($conn,"select * from owner where document_no='$id' order by document_no desc");
-$num=mysqli_num_rows($query);
+$num=mysqli_fetch_array($query);
 $document=$num['document_no'];
 if($document!=$id){
 	$sql=mysqli_query($conn,"INSERT INTO `owner`(`document_no`, `abbreviation`, `fullname`,`age`, `address`, `mobile`, `aadhaar`, `pan_card`) VALUES ('$id','$abbreviation','$name','$age','$address','$mobile','$aadhaar','$pancard')");
@@ -52,7 +52,7 @@ if(isset($_POST['submitenan'])){
 	$passport=$_POST['passport'];
 
 $query=mysqli_query($conn,"select * from tenant where document_no='$id' order by document_no desc");
-$num=mysqli_num_rows($query);
+$num=mysqli_fetch_array($query);
 $document=$num['document_no'];
 
 	if($document!=$idtenant){
@@ -87,7 +87,7 @@ if(isset($_POST['submitproperty'])){
   $node=$_POST['node'];
 
 $query=mysqli_query($conn,"select * from property_details where document_no='$id' order by document_no desc");
-$num=mysqli_num_rows($query);
+$num=mysqli_fetch_array($query);
 $document=$num['document_no'];
 
 if($document!=$idproperty){

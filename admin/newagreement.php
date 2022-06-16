@@ -120,7 +120,7 @@ $basicid=$_GET['documentbasid'];
                                         <div class="card-body">
 
                                             <form class="forms-sample" method="post">
-                                                 <input type="text" id="no" name="no1"
+                                                 <input type="hidden" id="no" name="no1"
                                                             value="<?php echo $basicid;?>" readonly>
                                                 <div class="form-group row">
                                                      
@@ -213,7 +213,7 @@ $basicid=$_GET['documentbasid'];
                                         <div class="card-body">
 
                                             <form class="forms-sample" method="post">
-                                                  <input type="text" id="no2" name="no2" value="<?php echo $basicid;?>"
+                                                  <input type="hidden" id="no2" name="no2" value="<?php echo $basicid;?>"
                                                             class="form-control" id="exampledno" readonly >
                                                 <div class="form-group row">
                                                    
