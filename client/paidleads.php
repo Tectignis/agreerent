@@ -94,11 +94,11 @@ if(isset($_GET['delid'])){
                                         <?php 
                         
                         $sql=mysqli_query($conn,"select * from `leads`");
-                        
+                        $count=1;
                          while($arr=mysqli_fetch_array($sql)){
                         ?>
                                             <tr>
-                             <td> <?php echo $arr['id'];?></td>
+                             <td> <?php echo $count;?></td>
                             <td> <?php echo $arr['client_name'];?> </td>
                             <td> <?php echo $arr['mobile'];?></td>
                             <td> <?php echo $arr['type'];?></td>
@@ -110,7 +110,7 @@ if(isset($_GET['delid'])){
                               
                           </tr>
                         
-                        <?php } ?>
+                        <?php $count++; } ?>
                                         </tbody>
                                     </table>
                                 </div>

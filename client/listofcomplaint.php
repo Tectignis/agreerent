@@ -1,5 +1,3 @@
-
-
 <?php
 session_start();
 if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
@@ -10,9 +8,9 @@ include("../config/config.php");
 
 if(isset($_GET['delid'])){
 $id=mysqli_real_escape_string($conn,$_GET['delid']);
-$dnk=mysqli_query($conn,"delete from ticket where id='$id'");
-if($dnk=1){
-    header("location:listofcomplaint.php");
+$sql=mysqli_query($conn,"delete from paidleads where id='$id'");
+if($sql=1){
+    header("location:paidleads.php");
 }
 }
 
@@ -81,19 +79,30 @@ if($dnk=1){
                         <div class="col-12">
                             <!-- /.card -->
                             <div class="card">
-                                
+                                <div class="card-header">
+
+                                    <div class="card-tools">
+                                        <ul class="nav nav-pills ml-auto">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" href="complaintform" data-tt="tooltip" title=""
+                                                    data-original-title="Click here to Add New Enquiry"><i
+                                                        class="fas fa-user-friends mr-2"></i>Add</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                                 <th>Sr.No</th>
-                                                <th>Client Code</th>
+                                                
                                                 <th>Date & Time</th>
                                                 <th>Complaint No</th>
                                                 <th>Subject</th>
                                                 <th>Status</th>
-                                                <th>Action</th>
+                                               
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -105,35 +114,14 @@ if($dnk=1){
                         ?>
                                             <tr>
                                                 <td> <?php echo $count;?> </td>
-                                                <td> <?php echo $arr['user_id'];?> </td>
+                                                
                                                 <td> <?php echo $arr['date'];?></td>
                                                 <td> <?php echo $arr['complaint_code'];?></td>
                                                 <td> <?php echo $arr['subject'];?> </td>
-                                                <td> 
-                                                <?php
-                                                $status=$arr['status'];
-                                                if($status=='0'){
-                                                    echo '<span class="badge badge-success">Open</span>';
-                                                }
-                                                else if($status=='Open'){
-                                                    echo '<span class="badge badge-success">Open</span>';
-                                                }
-                                                else if($status=='In Proccess'){
-                                                    echo '<span class="badge badge-danger">In Proccess</span>';
-                                                }else if($status=='Hold On'){
-                                                   echo '<span class="badge badge-warning">Hold On</span>';
-                                                }else if($status=='Closed'){
-                                                    echo '<span class="badge badge-secondary">Closed</span>';
-                                                }
-                                                ?>    
-                                                </td>
+                                                <td>  <span class="badge badge-danger">Danger</span></td>
                                                 
-                                                <td>
-                                                <button class="btn btn-sm btn-primary dnkeditid" data-id='<?php echo $arr['id']; ?>'><i class="fas fa-edit"></i></button>
-                                                    <a href="listofcomplaint.php?delid=<?php echo $arr['id']; ?>"><button
-                                                            type="button" class="btn btn-danger btn-rounded btn-icon"
-                                                            onclick="ConfirmDelete()" style="color: aliceblue"> <i
-                                                                class="fas fa-trash"></i> </button></a>
+                                               
+                                                
 
                                             </tr>
 
@@ -154,10 +142,92 @@ if($dnk=1){
             <!-- /.content -->
         </div>
         
-      <div class="modal fade" id="dnkModal">
+      <div class="modal fade" id="modal-default">
         <div class="modal-dialog">
-          <div class="modal-content body1">
-            
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Update</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">   
+                <div class="col-4">
+                <b> Date & Time :</b><br>
+                </div>
+                <div class="col-8">
+                <p> 15/02/2022 08:00am </p>
+                </div>
+                </div>
+
+                <div class="row">   
+                 <div class="col-4">
+                <b> Client Code :</b><br>
+                </div>
+                <div class="col-8">
+                <p> 123654 </p>
+                </div>
+                </div>
+
+                <div class="row">   
+                 <div class="col-4">
+                <b> Complaint Code :</b><br>
+                </div>
+                <div class="col-8">
+                <p> 15555 </p>
+                </div>
+                </div>
+
+                <div class="row">   
+                 <div class="col-4">
+                <b> Subject :</b><br>
+                </div>
+                <div class="col-8">
+                <p> Developing </p>
+                </div>
+                </div>
+
+                <div class="row">   
+                 <div class="col-4">
+                <b> Description :</b><br>
+                </div>
+                <div class="col-8">
+                <p> Lorem ipsum dolor sit amet. </p>
+                </div>
+                </div>
+
+                <div class="row">   
+                 <div class="col-4">
+                <b> Comment :</b><br>
+                </div>
+                <div class="col-8">
+                <p> <textarea class="form-control" name="" id=""  rows="2"></textarea> </p>
+                </div>
+                </div>
+
+                <div class="row">   
+                 <div class="col-4">
+                <b> Status :</b><br>
+                </div>
+                <div class="col-8">
+                <p> <select class="form-control select2" name="gender" style="width: 100%;" required>
+                <option selected="selected" disable>Status</option>
+                                <option>Open</option>
+                                <option>In Proccess</option>
+                                <option>Hold On</option>
+                                <option>Closed</option>
+                              </select></p>
+                </div>
+                </div>
+
+
+        
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Submit</button>
+            </div>
           </div>
           <!-- /.modal-content -->
         </div>
@@ -195,23 +265,7 @@ if($dnk=1){
     <!-- AdminLTE for demo purposes -->
     <!-- Page specific script -->
 
-<script>
-$(document).ready(function(){
-$('.dnkeditid').click(function(){
-  let dnkid = $(this).data('id');
 
-  $.ajax({
-   url: 'form.php',
-   type: 'post',
-   data: {dnkid: dnkid},
-   success: function(response1){ 
-     $('.body1').html(response1);
-     $('#dnkModal').modal('show'); 
-   }
- });
-});
-});
-</script>
 </body>
 <script>
      $(function() {
