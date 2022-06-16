@@ -286,7 +286,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                     <label for="examplename" class="col-sm-2 col-form-label">Full
                                                         Name<label style="color:Red">*</label> </label>
                                                     <div class="col-sm-2">
-                                                        <input type="text" id="no1" name="no1"
+                                                        <input type="hidden" id="no1" name="no1"
                                                             value="<?php echo $basiid;?>">
                                                         <select class="form-control" name="abbreviation" id="examplemr"
                                                             required>
