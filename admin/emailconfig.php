@@ -80,11 +80,9 @@ if(isset($_POST['emailSettingSubmit'])){
               <form class="form-horizontal" name="emailSetupForm" id="emailSetupForm" method="post" enctype="multipart/form-data">
                             <div class="card card-info">
                                 <div class="card-header">
-                                <h3 class="card-title mt-4">Email setup</h3>
+                                <h3 class="card-title">Email setup</h3>
                                 </div>
                                 <div class="card-body">
-                               
-                                
                                 <div class="form-group row">
                                     <label for="inputPassword3" class="col-sm-2 col-form-label">Host<span class="text-danger">*</span></label>
                                     <div class="col-sm-4">
@@ -120,12 +118,12 @@ if(isset($_POST['emailSettingSubmit'])){
                                     <span id="err_password" class="error invalid-feedback"></span>
                                     </div>
                                 </div>
-                                
+                                <div class="form-group row">
+                                    <input type="hidden" name="csrf_zivaan_pro" value="0d0916ebc5a1ddc9c6a32ef256602c6d">
+                                     <button type="submit" id="emailSettingSubmit" name="emailSettingSubmit" class="btn btn-primary" data-tt="tooltip" title="Click here to Save">Save</button>
                                 </div>
-                                <div class="card-footer">
-                                <input type="hidden" name="csrf_zivaan_pro" value="0d0916ebc5a1ddc9c6a32ef256602c6d">
-                                <button type="submit" id="emailSettingSubmit" name="emailSettingSubmit" class="btn btn-primary" data-tt="tooltip" title="Click here to Save">Save</button>
-                                </div>
+
+
                             </div>
                             </form>
             </div>
