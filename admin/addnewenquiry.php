@@ -17,7 +17,7 @@ if(isset($_POST['submit'])){
 	$sql=mysqli_query($conn,"INSERT INTO `enquiry`(`user_id`,`name`,`mob_no`,`email`,`description`) VALUES ('".$_SESSION['id']."','$name','$mob_no','$email','$description')");
   
 	if($sql==1){	
-    header("location:equiry.php");
+    header("location:enquiry.php");
 	}else{
 		echo "<script>alert('Something went wrong');</script>";
 	}
