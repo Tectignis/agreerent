@@ -19,18 +19,19 @@ if(isset($_POST['subm'])){
 $query=mysqli_query($conn,"select * from owner where document_no='$id' order by document_no desc");
 $num=mysqli_num_rows($query);
 $document=$num['document_no'];
-if($document!=$id){
-	$sql=mysqli_query($conn,"INSERT INTO `owner`(`document_no`, `abbreviation`, `fullname`,`age`, `address`, `mobile`, `aadhaar`, `pan_card`) VALUES ('$id','$abbreviation','$name','$age','$address','$mobile','$aadhaar','$pancard')");
-	if($sql==1){	
-    echo "successfully updated";
-	}else{
-		echo "something went wrong";
-	}
-}
-else{
+if($document==$id){
 	$sql=mysqli_query($conn,"UPDATE `owner` SET `document_no`='$id',`abbreviation`='$abbreviation',`fullname`='$name',`age`='$age',`address`='$address',`mobile`='$mobile',`aadhaar`='$aadhaar',`pan_card`='$pancard' WHERE document_no='$id'");
 	if($sql==1){	
      echo "successfully updated";
+	}else{
+		echo "something went wrong";
+	}
+	
+}
+else{
+	$sql=mysqli_query($conn,"INSERT INTO `owner`(`document_no`, `abbreviation`, `fullname`,`age`, `address`, `mobile`, `aadhaar`, `pan_card`) VALUES ('$id','$abbreviation','$name','$age','$address','$mobile','$aadhaar','$pancard')");
+	if($sql==1){	
+    echo "successfully updated";
 	}else{
 		echo "something went wrong";
 	}
