@@ -90,19 +90,19 @@ th {
 
 <body>
 
-
-
-    <p><b>WHERE AS : </b> </p>
-    <p>The LICENSOR is fully seized and possessed of or otherwise well and sufficiently entitled to hold the following
-        FLAT/SHOP:</p> <br>
-
-    <div>
-        <table style="width: 100%;">
-            <?php 
+<?php 
 	
 	$sql=mysqli_query($conn,"select * from property_details where document_no='$fid'");
 	 while($arr=mysqli_fetch_array($sql)){
 	?>
+
+    <p><b>WHERE AS : </b> </p>
+    <p>The LICENSOR is fully seized and possessed of or otherwise well and sufficiently entitled to hold the following
+    <?php echo $arr['property_type'];?>:</p> <br>
+
+    <div>
+        <table style="width: 100%;">
+            
             <tbody>
 
                 <tr>
@@ -130,25 +130,36 @@ th {
             <?php } ?>
 
         </table>
+        <?php 
+	
+	$sql=mysqli_query($conn,"select * from property_details where document_no='$fid'");
+	 while($arr=mysqli_fetch_array($sql)){
+	?>
+
     </div><br>
-    hereinafter called and referred to as THE SAID FLAT / SHOP.<br>
+    hereinafter called and referred to as THE SAID<b> <?php echo $arr['property_type'];?></b>.<br>
     <p><b>AND WHERE AS:</b></p>
     <p>The owner who on account of certain personal reasons is not occupying the said premise; and the LICENSEE being
         temporarily in need of a RESIDENTIAL ACCOMODATION/BUSINESS PREMISES requested the owner to give on ''LEAVE &
         LICENSE BASIS , as a temporary facility, the use of the said premises, together with the fixtures and lying
-        thereon, on the terms and conditions recorded hereinafter.</p>
+        thereon, on the terms and conditions recorded hereinafter.</p>  <?php } ?>
     <p><b>AND WHERE AS:</b></p>
+    <?php 
+	
+	$sql=mysqli_query($conn,"select * from tenant where document_no='$fid'");
+	 while($arr=mysqli_fetch_array($sql)){
+	?>
     <p>As per the recent orders from the Department of police, the Licensee furnish the following details and further
         agrees to co-operate in getting No Objection Certificate from the local police by appearing personally as when
         called by the police under which jurisdiction the said premise is covered.</p>
-    <p>iPermanent Native Address:</p>
-    <p>iiPresent Address :</p>
-
+    <p>iPermanent Native Address:&nbsp;<?php echo $arr['permanent_address'];?></p>
+    <p>iiPresent Address :&nbsp;<?php echo $arr['address'];?></p>
+    <?php } ?>
     <p>iiiThe photograph of the LICENSOR and LICENSEE is a appended in appropriate place.</p>
     <?php 
 	
-	$sql=mysqli_query($conn,"select new_agreement.date_of_agreement as doa,new_agreement.no_of_month as dno, payment.* from new_agreement inner join payment on new_agreement.document_no=payment.document_no where new_agreement.document_no='$fid'");
-	 while($arr=mysqli_fetch_array($sql)){
+	$sql=mysqli_query($conn,"SELECT * FROM `new_agreement` inner join payment on new_agreement.document_no=payment.document_no WHERE new_agreement.document_no='$fid'");
+	$arr=mysqli_fetch_array($sql);
 		$amt_words=$arr['rent_amount'];
 		$get_amount = AmountInWords($amt_words);
 	?>
@@ -157,7 +168,7 @@ th {
     <p><b>NOW THIS AGREEMENT WITNESSETH AS UNDER</b></p>
     <p>1. The owner do hereby grants to the LICENSEE his/her permission to enter upon, occupy and look after,
         temporarily, the said premises for a certain period of MONTHS, which shall commence from DAY of
-        ___________________. And shall expire on this day of _________________</p>
+        <?php echo $arr['date_of_agreement'];?>. And shall expire on this day of <?php echo $arr['property_type'];?></p>
     <p>2. The LICENSEE convents with the owenr that LICENSEE shall observe and perform the following terms and
         conditions:</p>
     <p>b To pay a Monthly compensation of sum of <b>Rs.<?php echo $arr['rent_amount'];?>/- </b>
@@ -165,7 +176,6 @@ th {
         each ensuring month.</p>
     <p>C The Electricity, water and any others applicable service charges shall be regularly paid by the LICENSEE, where
         society maintenance charges and Lease Tax , property TAX , if any shall be paid by the OWNER/LICENSOR.</p>
-    <?php } ?>
     <p>dTo use the said premise for RESIDENTIAL/BUSINESS purpose only . Note to cause ,permit or suffer anything in any
         way which may become a nuisance or annoyance or cause damage/ loss to the said premises or to the neighbor's
         property.</p>
@@ -254,12 +264,9 @@ th {
     </table>
     <?php 
 	
-	$sql=mysqli_query($conn,"select * from agent_details where document_no='$fid' AND user_id='".$_SESSION['id']."'");
+	$sql=mysqli_query($conn,"SELECT * FROM `agent_details` WHERE user_id='$fid'");
 	 while($arr=mysqli_fetch_array($sql)){
 
-	 
-
-	 
 	?>
     <p>IN CASE THE LEAVE & LICENSE AGREEMENT IS EXTENDED THEN THE LICENSEE SHALL PAY THE COMMISSION/BROKERAGE TO THE
         ESTATE AGENT_____________________________________ </p>
