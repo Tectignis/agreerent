@@ -150,7 +150,7 @@
                       </a>
                   </li>
                   <li class="nav-item">
-                      <a href="complaintform" class="nav-link">
+                      <a href="listofcomplaint" class="nav-link">
                           <i class="nav-icon fa fa-clipboard-list"></i>
                           <p>
                               Complaint
