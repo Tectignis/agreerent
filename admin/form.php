@@ -19,7 +19,7 @@ if(isset($_POST['submit'])){
       
 		header("location:newagreement.php?documentbasid=".$document_main);
 	}else{
-		echo "<script>alert('Something went wrong');</script>";
+		echo "<scrpt>alert('Something went wrong');</script>";
 	}
 }
 
@@ -69,7 +69,7 @@ if(isset($_POST['tenant'])){
   $email=$_POST['emailcheck'];
 	$passport=$_POST['passport'];
 	
-	$query1=mysqli_query($conn,"select document_no from tenant where document_no='$id' order by document_no desc");
+	$query1=mysqli_query($conn,"select document_no from tenant where document_no='$idtenant' order by document_no desc");
 $num1=mysqli_fetch_array($query1);
 $document1=$num1['document_no'];
 
@@ -251,6 +251,18 @@ if(isset($_POST['savepayment'])){
   $date=$_POST['date'];  
   $tid=$_POST['tid'];
 
+  $query2=mysqli_query($conn,"select * from payment where document_no='$idpayment' order by document_no desc");
+$num2=mysqli_fetch_array($query2);
+$document2=$num2['document_no'];
+if($document2==$idpayment){
+$sql=mysqli_query($conn,"UPDATE `payment` SET `document_no`='$idpayment',`security_deposit`='$security_deposit',`rent_amount`='$rent_amount',`bank`='$bank',`method`='$method',`date`='$date',`tid`='$tid' WHERE document_no='$idpayment'");
+if($sql==1){
+echo "Successfully Added";
+}else{
+echo "Something went wrong";
+}	
+}
+else{
   $sql=mysqli_query($conn,"INSERT INTO `payment`(`document_no`, `security_deposit`, `rent_amount`, `bank`, `method`, `date`, `tid`) VALUES ('$idpayment','$security_deposit','$rent_amount','$bank','$method','$date','$tid')");
 if($sql==1){
 echo "Successfully Added";
@@ -258,6 +270,7 @@ echo "Successfully Added";
 echo "<script>
 alert('Something went wrong');
 </script>";
+}
 }
 }
 
