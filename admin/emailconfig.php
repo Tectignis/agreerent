@@ -62,28 +62,21 @@ if(isset($_POST['emailSettingSubmit'])){
       </div><!-- /.container-fluid -->
     </section>
 
-    <!-- Main content -->
+  
     <section class="content">
-      <div class="container-fluid">
         <div class="row">
-          <!-- left column -->
-          <div class="col-12">
-            <!-- general form elements -->
-            <div class="card card-primary">
-              
-              <!-- /.card-header -->
-              <!-- form start -->
-              <?php
+          <div class="col-md-12">
+          <?php
               $sql=mysqli_query($conn,"select * from email_configuration");
               $arr=mysqli_fetch_array($sql);
               ?>
-              <form class="form-horizontal" name="emailSetupForm" id="emailSetupForm" method="post" enctype="multipart/form-data">
-                            <div class="card card-info">
-                                <div class="card-header">
-                                <h3 class="card-title">Email setup</h3>
-                                </div>
-                                <div class="card-body">
-                                <div class="form-group row">
+            <form class="form-horizontal" name="emailSetupForm" id="emailSetupForm" method="post" enctype="multipart/form-data">
+              <div class="card card-info">
+                <div class="card-header">
+                  <h3 class="card-title">Email setup</h3>
+                </div>
+                <div class="card-body">
+                <div class="form-group row">
                                     <label for="inputPassword3" class="col-sm-2 col-form-label">Host<span class="text-danger">*</span></label>
                                     <div class="col-sm-4">
                                     <input type="text" name="host" value="<?php echo $arr['host'] ?>" class="form-control form-control-sm field_validation" id="host" placeholder="Host">
@@ -118,25 +111,19 @@ if(isset($_POST['emailSettingSubmit'])){
                                     <span id="err_password" class="error invalid-feedback"></span>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <input type="hidden" name="csrf_zivaan_pro" value="0d0916ebc5a1ddc9c6a32ef256602c6d">
-                                     <button type="submit" id="emailSettingSubmit" name="emailSettingSubmit" class="btn btn-primary" data-tt="tooltip" title="Click here to Save">Save</button>
-                                </div>
-
-
-                            </div>
-                            </form>
-            </div>
+                            
+                  
+                </div>
+                <div class="card-footer">
+                  <input type="hidden" name="csrf_zivaan_pro" value="197b0229e477297725c32613d266abde">
+                  <button type="submit" id="emailSettingSubmit" name="emailSettingSubmit" class="btn btn-info" data-tt="tooltip" title="" data-original-title="Click here to Save">Save</button>
+                </div>
+              </div>
+            </form>
           </div>
-          <!--/.col (left) -->
-          <!-- right column -->
-          
-          <!--/.col (right) -->
         </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
+      </section>
+
   </div>
   <!-- /.content-wrapper -->
     <?php include 'include/footer.php'; ?>
