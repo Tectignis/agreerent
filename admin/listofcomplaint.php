@@ -1,3 +1,5 @@
+
+
 <?php
 session_start();
 if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
@@ -122,10 +124,7 @@ if($sql=1){
                                                 <td>  <span class="badge badge-danger">Danger</span></td>
                                                 
                                                 <td>
-                                                <a><button
-                                                            type="button" class="btn btn-success btn-rounded btn-icon"
-                                                            onclick="ConfirmDelete()" data-toggle="modal" data-target="#modal-default" style="color: aliceblue"> <i
-                                                                class="fas fa-edit"></i> </button></a>
+                                                <button class="btn btn-sm btn-primary dnkeditid" data-id='<?php echo $arr['id']; ?>'><i class="fas fa-edit"></i></button>
                                                     <a href="complaintform.php?delid=<?php echo $arr['id']; ?>"><button
                                                             type="button" class="btn btn-danger btn-rounded btn-icon"
                                                             onclick="ConfirmDelete()" style="color: aliceblue"> <i
@@ -150,92 +149,10 @@ if($sql=1){
             <!-- /.content -->
         </div>
         
-      <div class="modal fade" id="modal-default">
+      <div class="modal fade" id="dnkModal">
         <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Update</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-                <div class="row">   
-                <div class="col-4">
-                <b> Date & Time :</b><br>
-                </div>
-                <div class="col-8">
-                <p> 15/02/2022 08:00am </p>
-                </div>
-                </div>
-
-                <div class="row">   
-                 <div class="col-4">
-                <b> Client Code :</b><br>
-                </div>
-                <div class="col-8">
-                <p> 123654 </p>
-                </div>
-                </div>
-
-                <div class="row">   
-                 <div class="col-4">
-                <b> Complaint Code :</b><br>
-                </div>
-                <div class="col-8">
-                <p> 15555 </p>
-                </div>
-                </div>
-
-                <div class="row">   
-                 <div class="col-4">
-                <b> Subject :</b><br>
-                </div>
-                <div class="col-8">
-                <p> Developing </p>
-                </div>
-                </div>
-
-                <div class="row">   
-                 <div class="col-4">
-                <b> Description :</b><br>
-                </div>
-                <div class="col-8">
-                <p> Lorem ipsum dolor sit amet. </p>
-                </div>
-                </div>
-
-                <div class="row">   
-                 <div class="col-4">
-                <b> Comment :</b><br>
-                </div>
-                <div class="col-8">
-                <p> <textarea class="form-control" name="" id=""  rows="2"></textarea> </p>
-                </div>
-                </div>
-
-                <div class="row">   
-                 <div class="col-4">
-                <b> Status :</b><br>
-                </div>
-                <div class="col-8">
-                <p> <select class="form-control select2" name="gender" style="width: 100%;" required>
-                <option selected="selected" disable>Status</option>
-                                <option>Open</option>
-                                <option>In Proccess</option>
-                                <option>Hold On</option>
-                                <option>Closed</option>
-                              </select></p>
-                </div>
-                </div>
-
-
-        
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Submit</button>
-            </div>
+          <div class="modal-content body1">
+            
           </div>
           <!-- /.modal-content -->
         </div>
@@ -273,7 +190,23 @@ if($sql=1){
     <!-- AdminLTE for demo purposes -->
     <!-- Page specific script -->
 
+<script>
+$(document).ready(function(){
+$('.dnkeditid').click(function(){
+  let dnkid = $(this).data('id');
 
+  $.ajax({
+   url: 'form.php',
+   type: 'post',
+   data: {dnkid: dnkid},
+   success: function(response1){ 
+     $('.body1').html(response1);
+     $('#dnkModal').modal('show'); 
+   }
+ });
+});
+});
+</script>
 </body>
 <script>
      $(function() {

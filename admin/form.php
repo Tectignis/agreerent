@@ -342,4 +342,107 @@ alert('Something went wrong');
 }
 
 
+//list of complaints
+if(isset($_POST['dnkid'])){
+	$sql=mysqli_query($conn,"SELECT * FROM ticket where id='".$_POST['dnkid']."'");
+	$arr=mysqli_fetch_array($sql);
+	echo '<div class="modal-header">
+              <h4 class="modal-title">'.$arr['complaint_code'].'</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+			<form method="post" action="form.php">
+            <div class="modal-body body1">
+                <div class="row">   
+                <div class="col-4">
+                <b> Date & Time :</b><br>
+                </div>
+                <div class="col-8">
+                <p> '.$arr['date'].' </p>
+                </div>
+                </div>
+
+                <div class="row">   
+                 <div class="col-4">
+                <b> Client Code :</b><br>
+                </div>
+                <div class="col-8">
+                <p> '.$arr['user_id'].' </p>
+                </div>
+                </div>
+
+                <div class="row">   
+                 <div class="col-4">
+                <b> Complaint Code :</b><br>
+                </div>
+                <div class="col-8">
+                <p>'.$arr['complaint_code'].'</p>
+                </div>
+                </div>
+
+                <div class="row">   
+                 <div class="col-4">
+                <b> Subject :</b><br>
+                </div>
+                <div class="col-8">
+                <p> '.$arr['subject'].' </p>
+                </div>
+                </div>
+
+                <div class="row">   
+                 <div class="col-4">
+                <b> Description :</b><br>
+                </div>
+                <div class="col-8">
+                <p> '.$arr['description'].' </p>
+                </div>
+                </div>
+
+                <div class="row">   
+                 <div class="col-4">
+                <b> Comment :</b><br>
+                </div>
+                <div class="col-8">
+				<input type="hidden" name="compid" value="'.$arr['id'].'">
+                <p> <textarea class="form-control" name="descr" id=""  rows="2"></textarea> </p>
+                </div>
+                </div>
+
+                <div class="row">   
+                 <div class="col-4">
+                <b> Status :</b><br>
+                </div>
+                <div class="col-8">
+                <p> <select class="form-control select2" name="status" style="width: 100%;" required>
+                <option selected="selected" disable>Status</option>
+                                <option>Open</option>
+                                <option>In Proccess</option>
+                                <option>Hold On</option>
+                                <option>Closed</option>
+                              </select></p>
+                </div>
+                </div>
+
+
+        
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary" name="compsubmit" >Submit</button>
+            </div></form>';
+}
+
+if(isset($_POST['compsubmit'])){
+	$compid=$_POST['compid'];
+	$descr=$_POST['descr'];
+	$status=$_POST['status'];
+	$sql=mysqli_query($conn,"UPDATE `ticket` SET `status`='".$status."',`comment`='".$descr."' WHERE id='".$compid."'");
+	if($sql==1){
+		header("location:listofcomplaint.php");
+	}else{
+		echo "Something went wrong";
+	}
+}
+
 ?>
