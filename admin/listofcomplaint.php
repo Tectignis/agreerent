@@ -93,10 +93,11 @@ if($sql=1){
                                         <thead>
                                             <tr>
                                                 <th>Sr.No</th>
-                                                <th>Date And Time</th>
+                                                <th>Client Code</th>
+                                                <th>Date & Time</th>
                                                 <th>Complaint No</th>
                                                 <th>Subject</th>
-                                               
+                                                
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
