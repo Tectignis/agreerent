@@ -84,19 +84,16 @@ $client_code=$_POST['number'];
                                 <!-- form start -->
                                 <form method="post">
                                     <?php $sql=mysqli_query($conn,"select * from ticket where user_id='".$_SESSION['id']."'");
-                            $query =mysqli_query($conn,"select * from agent_details where user_id='".$_SESSION['id']."'");
                       $dnk=mysqli_num_rows($sql);
                       $lastid=$dnk+1;
-                      $arr=mysqli_fetch_array($query);
-                      $name=$arr['agent_name'];
-                      $first=$name;
+                     
                       
                       $res= preg_replace('~\S\K\S*\s*~u', '', $first);
                       if(empty($lastid)){
-						           $number=$res."-000";
+						           $number="ARCN-000";
 					           }else{
 						          $id=str_pad($lastid + 0, 3,0, STR_PAD_LEFT);
-					        	  $number=$res."CP"."-$id";
+					        	  $number=$res."ARCN"."-$id";
 					            }	
                     
                       
