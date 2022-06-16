@@ -150,7 +150,7 @@ if(isset($_GET['gen'])){
                                                                               <table id="table_id" class="table table-bordered table-striped dataTable dtr-inline" aria-describedby="explainClaim_info">
                                                                               <thead>
                                                                     <tr>
-                                                                        <th>S.no</th>
+                                                                        <th>Sr.no</th>
                                                                         <th>Document No</th>
                                                                         <th>Owner Name</th>
                                                                         <th>Tenant Name</th>
