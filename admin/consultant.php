@@ -190,7 +190,7 @@ if(isset($_POST['submit'])){
 
                                             </select>
                                         </div>
-                                        <input type="text" name="aid" class="category">
+                                        
                                     </div>
                             </div>
                             <div class="modal-footer justify-content-between">
