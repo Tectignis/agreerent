@@ -10,9 +10,9 @@ include("../config/config.php");
 
 if(isset($_GET['delid'])){
 $id=mysqli_real_escape_string($conn,$_GET['delid']);
-$sql=mysqli_query($conn,"delete from paidleads where id='$id'");
-if($sql=1){
-    header("location:paidleads.php");
+$dnk=mysqli_query($conn,"delete from ticket where id='$id'");
+if($dnk=1){
+    header("location:listofcomplaint.php");
 }
 }
 
@@ -81,18 +81,7 @@ if($sql=1){
                         <div class="col-12">
                             <!-- /.card -->
                             <div class="card">
-                                <div class="card-header">
-
-                                    <div class="card-tools">
-                                        <ul class="nav nav-pills ml-auto">
-                                            <li class="nav-item">
-                                                <a class="nav-link active" href="complaintform" data-tt="tooltip" title=""
-                                                    data-original-title="Click here to Add New Enquiry"><i
-                                                        class="fas fa-user-friends mr-2"></i>Add</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                
                                 <!-- /.card-header -->
                                 <div class="card-body">
                                     <table id="example1" class="table table-bordered table-striped">
@@ -120,11 +109,28 @@ if($sql=1){
                                                 <td> <?php echo $arr['date'];?></td>
                                                 <td> <?php echo $arr['complaint_code'];?></td>
                                                 <td> <?php echo $arr['subject'];?> </td>
-                                                <td>  <span class="badge badge-danger">Danger</span></td>
+                                                <td> 
+                                                <?php
+                                                $status=$arr['status'];
+                                                if($status=='0'){
+                                                    echo '<span class="badge badge-success">Open</span>';
+                                                }
+                                                else if($status=='Open'){
+                                                    echo '<span class="badge badge-success">Open</span>';
+                                                }
+                                                else if($status=='In Proccess'){
+                                                    echo '<span class="badge badge-danger">In Proccess</span>';
+                                                }else if($status=='Hold On'){
+                                                   echo '<span class="badge badge-warning">Hold On</span>';
+                                                }else if($status=='Closed'){
+                                                    echo '<span class="badge badge-secondary">Closed</span>';
+                                                }
+                                                ?>    
+                                                </td>
                                                 
                                                 <td>
                                                 <button class="btn btn-sm btn-primary dnkeditid" data-id='<?php echo $arr['id']; ?>'><i class="fas fa-edit"></i></button>
-                                                    <a href="complaintform.php?delid=<?php echo $arr['id']; ?>"><button
+                                                    <a href="listofcomplaint.php?delid=<?php echo $arr['id']; ?>"><button
                                                             type="button" class="btn btn-danger btn-rounded btn-icon"
                                                             onclick="ConfirmDelete()" style="color: aliceblue"> <i
                                                                 class="fas fa-trash"></i> </button></a>
