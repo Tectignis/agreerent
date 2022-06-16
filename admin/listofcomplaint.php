@@ -97,7 +97,7 @@ if($sql=1){
                                                 <th>Date & Time</th>
                                                 <th>Complaint No</th>
                                                 <th>Subject</th>
-                                                
+                                                <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -114,8 +114,11 @@ if($sql=1){
                                                 <td> <?php echo $arr['date'];?></td>
                                                 <td> <?php echo $arr['complaint_code'];?></td>
                                                 <td> <?php echo $arr['subject'];?> </td>
-                                                
+                                                <td> <?php echo $arr['subject'];?> </td>
                                                 <td>
+                                                <a href="complaintform.php?id=<?php echo $row['newdoc'];?>"
+                                                                                class="btn btn-primary btn-rounded btn-icon"><i
+                                                                                    class="fas fa-eye"></i></a>
                                                     <a href="complaintform.php?delid=<?php echo $arr['id']; ?>"><button
                                                             type="button" class="btn btn-danger btn-rounded btn-icon"
                                                             onclick="ConfirmDelete()" style="color: aliceblue"> <i
