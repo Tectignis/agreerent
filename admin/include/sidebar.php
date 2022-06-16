@@ -58,26 +58,13 @@
 
                   <li class="nav-header">Rent Agreement</li>
                   <li class="nav-item">
-                      <a href="createnewagreement" class="nav-link">
+                      <a href="case" class="nav-link">
                           <i class="nav-icon fas fa-edit"></i>
                           <p>
                               Rent Agreement
                           </p>
                       </a>
-                      <ul class="nav nav-treeview">
-                          <li class="nav-item">
-                              <a href="basic_details" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>New Agreement</p>
-                              </a>
-                          </li>
-                          <li class="nav-item">
-                              <a href="case" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>List Of Agreement</p>
-                              </a>
-                          </li>
-                      </ul>
+                      
                   </li>
 
                   <li class="nav-header">Consultant</li>
