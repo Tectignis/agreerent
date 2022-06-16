@@ -16,7 +16,7 @@ if(isset($_POST['subm'])){
 	$pancard=$_POST['txtPANCard'];
   $age=$_POST['id1'];
 	
-$query=mysqli_query($conn,"select * from owner where document_no='$id'");
+$query=mysqli_query($conn,"select * from owner where document_no='$id' order by document_no desc");
 $num=mysqli_num_rows($query);
 $document=$num['document_no'];
 if($document!=$id){
