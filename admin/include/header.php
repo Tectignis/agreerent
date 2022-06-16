@@ -1,11 +1,19 @@
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+<?php 
+      $name=$_SESSION['name'];
+      $id=$_SESSION['id'];
+      $sql="SELECT * FROM agent_details WHERE user_id='".$_SESSION['id']."'";
+        $result=mysqli_query($conn,$sql);
+        $row=mysqli_fetch_assoc($result);
+      ?>
+      
+      <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
 	  <li class="nav-item d-none d-sm-inline-block">
-        <a href="" class="nav-link"><strong>Firm Name</strong></a>
+        <a href="" class="nav-link"><strong><?php echo $name ?></strong></a>
       </li>	  
     </ul>
 
