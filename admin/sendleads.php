@@ -92,16 +92,7 @@ if(isset($_POST['submit'])){
 
                                 <div class="card-body">
                                 <form class="forms-sample" method="post">
-               <div class="col-md-6 ">
-                    <div class="form-group row">
-                     
-                      <div class="col-sm-9">
-                        
-                         
-                                               
-                      </div>
-                    </div>
-                  </div>
+            
 					  <div class="col-md-6 ">
             <div class="form-group row">
                                                 <label for="exampledno" class="col-sm-3 col-form-label">Firm
