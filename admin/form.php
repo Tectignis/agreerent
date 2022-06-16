@@ -69,25 +69,26 @@ if(isset($_POST['tenant'])){
   $email=$_POST['emailcheck'];
 	$passport=$_POST['passport'];
 	
-	$query=mysqli_query($conn,"select * from tenant where document_no='$id' order by document_no desc");
-$num=mysqli_fetch_array($query);
-$document=$num['document_no'];
+	$query1=mysqli_query($conn,"select * from tenant where document_no='$id' order by document_no desc");
+$num1=mysqli_fetch_array($query1);
+$document1=$num1['document_no'];
 
-	if($document!=$idtenant){
+	if($document1==$idtenant){
+		$sql=mysqli_query($conn,"UPDATE `tenant` SET `document_no`='$idtenant',`abbreviation`='$surname',`fullname`='$name',`age`='$age',`address`='$address',`permanent_address`='$permanent_address',`mobile`='$mobile',`email`='$email',`passport`='$passport',`aadhaar`='$aadhaar',`pan_card`='$pancard' WHERE document_no='$idtenant'");
+	if($sql==1){	
+     echo "successfully updated";
+  	}else{
+		echo "something went wrong";
+	}
+	
+	}
+	else{
 	$sql=mysqli_query($conn,"INSERT INTO `tenant`(`document_no`, `abbreviation`, `fullname`,`age`, `address`,`permanent_address`, `mobile`, `email`,`passport`,`aadhaar`, `pan_card`) VALUES 
   ('$idtenant','$surname','$name','$age','$address','$permanent_address','$mobile','$email','$passport','$aadhaar','$pancard')");
 	if($sql==1){	
     echo "Successfully Added";
   	}else{
 		echo "Something went wrong";
-	}
-	}
-	else{
-	$sql=mysqli_query($conn,"UPDATE `tenant` SET `document_no`='$idtenant',`abbreviation`='$surname',`fullname`='$name',`age`='$age',`address`='$address',`permanent_address`='$permanent_address',`mobile`='$mobile',`email`='$email',`passport`='$passport',`aadhaar`='$aadhaar',`pan_card`='$pancard' WHERE document_no='$idtenant'");
-	if($sql==1){	
-     echo "successfully updated";
-  	}else{
-		echo "something went wrong";
 	}
 }
 }
@@ -105,25 +106,26 @@ if(isset($_POST['submitproperty'])){
   $chs=$_POST['chs'];
   $node=$_POST['node'];
 	
-  $query=mysqli_query($conn,"select * from property_details where document_no='$id' order by document_no desc");
-$num=mysqli_fetch_array($query);
-$document=$num['document_no'];
+  $query2=mysqli_query($conn,"select * from property_details where document_no='$id' order by document_no desc");
+$num2=mysqli_fetch_array($query2);
+$document2=$num2['document_no'];
 
-if($document!=$idproperty){
+if($document2==$idproperty){
+	$sql=mysqli_query($conn,"UPDATE `property_details` SET `document_no`='$idproperty',`property_type`='$type',`address`='$address',`sector`='$sector',`plot_no`='$plotno',`cidco`='$cidco',`area`='$area',`chs`='$chs',`node`='$node' WHERE document_no='$idproperty'");
+	if($sql==1){	
+   echo "successfully updated";
+  	}else{
+		echo "something went wrong";
+	}
+	
+	}
+else{
 	$sql=mysqli_query($conn,"INSERT INTO `property_details`(`document_no`,`property_type`, `address`, `sector`, `plot_no`,`cidco`, `area`, `chs`, `node`) VALUES 
   ('$idproperty','$type','$address','$sector','$plotno','$cidco','$area','$chs','$node')");
 	if($sql==1){	
     echo "Successfully Added";
   	}else{
 		echo "Something went wrong";
-	}
-	}
-else{
-	$sql=mysqli_query($conn,"UPDATE `property_details` SET `document_no`='$idproperty',`property_type`='$type',`address`='$address',`sector`='$sector',`plot_no`='$plotno',`cidco`='$cidco',`area`='$area',`chs`='$chs',`node`='$node' WHERE document_no='$idproperty'");
-	if($sql==1){	
-   echo "successfully updated";
-  	}else{
-		echo "something went wrong";
 	}
 }
 }
