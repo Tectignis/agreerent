@@ -45,58 +45,37 @@
                   </li>
 
                   <li class="nav-item">
-                      <a href="" class="nav-link">
+                      <a href="paidleads" class="nav-link">
                           <i class="nav-icon fas fa-th"></i>
                           <p>
                               Paid Leads
-                              <span class="right badge badge-danger">New</span>
+                             
                           </p>
                       </a>
-                      <ul class="nav nav-treeview">
-                          <li class="nav-item">
-                              <a href="paidleads" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Add Paid Leads</p>
-                              </a>
-                          </li>
-
-                      </ul>
+                      
                   </li>
 
 
                   <li class="nav-header">Rent Agreement</li>
                   <li class="nav-item">
-                      <a href="createnewagreement" class="nav-link">
+                      <a href="case" class="nav-link">
                           <i class="nav-icon fas fa-edit"></i>
                           <p>
                               Rent Agreement
                           </p>
                       </a>
-                      <ul class="nav nav-treeview">
-                          <li class="nav-item">
-                              <a href="basic_details" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>New Agreement</p>
-                              </a>
-                          </li>
-                          <li class="nav-item">
-                              <a href="case" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>List Of Agreement</p>
-                              </a>
-                          </li>
-                      </ul>
+                      
                   </li>
 
                   <li class="nav-header">Consultant</li>
                   <li class="nav-item">
-                      <a href="" class="nav-link">
+                      <a href="consultant" class="nav-link">
                           <i class="nav-icon fa fa-id-badge"></i>
                           <p>
                               Consultant
                           </p>
                       </a>
-                      <ul class="nav nav-treeview">
+                      <!-- <ul class="nav nav-treeview">
                           <li class="nav-item">
                               <a href="consultantregistration.php" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
@@ -110,7 +89,7 @@
                               </a>
                           </li>
 
-                      </ul>
+                      </ul> -->
                   </li>
 
 
@@ -134,7 +113,7 @@
                   </li>
                   <li class="nav-header">Other</li>
                   <li class="nav-item">
-                      <a href="table" class="nav-link">
+                      <a href="todo" class="nav-link">
                           <i class="nav-icon fas fa-columns"></i>
                           <p>
                               To Do

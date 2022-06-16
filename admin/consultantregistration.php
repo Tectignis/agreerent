@@ -166,7 +166,7 @@ else{
                                         <label for="exampleInputMobile" class="col-sm-2 col-form-label">Office
                                             Address<label style="color:Red">*</label></label>
                                         <div class="col-sm-10">
-                                            <textarea name="office_address" style="width:100%;" rows="2"
+                                            <textarea class="form-control" name="office_address" style="width:100%;" rows="2"
                                                 placeholder="Enter Address" required></textarea>
                                         </div>
                                     </div>

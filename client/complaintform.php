@@ -5,6 +5,7 @@ if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 {
  header("Location:clientlogin.php"); 
 }
+$client_id=$_SESSION['id'];
 include("../config/config.php");
 if(isset($_POST['submit'])){
   $subject=$_POST['subject'];
@@ -109,24 +110,11 @@ $client_code=$_POST['number'];
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputsubject">Subject</label>
-
-
-                                            <select name="subject" class="form-control">
-                                                <option value="">select</option>
-                                                <?php
-
-                                                $sql = mysqli_query($conn,"SELECT * From subject");
-                                                $row = mysqli_num_rows($sql);
-                                                while ($row = mysqli_fetch_array($sql)) {
-                                                    ?>
-                                                <option value="<?php echo $row['name']; ?>">
-                                                    <?php echo $row['name']; ?></option>
-                                                <?php } ?>
-
+                                            <select class="form-control" name="subject" id="exampleSelectRounded0">
+                                                <?php  ?>
+                                                <option value="Flat">FLat</option>
+                                                <option value="Shop">Shop</option>
                                             </select>
-
-
-
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputdescription">Description</label>

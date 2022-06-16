@@ -85,9 +85,16 @@ if(isset($_POST['submit'])){
                             <!-- /.card -->
 
                             <div class="card">
-                                <div class="card-header">
-                                    <h3 class="card-title"></h3>
-                                </div>
+                            <div class="card-header">
+
+<div class="card-tools">
+    <ul class="nav nav-pills ml-auto">
+        <li class="nav-item">
+            <a class="nav-link active" href="consultantregistration" data-tt="tooltip" title="" data-original-title="Click here to Add New Enquiry"><i class="fas fa-user-friends mr-2"></i>Add</a>
+        </li>
+    </ul>
+</div>
+</div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
                                     <table id="example1" class="table table-bordered table-striped">
