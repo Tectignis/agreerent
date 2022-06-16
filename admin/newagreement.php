@@ -120,9 +120,10 @@ $basicid=$_GET['documentbasid'];
                                         <div class="card-body">
 
                                             <form class="forms-sample" method="post">
-                                                <div class="form-group row">
-                                                      <input type="text" id="no" name="no1"
+                                                 <input type="text" id="no" name="no1"
                                                             value="<?php echo $basicid;?>">
+                                                <div class="form-group row">
+                                                     
                                                     <label for="examplename" class="col-sm-2 col-form-label">Full
                                                         Name<label style="color:Red">*</label> </label>
                                                     <div class="col-sm-2">
@@ -212,9 +213,10 @@ $basicid=$_GET['documentbasid'];
                                         <div class="card-body">
 
                                             <form class="forms-sample" method="post">
+                                                  <input type="text" id="no2" name="no2" value="<?php echo $basicid;?>"
+                                                            class="form-control" id="exampledno" readonly >
                                                 <div class="form-group row">
-                                                     <input type="hidden" id="no2" name="no2" value="<?php echo $basicid;?>"
-                                                            class="form-control" id="exampledno" readonly>
+                                                   
                                                     <label for="examplename" class="col-sm-2 col-form-label">Full
                                                         Name<label style="color:Red">*</label></label>
                                                     <div class="col-sm-2">
