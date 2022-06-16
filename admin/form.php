@@ -28,11 +28,11 @@ if(isset($_POST['subm'])){
     $id=$_POST['no'];
 	$abbreviation=$_POST['examplemr'];
 	$name=$_POST['txtname'];
-	$address=$_POST['id1'];
+	$address=$_POST['address'];
 	$mobile=$_POST['mobile'];
 	$aadhaar=$_POST['txAdhar'];
 	$pancard=$_POST['txtPANCard'];
-  $age=$_POST['address'];
+  $age=$_POST['id1'];
 	
   $query=mysqli_query($conn,"select * from owner where document_no='$id' order by document_no desc");
 $num=mysqli_fetch_array($query);

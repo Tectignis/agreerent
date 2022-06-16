@@ -377,11 +377,12 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
 
                                             <form class="forms-sample" method="post">
                                                 <div class="form-group row">
+                                                    <input type="hidden" name="no2" value="<?php echo $basiid;?>"
+                                                            class="form-control" id="exampledno" readonly>
                                                     <label for="examplename" class="col-sm-2 col-form-label">Full
                                                         Name<label style="color:Red">*</label></label>
                                                     <div class="col-sm-2">
-                                                        <input type="hidden" name="no2" value="<?php echo $basiid;?>"
-                                                            class="form-control" id="exampledno" readonly>
+                                                        
                                                         <select class="form-control" id="exampleSelectmr"
                                                             name="abbreviation" required>
                                                             <option value="<?php echo $abbreviation1 ?>" selected>
@@ -499,12 +500,13 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                         <div class="card-body">
                                             <form class="forms-sample" method="post">
                                                 <div class="form-group row">
+                                                    <input type="hidden" name="no3" id="no3"
+                                                            value="<?php echo $basiid;?>">
                                                     <label for="examplename" class="col-2 col-form-label">Property
                                                         Type<label style="color:Red">*</label></label>
 
                                                     <div class="col-sm-2 col-lg-2">
-                                                        <input type="hidden" name="no3" id="no3"
-                                                            value="<?php echo $basiid;?>">
+                                                        
 
                                                         <!-- <input type="text" for="examplename" name="type" id="propertyTypeVal" class="form-control" readonly> -->
                                                         <select class="form-control" name="type" id="exampleproperties"
@@ -891,10 +893,11 @@ if(isset($_GET['id'])){
                                         aria-labelledby="custom-tabs-two-settings-tab">
                                         <form method="post">
                                             <div class="form-group row">
+                                                 <input type="hidden" name="no7" id="no7" value="<?php echo $basiid;?>">
                                                 <label for="examplename" class="col-sm-2 col-form-label-sm">Security
                                                     Deposit<label style="color:Red">*</label></label>
                                                 <div class="col-sm-4">
-                                                    <input type="hidden" name="no7" id="no7" value="<?php echo $basiid;?>">
+                                                   
                                                     <input type="number" id="deposit" class="form-control"
                                                         name="security_deposit" value="<?php echo $security_deposit ?>"
                                                         placeholder="Deposit" required>
@@ -918,12 +921,12 @@ if(isset($_GET['id'])){
                                                         data-select2-id="3" tabindex="-1" aria-hidden="true">
                                                         <option selected="selected" data-select2-id="4"
                                                             value="<?php echo $method ?>"><?php echo $method ?></option>
-                                                        <option>Alaska</option>
-                                                        <option>California</option>
-                                                        <option>Delaware</option>
-                                                        <option>Tennessee</option>
-                                                        <option>Texas</option>
-                                                        <option>Washington</option>
+                                                        <option>CASH</option>
+                                                        <option>CHEQUE</option>
+                                                        <option>BANK TRASFER</option>
+                                                        <option>GOOGLE PAY</option>
+                                                        <option>PHONE PAY</option>
+                                                        <option>PAYTYM</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -936,12 +939,14 @@ if(isset($_GET['id'])){
                                                         tabindex="-2" aria-hidden="true">
                                                         <option selected="selected" data-select2-id="2"
                                                             value="<?php echo $bank ?>"><?php echo $bank ?></option>
-                                                        <option>Alaska</option>
-                                                        <option>California</option>
-                                                        <option>Delaware</option>
-                                                        <option>Tennessee</option>
-                                                        <option>Texas</option>
-                                                        <option>Washington</option>
+                                                         <option>SBI</option>
+                                                        <option>UNION</option>
+                                                        <option>AXIS</option>
+                                                        <option>KOTAK</option>
+                                                        <option>HDFC</option>
+                                                        <option>ICICI</option>
+                                                        <option>BOI</option>
+                                                        <option>YES BANK</option>
                                                     </select>
                                                 </div>
                                             </div>
