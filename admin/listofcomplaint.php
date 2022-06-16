@@ -80,7 +80,7 @@ if($sql=1){
                                     <div class="card-tools">
                                         <ul class="nav nav-pills ml-auto">
                                             <li class="nav-item">
-                                                <a class="nav-link active" href="sendleads" data-tt="tooltip" title=""
+                                                <a class="nav-link active" href="complaintform" data-tt="tooltip" title=""
                                                     data-original-title="Click here to Add New Enquiry"><i
                                                         class="fas fa-user-friends mr-2"></i>Add</a>
                                             </li>
@@ -104,20 +104,19 @@ if($sql=1){
                                         <tbody>
                                             <?php 
                         
-                        $sql=mysqli_query($conn,"select * from `paidleads` where user_id='$_SESSION[id]'");
+                        $sql=mysqli_query($conn,"select * from `ticket`");
                      
                          while($arr=mysqli_fetch_array($sql)){
                         ?>
                                             <tr>
                                                 <td> <?php echo $arr['id'];?> </td>
-                                                <td> <?php echo $arr['client_name'];?> </td>
-                                                <td> <?php echo $arr['mobile'];?></td>
-                                                <td> <?php echo $arr['type'];?></td>
-                                                <td> <?php echo $arr['area'];?> </td>
-                                                <td> <?php echo $arr['requirement'];?></td>
-                                                <td> <?php echo $arr['location'];?> </td>
+                                                <td> <?php echo $arr['user_id'];?> </td>
+                                                <td> <?php echo $arr['date'];?></td>
+                                                <td> <?php echo $arr['complaint_code'];?></td>
+                                                <td> <?php echo $arr['subject'];?> </td>
+                                                
                                                 <td>
-                                                    <a href="paidleads.php?delid=<?php echo $arr['id']; ?>"><button
+                                                    <a href="complaintform.php?delid=<?php echo $arr['id']; ?>"><button
                                                             type="button" class="btn btn-danger btn-rounded btn-icon"
                                                             onclick="ConfirmDelete()" style="color: aliceblue"> <i
                                                                 class="fas fa-trash"></i> </button></a>
