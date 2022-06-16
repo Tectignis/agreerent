@@ -98,7 +98,7 @@ if(isset($_GET['gen'])){
                                     <div class="card-tools">
                                         <ul class="nav nav-pills ml-auto">
                                             <li class="nav-item">
-                                                <a class="nav-link active" href="" data-tt="tooltip" title=""
+                                                <a class="nav-link active" href="basic_details.php" data-tt="tooltip" title=""
                                                     data-original-title="Click here to Add New Enquiry"><i
                                                         class="fas fa-user-friends mr-2"></i>Create New Agreement</a>
                                             </li>
