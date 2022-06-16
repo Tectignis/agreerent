@@ -108,7 +108,7 @@ $client_code=$_POST['number'];
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputsubject">Subject</label>
-                                            <label for="exampleInputsubject">Subject</label>
+                                           
                                             <?php 
                    $query=mysqli_query($conn,"select * from subject");
                    ?>
