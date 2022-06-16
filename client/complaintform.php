@@ -15,7 +15,7 @@ $client_code=$_POST['number'];
     $date=date('Y-m-d H:i:s');
 	$sql = mysqli_query($conn,"INSERT INTO `ticket`( `user_id`,`complaint_code`, `email_id`, `subject`, `description`, `date`) VALUES ('".$_SESSION['id']."','$client_code','$email', '$subject','$description','$date')") ;
   if($sql==1){
-    echo "<script>alert('Register successfully'),window.location='complaintform.php';</script>";
+    echo "<script>alert('Register successfully'),window.location='listofcomplaint.php';</script>";
    
 
   }else{
