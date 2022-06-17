@@ -21,7 +21,7 @@ if(isset($_POST['sub'])){
   $pass= rand(100000, 999999);
   $email=$row['email'];
   $image=$_FILES['image']['name'];
-  $loc="dist/img/agent_photo/";
+  $loc="dist/img/";
 
   move_uploaded_file($_FILES['image']['tmp_name'],$loc.$image);
 
@@ -287,7 +287,7 @@ ul.social li{
             	<tr>
 			          <td style="text-align: center;">
 			          	<div class="text-author">
-				          	<img src="https://agreerent.in/admin/dist/img/agent_photo/'.$image.'" alt="" style="width: 100px; max-width: 600px; height: auto; margin: auto; display: block;">
+				          	<img src="https://agreerent.in/admin/dist/img/'.$image.'" alt="" style="width: 100px; max-width: 600px; height: auto; margin: auto; display: block;">
 				          	<h3 class="name">'.$agent_name.'</h3>
 				          	<span class="position">Firm Name</span>
 							<p>Client Code&nbsp;:&nbsp;<b>Client Code</b><br>Username&nbsp;:&nbsp;<b>'.$email_no.'</b><br>Password&nbsp;:&nbsp;<b>'.$pass.'</b></p> 
