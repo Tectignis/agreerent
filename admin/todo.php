@@ -113,7 +113,7 @@ function get_time_ago( $time )
                                     <div class="card">
                                         <div class="card-body">
                                             <h4 class="card-title">To Do List</h4>
-                                            <form method="post" action="table.php">
+                                            <form method="post">
 
                                                 <div class="form-group">
 
@@ -147,7 +147,7 @@ function get_time_ago( $time )
                                                                     </small>
 
                                                                     <div class="card-tools">
-                                                                        <a href="table.php?delid=<?php echo $arr['id'] ?>"
+                                                                        <a href="todo.php?delid=<?php echo $arr['id'] ?>"
                                                                             class="btn btn-tool">
                                                                             <i class="fas fa-trash"></i>
                                                                         </a>
