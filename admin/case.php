@@ -7,7 +7,6 @@ if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 include("../config/config.php");
 
 $useridcheck=$_SESSION['id'];
-echo $_SESSION['id'];
 if(isset($_GET['gen'])){
   $id=mysqli_real_escape_string($conn,$_GET['gen']);
   $sql=mysqli_query($conn,"update noc set `status`='1' where document_no='$id'");
