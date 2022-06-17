@@ -27,15 +27,8 @@ $subject = 'Password';
 $fields = array( 'name' => 'name' );
 
 try{
-  $emailText = "<html><body><h1>Welcome $agent_name.</h1>
-   Welcome to Agreerent. We’re confident that Agreerent will help you to get the best deal for your property. Your Email ID is :- '$email_no'
-  Your Password is :- '$pass'.
-  Please login with Registerd Email and Password
-  Thanks & Regards,
-Tectignis IT Solution
-Aashiyana CHS Shop No 05, Sector 11, Plot No 29, Kamothe, Navi Mumbai, Maharashtra 410206</body></html>";
 
-$emailText = '<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+$emailText = "<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
     <meta charset="utf-8"> 
     <meta name="viewport" content="width=device-width">
@@ -372,7 +365,7 @@ ul.social li{
     </div>
   </center>
 </body>
-</html>';
+</html>";
 
   foreach($_POST as $key => $value){
     if(isset($fields[$key])){
