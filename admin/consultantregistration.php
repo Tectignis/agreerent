@@ -6,6 +6,10 @@ if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 }
 include("../config/config.php");
 
+error_reporting(-1);
+ini_set('display_errors', 'On');
+set_error_handler("var_dump"); 
+
 $res=mysqli_query($conn,"SELECT * FROM `email_configuration`");
  $row=mysqli_fetch_array($res);	
 
