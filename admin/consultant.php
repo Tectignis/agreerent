@@ -197,7 +197,7 @@ if(isset($_POST['submit'])){
 
                                             </select>
                                                 </div>
-                                                                                <input type="text" name="aid" class="category">
+                                                                                <input type="text" name="aid" class="category" hidden>
 
                                     </div>
                             </div>
