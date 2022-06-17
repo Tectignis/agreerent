@@ -2,7 +2,7 @@
 session_start();
 if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 {
- header("Location:login.php"); 
+ header("Location:clientlogin.php"); 
 }
 include("../config/config.php");
 if(isset($_POST['submit'])){
@@ -11,7 +11,7 @@ if(isset($_POST['submit'])){
 	
 	$sql=mysqli_query($conn,"INSERT INTO `todo`(`user_id`, `task`, `status`) VALUES ('".$_SESSION['id']."','$todo','$status')");
 	if($sql==1){	
-    header("location:table");
+    header("location:todo");
 	}else{
 		echo "<script>alert('Something went wrong');</script>";
 	}
@@ -21,7 +21,7 @@ if(isset($_GET['delid'])){
   $id=mysqli_real_escape_string($conn,$_GET['delid']);
   $sql=mysqli_query($conn,"delete from todo where id='$id'");
   if($sql=1){
-    header("location:table");
+    header("location:todo");
   }
 }
 
