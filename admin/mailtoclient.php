@@ -31,13 +31,6 @@ $from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
  $emailText = '
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="x-apple-disable-message-reformatting"> 
-    <title></title>
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
-
     <style>
         html,
 body {
