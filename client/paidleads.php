@@ -87,7 +87,7 @@ if(isset($_GET['delid'])){
                             <th>Area</th> 
                             <th>Requirement</th> 
                             <th>Location</th>
-                             <th>Action</th>
+                             <!-- <th>Action</th> -->
                           </tr>
                                         </thead>
                                         <tbody>
@@ -105,9 +105,9 @@ if(isset($_GET['delid'])){
                             <td> <?php echo $arr['area'];?> </td>
                               <td> <?php echo $arr['requirement'];?></td>
                             <td> <?php echo $arr['location'];?> </td>
-                            <td>
+                            <!-- <td>
                             <a href="paidleads.php?delid=<?php echo $arr['id']; ?>"><button type="button" class="btn btn-danger btn-rounded btn-icon" style="color: aliceblue"> <i class="fas fa-trash"></i> </button></a>
-                              
+                              </td> -->
                           </tr>
                         
                         <?php $count++; } ?>
