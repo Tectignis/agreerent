@@ -1,4 +1,3 @@
-
 <?php  
 session_start();
 if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
@@ -20,17 +19,17 @@ if(isset($_POST['sub'])){
   $rera=$_POST['rera'];
   $status=1;
   $pass= rand(100000, 999999);
-  $image=$_FILES['image']['name'];
   $email=$row['email'];
 
-$from = 'Enquiry <'.$email.'>';
+  $from = 'MIME-Version: 1.0' . "\r\n";
+  $from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+$from = 'Enquiry <'.$email.'>' . "\r\n";
 $sendTo = 'Enquiry <'.$email_no.'>';
 $subject = 'Password';
 // $fields = array( 'name' => 'name' );
-$from = 'MIME-Version: 1.0' . "\r\n";
-$from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
- $emailText = '
+
+$emailText = '
 <html>
 <head>
     <meta charset="utf-8">
@@ -305,25 +304,24 @@ ul.social li{
 </html>';
 
 try{
-   
+ 
+
   foreach($_POST as $key => $value){
     if(isset($fields[$key])){
       $emailText.="$fields[$key]: $value\n";
     }
   }
  if( mail($sendTo,$subject,$emailText, "From:" .$from)){
-//   $passwordhash=password_hash($pass,PASSWORD_BCRYPT);
+  $passwordhash=password_hash($pass,PASSWORD_BCRYPT);
 
-//   $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`status`) 
-//    VALUES ('$user_id','$agent_name','$email_no','$passwordhash','$rera','$office_address','$mobile_no','$status')");
-//    if($sql=1){
-//      echo "<script>alert('Agent Registered Successfully');</script>";    }
-//    else{
-//      echo "<script>alert('Something Wrong');</script>";
-//    }
- echo "<script>alert('Agent Registered Successfully');</script>"; 
- }
- else{
+  $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`status`) 
+   VALUES ('$user_id','$agent_name','$email_no','$passwordhash','$rera','$office_address','$mobile_no','$status')");
+   if($sql=1){
+     echo "<script>alert('Agent Registered Successfully');</script>";    }
+   else{
+     echo "<script>alert('Something Wrong');</script>";
+   }
+ }else{
     echo "eeee $sendTo $subject $emailText $from";
  }
 }
@@ -439,7 +437,7 @@ else{
                                         <label for="exampleInputMobile" class="col-sm-2 col-form-label">Office
                                             Address<label style="color:Red">*</label></label>
                                         <div class="col-sm-10">
-                                            <textarea class="form-control" name="office_address" style="width:100%;" rows="2"
+                                            <textarea name="office_address" style="width:100%;" rows="2"
                                                 placeholder="Enter Address" required></textarea>
                                         </div>
                                     </div>
