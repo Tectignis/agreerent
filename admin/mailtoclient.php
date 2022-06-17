@@ -26,34 +26,23 @@ $sendTo = 'Enquiry <'.$email_no.'>';
 $subject = 'Password';
 $fields = array( 'name' => 'name' );
 
-
-
-try{
-    $emailText = "<h1 style='color:blue'>Welcome $agent_name</h1>.<br><hr><br>
+$emailText = "<h1 style='color:blue'>Welcome $agent_name</h1>.
   <p> Welcome to Agreerent. We’re confident that Agreerent will help you to get the best deal for your property. Your Email ID is :- '$email_no'
-  Your Password is :- '$pass'.</p>
+  Your Password is :- '$pass'.
   Please login with Registerd Email and Password
   Thanks & Regards,
 Tectignis IT Solution
 Aashiyana CHS Shop No 05, Sector 11, Plot No 29, Kamothe, Navi Mumbai, Maharashtra 410206";
+
+try{
   foreach($_POST as $key => $value){
     if(isset($fields[$key])){
       $emailText.="$fields[$key]: $value\n";
     }
   }
  if( mail($sendTo,$subject,$emailText, "From:" .$from)){
-//   $passwordhash=password_hash($pass,PASSWORD_BCRYPT);
-
-//   $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`status`) 
-//    VALUES ('$user_id','$agent_name','$email_no','$passwordhash','$rera','$office_address','$mobile_no','$status')");
-//    if($sql=1){
-//      echo "<script>alert('Agent Registered Successfully');</script>";    }
-//    else{
-//      echo "<script>alert('Something Wrong');</script>";
-//    }
- echo "<script>alert('Agent Registered Successfully');</script>"; 
- }
- else{
+    echo "<script>alert('Mail Sent Successfully');</script>";
+ }else{
     echo "eeee $sendTo $subject $emailText $from";
  }
 }
