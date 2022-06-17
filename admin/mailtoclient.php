@@ -37,11 +37,11 @@ Aashiyana CHS Shop No 05, Sector 11, Plot No 29, Kamothe, Navi Mumbai, Maharasht
 
 $emailText = '<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
-    <meta charset="utf-8"> <!-- utf-8 works for most cases -->
-    <meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
-    <meta name="x-apple-disable-message-reformatting">  <!-- Disable auto-scale in iOS 10 Mail entirely -->
-    <title></title> <!-- The title tag shows in email notifications, like Android 4.4. -->
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="x-apple-disable-message-reformatting">  
+    <title></title> 
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
 
@@ -120,13 +120,13 @@ a {
     color: inherit !important;
 }
 
-/* If the above doesn't work, add a .g-img class to any image in question. */
+
 img.g-img + div {
     display: none !important;
 }
 
 /* What it does: Removes right gutter in Gmail iOS app: https://github.com/TedGoas/Cerberus/issues/89  */
-/* Create one of these media queries for each additional viewport size you'd like to fix */
+
 
 /* iPhone 4, 4S, 5, 5S, 5C, and 5SE */
 @media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
@@ -208,14 +208,14 @@ img.g-img + div {
 }
 
 h1,h2,h3,h4,h5,h6{
-	font-family: 'Poppins', sans-serif;
+	font-family: Poppins, sans-serif;
 	color: #000000;
 	margin-top: 0;
 	font-weight: 400;
 }
 
 body{
-	font-family: 'Poppins', sans-serif;
+	font-family: Poppins, sans-serif;
 	font-weight: 400;
 	font-size: 15px;
 	line-height: 1.8;
@@ -237,7 +237,7 @@ table{
 	color: #A800BF;
 	font-size: 24px;
 	font-weight: 700;
-	font-family: 'Poppins', sans-serif;
+	font-family: Poppins, sans-serif;
 }
 
 /*HERO*/
@@ -356,7 +356,7 @@ ul.social li{
 				          	<img src="images/person_2.jpg" alt="" style="width: 100px; max-width: 600px; height: auto; margin: auto; display: block;">
 				          	<h3 class="name">Client Name</h3>
 				          	<span class="position">$agent_name</span>
-							<p>Client Code&nbsp;:&nbsp;<b>Client Code</b><br>Username&nbsp;:&nbsp;<b>'$email_no'</b><br>Password&nbsp;:&nbsp;<b>'$pass'</b></p> 
+							<p>Client Code&nbsp;:&nbsp;<b>Client Code</b><br>Username&nbsp;:&nbsp;<b><?php echo $email_no ?></b><br>Password&nbsp;:&nbsp;<b><?php echo $pass ?></b></p> 
 				           	<p><a href="https://www.agreerent.in/client/" class="btn btn-primary">Login Now</a></p>
 				           	<p><a href="https://www.agreerent.in/" class="btn-custom">Visit Our Website</a></p>
 							
