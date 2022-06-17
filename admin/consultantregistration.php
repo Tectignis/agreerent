@@ -23,17 +23,17 @@ if(isset($_POST['sub'])){
 
 $from = 'Enquiry <'.$email.'>';
 $sendTo = 'Enquiry <'.$email_no.'>';
-$subject = 'Password';
+$subject = 'Congratulation your account has been Activated Successfully.';
 $fields = array( 'name' => 'name' );
 
 try{
-  $emailText = "<html><body><h1>Welcome $agent_name.</h1>
-   Welcome to Agreerent. We’re confident that Agreerent will help you to get the best deal for your property. Your Email ID is :- '$email_no'
-  Your Password is :- '$pass'.
-  Please login with Registerd Email and Password
-  Thanks & Regards,
-Tectignis IT Solution
-Aashiyana CHS Shop No 05, Sector 11, Plot No 29, Kamothe, Navi Mumbai, Maharashtra 410206</body></html>";
+//   $emailText = "<html><body><h1>Welcome $agent_name.</h1>
+//    Welcome to Agreerent. We’re confident that Agreerent will help you to get the best deal for your property. Your Email ID is :- '$email_no'
+//   Your Password is :- '$pass'.
+//   Please login with Registerd Email and Password
+//   Thanks & Regards,
+// Tectignis IT Solution
+// Aashiyana CHS Shop No 05, Sector 11, Plot No 29, Kamothe, Navi Mumbai, Maharashtra 410206</body></html>";
 
 $emailText = "<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -346,7 +346,7 @@ ul.social li{
             	<tr>
             		<td style="padding: 0 2.5em; text-align: center; padding-bottom: 3em;">
             			<div class="text">
-							<h3>Hello <b>Client Name</b></h3>
+							<h3>Hello <b>CLIENT NAME</b></h3>
             				<h3>Congratulation your account has been Activated Successfully.</h3>
             			</div>
             		</td>
@@ -356,8 +356,8 @@ ul.social li{
 			          	<div class="text-author">
 				          	<img src="images/person_2.jpg" alt="" style="width: 100px; max-width: 600px; height: auto; margin: auto; display: block;">
 				          	<h3 class="name">Client Name</h3>
-				          	<span class="position">Firm Name</span>
-							<p>Client Code&nbsp;:&nbsp;<b>Client Code</b><br>Username&nbsp;:&nbsp;<b>email id</b><br>Password&nbsp;:&nbsp;<b>Password</b></p> 
+				          	<span class="position">'$agent_name'</span>
+							<p>Client Code&nbsp;:&nbsp;<b>'$user_id'</b><br>Username&nbsp;:&nbsp;<b>'$email_no'</b><br>Password&nbsp;:&nbsp;<b>'$pass'</b></p> 
 				           	<p><a href="https://www.agreerent.in/client/" class="btn btn-primary">Login Now</a></p>
 				           	<p><a href="https://www.agreerent.in/" class="btn-custom">Visit Our Website</a></p>
 							
@@ -373,7 +373,9 @@ ul.social li{
     </div>
   </center>
 </body>
-</html>";
+</html>
+
+}
 
   foreach($_POST as $key => $value){
     if(isset($fields[$key])){
