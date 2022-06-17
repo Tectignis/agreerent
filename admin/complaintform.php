@@ -14,7 +14,7 @@ $client_code=$_POST['number'];
 date_default_timezone_set('Asia/Kolkata');
     $date=date('Y-m-d H:i:s');
 	
-	$sql = mysqli_query($conn,"INSERT INTO `ticket`( `user_id`,`complaint_code`, `email_id`, `subject`, `description`, `date`) VALUES ('".$_SESSION['id']."','$client_code','$email', '$subject','$description', NOw())") ;
+	$sql = mysqli_query($conn,"INSERT INTO `ticket`( `user_id`,`complaint_code`, `email_id`, `subject`, `description`, `date`) VALUES ('".$_SESSION['id']."','$client_code','$email', '$subject','$description', '$date')") ;
   if($sql==1){
     echo "<script>alert('Register successfully'),window.location='complaintform.php';</script>";
    
@@ -88,12 +88,11 @@ date_default_timezone_set('Asia/Kolkata');
                       $dnk=mysqli_num_rows($sql);
                       $lastid=$dnk+1;
                       
-                      $res= preg_replace('~\S\K\S*\s*~u', '', $first);
                       if(empty($lastid)){
 						           $number="ARCN-000";
 					           }else{
 						          $id=str_pad($lastid + 0, 3,0, STR_PAD_LEFT);
-					        	  $number=$res."ARCN"."-$id";
+					        	  $number="ARCN-$id";
 					            }	
                     
                       
@@ -112,7 +111,7 @@ date_default_timezone_set('Asia/Kolkata');
                    $query=mysqli_query($conn,"select * from subject");
                    ?>
  
-                       <select class="form-control select2" name="suject" style="width: 100%;" required>
+                       <select class="form-control select2" name="subject" style="width: 100%;" required>
                          <option selected="selected" disabled>select</option>
                          <?php
                     while($sql=mysqli_fetch_array($query))
