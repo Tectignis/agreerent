@@ -41,7 +41,7 @@ try{
     }
   }
  if( mail($sendTo,$subject,$emailText, "From:" .$from)){
-  $passwordhash=password_hash($pass,PASSWORD_BCRYPT);
+//   $passwordhash=password_hash($pass,PASSWORD_BCRYPT);
 
 //   $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`status`) 
 //    VALUES ('$user_id','$agent_name','$email_no','$passwordhash','$rera','$office_address','$mobile_no','$status')");
@@ -50,6 +50,7 @@ try{
 //    else{
 //      echo "<script>alert('Something Wrong');</script>";
 //    }
+ echo "<script>alert('Agent Registered Successfully');</script>"; 
  }
  else{
     echo "eeee $sendTo $subject $emailText $from";
