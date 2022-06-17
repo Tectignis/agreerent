@@ -6,7 +6,6 @@ if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 }
 include("../config/config.php");
 
-
 $res=mysqli_query($conn,"SELECT * FROM `email_configuration`");
  $row=mysqli_fetch_array($res);	
 
@@ -21,12 +20,6 @@ if(isset($_POST['sub'])){
   $status=1;
   $pass= rand(100000, 999999);
   $email=$row['email'];
-
-  $headers = array("From: $email",
-    "Reply-To: replyto@example.com",
-    "X-Mailer: PHP/" . PHP_VERSION
-);
-// $from  = implode("\r\n", $headers);
 
 $from = 'Enquiry <'.$email.'>';
 $sendTo = 'Enquiry <'.$email_no.'>';
