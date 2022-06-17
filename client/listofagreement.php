@@ -74,7 +74,7 @@ if(isset($_GET['gen'])){
             <!-- /.card -->
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Enquiry Details</h3>
+                <h3 class="card-title">List of Agreement</h3>
               <div class="card-tools">
                 <ul class="nav nav-pills ml-auto">
                   <li class="nav-item">
