@@ -28,8 +28,7 @@ $fields = array( 'name' => 'name' );
 $from = 'MIME-Version: 1.0' . "\r\n";
 $from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
- $emailText = '<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+ $emailText = '
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
@@ -286,7 +285,7 @@ ul.social li{
 
 </head>
 
-<body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #f1f1f1;">
+
 	<center style="width: 100%; background-color: #f1f1f1;">
     <div style="display: none; font-size: 1px;max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
       &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
@@ -337,8 +336,7 @@ ul.social li{
       </table>
     </div>
   </center>
-</body>
-</html>';
+';
 
 try{
    
