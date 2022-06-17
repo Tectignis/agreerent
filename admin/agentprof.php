@@ -100,7 +100,7 @@ if(isset($_POST['edit'])){
                                                 Name</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control" name="name"
-                                                    value="<?php echo $arr["agent_name"]; ?>">
+                                                    value="<?php echo $arr["agent_name"]; ?>"readonly>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -108,7 +108,7 @@ if(isset($_POST['edit'])){
                                                 Email-ID</label>
                                             <div class="col-sm-10">
                                                 <input type="email" class="form-control" name="email"
-                                                    value="<?php echo $arr["email"]; ?>">
+                                                    value="<?php echo $arr["email"]; ?>" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -133,6 +133,18 @@ if(isset($_POST['edit'])){
                                                 <input type="text" class="form-control" name="rera"
                                                     value="<?php echo $arr["rera_no"]; ?>">
                                             </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="examplepan" class="col-sm-2 col-form-label">Profile Photo</label>
+                                            <div class="col-sm-2">
+                                                <img src="dist/img/profile/<?php echo $arr["image"]; ?>" height="100px" width="100px" style="border-radius:50%"
+                                                    value="<?php echo $arr["image"]; ?>">
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="file" class="form-control" name="rera"
+                                                    value="<?php echo $arr["image"]; ?>">
+                                            </div>
+                                           
                                         </div>
                                         <?php  } ?>
                                         <div class="card-footer">

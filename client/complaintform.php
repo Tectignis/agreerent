@@ -14,9 +14,10 @@ $client_code=$_POST['number'];
 date_default_timezone_set('Asia/Kolkata');
     $date=date('Y-m-d H:i:s');
 	
+	
 	$sql = mysqli_query($conn,"INSERT INTO `ticket`( `user_id`,`complaint_code`, `email_id`, `subject`, `description`, `date`) VALUES ('".$_SESSION['id']."','$client_code','$email', '$subject','$description', '$date')") ;
   if($sql==1){
-    echo "<script>alert('Register successfully'),window.location='complaintform.php';</script>";
+    echo "<script>alert('Register successfully'),window.location='listofcomplaint.php';</script>";
    
 
   }else{
@@ -85,14 +86,19 @@ date_default_timezone_set('Asia/Kolkata');
                                 <!-- form start -->
                                 <form method="post">
                                     <?php $sql=mysqli_query($conn,"select * from ticket where user_id='".$_SESSION['id']."'");
+                            $query =mysqli_query($conn,"select * from agent_details where user_id='".$_SESSION['id']."'");
                       $dnk=mysqli_num_rows($sql);
                       $lastid=$dnk+1;
+                      $arr=mysqli_fetch_array($query);
+                      $name=$arr['agent_name'];
+                      $first=$name;
                       
+                      $res= preg_replace('~\S\K\S*\s*~u', '', $first);
                       if(empty($lastid)){
-						           $number="ARCN-000";
+						           $number=$res."-000";
 					           }else{
 						          $id=str_pad($lastid + 0, 3,0, STR_PAD_LEFT);
-					        	  $number="ARCN-$id";
+					        	  $number=$res."CP"."-$id";
 					            }	
                     
                       
@@ -120,7 +126,7 @@ date_default_timezone_set('Asia/Kolkata');
 
                          <option value="<?php echo $sql['name']; ?>"> <?php echo $sql['name']; ?></option>
                          <?php } ?>
-                       </select>
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputdescription">Description</label>

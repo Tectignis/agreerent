@@ -92,13 +92,14 @@ th {
 
 <?php 
 	
-	$sql=mysqli_query($conn,"select * from property_details where document_no='$fid'");
-	 while($arr=mysqli_fetch_array($sql)){
+	$sql=mysqli_query($conn,"select * from property_details");
+	 $arr=mysqli_fetch_array($sql);
+     $doc=$arr['document_no'];
 	?>
 
     <p><b>WHERE AS : </b> </p>
     <p>The LICENSOR is fully seized and possessed of or otherwise well and sufficiently entitled to hold the following
-    <?php echo $arr['property_type'];?>:</p> <br>
+    <?php if($doc==$fid){echo $arr['property_type']; }else{ echo ' - ' ;}?></p> <br>
 
     <div>
         <table style="width: 100%;">
@@ -127,7 +128,6 @@ th {
                     <td colspan="4">NODE:<b><?php echo $arr['node'];?></b></td>
                 </tr>
             </tbody>
-            <?php } ?>
 
         </table>
         <?php 
