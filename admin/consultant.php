@@ -154,10 +154,10 @@ if(isset($_POST['submit'])){
                                                             type="button" class="btn btn-primary  btn-sm"
                                                             style="color: aliceblue"><i class="fas fa-pen"></i>
                                                         </button></a>
-                                                    <a href="consultant.php?delid=<?php echo $arr['id'] ?>"><button
+                                                    <!-- <a href="consultant.php?delid=<?php echo $arr['id'] ?>"><button
                                                             type="button" class="btn btn-danger  btn-sm"
                                                             style="color: aliceblue"><i class="fas fa-trash"></i>
-                                                        </button></a>
+                                                        </button></a> -->
                                                 </td>
                                             </tr>
                                             <?php $count++;} ?>
