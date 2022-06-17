@@ -105,6 +105,7 @@ if(isset($_POST['submit'])){
                                                 <th>Name</th>
                                                 <th>Moile No</th>
                                                 <th>Email id</th>
+                                                <th>Date</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
 
@@ -127,6 +128,7 @@ if(isset($_POST['submit'])){
                                                 <td><?php echo $arr["agent_name"]; ?></td>
                                                 <td><?php echo $arr["mobile_no"]; ?></td>
                                                 <td><?php echo $arr["email"]; ?></td>
+                                                <td><?php echo $arr["created_date"]; ?></td>
                                                 <?php if($arr['status']=='0'){
                   
                   ?>
@@ -152,10 +154,10 @@ if(isset($_POST['submit'])){
                                                             type="button" class="btn btn-primary  btn-sm"
                                                             style="color: aliceblue"><i class="fas fa-pen"></i>
                                                         </button></a>
-                                                    <a href="consultant.php?delid=<?php echo $arr['id'] ?>"><button
+                                                    <!-- <a href="consultant.php?delid=<?php echo $arr['id'] ?>"><button
                                                             type="button" class="btn btn-danger  btn-sm"
                                                             style="color: aliceblue"><i class="fas fa-trash"></i>
-                                                        </button></a>
+                                                        </button></a> -->
                                                 </td>
                                             </tr>
                                             <?php $count++;} ?>
@@ -197,7 +199,8 @@ if(isset($_POST['submit'])){
 
                                             </select>
                                                 </div>
-                                        
+                                                                                <input type="text" name="aid" class="category" hidden>
+
                                     </div>
                             </div>
                             <div class="modal-footer justify-content-between">
