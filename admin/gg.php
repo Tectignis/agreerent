@@ -25,13 +25,13 @@ if(isset($_POST['sub'])){
 
   move_uploaded_file($_FILES['image']['tmp_name'],$loc.$image);
 
-  $from = 'MIME-Version: 1.0' . "\r\n";
-  $from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+ 
 $from = 'Enquiry <'.$email.'>' . "\r\n";
 $sendTo = 'Enquiry <'.$email_no.'>';
-$subject = 'Array';
+$subject = 'Agreerent';
 // $fields = array( 'name' => 'name' );
-
+$from = 'MIME-Version: 1.0' . "\r\n";
+$from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
 $emailText = '
 <html>
