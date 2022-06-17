@@ -84,40 +84,33 @@ if(isset($_GET['gen'])){
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
-                            <div class="card">
-                              <div class="card-header">
-                              <h3 class="card-title">Enquiry Details</h3>
-                                    <div class="card-tools">
-                                        <ul class="nav nav-pills ml-auto">
-                                            <li class="nav-item">
-                                                <a class="nav-link active" href="basic_details.php" data-tt="tooltip" title=""
+                              <!-- <h3 class="card-title">Enquiry Details</h3> -->
+                                    <div class="card-tools my-3" style="text-align:end;">
+                                                <a class="btn btn-primary" href="basic_details.php" data-tt="tooltip" title=""
                                                     data-original-title="Click here to Add New Enquiry"><i
                                                         class="fas fa-user-friends mr-2"></i>Create New Agreement</a>
-                                            </li>
-                                        </ul>
                                     </div>
-                                </div>
-                            </div>
                             <div class="card card-primary border-primary card-tabs">
-              <div class="card-header p-0 pt-1">
+              <div class="card-header p-0 pt-1 ">
                 <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
                   <li class="nav-item">
-                  <a class="nav-link active" id="custom-tabs-two-home-tab" data-toggle="pill" href="#custom-tabs-two-home" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true"><h6> Home</h6></a> 
+                  <a class="nav-link active" id="custom-tabs-two-home-tab" data-toggle="pill" href="#custom-tabs-two-home" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true"><h6> Pending Cases</h6></a> 
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" id="custom-tabs-two-profile-tab" data-toggle="pill" href="#custom-tabs-two-profile" role="tab" aria-controls="custom-tabs-two-profile" aria-selected="false"><h6>Profile</h6></a>
+                    <a class="nav-link" id="custom-tabs-two-profile-tab" data-toggle="pill" href="#custom-tabs-two-profile" role="tab" aria-controls="custom-tabs-two-profile" aria-selected="false"><h6>Complete</h6></a>
                   </li>
-                  
                 </ul>
+                <!-- <div class="card-tools  " style="text-align:end;"> -->
+                                        <!-- <ul class="nav  nav-pills mr-0"> -->
+                                            
+                                        <!-- </ul> -->
+                                    <!-- </div> -->
               </div>
               <div class="card-body">
                 <div class="tab-content" id="custom-tabs-two-tabContent">
                   <div class="tab-pane fade show active" id="custom-tabs-two-home" role="tabpanel" aria-labelledby="custom-tabs-two-home-tab">
                   <div class="user-profile-list ">
-                                                        <div class="card-header">
-                                                            <h5> Pending
-                                                                Cases </h5>
-                                                        </div>
+                                                       
                                                         <div class="mt-3 box-datatable table-responsive">
                                                             <div id="xin_table_expense_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                                                         <div id="table_id_wrapper" class="dataTables_wrapper dt-bootstrap4">
@@ -189,9 +182,7 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
                   </div>
                   <div class="tab-pane fade" id="custom-tabs-two-profile" role="tabpanel" aria-labelledby="custom-tabs-two-profile-tab">
                   <div class="user-profile-list ">
-                                                        <div class="card-header">
-                                                            <h5>  Complete </h5>
-                                                        </div>
+                                                        
                                                         <div class="mt-3">
                                                             <div class="box-datatable table-responsive">
                                                                 <div id="xin_table_expense_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
