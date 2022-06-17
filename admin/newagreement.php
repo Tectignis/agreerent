@@ -723,6 +723,14 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                 </div>
                                             </div>
                                             <div class="form-group row">
+                                                <label for="exampldate" class="col-sm-2 col-form-label">Date Of Rent
+                                                    Payment<label style="color:Red">*</label></label>
+                                                <div class="col-sm-4">
+                                                    <input type="date" class="form-control" name="date_of_payment" id="date1"
+                                                        required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
                                                 <label for="exampleage" class="col-sm-2 col-form-label-sm">Bank<label
                                                         style="color:Red">*</label></label>
                                                 <div class="col-sm-4">
@@ -742,9 +750,9 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                             </div>
 
                                             <div class="form-group row">
-                                                <label for="exampldate" class="col-sm-2 col-form-label">Date Of
+                                                <label for="exampldate" class="col-sm-2 col-form-label">Date Of 
                                                     Payment<label style="color:Red">*</label></label>
-                                                <div class="col-sm-10">
+                                                <div class="col-sm-4">
                                                     <input type="date" class="form-control" name="date" id="date"
                                                         required>
                                                 </div>
@@ -753,7 +761,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                 <label for="exampleInputtran"
                                                     class="col-sm-2 col-form-label">Transaction ID<label
                                                         style="color:Red">*</label></label>
-                                                <div class="col-sm-10">
+                                                <div class="col-sm-4">
                                                     <input type="number" class="form-control" name="tid" id="tid"
                                                         placeholder="Enter Transaction ID" required>
                                                 </div>
@@ -980,10 +988,11 @@ submitpayment.addEventListener("click", function(){
 let no7 = document.getElementById("no7").value;
 let rent_amount = document.getElementById("rent").value;
 let method = document.getElementById("checkselec").value;
+let date_of_payment = document.getElementById("date1").value;
 let bank = document.getElementById("bank").value;
 let date = document.getElementById("date").value;
 let tid = document.getElementById("tid").value;
-if(no7 == "" || rent_amount == "" || method == "" || bank == "" || date== "" || tid== "" ){
+if(no7 == "" || rent_amount == "" || method == "" || date_of_payment == "" || bank == "" || date== "" || tid== "" ){
     swal("Oops...", "Please fill all the fields", "error");
 }
     else{
