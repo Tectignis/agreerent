@@ -128,7 +128,7 @@ if(isset($_POST['submit'])){
                                                 <td><?php echo $arr["agent_name"]; ?></td>
                                                 <td><?php echo $arr["mobile_no"]; ?></td>
                                                 <td><?php echo $arr["email"]; ?></td>
-                                                <td><?php echo $arr["created_at"]; ?></td>
+                                                <td><?php echo $arr["created_date"]; ?></td>
                                                 <?php if($arr['status']=='0'){
                   
                   ?>
