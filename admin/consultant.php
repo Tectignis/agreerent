@@ -105,6 +105,7 @@ if(isset($_POST['submit'])){
                                                 <th>Name</th>
                                                 <th>Moile No</th>
                                                 <th>Email id</th>
+                                                <th>Date</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
 
@@ -127,6 +128,7 @@ if(isset($_POST['submit'])){
                                                 <td><?php echo $arr["agent_name"]; ?></td>
                                                 <td><?php echo $arr["mobile_no"]; ?></td>
                                                 <td><?php echo $arr["email"]; ?></td>
+                                                <td><?php echo $arr["created_at"]; ?></td>
                                                 <?php if($arr['status']=='0'){
                   
                   ?>
