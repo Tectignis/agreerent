@@ -722,7 +722,7 @@ $id=$_GET['id'];
                                             <div class="form-group row">
                                                 <label for="exampldate" class="col-sm-2 col-form-label">Date Of
                                                     Payment<label style="color:Red">*</label></label>
-                                                <div class="col-sm-10">
+                                                <div class="col-sm-4">
                                                     <input type="date" class="form-control" name="date" id="date"
                                                         required>
                                                 </div>
@@ -731,7 +731,7 @@ $id=$_GET['id'];
                                                 <label for="exampleInputtran"
                                                     class="col-sm-2 col-form-label">Transaction ID<label
                                                         style="color:Red">*</label></label>
-                                                <div class="col-sm-10">
+                                                <div class="col-sm-4">
                                                     <input type="number" class="form-control" name="tid" id="tid"
                                                         placeholder="Enter Transaction ID" required>
                                                 </div>
