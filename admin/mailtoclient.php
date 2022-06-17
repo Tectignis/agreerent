@@ -29,7 +29,7 @@ $from = 'MIME-Version: 1.0' . "\r\n";
 $from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
  $emailText = '
-	<center style="width: 100%; background-color: #f1f1f1;">
+	// <center style="width: 100%; background-color: #f1f1f1;">
     <div style="display: none; font-size: 1px;max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
       &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
     </div>
@@ -78,7 +78,7 @@ $from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
       <!-- 1 Column Text + Button : END -->
       </table>
     </div>
-  </center>
+//   </center>
 ';
 
 try{
