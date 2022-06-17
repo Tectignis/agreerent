@@ -25,6 +25,10 @@ $from = 'Enquiry <'.$email.'>';
 $sendTo = 'Enquiry <'.$email_no.'>';
 $subject = 'Password';
 $fields = array( 'name' => 'name' );
+
+try{
+ 
+
 $emailText = "Welcome $agent_name.
    Welcome to Agreerent. We’re confident that Agreerent will help you to get the best deal for your property. Your Email ID is :- '$email_no'
   Your Password is :- '$pass'.
@@ -64,7 +68,7 @@ else{
   echo $responseArray['message'];
 }
   
-
+}
 
 
 
