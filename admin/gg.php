@@ -25,7 +25,7 @@ if(isset($_POST['sub'])){
 $from = 'Enquiry <'.$email.'>';
 $sendTo = 'Enquiry <'.$email_no.'>';
 $subject = 'Password';
-$fields = array( 'name' => 'name' );
+// $fields = array( 'name' => 'name' );
 $from = 'MIME-Version: 1.0' . "\r\n";
 $from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
