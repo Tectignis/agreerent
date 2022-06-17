@@ -22,6 +22,9 @@ if(isset($_POST['sub'])){
   $pass= rand(100000, 999999);
   $image=$_FILES['image']['name'];
   $email=$row['email'];
+  $loc="dist/img/agent_photo/";
+
+  move_uploaded_file($_FILES['image']['tmp_name'],$loc.$image);
 
 $from = 'Enquiry <'.$email.'>';
 $sendTo = 'Enquiry <'.$email_no.'>';
@@ -284,7 +287,7 @@ ul.social li{
             	<tr>
 			          <td style="text-align: center;">
 			          	<div class="text-author">
-				          	<img src="images/person_2.jpg" alt="" style="width: 100px; max-width: 600px; height: auto; margin: auto; display: block;">
+				          	<img src="dist/img/agent_photo/'.$image.'" alt="" style="width: 100px; max-width: 600px; height: auto; margin: auto; display: block;">
 				          	<h3 class="name">'.$agent_name.'</h3>
 				          	<span class="position">Firm Name</span>
 							<p>Client Code&nbsp;:&nbsp;<b>Client Code</b><br>Username&nbsp;:&nbsp;<b>'.$email_no.'</b><br>Password&nbsp;:&nbsp;<b>'.$pass.'</b></p> 
@@ -314,8 +317,8 @@ try{
  if( mail($sendTo,$subject,$emailText, "From:" .$from)){
 //   $passwordhash=password_hash($pass,PASSWORD_BCRYPT);
 
-//   $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`status`) 
-//    VALUES ('$user_id','$agent_name','$email_no','$passwordhash','$rera','$office_address','$mobile_no','$status')");
+//   $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`image`,`status`) 
+//    VALUES ('$user_id','$agent_name','$email_no','$passwordhash','$rera','$office_address','$mobile_no','$image','$status')");
 //    if($sql=1){
 //      echo "<script>alert('Agent Registered Successfully');</script>";    }
 //    else{
