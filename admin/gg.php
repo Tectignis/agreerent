@@ -30,7 +30,7 @@ $from = 'Enquiry <'.$email.'>' . "\r\n";
 $sendTo = 'Enquiry <'.$email_no.'>';
 $subject = 'Agreerent';
 // $fields = array( 'name' => 'name' );
-$from = 'MIME-Version: 1.0' . "\r\n";
+$from = 'Agreerent: 1.0' . "\r\n";
 $from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
 $emailText = '
@@ -287,7 +287,7 @@ ul.social li{
             	<tr>
 			          <td style="text-align: center;">
 			          	<div class="text-author">
-				          	<img src="dist/img/agent_photo/'.$image.'" alt="" style="width: 100px; max-width: 600px; height: auto; margin: auto; display: block;">
+				          	<img src="https://agreerent.in/admin/dist/img/agent_photo/'.$image.'" alt="" style="width: 100px; max-width: 600px; height: auto; margin: auto; display: block;">
 				          	<h3 class="name">'.$agent_name.'</h3>
 				          	<span class="position">Firm Name</span>
 							<p>Client Code&nbsp;:&nbsp;<b>Client Code</b><br>Username&nbsp;:&nbsp;<b>'.$email_no.'</b><br>Password&nbsp;:&nbsp;<b>'.$pass.'</b></p> 
