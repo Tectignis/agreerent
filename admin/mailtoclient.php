@@ -50,9 +50,10 @@ try{
 //    else{
 //      echo "<script>alert('Something Wrong');</script>";
 //    }
-//  }else{
-//     echo "eeee $sendTo $subject $emailText $from";
-//  }
+ }
+ else{
+    echo "eeee $sendTo $subject $emailText $from";
+ }
 }
 catch(\Exception $e){
   echo "not done";
