@@ -29,13 +29,6 @@ $from = 'MIME-Version: 1.0' . "\r\n";
 $from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
  $emailText = '
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="x-apple-disable-message-reformatting"> 
-    <title></title>
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
 
     <style>
         html,
@@ -283,7 +276,6 @@ ul.social li{
     </style>
 
 
-</head>
 
 
 	<center style="width: 100%; background-color: #f1f1f1;">
