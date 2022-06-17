@@ -25,6 +25,7 @@ $from = 'Enquiry <'.$email.'>';
 $sendTo = 'Enquiry <'.$email_no.'>';
 $subject = 'Password';
 // $fields = array( 'name' => 'name' );
+$from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
 $emailText = '
 <html>
