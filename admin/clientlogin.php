@@ -104,7 +104,7 @@ if(isset($_POST["login"])){
 		$verify=password_verify($password,$row['password']);
 	
 
-		if($verify==1){
+	 if($verify==1){
 	  $_SESSION['email']=$row['email'];
       $_SESSION['name']=$row['agent_name'];
       $_SESSION['id']=$row['user_id'];
