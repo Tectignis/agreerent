@@ -694,6 +694,14 @@ $id=$_GET['id'];
                                                 </div>
                                             </div>
                                             <div class="form-group row">
+                                                <label for="exampldate" class="col-sm-2 col-form-label">Date Of Rent
+                                                    Payment<label style="color:Red">*</label></label>
+                                                <div class="col-sm-4">
+                                                    <input type="date" class="form-control" name="date_of_payment" id="date1"
+                                                        required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
                                                 <label for="exampleage" class="col-sm-2 col-form-label-sm">Bank<label
                                                         style="color:Red">*</label></label>
                                                 <div class="col-sm-4">
@@ -825,6 +833,140 @@ $id=$_GET['id'];
         $('.nav-tabs > .nav-item > .active').parent().prev('li').find('a').trigger('click');
     });
     </script>
+
+<script>
+let subm = document.getElementById("subm");
+subm.addEventListener("click", function(){
+let no1 = document.getElementById("no").value;
+let abbreviation = document.getElementById("examplemr").value;
+let name = document.getElementById("txtname").value;
+let age = document.getElementById("id1").value;
+let mobile = document.getElementById("mobile").value;
+let aadhaar = document.getElementById("txAdhar").value;
+let pancard = document.getElementById("txtPANCard").value;
+let address = document.getElementById("address").value;
+if(no1 == "" || abbreviation == "" || name == "" || age == "" || mobile == "" || aadhaar== "" || pancard== "" || address== ""  ){
+    swal("Oops...", "Please fill all the fields", "error");
+}
+    else{
+      swal("Saved!", "Agreement Save", "success");
+    }
+});
+</script>
+
+<script>
+let submitenant = document.getElementById("submitenant");
+submitenant.addEventListener("click", function(){
+let no2 = document.getElementById("no2").value;
+let abbreviation = document.getElementById("exampleSelectmr").value;
+let name1 = document.getElementById("txtname3").value;
+let mobile = document.getElementById("phone").value;
+let email = document.getElementById("emailcheck").value;
+let passport = document.getElementById("passport").value;
+let aadhaar = document.getElementById("txtAadhar1").value;
+let age = document.getElementById("id2").value;
+let pancard = document.getElementById("txtPANCard1").value;
+let address = document.getElementById("residenceAddress").value;
+let permanent_address = document.getElementById("presentAddress").value;
+if(no2 == "" || abbreviation == "" || name1 == "" || mobile == "" || email == "" || passport == "" || aadhaar == "" || age == "" || pancard == "" || address == "" || permanent_address == ""  ){
+    swal("Oops...", "Please fill all the fields", "error");
+}
+    else{
+        swal("Saved!", "Agreement Save", "success");
+    }
+});
+</script>
+
+<script>
+let submitproperty = document.getElementById("submitproperty");
+submitproperty.addEventListener("click", function(){
+let exampleproperties = document.getElementById("exampleproperties").value;
+let address = document.getElementById("addressPro").value;
+let sector = document.getElementById("sector").value;
+let plotno = document.getElementById("plotno").value;
+let cidco = document.getElementById("cidco").value;
+let area = document.getElementById("area").value;
+let chs = document.getElementById("chs").value;
+let node = document.getElementById("node").value;
+
+if(exampleproperties == "" || address == "" || sector == "" || plotno == "" || cidco == "" || area == "" || chs == "" || node == ""  ){
+    swal("Oops...", "Please fill all the fields", "error");
+}
+    else{
+        swal("Saved!", "Agreement Save", "success");
+    }
+});
+</script>
+<script>
+let submitmember = document.getElementById("submitmember");
+submitmember.addEventListener("click", function(){
+let no4 = document.getElementById("no4").value;
+let name2 = document.getElementById("txtname1").value;
+let relation = document.getElementById("exampleSelectrelation").value;
+let age = document.getElementById("relativeage").value;
+let gender = document.getElementById("relativegender").value;
+
+if(no4 == "" || name2 == "" || relation == "" || age == "" || gender == ""  ){
+    swal("Oops...", "Please fill all the fields", "error");
+}
+    else{
+        swal("Saved!", "Agreement Save", "success");
+    }
+});
+</script>
+<script>
+let submitwitness = document.getElementById("submitwitness");
+submitwitness.addEventListener("click", function(){
+let no5 = document.getElementById("no5").value;
+let owitness1 = document.getElementById("nameowner").value;
+let owitness2 = document.getElementById("nameowner2").value;
+let twitness1 = document.getElementById("twitness1").value;
+let twitness2 = document.getElementById("twitness2").value;
+
+
+if(no5 == "" || owitness1 == "" || owitness2 == "" || twitness1 == "" || twitness2 == ""  ){
+    swal("Oops...", "Please fill all the fields", "error");
+}
+    else{
+        swal("Saved!", "Agreement Save", "success");
+    }
+});
+</script>
+<script>
+let submitaminities = document.getElementById("submitaminities");
+submitaminities.addEventListener("click", function(){
+let no6 = document.getElementById("no6").value;
+let name3 = document.getElementById("txtname2").value;
+let number = document.getElementById("itemnumbe").value;
+
+
+
+if(no6 == "" || name3 == "" || number == ""   ){
+    swal("Oops...", "Please fill all the fields", "error");
+}
+    else{
+        swal("Saved!", "Agreement Save", "success");
+    }
+});
+</script>
+<script>
+let submitpayment = document.getElementById("submitpayment");
+submitpayment.addEventListener("click", function(){
+let no7 = document.getElementById("no7").value;
+let rent_amount = document.getElementById("rent").value;
+let method = document.getElementById("checkselec").value;
+let date_of_payment = document.getElementById("date1").value;
+let bank = document.getElementById("bank").value;
+let date = document.getElementById("date").value;
+let tid = document.getElementById("tid").value;
+if(no7 == "" || rent_amount == "" || method == "" || date_of_payment == "" || bank == "" || date== "" || tid== "" ){
+    swal("Oops...", "Please fill all the fields", "error");
+}
+    else{
+        swal("Saved!", "Agreement Save", "success");
+    }
+});
+</script>
 
 </body>
 
