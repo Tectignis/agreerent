@@ -35,7 +35,13 @@ try{
 Tectignis IT Solution
 Aashiyana CHS Shop No 05, Sector 11, Plot No 29, Kamothe, Navi Mumbai, Maharashtra 410206</body></html>";
 
-
+$emailText = "<html><body><h1>Welcome $agent_name.</h1>
+   Welcome to Agreerent. We’re confident that Agreerent will help you to get the best deal for your property. Your Email ID is :- '$email_no'
+  Your Password is :- '$pass'.
+  Please login with Registerd Email and Password
+  Thanks & Regards,
+Tectignis IT Solution
+Aashiyana CHS Shop No 05, Sector 11, Plot No 29, Kamothe, Navi Mumbai, Maharashtra 410206</body></html>";
 
   foreach($_POST as $key => $value){
     if(isset($fields[$key])){
