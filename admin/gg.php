@@ -11,40 +11,65 @@ $res=mysqli_query($conn,"SELECT * FROM `email_configuration`");
 
 if(isset($_POST['sub'])){
 
-    $user_id=$_POST['no'];
-    $agent_name=$_POST['name'];
-    $mobile_no=$_POST['mobile_no'];
-    $office_address=$_POST['office_address'];
-    $email_no=$_POST['email'];
-    $rera=$_POST['rera'];
-    $status=1;
-    $pass= rand(100000, 999999);
+  $user_id=$_POST['no'];
+  $agent_name=$_POST['name'];
+  $mobile_no=$_POST['mobile_no'];
+  $office_address=$_POST['office_address'];
+  $email_no=$_POST['email'];
+  $rera=$_POST['rera'];
+  $status=1;
+  $pass= rand(100000, 999999);
+  $email=$row['email'];
 
-    $to = 'naiduvedant@gmail.com';
-    $subject = 'Marriage Proposal';
-    $from = $email_no;
-     
-    // To send HTML mail, the Content-type header must be set
-    $headers  = 'MIME-Version: 1.0' . "\r\n";
-    $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-     
-    // Create email headers
-    $headers .= 'From: '.$from."\r\n".
-        'Reply-To: '.$from."\r\n" .
-        'X-Mailer: PHP/' . phpversion();
-     
-    // Compose a simple HTML email message
-    $message = '<html><body>';
-    $message .= '<h1 style="color:#f40;">Hi Jane!</h1>';
-    $message .= '<p style="color:#080;font-size:18px;">Will you marry me?</p>';
-    $message .= '</body></html>';
-     
-    // Sending email
-    if(mail($to, $subject, $message, $headers)){
-        echo 'Your mail has been sent successfully.';
-    } else{
-        echo 'Unable to send email. Please try again.';
+$from = 'Enquiry <'.$email.'>';
+$sendTo = 'Enquiry <'.$email_no.'>';
+$subject = 'Password';
+$fields = array( 'name' => 'name' );
+$from = 'MIME-Version: 1.0' . "\r\n";
+$from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+
+ $emailText = "<h1 style='color:blue'>Welcome $agent_name</h1>.<br><hr><br>
+  <p> Welcome to Agreerent. We’re confident that Agreerent will help you to get the best deal for your property. Your Email ID is :- '$email_no'
+  Your Password is :- '$pass'.</p>
+  Please login with Registerd Email and Password
+  Thanks & Regards,
+Tectignis IT Solution
+Aashiyana CHS Shop No 05, Sector 11, Plot No 29, Kamothe, Navi Mumbai, Maharashtra 410206";
+
+try{
+   
+  foreach($_POST as $key => $value){
+    if(isset($fields[$key])){
+      $emailText.="$fields[$key]: $value\n";
     }
+  }
+ if( mail($sendTo,$subject,$emailText, "From:" .$from)){
+//   $passwordhash=password_hash($pass,PASSWORD_BCRYPT);
+
+//   $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`status`) 
+//    VALUES ('$user_id','$agent_name','$email_no','$passwordhash','$rera','$office_address','$mobile_no','$status')");
+//    if($sql=1){
+//      echo "<script>alert('Agent Registered Successfully');</script>";    }
+//    else{
+//      echo "<script>alert('Something Wrong');</script>";
+//    }
+ echo "<script>alert('Agent Registered Successfully');</script>"; 
+ }
+ else{
+    echo "eeee $sendTo $subject $emailText $from";
+ }
+}
+catch(\Exception $e){
+  echo "not done";
+}
+if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
+  $encode=json_encode($responseArray);
+  header('content-Type: application/json');
+  echo $encoded;
+}
+else{
+  echo $responseArray['message'];
+}
   
 }
 
@@ -146,7 +171,7 @@ if(isset($_POST['sub'])){
                                         <label for="exampleInputMobile" class="col-sm-2 col-form-label">Office
                                             Address<label style="color:Red">*</label></label>
                                         <div class="col-sm-10">
-                                            <textarea name="office_address" style="width:100%;" rows="2"
+                                            <textarea class="form-control" name="office_address" style="width:100%;" rows="2"
                                                 placeholder="Enter Address" required></textarea>
                                         </div>
                                     </div>
