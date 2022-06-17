@@ -11,11 +11,12 @@ if(isset($_POST['submit'])){
   $subject=$_POST['subject'];
 	$description=$_POST['description'];
 $client_code=$_POST['number'];
-	date_default_timezone_set('Asia/Kolkata');
+date_default_timezone_set('Asia/Kolkata');
     $date=date('Y-m-d H:i:s');
-	$sql = mysqli_query($conn,"INSERT INTO `ticket`( `user_id`,`complaint_code`, `email_id`, `subject`, `description`, `date`) VALUES ('".$_SESSION['id']."','$client_code','$email', '$subject','$description','$date')") ;
+	
+	$sql = mysqli_query($conn,"INSERT INTO `ticket`( `user_id`,`complaint_code`, `email_id`, `subject`, `description`, `date`) VALUES ('".$_SESSION['id']."','$client_code','$email', '$subject','$description', '$date')") ;
   if($sql==1){
-    echo "<script>alert('Register successfully'),window.location='listofcomplaint.php';</script>";
+    echo "<script>alert('Register successfully'),window.location='complaintform.php';</script>";
    
 
   }else{
@@ -86,14 +87,12 @@ $client_code=$_POST['number'];
                                     <?php $sql=mysqli_query($conn,"select * from ticket where user_id='".$_SESSION['id']."'");
                       $dnk=mysqli_num_rows($sql);
                       $lastid=$dnk+1;
-                     
                       
-                      $res= preg_replace('~\S\K\S*\s*~u', '', $first);
                       if(empty($lastid)){
 						           $number="ARCN-000";
 					           }else{
 						          $id=str_pad($lastid + 0, 3,0, STR_PAD_LEFT);
-					        	  $number=$res."ARCN"."-$id";
+					        	  $number="ARCN-$id";
 					            }	
                     
                       
@@ -108,13 +107,12 @@ $client_code=$_POST['number'];
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputsubject">Subject</label>
-                                           
                                             <?php 
                    $query=mysqli_query($conn,"select * from subject");
                    ?>
  
                        <select class="form-control select2" name="subject" style="width: 100%;" required>
-                         <option value="" selected="selected" disabled >select</option>
+                         <option selected="selected" disabled>select</option>
                          <?php
                     while($sql=mysqli_fetch_array($query))
                     {
@@ -174,9 +172,6 @@ $client_code=$_POST['number'];
         bsCustomFileInput.init();
     });
     </script>
-    <script>
-
-        </script>
 </body>
 
 </html>

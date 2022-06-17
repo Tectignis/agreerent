@@ -11,6 +11,8 @@ if(isset($_POST['submit'])){
   $subject=$_POST['subject'];
 	$description=$_POST['description'];
 $client_code=$_POST['number'];
+date_default_timezone_set('Asia/Kolkata');
+    $date=date('Y-m-d H:i:s');
 	
 	$sql = mysqli_query($conn,"INSERT INTO `ticket`( `user_id`,`complaint_code`, `email_id`, `subject`, `description`, `date`) VALUES ('".$_SESSION['id']."','$client_code','$email', '$subject','$description', NOw())") ;
   if($sql==1){
