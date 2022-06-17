@@ -25,17 +25,19 @@ $from = 'Enquiry <'.$email.'>';
 $sendTo = 'Enquiry <'.$email_no.'>';
 $subject = 'Password';
 $fields = array( 'name' => 'name' );
+$from = 'MIME-Version: 1.0' . "\r\n";
+$from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
-
-
-try{
-    $emailText = "<h1 style='color:blue'>Welcome $agent_name</h1>.<br><hr><br>
+ $emailText = "<h1 style='color:blue'>Welcome $agent_name</h1>.<br><hr><br>
   <p> Welcome to Agreerent. We’re confident that Agreerent will help you to get the best deal for your property. Your Email ID is :- '$email_no'
   Your Password is :- '$pass'.</p>
   Please login with Registerd Email and Password
   Thanks & Regards,
 Tectignis IT Solution
 Aashiyana CHS Shop No 05, Sector 11, Plot No 29, Kamothe, Navi Mumbai, Maharashtra 410206";
+
+try{
+   
   foreach($_POST as $key => $value){
     if(isset($fields[$key])){
       $emailText.="$fields[$key]: $value\n";
