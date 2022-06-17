@@ -26,22 +26,22 @@ $sendTo = 'Enquiry <'.$email_no.'>';
 $subject = 'Password';
 $fields = array( 'name' => 'name' );
 
-$emailText = "<h1 style='color:blue'>Welcome $agent_name</h1>.
-  <p> Welcome to Agreerent. We’re confident that Agreerent will help you to get the best deal for your property. Your Email ID is :- '$email_no'
+try{
+  $emailText = "Welcome $agent_name.
+   Welcome to Agreerent. We’re confident that Agreerent will help you to get the best deal for your property. Your Email ID is :- '$email_no'
   Your Password is :- '$pass'.
   Please login with Registerd Email and Password
   Thanks & Regards,
 Tectignis IT Solution
 Aashiyana CHS Shop No 05, Sector 11, Plot No 29, Kamothe, Navi Mumbai, Maharashtra 410206";
 
-try{
   foreach($_POST as $key => $value){
     if(isset($fields[$key])){
       $emailText.="$fields[$key]: $value\n";
     }
   }
  if( mail($sendTo,$subject,$emailText, "From:" .$from)){
-    echo "<script>alert('Mail Sent Successfully');</script>";
+  echo "<script>alert('Mail Sent Successfully');</script>";
  }else{
     echo "eeee $sendTo $subject $emailText $from";
  }
@@ -158,7 +158,7 @@ else{
                                         <label for="exampleInputMobile" class="col-sm-2 col-form-label">Office
                                             Address<label style="color:Red">*</label></label>
                                         <div class="col-sm-10">
-                                            <textarea class="form-control" name="office_address" style="width:100%;" rows="2"
+                                            <textarea name="office_address" style="width:100%;" rows="2"
                                                 placeholder="Enter Address" required></textarea>
                                         </div>
                                     </div>

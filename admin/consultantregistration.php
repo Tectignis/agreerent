@@ -27,9 +27,7 @@ $subject = 'Password';
 $fields = array( 'name' => 'name' );
 
 try{
- 
-
-$emailText = "Welcome $agent_name.
+  $emailText = "Welcome $agent_name.
    Welcome to Agreerent. We’re confident that Agreerent will help you to get the best deal for your property. Your Email ID is :- '$email_no'
   Your Password is :- '$pass'.
   Please login with Registerd Email and Password
@@ -168,7 +166,7 @@ else{
                                         <label for="exampleInputMobile" class="col-sm-2 col-form-label">Office
                                             Address<label style="color:Red">*</label></label>
                                         <div class="col-sm-10">
-                                            <textarea class="form-control" name="office_address" style="width:100%;" rows="2"
+                                            <textarea name="office_address" style="width:100%;" rows="2"
                                                 placeholder="Enter Address" required></textarea>
                                         </div>
                                     </div>
