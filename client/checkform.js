@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    //owner
+  //owner
   $("#subm").on("click", function () {
     let no = $("#no").val();
     let examplemr = $("#examplemr").val();
@@ -23,18 +23,18 @@ $(document).ready(function () {
         txAdhar: txAdhar,
         txtPANCard: txtPANCard,
         address: address,
-        subm: subm
+        subm: subm,
       },
       cache: false,
       success: function (res) {
-         alert(res);
+        // alert(res);
       },
     });
   });
-    
-    //tenant
+
+  //tenant
   $("#submitenant").on("click", function () {
-    let exampledno = $("#exampledno").val();
+    let exampledno = $("#no3").val();
     let exampleSelectmr = $("#exampleSelectmr").val();
     let txtname3 = $("#txtname3").val();
     let phone = $("#phone").val();
@@ -66,160 +66,156 @@ $(document).ready(function () {
       },
       cache: false,
       success: function (res2) {
-         alert(res2);
+        //  alert(res2);
       },
     });
-  });  
-    
-    //property
-     $("#submitproperty").on("click", function () {
-       let no3 = $("#no3").val();
-       let exampleproperties = $("#exampleproperties").val();
-       let addressPro = $("#addressPro").val();
-       let sector = $("#sector").val();
-       let plotno = $("#plotno").val();
-       let cidco = $("#cidco").val();
-       let area = $("#area").val();
-       let chs = $("#chs").val();
-       let node = $("#node").val();
-       let submitproperty = $("#submitproperty").val();
+  });
 
-       $.ajax({
-         url: "form.php",
-         type: "POST",
-         data: {
-           no3: no3,
-           exampleproperties: exampleproperties,
-           addressPro: addressPro,
-           sector: sector,
-           plotno: plotno,
-           cidco: cidco,
-           area: area,
-           chs: chs,
-           node: node,
-           submitproperty: submitproperty,
-         },
-         cache: false,
-         success: function (res3) {
-          alert(res3);
-         },
-       });
-     });  
-    
-    //family
-     $("#submitmember").on("click", function () {
-       let no4 = $("#no4").val();
-       let txtname1 = $("#txtname1").val();
-       let exampleSelectrelation = $("#exampleSelectrelation").val();
-       let relativeage = $("#relativeage").val();
-       let relativegender = $("#relativegender").val();
-       let submitmember = $("#submitmember").val();
-      
-       $.ajax({
-         url: "form.php",
-         type: "POST",
-         data: {
-           no4: no4,
-           txtname1: txtname1,
-           exampleSelectrelation: exampleSelectrelation,
-           relativeage: relativeage,
-           relativegender: relativegender,
-           submitmember: submitmember
-         },
-         cache: false,
-           success: function (res4) {
-               $("#displayfamily").html(res4);
-               alert(res4);
-         },
-       });
-         
-         
-     });  
-    
-    //witness
-     $("#submitwitness").on("click", function () {
-       let no5 = $("#no5").val();
-       let nameowner = $("#nameowner").val();
-       let nameowner2 = $("#nameowner2").val();
-       let twitness1 = $("#twitness1").val();
-       let twitness2 = $("#twitness2").val();
-       let submitwitness = $("#submitwitness").val();
+  //property
+  $("#submitproperty").on("click", function () {
+    let no3 = $("#no3").val();
+    let exampleproperties = $("#exampleproperties").val();
+    let addressPro = $("#addressPro").val();
+    let sector = $("#sector").val();
+    let plotno = $("#plotno").val();
+    let cidco = $("#cidco").val();
+    let area = $("#area").val();
+    let chs = $("#chs").val();
+    let node = $("#node").val();
+    let submitproperty = $("#submitproperty").val();
 
-       $.ajax({
-         url: "form.php",
-         type: "POST",
-         data: {
-           no5: no5,
-           nameowner: nameowner,
-           nameowner2: nameowner2,
-           twitness1: twitness1,
-           twitness2: twitness2,
-           submitwitness: submitwitness,
-         },
-         cache: false,
-         success: function (res5) {
-          alert(res5);
-         },
-       });
-     });  
-    
-    //aminities
-     $("#submitaminities").on("click", function () {
-       let no6 = $("#no6").val();
-       let txtname2 = $("#txtname2").val();
-       let itemnumbe = $("#itemnumbe").val();
-       let submitaminities = $("#submitaminities").val();
+    $.ajax({
+      url: "form.php",
+      type: "POST",
+      data: {
+        no3: no3,
+        exampleproperties: exampleproperties,
+        addressPro: addressPro,
+        sector: sector,
+        plotno: plotno,
+        cidco: cidco,
+        area: area,
+        chs: chs,
+        node: node,
+        submitproperty: submitproperty,
+      },
+      cache: false,
+      success: function (res3) {
+        //  alert(res3);
+      },
+    });
+  });
 
-       $.ajax({
-         url: "form.php",
-         type: "POST",
-         data: {
-           no6: no6,
-           txtname2: txtname2,
-           itemnumbe: itemnumbe,
-           submitaminities: submitaminities,
-         },
-         cache: false,
-           success: function (res6) {
-               $("#displayaminities").html(res6);
-               alert(res6);
-         },
-       });
-     });
-    ;
-    //payment
-     $("#submitpayment").on("click", function () {
-       let no7 = $("#no7").val();
-       let deposit = $("#deposit").val();
-       let rent = $("#rent").val();
-       let checkselec = $("#checkselec").val();
-       let date_of_payment = $("#rentpay").val();
-       let bank = $("#bank").val();
-       let date = $("#date").val();
-       let tid = $("#tid").val();
-       let submitpayment = $("#submitpayment").val();
+  //family
+  $("#submitmember").on("click", function () {
+    let no4 = $("#no4").val();
+    let txtname1 = $("#txtname1").val();
+    let exampleSelectrelation = $("#exampleSelectrelation").val();
+    let relativeage = $("#relativeage").val();
+    let relativegender = $("#relativegender").val();
+    let submitmember = $("#submitmember").val();
 
-       $.ajax({
-         url: "form.php",
-         type: "POST",
-         data: {
-           no7: no7,
-           deposit: deposit,
-           rent: rent,
-           rentpay:rentpay,
-           checkselec: checkselec,
-             bank: bank,
-             date: date,
-                tid: tid,
-                date_of_payment:date_of_payment,
-           submitpayment: submitpayment,
-         },
-         cache: false,
-         success: function (res7) {
-           
-         },
-       });
-     });  
+    $.ajax({
+      url: "form.php",
+      type: "POST",
+      data: {
+        no4: no4,
+        txtname1: txtname1,
+        exampleSelectrelation: exampleSelectrelation,
+        relativeage: relativeage,
+        relativegender: relativegender,
+        submitmember: submitmember,
+      },
+      cache: false,
+      success: function (res4) {
+        $("#displayfamily").html(res4);
+        //  alert(res4);
+      },
+    });
+  });
+
+  //witness
+  $("#submitwitness").on("click", function () {
+    let no5 = $("#no5").val();
+    let nameowner = $("#nameowner").val();
+    let nameowner2 = $("#nameowner2").val();
+    let twitness1 = $("#twitness1").val();
+    let twitness2 = $("#twitness2").val();
+    let submitwitness = $("#submitwitness").val();
+
+    $.ajax({
+      url: "form.php",
+      type: "POST",
+      data: {
+        no5: no5,
+        nameowner: nameowner,
+        nameowner2: nameowner2,
+        twitness1: twitness1,
+        twitness2: twitness2,
+        submitwitness: submitwitness,
+      },
+      cache: false,
+      success: function (res5) {
+        // alert(res5);
+      },
+    });
+  });
+
+  //aminities
+  $("#submitaminities").on("click", function () {
+    let no6 = $("#no6").val();
+    let txtname2 = $("#txtname2").val();
+    let itemnumbe = $("#itemnumbe").val();
+    let submitaminities = $("#submitaminities").val();
+
+    $.ajax({
+      url: "form.php",
+      type: "POST",
+      data: {
+        no6: no6,
+        txtname2: txtname2,
+        itemnumbe: itemnumbe,
+        submitaminities: submitaminities,
+      },
+      cache: false,
+      success: function (res6) {
+        $("#displayaminities").html(res6);
+        //  alert(res6);
+      },
+    });
+  });
+  //payment
+  $("#submitpayment").on("click", function () {
+    let no7 = $("#no7").val();
+    let deposit = $("#deposit").val();
+    let rent = $("#rent").val();
+    let checkselec = $("#checkselec").val();
+    let rentpay = $("#rentpay").val();
+    let bank = $("#bank").val();
+    let date = $("#date").val();
+    let tid = $("#tid").val();
+    let submitpayment = $("#submitpayment").val();
+
+    $.ajax({
+      url: "form.php",
+      type: "POST",
+      data: {
+        no7: no7,
+        deposit: deposit,
+        rent: rent,
+        checkselec: checkselec,
+        bank: bank,
+        date: date,
+        tid: tid,
+        rentpay:rentpay,
+        submitpayment: submitpayment,
+      },
+      cache: false,
+      success: function (res7) {
+        alert(res7);
+      },
+    });
+  });
 
   //insert payment
   $("#savepayment").on("click", function () {
@@ -227,6 +223,7 @@ $(document).ready(function () {
     let deposit = $("#deposit").val();
     let rent = $("#rent").val();
     let checkselec = $("#checkselec").val();
+    let rentpay = $("#rentpay").val();
     let bank = $("#bank").val();
     let date = $("#date").val();
     let tid = $("#tid").val();
@@ -243,6 +240,7 @@ $(document).ready(function () {
         bank: bank,
         date: date,
         tid: tid,
+        rentpay:rentpay,
         savepayment: savepayment,
       },
       cache: false,
@@ -251,5 +249,4 @@ $(document).ready(function () {
       },
     });
   });
-       
 });
