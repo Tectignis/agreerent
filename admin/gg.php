@@ -20,12 +20,12 @@ if(isset($_POST['sub'])){
   $status=1;
   $pass= rand(100000, 999999);
   $email=$row['email'];
-  $image=$_FILES['image']['name'];
-  $tmp_name = $_FILES['image']['tmp_name']; 
-    $size     = $_FILES['image']['size']; 
-    $type     = $_FILES['image']['type']; 
-    $error     = $_FILES['image']['error'];
-  $loc="dist/img/agent_photo/".$image;
+  $image=$_FILES['file']['name'];
+  $tmp_name = $_FILES['file']['tmp_name']; 
+    $size     = $_FILES['file']['size']; 
+    $type     = $_FILES['file']['type']; 
+    $error     = $_FILES['file']['error'];
+  $loc="dist/img/agent_photo/".basename($image);
     move_uploaded_file($tmp_name, $loc);
 
 $imgEncoded = base64_encode(file_get_contents($tmp_name));
