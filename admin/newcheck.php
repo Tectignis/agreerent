@@ -55,6 +55,44 @@
 			echo json_encode(array("statusCode"=>201));
 		}
 	}
+=======
+
+<?php  
+session_start();
+if(!isset($_SESSION['admin']) == 1) // If session is not set then redirect to Login Page
+{
+ header("Location:login.php"); 
+}
+include("../config/config.php");
+
+if(isset($_POST['sub'])){
+
+  $user_id=$_POST['no'];
+  $agent_name=$_POST['name'];
+  $mobile_no=$_POST['mobile_no'];
+  $office_address=$_POST['office_address'];
+  $email_no=$_POST['email'];
+  $rera=$_POST['rera'];
+  $status=1;
+  $pass= rand(100000, 999999);
+  $email=$row['email'];
+
+  $dd=$_FILES['image']['name'];
+  $dgffd=$_FILES['image']['tmp_name'];
+
+if(move_uploaded_file($dgffd,"dist/img/profile/".$dd)){
+    echo "fgfdg";
+}else{
+    echo "fgs";
+}
+
+  
+}
+
+
+
+
+>>>>>>> c463c61e60716bb0941767ae880bb56668f2a64e
 ?>
 <!DOCTYPE html>
 <html>

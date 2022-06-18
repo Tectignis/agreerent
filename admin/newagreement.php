@@ -1,6 +1,6 @@
 <?php 
 session_start();
-if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
+if(!isset($_SESSION['admin']) == 1) // If session is not set then redirect to Login Page
 {
 //  header("Location:adminlogin"); 
 }
@@ -309,9 +309,10 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                     <label for="exampleaadhaar" class="col-sm-2 col-form-label">Aadhaar
                                                         Card No.<label style="color:Red">*</label></label>
                                                     <div class="col-sm-4">
-                                                        <input type="text" class="form-control" name="aadhaar"
-                                                            id="txtAadhar1" placeholder="Enter Aadhaar Card number"
-                                                            required>
+                                                    <input type="number" name="aadhaar" class="form-control"
+                                                            id="txAdhar" placeholder="Enter Aadhaar card No"
+                                                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                            maxlength="12" required>
                                                         <span id="spanAadharCard"></span>
                                                     </div>
                                                 </div>

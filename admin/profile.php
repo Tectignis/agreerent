@@ -1,5 +1,5 @@
 <?php session_start();
-if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
+if(!isset($_SESSION['admin']) == 1) // If session is not set then redirect to Login Page
 {
  header("Location:adminlogin.php"); 
 }
@@ -74,7 +74,7 @@ include("../config/config.php");
                                 <!-- form start -->
                                 <form class="forms-sample" method="post">
                                     <?php
-                  $sql=mysqli_query($conn,"select * from users where user_id='".$_SESSION['id']."'");
+                  $sql=mysqli_query($conn,"select * from users where user_id='".$_SESSION['aid']."'");
                   while($arr=mysqli_fetch_array($sql)){
 
                   

@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
+if(!isset($_SESSION['admin']) == 1) // If session is not set then redirect to Login Page
 {
 // header("Location:dashboard.php"); 
 }
@@ -9,7 +9,7 @@ include("../config/config.php");
 if(isset($_POST["login"])){
 	$password=$_POST["password"];
 	$newpassword=$_POST["newpassword"];
-$id=$_SESSION['id'];
+$id=$_SESSION['aid'];
 	$sql = mysqli_query($conn,"SELECT * FROM agent_details WHERE user_id='$id'") ;
 		$row=mysqli_fetch_assoc($sql); 
 		$verify=password_verify($password,$row['password']);

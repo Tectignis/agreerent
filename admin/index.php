@@ -1,6 +1,7 @@
 <?php
 session_start();
-if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
+$_SESSION['aid'];
+if(!isset($_SESSION['admin']) == 1) // If session is not set then redirect to Login Page
 {
  header("Location:adminlogin.php"); 
 }
@@ -228,7 +229,7 @@ function get_time_ago( $time )
                             <div class="card-body">
                                 <ul class="todo-list" data-widget="todo-list">
                                     <?php                
-          $sql=mysqli_query($conn,"select * from todo where user_id='".$_SESSION['id']."' AND status='1'");
+          $sql=mysqli_query($conn,"select * from todo where user_id='".$_SESSION['aid']."' AND status='1'");
            while($arr=mysqli_fetch_array($sql)){
 
             // $date = time_elapsed_string($arr['date']);

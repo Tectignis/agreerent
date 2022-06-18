@@ -1,7 +1,7 @@
 <?php 
-      $name=$_SESSION['name'];
-      $id=$_SESSION['id'];
-      $sql="SELECT * FROM agent_details WHERE user_id='".$_SESSION['id']."'";
+      $name=$_SESSION['aname'];
+      $id=$_SESSION['aid'];
+      $sql="SELECT * FROM agent_details WHERE user_id='".$_SESSION['aid']."'";
         $result=mysqli_query($conn,$sql);
         $row=mysqli_fetch_assoc($result);
       ?>

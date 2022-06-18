@@ -6,9 +6,9 @@
           <span class="brand-text font-weight-light">AGREERENT</span>
       </a>
       <?php 
-      $name=$_SESSION['name'];
-      $id=$_SESSION['id'];
-      $sql="SELECT * FROM users WHERE user_id='".$_SESSION['id']."'";
+      $name=$_SESSION['aname'];
+      $id=$_SESSION['aid'];
+      $sql="SELECT * FROM users WHERE user_id='".$_SESSION['aid']."'";
         $result=mysqli_query($conn,$sql);
         $row=mysqli_fetch_assoc($result);
       ?>
