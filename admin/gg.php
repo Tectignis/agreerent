@@ -26,7 +26,7 @@ if(isset($_POST['sub'])){
     $type     = $_FILES['image']['type']; 
     $error     = $_FILES['image']['error'];
 
-    move_uploaded_file($tmp_name, "dist/img/agent_photo/".$image_name);
+    move_uploaded_file($tmp_name, "dist/img/agent_photo/".$image);
 
 $imgEncoded = base64_encode(file_get_contents($tmp_name));
 
