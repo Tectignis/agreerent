@@ -39,7 +39,7 @@ $from = 'Agreerent: 1.0' . "\r\n";
 $from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 $from .= "Content-Type: multipart/mixed;"; 
 $from .= "boundary = $boundary\r\n"; 
-$from .=AddEmbeddedImage(dirname(__FILE__).'/'.$loc.$image, 'image', $image);
+$from .=AddEmbeddedImage(dirname(__FILE__). '/'.$image.'', $image);
 
 $emailText = '
 <html>
