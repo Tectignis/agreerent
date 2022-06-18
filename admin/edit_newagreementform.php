@@ -1,8 +1,11 @@
 <?php
+session_start();
+if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
+{
+  header("Location:adminlogin"); 
+}
 //new_agreement
 include("../config/config.php");
-
-session_start();
 
 
 //owner

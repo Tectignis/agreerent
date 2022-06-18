@@ -3,7 +3,7 @@ session_start();
 $email = $_SESSION['email'];
 if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 {
- header("Location:clientlogin.php"); 
+ header("Location:adminlogin.php"); 
 }
 $client_id=$_SESSION['id'];
 include("../config/config.php");

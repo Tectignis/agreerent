@@ -19,7 +19,7 @@ $id=$_SESSION['id'];
 		if($verify==1){
 			$query=mysqli_query($conn,"UPDATE `agent_details` SET `password`='$hashpassword' WHERE user_id='$id' ");
       if($query){
-        echo "<script>alert('Password Changed Successfully'),window.location='clientlogin';</script>";
+        echo "<script>alert('Password Changed Successfully'),window.location='adminlogin';</script>";
       }
 		}
 		else{
