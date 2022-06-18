@@ -114,7 +114,7 @@ if(isset($_POST['submit'])){
 
                         ?>
 
-                        <option value="<?php echo $sql['agent_name']; ?>"> <?php echo $sql['agent_name']; ?></option>
+                        <option value="<?php echo $sql['agent_name']; ?>"> <?php echo $sql['agent_name'].' - '.$sql['user_id']; ?></option>
                         <?php } ?>
                       </select>
                                                     <!-- <select class="form-control select2 select2-hidden-accessible" name="client_name" id="exampledno" style="width: 100%;" data-select2-id="3" tabindex="-1" aria-hidden="true">
