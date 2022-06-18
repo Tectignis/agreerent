@@ -54,6 +54,9 @@ $address1='';
 $permanent_address1='';
 $tenantname1='';
 $tenantname2='';
+$office_name='';
+$office_addres='';
+$office_phone='';
 if(isset($_GET['id'])){
     $basiid=$_GET['id'];
                      $query2=mysqli_query($conn,"select * from tenant where document_no='$basiid'");
@@ -64,6 +67,9 @@ if(isset($_GET['id'])){
                    $mobile1=$arr['mobile'] ?? null;
                    $email1=$arr['email'] ?? null;
                    $passport1=$arr['passport'] ?? null;
+                   $office_name=$arr['office_name'] ?? null;
+                   $office_addres=$arr['office_addres'] ?? null;
+                   $office_phone=$arr['office_phone'] ?? null;
                    $aadhaar1=$arr['aadhaar'] ?? null;
                    $age1=$arr['age'] ?? null ;
                    $pan_card1=$arr['pan_card'] ?? null;
@@ -401,6 +407,24 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                         <span id="spanname"></span>
                                                     </div>
                                                 </div>
+                                                 <!-- ss -->
+                                                 <div class="form-group row">
+                                                    <label for="exampleInputMobile"
+                                                        class="col-sm-2 col-form-label">Office name<label
+                                                            style="color:Red">*</label></label>
+                                                    <div class="col-sm-4">
+                                                        <input type="text" class="form-control" id="officename" name="officename" value="<?php echo $office_name; ?>"
+                                                            placeholder="Enter Your Office Name" required>
+                                                    </div>
+
+                                                    <label for="exampleaadhaar" class="col-sm-2 col-  form-label">Office No.<label style="color:Red">*</label></label>
+                                                    <div class="col-sm-4">
+                                                        <input type="tel" class="form-control" name="officeno"
+                                                            id="officeno" value="<?php echo $office_phone; ?>" placeholder="Enter Office Number" minlength="10"
+                                                            maxlength="10" required>
+                                                    </div>
+                                                </div>
+                                                <!-- ss -->
                                                 <div class="form-group row">
                                                     <label for="exampleInputMobile"
                                                         class="col-sm-2 col-form-label">Mobile No.<label
@@ -481,7 +505,16 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                             required><?php echo $permanent_address1 ?></textarea>
                                                     </div>
                                                 </div>
-
+                                                <div class="form-group row">
+                                                    <label for="exampleaddress"
+                                                        class="col-sm-2 col-form-label">Office Address<label
+                                                            style="color:Red">*</label></label>
+                                                    <div class="col-sm-10">
+                                                        <textarea name="officeaddr" cols="66" rows="4" class="form-control"
+                                                            placeholder="Enter Address" id="officeaddress"
+                                                            required><?php echo $office_addres; ?></textarea>
+                                                    </div>
+                                                </div>
                                                 <div class="col" align="right">
 
                                                     <button type="button" name="submitenant" id="submitenan"
@@ -1095,6 +1128,9 @@ if(isset($_GET['id'])){
             let txtname3 = $("#txtname3").val();
             let phone = $("#phone").val();
             let emailcheck = $("#emailcheck").val();
+            let officename = $("#officename").val();
+            let officeno = $("#officeno").val();
+            let officeaddress = $("#officeaddress").val();
             let passport = $("#passport").val();
             let txtAadhar1 = $("#txtAadhar1").val();
             let id2 = $("#id2").val();
@@ -1113,6 +1149,9 @@ if(isset($_GET['id'])){
                     phone: phone,
                     emailcheck: emailcheck,
                     passport: passport,
+                    officename: officename,
+                    officeno: officeno,
+                    officeaddress: officeaddress,
                     id2: id2,
                     txtAadhar1: txtAadhar1,
                     txtPANCard1: txtPANCard1,

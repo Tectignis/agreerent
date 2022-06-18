@@ -47,6 +47,9 @@ if(isset($_POST['submitenan'])){
 	$name=$_POST['txtname3'];
   $age=$_POST['id2'];
   $permanent_address=$_POST['presentAddress'];
+  $officename=$_POST['officename'];
+  $officeno=$_POST['officeno'];
+  $officeaddress=$_POST['officeaddress'];
 	$address=$_POST['residenceAddress'];
 	$mobile=$_POST['phone'];
 	$aadhaar=$_POST['txtAadhar1'];
@@ -59,8 +62,8 @@ $num=mysqli_fetch_array($query);
 $document=$num['document_no'];
 
 	if($document!=$idtenant){
-		$sql=mysqli_query($conn,"INSERT INTO `tenant`(`document_no`, `abbreviation`, `fullname`,`age`, `address`,`permanent_address`, `mobile`, `email`,`passport`,`aadhaar`, `pan_card`) VALUES 
-  ('$idtenant','$surname','$name','$age','$address','$permanent_address','$mobile','$email','$passport','$aadhaar','$pancard')");
+		$sql=mysqli_query($conn,"INSERT INTO `tenant`(`document_no`, `abbreviation`, `fullname`,`age`, `address`,`permanent_address`, `mobile`, `email`,`passport`,`aadhaar`, `pan_card`,`office_name`, `office_addres`, `office_phone`) VALUES 
+  ('$idtenant','$surname','$name','$age','$address','$permanent_address','$mobile','$email','$passport','$aadhaar','$pancard','$officename','$officeaddress','$officeno')");
 	if($sql==1){	
      echo "successfully updated";
   	}else{
@@ -68,7 +71,7 @@ $document=$num['document_no'];
 	}
 	}
 	else{
-	$sql=mysqli_query($conn,"UPDATE `tenant` SET `document_no`='$idtenant',`abbreviation`='$surname',`fullname`='$name',`age`='$age',`address`='$address',`permanent_address`='$permanent_address',`mobile`='$mobile',`email`='$email',`passport`='$passport',`aadhaar`='$aadhaar',`pan_card`='$pancard' WHERE document_no='$idtenant'");
+	$sql=mysqli_query($conn,"UPDATE `tenant` SET `document_no`='$idtenant',`abbreviation`='$surname',`fullname`='$name',`age`='$age',`address`='$address',`permanent_address`='$permanent_address',`mobile`='$mobile',`email`='$email',`passport`='$passport',`aadhaar`='$aadhaar',`pan_card`='$pancard',`office_name`='$officename',`office_addres`='$officeaddress',`office_phone`='$officeno' WHERE document_no='$idtenant'");
 	if($sql==1){	
      echo "successfully updated";
   	}else{
