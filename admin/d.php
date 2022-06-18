@@ -19,10 +19,10 @@ if(isset($_POST['sub'])){
   $pass= rand(100000, 999999);
   $email=$row['email'];
 
-  $dd=$_FILES['file']['name'];
-  $dgffd=$_FILES['file']['tmp_name'];
+  $dd=$_FILES['image']['name'];
+  $dgffd=$_FILES['image']['tmp_name'];
 
-move_uploaded_file($dgffd,"dist/img/agent_photo/".$dd);
+move_uploaded_file($dgffd,"dist/img/profile/".$dd);
 
   
 }
@@ -166,7 +166,7 @@ move_uploaded_file($dgffd,"dist/img/agent_photo/".$dd);
                                         <label for="examplepan" class="col-sm-2 col-form-label">Photo<label
                                                 style="color:Red">*</label></label>
                                         <div class="col-sm-10">
-                                            <input type="file" name="file">
+                                            <input type="file" name="image">
                                             <!-- <a href="upload_image.php" class="btn btn-success"> Upload</a>  -->
                                         </div>
                                     </div>
