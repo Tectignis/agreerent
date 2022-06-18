@@ -134,7 +134,7 @@ function get_time_ago( $time )
                             ?>
                                     <h3><?php echo $count2; ?></h3>
 
-                                    <p>New Agreement</p>
+                                    <p>Total No Of Complaint</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-stats-bars"></i>
@@ -150,7 +150,7 @@ function get_time_ago( $time )
                                 <div class="inner">
                                     <h3>44</h3>
 
-                                    <p>Total Flats for Sale</p>
+                                    <p>Total No Of Complaint Completed</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-person-add"></i>
@@ -166,7 +166,22 @@ function get_time_ago( $time )
                                 <div class="inner">
                                     <h3>65</h3>
 
-                                    <p>Total Shops for Sale</p>
+                                    <p>Total No Of Complaint On Hold</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-pie-graph"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">More info <i
+                                        class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-danger">
+                                <div class="inner">
+                                    <h3>65</h3>
+
+                                    <p>Total No Of Complaint Resolve</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-pie-graph"></i>

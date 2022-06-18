@@ -92,7 +92,7 @@ include("../config/config.php");
 session_start();
 if(isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 {
- header("Location:index.php"); 
+ header("Location:clientlogin.php"); 
 }
 if(isset($_POST["login"])){
 	$email=$_POST["email"];
@@ -105,7 +105,7 @@ if(isset($_POST["login"])){
 	
 
 		if($verify==1){
-			$_SESSION['email']=$row['email'];
+	$_SESSION['email']=$row['email'];
       $_SESSION['name']=$row['agent_name'];
       $_SESSION['id']=$row['user_id'];
       $_SESSION['address']=$row['office_address'];

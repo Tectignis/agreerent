@@ -201,7 +201,8 @@ if(isset($_POST['submitpayment'])){
 	$security_deposit=$_POST['deposit'];  
   $rent_amount=$_POST['rent'];
   $method=$_POST['checkselec'];  
-  $bank=$_POST['bank'];  
+  $bank=$_POST['bank']; 
+  $date_of_payment=$_POST['date1'];  
   $date=$_POST['date'];  
   $tid=$_POST['tid'];
 
@@ -250,8 +251,8 @@ echo "please fill witness details";
 }
 else{
 $sql=mysqli_query($conn,"INSERT INTO
-`payment`(`document_no`,`security_deposit`,`rent_amount`,`bank`,`method`,`date`,`tid`) VALUES
-('$idpayment','$security_deposit','$rent_amount','$bank','$method','$date','$tid')");
+`payment`(`document_no`,`security_deposit`,`rent_amount`,`bank`,`method`,`date`,`tid`,`date_of_payment`) VALUES
+('$idpayment','$security_deposit','$rent_amount','$bank','$method','$date','$tid','$date_of_payment')");
 if($sql==1){
 echo "Successfully Added";
 }else{

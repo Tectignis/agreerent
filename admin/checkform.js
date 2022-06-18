@@ -190,6 +190,7 @@ $(document).ready(function () {
     let deposit = $("#deposit").val();
     let rent = $("#rent").val();
     let checkselec = $("#checkselec").val();
+    let rentpay = $("#rentpay").val();
     let bank = $("#bank").val();
     let date = $("#date").val();
     let tid = $("#tid").val();
@@ -206,6 +207,7 @@ $(document).ready(function () {
         bank: bank,
         date: date,
         tid: tid,
+        rentpay:rentpay,
         submitpayment: submitpayment,
       },
       cache: false,
@@ -221,6 +223,7 @@ $(document).ready(function () {
     let deposit = $("#deposit").val();
     let rent = $("#rent").val();
     let checkselec = $("#checkselec").val();
+    let rentpay = $("#rentpay").val();
     let bank = $("#bank").val();
     let date = $("#date").val();
     let tid = $("#tid").val();
@@ -237,6 +240,7 @@ $(document).ready(function () {
         bank: bank,
         date: date,
         tid: tid,
+        rentpay:rentpay,
         savepayment: savepayment,
       },
       cache: false,

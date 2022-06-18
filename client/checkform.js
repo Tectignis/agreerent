@@ -193,6 +193,7 @@ $(document).ready(function () {
        let deposit = $("#deposit").val();
        let rent = $("#rent").val();
        let checkselec = $("#checkselec").val();
+       let date_of_payment = $("#rentpay").val();
        let bank = $("#bank").val();
        let date = $("#date").val();
        let tid = $("#tid").val();
@@ -205,10 +206,12 @@ $(document).ready(function () {
            no7: no7,
            deposit: deposit,
            rent: rent,
+           rentpay:rentpay,
            checkselec: checkselec,
              bank: bank,
              date: date,
                 tid: tid,
+                date_of_payment:date_of_payment,
            submitpayment: submitpayment,
          },
          cache: false,
