@@ -89,7 +89,7 @@ if(isset($_SESSION['id']))
     <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="dist/js/adminlte.min.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 </body>
 <?php
 session_start();
@@ -116,12 +116,13 @@ if(isset($_POST["login"])){
 
 <script type="text/javascript">
 $(document).ready(function() {
-    swal({
-        title: "Good!",
-        text: "Login Sucessfull",
-        type: "success",
-        icon: "success"
-    }).then(function() {
+    Swal.fire({
+  type: 'Good',
+  title: 'Success',
+  text: 'Login Successfully',
+  showConfirmButton: false,
+  timer: 2000
+}).then(function() {
         // Redirect the user
         window.location.href = "index";
     })
@@ -135,12 +136,13 @@ else{
 
 <script type="text/javascript">
 $(document).ready(function() {
-    swal({
-        title: "Error",
-        text: "Invalid Email or Password",
-        type: "error",
-        icon: "error"
-    }).then(function() {
+    Swal.fire({
+  type: 'error',
+  title: 'Error',
+  text: 'Invalid Email or Password',
+  showConfirmButton: false,
+  timer: 2000
+}).then(function() {
         // Redirect the user
         window.location.href = "adminlogin";
     })
