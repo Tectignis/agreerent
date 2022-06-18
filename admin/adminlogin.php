@@ -55,7 +55,7 @@ if(isset($_SESSION['id']))
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col-8">
                             <div class="icheck-primary">
                                 <input type="checkbox" name="remember" id="remember">
@@ -64,7 +64,7 @@ if(isset($_SESSION['id']))
                                 </label>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="social-auth-links text-center mt-2 mb-3">
                         <input type="submit" name="login" value="Login" class="btn btn-block btn-primary">
                     </div>
@@ -116,12 +116,13 @@ if(isset($_POST["login"])){
 
 <script type="text/javascript">
 $(document).ready(function() {
-    swal({
-        title: "Good!",
-        text: "Login Sucessfull",
-        type: "success",
-        icon: "success"
-    }).then(function() {
+    Swal.fire({
+  type: 'Good',
+  title: 'Success',
+  text: 'Login Successfully',
+  showConfirmButton: false,
+  timer: 2000
+}).then(function() {
         // Redirect the user
         window.location.href = "index";
     })
@@ -135,12 +136,13 @@ else{
 
 <script type="text/javascript">
 $(document).ready(function() {
-    swal({
-        title: "Error",
-        text: "Invalid Email or Password",
-        type: "error",
-        icon: "error"
-    }).then(function() {
+    Swal.fire({
+  type: 'error',
+  title: 'Error',
+  text: 'Invalid Email or Password',
+  showConfirmButton: false,
+  timer: 2000
+}).then(function() {
         // Redirect the user
         window.location.href = "adminlogin";
     })
