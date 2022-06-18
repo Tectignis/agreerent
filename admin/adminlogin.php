@@ -116,13 +116,12 @@ if(isset($_POST["login"])){
 
 <script type="text/javascript">
 $(document).ready(function() {
-    Swal.fire({
-  type: 'Good',
-  title: 'Success',
-  text: 'Login Successfully',
-  showConfirmButton: false,
-  timer: 2000
-}).then(function() {
+    swal({
+        title: "Good!",
+        text: "Login Sucessfull",
+        type: "success",
+        icon: "success"
+    }).then(function() {
         // Redirect the user
         window.location.href = "index";
     })
@@ -136,13 +135,12 @@ else{
 
 <script type="text/javascript">
 $(document).ready(function() {
-    Swal.fire({
-  type: 'error',
-  title: 'Error',
-  text: 'Invalid Email or Password',
-  showConfirmButton: false,
-  timer: 2000
-}).then(function() {
+    swal({
+        title: "Error",
+        text: "Invalid Email or Password",
+        type: "error",
+        icon: "error"
+    }).then(function() {
         // Redirect the user
         window.location.href = "adminlogin";
     })
