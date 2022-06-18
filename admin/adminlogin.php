@@ -117,11 +117,11 @@ if(isset($_POST["login"])){
 <script type="text/javascript">
 $(document).ready(function() {
     Swal.fire({
-  type: 'Good',
+  type: 'success',
   title: 'Success',
   text: 'Login Successfully',
   showConfirmButton: false,
-  timer: 2000
+  timer: 8000
 }).then(function() {
         // Redirect the user
         window.location.href = "index";
@@ -141,7 +141,7 @@ $(document).ready(function() {
   title: 'Error',
   text: 'Invalid Email or Password',
   showConfirmButton: false,
-  timer: 2000
+  timer: 8000
 }).then(function() {
         // Redirect the user
         window.location.href = "adminlogin";
