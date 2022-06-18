@@ -1,6 +1,9 @@
 <?php
 include("../config/config.php");
-
+if(isset($_SESSION['id'])) 
+{
+ header("Location:index.php"); 
+}
 ?>
 
 
@@ -139,7 +142,7 @@ $(document).ready(function() {
         icon: "error"
     }).then(function() {
         // Redirect the user
-        window.location.href = "clientlogin";
+        window.location.href = "adminlogin";
     })
 });
 </script>
@@ -149,7 +152,7 @@ $(document).ready(function() {
 }
 }else{
 echo"<script>
-alert('Wrong email'), window.location = 'clientlogin.php';
+alert('Wrong email'), window.location = 'adminlogin.php';
 </script>";
 }
 }

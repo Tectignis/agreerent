@@ -2,7 +2,7 @@
 session_start();
 if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 {
-//  header("Location:login.php"); 
+//  header("Location:adminlogin"); 
 }
 
 include("../config/config.php");
@@ -722,14 +722,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="form-group row">
-                                                <label for="exampldate" class="col-sm-2 col-form-label">Date Of Rent
-                                                    Payment<label style="color:Red">*</label></label>
-                                                <div class="col-sm-4">
-                                                    <input type="date" class="form-control" name="date_of_payment" id="date1"
-                                                        required>
-                                                </div>
-                                            </div>
+                                           
                                             <div class="form-group row">
                                                 <label for="exampleage" class="col-sm-2 col-form-label-sm">Bank<label
                                                         style="color:Red">*</label></label>
@@ -748,7 +741,14 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                     </select>
                                                 </div>
                                             </div>
-
+                                            <div class="form-group row">
+                                                <label for="exampldate" class="col-sm-2 col-form-label">Date Of 
+                                                    Rent Payment<label style="color:Red">*</label></label>
+                                                <div class="col-sm-4">
+                                                    <input type="number" class="form-control" id="rentpay"
+                                                        required>
+                                                </div>
+                                            </div>
                                             <div class="form-group row">
                                                 <label for="exampldate" class="col-sm-2 col-form-label">Date Of 
                                                     Payment<label style="color:Red">*</label></label>
