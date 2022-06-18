@@ -493,7 +493,7 @@ else{
                                                 style="color:Red">*</label></label>
                                         <div class="col-sm-10">
                                             <input type="file" name="file">
-                                            <!-- <a href="upload_image.php" class="btn btn-success"> Upload</a>  -->
+                                            
                                         </div>
                                     </div>
 
