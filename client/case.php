@@ -6,7 +6,7 @@ if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 }
 include("../config/config.php");
 
-
+$useridcheck=$_SESSION['id'];
 if(isset($_GET['gen'])){
   $id=mysqli_real_escape_string($conn,$_GET['gen']);
   $sql=mysqli_query($conn,"update noc set `status`='1' where document_no='$id'");
@@ -26,26 +26,18 @@ if(isset($_GET['gen'])){
 
    
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
+      <!-- Google Font: Source Sans Pro -->
+      <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome Icons -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-    <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-    <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- DataTables -->
     <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-    <!-- Select2 -->
-    <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
-    <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="dist/css/adminlte.min.css">
-    <link rel="stylesheet" href="dist/css/adminlte.css">
-    <!-- daterange picker -->
-    <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css"> -->
 
+    <link rel="stylesheet" href="dist/css/adminlte.min.css">
 <!-- Bootstrap -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -92,80 +84,40 @@ if(isset($_GET['gen'])){
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
-                            <div class="card">
-                            <div class="card-header">
-                            <h3 class="card-title">Enquiry Details</h3>
-                                    <div class="card-tools">
-                                        <ul class="nav nav-pills ml-auto">
-                                            <li class="nav-item">
-                                                <a class="nav-link active" href="basic_details.php" data-tt="tooltip" title=""
+                              <!-- <h3 class="card-title">Enquiry Details</h3> -->
+                                    <div class="card-tools my-3" style="text-align:end;">
+                                                <a class="btn btn-primary" href="basic_details.php" data-tt="tooltip" title=""
                                                     data-original-title="Click here to Add New Enquiry"><i
                                                         class="fas fa-user-friends mr-2"></i>Create New Agreement</a>
-                                            </li>
-                                        </ul>
                                     </div>
-                                </div>
-                            </div>
-                            <!-- /.card -->
-                            <div class="card">
-                                <!-- <div class="card-header">
-                                    <h3 class="card-title">Enquiry Details</h3>
-                                    <div class="card-tools">
-                                        <ul class="nav nav-pills ml-auto">
-                                            <li class="nav-item">
-                                                <a class="nav-link active" href="" data-tt="tooltip" title=""
-                                                    data-original-title="Click here to Add New Enquiry"><i
-                                                        class="fas fa-user-friends mr-2"></i>Create New Agreement</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div> -->
-                                <!-- <div class="card-header p-0 border-bottom-0">
-<ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
-<li class="nav-item">
-<a class="nav-link" id="custom-tabs-four-home-tab" data-toggle="pill" href="#custom-tabs-four-home" role="tab" aria-controls="custom-tabs-four-home" aria-selected="false">Home</a>
-</li>
-<li class="nav-item">
-<a class="nav-link" id="custom-tabs-four-profile-tab" data-toggle="pill" href="#custom-tabs-four-profile" role="tab" aria-controls="custom-tabs-four-profile" aria-selected="false">Profile</a>
-</li>
-<li class="nav-item">
-<a class="nav-link" id="custom-tabs-four-messages-tab" data-toggle="pill" href="#custom-tabs-four-messages" role="tab" aria-controls="custom-tabs-four-messages" aria-selected="false">Messages</a>
-</li>
-<li class="nav-item">
-<a class="nav-link active" id="custom-tabs-four-settings-tab" data-toggle="pill" href="#custom-tabs-four-settings" role="tab" aria-controls="custom-tabs-four-settings" aria-selected="true">Settings</a>
-</li>
-</ul>
-</div> -->
-
-                                <!-- /.card-header -->
-                                <div class="card-body">
-                                    <section id="tabs" class="project-tab">
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <nav class="my-3">
-                                                        <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                                                            <a class="nav-item nav-link active" id="pills-allowances-tab"
-                                                                data-toggle="tab" href="#nav-home" role="tab"
-                                                                aria-controls="nav-home" aria-selected="true">Pending
-                                                                Cases</a>
-                                                            <a class="nav-item nav-link" id="nav-profile-tab"
-                                                                data-toggle="tab" href="#nav-profile" role="tab"
-                                                                aria-controls="nav-profile"
-                                                                aria-selected="false">Complete</a>
-                                                        </div>
-                                                    </nav>
-                                                    <div class="tab-content" id="nav-tabContent">
-                                                        <div class="tab-pane fade show active" id="nav-home"
-                                                            role="tabpanel" aria-labelledby="nav-home-tab">
-
-                                                            <div class="box-datatable table-responsive">
-                                                                <div id="xin_table_expense_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-                                                                    <div id="explainClaim_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                                                                        <div class="row">
-                                                                            <div class="col-sm-12">
-                                                                              <table id="table_id" class="table table-bordered table-striped dataTable dtr-inline" aria-describedby="explainClaim_info">
-                                                                              <thead>
+                            <div class="card card-primary border-primary card-tabs">
+              <div class="card-header p-0 pt-1 ">
+                <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
+                  <li class="nav-item">
+                  <a class="nav-link active" id="custom-tabs-two-home-tab" data-toggle="pill" href="#custom-tabs-two-home" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true"><h6> Pending Cases</h6></a> 
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="custom-tabs-two-profile-tab" data-toggle="pill" href="#custom-tabs-two-profile" role="tab" aria-controls="custom-tabs-two-profile" aria-selected="false"><h6>Complete</h6></a>
+                  </li>
+                </ul>
+                <!-- <div class="card-tools  " style="text-align:end;"> -->
+                                        <!-- <ul class="nav  nav-pills mr-0"> -->
+                                            
+                                        <!-- </ul> -->
+                                    <!-- </div> -->
+              </div>
+              <div class="card-body">
+                <div class="tab-content" id="custom-tabs-two-tabContent">
+                  <div class="tab-pane fade show active" id="custom-tabs-two-home" role="tabpanel" aria-labelledby="custom-tabs-two-home-tab">
+                  <div class="user-profile-list ">
+                                                       
+                                                        <div class="mt-3 box-datatable table-responsive">
+                                                            <div id="xin_table_expense_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                                        <div id="table_id_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-12">
+                                                                          <table id="table_id" class="table table-bordered table-striped dataTable dtr-inline" aria-describedby="table_id_info">
+                                                                          <thead>
                                                                     <tr>
                                                                         <th>Sr.no</th>
                                                                         <th>Document No</th>
@@ -217,23 +169,27 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
                                                                     </tr>
                                                                     <?php } $count++; } ?>
                                                                 </tbody>
-                                                                              
-                                                                              </table>
-                                                                            </div>
+                                                                           <tfoot>
+                                              
+                                                                           </tfoot>
+                                                                          </table>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                           
-                                                        </div>
-                                                        <div class="tab-pane fade" id="nav-profile" role="tabpanel"
-                                                            aria-labelledby="nav-profile-tab">
+                                                                </div>
+                                                                </div>
+                                                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="custom-tabs-two-profile" role="tabpanel" aria-labelledby="custom-tabs-two-profile-tab">
+                  <div class="user-profile-list ">
+                                                        
+                                                        <div class="mt-3">
                                                             <div class="box-datatable table-responsive">
                                                                 <div id="xin_table_expense_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-                                                                    <div id="explainClaim_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                                                    <div id="table_check_wrapper" class="dataTables_wrapper dt-bootstrap4">
                                                                         <div class="row">
                                                                             <div class="col-sm-12">
-                                                                              <table id="table_check" class="table table-bordered table-striped dataTable dtr-inline" aria-describedby="explainClaim_info">
+                                                                              <table id="table_check" class="table table-bordered table-striped dataTable dtr-inline" aria-describedby="table_check_info">
                                                                               <thead>
                                                                     <tr>
                                                                         <th>S.no</th>
@@ -274,14 +230,14 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
 
 
                                                                             <?php
-$status=$row['nstatus'];
-if($status==1){
-?>
+                                                                                $status=$row['nstatus'];
+                                                                                if($status==1){
+                                                                                ?>
 
                                                                             <?php
-}
-elseif($status==0){
-?>
+                                                                                }
+                                                                                elseif($status==0){
+                                                                                ?>
                                                                             <a href="edit_newagreement.php?id=<?php echo $row['newdoc'];?>"
                                                                                 class="btn col btn-warning btn-rounded btn-sm btn-icon"
                                                                                 style="color: aliceblue"><i
@@ -300,7 +256,9 @@ elseif($status==0){
                                                                     </tr>
                                                                     <?php $count++; } ?>
                                                                 </tbody>
-                                                                              
+                                                                               <tfoot>
+                                                  
+                                                                               </tfoot>
                                                                               </table>
                                                                             </div>
                                                                         </div>
@@ -308,15 +266,15 @@ elseif($status==0){
                                                                 </div>
                                                             </div>
                                                         </div>
-
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </section>
-                                </div>
-                                <!-- /.card-body -->
-                            </div>
+                 
+                                               </div>
+                                             </div>
+                                             <!-- /.card -->
+                                           </div>
+                          
+                         
                             <!-- /.card -->
                         </div>
                         <!-- /.col -->
@@ -337,30 +295,12 @@ elseif($status==0){
     </div>
     <!-- ./wrapper -->
 
-   <!-- jQuery -->
-   <script src="plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap -->
+ <!-- jQuery -->
+ <script src="plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
     <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- overlayScrollbars -->
-    <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="dist/js/adminlte.js"></script>
-
-    <!-- PAGE PLUGINS -->
-    <!-- jQuery Mapael -->
-    <script src="plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
-    <script src="plugins/raphael/raphael.min.js"></script>
-    <script src="plugins/jquery-mapael/jquery.mapael.min.js"></script>
-    <script src="plugins/jquery-mapael/maps/usa_states.min.js"></script>
-    <!-- ChartJS -->
-    <script src="plugins/chart.js/Chart.min.js"></script>
-
-    <!-- AdminLTE for demo purposes -->
-    <script src="dist/js/demo.js"></script>
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="dist/js/pages/dashboard2.js"></script>
-   <!-- DataTables  & Plugins -->
-   <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
     <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
     <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
@@ -372,13 +312,11 @@ elseif($status==0){
     <script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-   
-   
     <!-- AdminLTE App -->
-    <!-- <script src="dist/js/adminlte.min.js"></script> -->
-    <!-- <script src="dist/js/table.js"></script> -->
+    <script src="dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <!-- Page specific script -->
+
 
 </body>
 <!-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script> -->
@@ -390,7 +328,7 @@ elseif($status==0){
 
 $(function () {
             $("#table_id").DataTable({
-                // "responsive": true, "lengthChange": false, "autoWidth": false,
+                // "responsive": true,
                 // "buttons": [   "colvis"]
             }).buttons().container().appendTo('#table_id_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({
@@ -421,30 +359,4 @@ $(function () {
         });
 </script>
 
-    <!-- Bootstrap 4 -->
-    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Select2 -->
-    <script src="plugins/select2/js/select2.full.min.js"></script>
-    <!-- Bootstrap4 Duallistbox -->
-    <script src="plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
-    <!-- InputMask -->
-    <script src="plugins/moment/moment.min.js"></script>
-    <script src="plugins/inputmask/jquery.inputmask.min.js"></script>
-    <!-- date-range-picker -->
-    <script src="plugins/daterangepicker/daterangepicker.js"></script>
-    <!-- bootstrap color picker -->
-    <script src="plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
-    <!-- Tempusdominus Bootstrap 4 -->
-    <script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-    <!-- Bootstrap Switch -->
-    <script src="plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
-    <!-- BS-Stepper -->
-    <script src="plugins/bs-stepper/js/bs-stepper.min.js"></script>
-    <!-- dropzonejs -->
-    <script src="plugins/dropzone/min/dropzone.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="dist/js/demo.js"></script>
-    <!-- Page specific script -->
 </html>
