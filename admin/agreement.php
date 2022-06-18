@@ -8,7 +8,7 @@ include("../config/config.php");
 $fid=$_GET['id'];
 
 if($_GET['id']==''){
-    header('Location:newagreement.php');
+    header('Location:basic_details');
     } 
 function AmountInWords(float $amount)
 {
