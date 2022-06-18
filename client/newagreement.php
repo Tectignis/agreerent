@@ -263,9 +263,10 @@ $id=$_GET['id'];
                                                     <label for="exampleaadhaar" class="col-sm-2 col-form-label">Aadhaar
                                                         Card No.<label style="color:Red">*</label></label>
                                                     <div class="col-sm-4">
-                                                        <input type="text" class="form-control" name="aadhaar"
-                                                            id="txtAadhar1" placeholder="Enter Aadhaar Card number"
-                                                            required>
+                                                    <input type="number" name="aadhaar" class="form-control"
+                                                            id="txAdhar" placeholder="Enter Aadhaar card No"
+                                                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                            maxlength="12" required>
                                                         <span id="spanAadharCard"></span>
                                                     </div>
                                                 </div>
@@ -764,13 +765,7 @@ $id=$_GET['id'];
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-        <footer class="main-footer">
-            <div class="float-right d-none d-sm-block">
-                <b>Version</b> 3.2.0
-            </div>
-            <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights
-            reserved.
-        </footer>
+        <?php include 'include/footer.php'; ?>
 
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
@@ -866,13 +861,14 @@ let abbreviation = document.getElementById("exampleSelectmr").value;
 let name1 = document.getElementById("txtname3").value;
 let mobile = document.getElementById("phone").value;
 let email = document.getElementById("emailcheck").value;
-let passport = document.getElementById("passport").value;
+
+
 let aadhaar = document.getElementById("txtAadhar1").value;
 let age = document.getElementById("id2").value;
 let pancard = document.getElementById("txtPANCard1").value;
 let address = document.getElementById("residenceAddress").value;
 let permanent_address = document.getElementById("presentAddress").value;
-if(no2 == "" || abbreviation == "" || name1 == "" || mobile == "" || email == "" || passport == "" || aadhaar == "" || age == "" || pancard == "" || address == "" || permanent_address == ""  ){
+if(no2 == "" || abbreviation == "" || name1 == "" || mobile == "" || email == ""  || aadhaar == "" || age == "" || pancard == "" || address == "" || permanent_address == ""  ){
     swal("Oops...", "Please fill all the fields", "error");
 }
     else{

@@ -895,13 +895,13 @@ let abbreviation = document.getElementById("exampleSelectmr").value;
 let name1 = document.getElementById("txtname3").value;
 let mobile = document.getElementById("phone").value;
 let email = document.getElementById("emailcheck").value;
-let passport = document.getElementById("passport").value;
+
 let aadhaar = document.getElementById("txtAadhar1").value;
 let age = document.getElementById("id2").value;
 let pancard = document.getElementById("txtPANCard1").value;
 let address = document.getElementById("residenceAddress").value;
 let permanent_address = document.getElementById("presentAddress").value;
-if(no2 == "" || abbreviation == "" || name1 == "" || mobile == "" || email == "" || passport == "" || aadhaar == "" || age == "" || pancard == "" || address == "" || permanent_address == ""  ){
+if(no2 == "" || abbreviation == "" || name1 == "" || mobile == "" || email == "" || aadhaar == "" || age == "" || pancard == "" || address == "" || permanent_address == ""  ){
     swal("Oops...", "Please fill all the fields", "error");
 }
     else{
