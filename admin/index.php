@@ -134,7 +134,7 @@ function get_time_ago( $time )
                             ?>
                                     <h3><?php echo $count2; ?></h3>
 
-                                    <p>New Agreement</p>
+                                    <p>Total No Of Complaint</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-stats-bars"></i>
@@ -150,7 +150,7 @@ function get_time_ago( $time )
                                 <div class="inner">
                                     <h3>44</h3>
 
-                                    <p>Total Flats for Sale</p>
+                                    <p>Total No Of Complaint Completed</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-person-add"></i>
@@ -166,7 +166,22 @@ function get_time_ago( $time )
                                 <div class="inner">
                                     <h3>65</h3>
 
-                                    <p>Total Shops for Sale</p>
+                                    <p>Total No Of Complaint On Hold</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-pie-graph"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">More info <i
+                                        class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-danger">
+                                <div class="inner">
+                                    <h3>65</h3>
+
+                                    <p>Total No Of Complaint Resolve</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-pie-graph"></i>
@@ -179,6 +194,70 @@ function get_time_ago( $time )
                     <!-- ./col -->
                 </div>
                 <!-- /.row -->
+
+<section class="content">
+<div class="row">
+<div class="col-12 col-sm-6 col-md-3">
+<div class="info-box">
+<span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
+<div class="info-box-content">
+<span class="info-box-text">CPU Traffic</span>
+<span class="info-box-number">
+10
+<small>%</small>
+</span>
+</div>
+
+</div>
+
+</div>
+
+<div class="col-12 col-sm-6 col-md-3">
+<div class="info-box mb-3">
+<span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
+<div class="info-box-content">
+<span class="info-box-text">Likes</span>
+<span class="info-box-number">41,410</span>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="clearfix hidden-md-up"></div>
+<div class="col-12 col-sm-6 col-md-3">
+<div class="info-box mb-3">
+<span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+<div class="info-box-content">
+<span class="info-box-text">Sales</span>
+<span class="info-box-number">760</span>
+</div>
+
+</div>
+
+</div>
+
+<div class="col-12 col-sm-6 col-md-3">
+<div class="info-box mb-3">
+<span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+<div class="info-box-content">
+<span class="info-box-text">New Members</span>
+<span class="info-box-number">2,000</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+</section>
+
+
+
                 <!-- Main row -->
                 <div class="row">
                     <!-- Left col -->
