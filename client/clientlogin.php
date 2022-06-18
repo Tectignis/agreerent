@@ -114,7 +114,7 @@ if(isset($_POST["login"])){
 <script type="text/javascript">
 $(document).ready(function() {
     Swal.fire({
-  type: 'Good',
+  type: 'success',
   title: 'Success',
   text: 'Login Successfully',
   showConfirmButton: false,

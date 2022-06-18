@@ -283,7 +283,7 @@ if(isset($_POST['submitpayment'])){
   $method=$_POST['checkselec'];  
   $bank=$_POST['bank'];  
   $date=$_POST['date'];  
-  $rentpay=$POST['rentpay'];
+  $rentpay=$_POST['rentpay'];
   $tid=$_POST['tid'];
 
   $document='';
@@ -315,13 +315,16 @@ $name1=$arr5['name1'];
 
 
 if($document!=$idpayment){
-echo "please fill owner details $document $idpayment";
+echo "please fill owner details";
 }
 else if($document1!=$idpayment){
 echo "please fill tenant details";
 }
 else if($document3!=$idpayment){
 echo "please fill family details";
+}
+elseif($doc2!=$idpayment){
+echo "please fill property details";
 }
 else if($document4!=$idpayment){
 echo "please fill amenities details";
