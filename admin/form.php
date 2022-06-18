@@ -434,6 +434,66 @@ if(isset($_POST['dnkid'])){
               <button type="submit" class="btn btn-primary" name="compsubmit" >Submit</button>
             </div></form>';
 }
+if(isset($_POST['dnkidno'])){
+	$sql=mysqli_query($conn,"SELECT * FROM ticket where id='".$_POST['dnkidno']."'");
+	$arr=mysqli_fetch_array($sql);
+	echo '<div class="modal-header">
+              <h4 class="modal-title">'.$arr['complaint_code'].'</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+			<form method="post" action="form.php">
+            <div class="modal-body body1">
+                <div class="row">   
+                <div class="col-4">
+                <b> Date & Time :</b><br>
+                </div>
+                <div class="col-8">
+                <p> '.$arr['date'].' </p>
+                </div>
+                </div>
+
+                <div class="row">   
+                 <div class="col-4">
+                <b> Client Code :</b><br>
+                </div>
+                <div class="col-8">
+                <p> '.$arr['user_id'].' </p>
+                </div>
+                </div>
+
+                <div class="row">   
+                 <div class="col-4">
+                <b> Complaint Code :</b><br>
+                </div>
+                <div class="col-8">
+                <p>'.$arr['complaint_code'].'</p>
+                </div>
+                </div>
+
+                <div class="row">   
+                 <div class="col-4">
+                <b> Subject :</b><br>
+                </div>
+                <div class="col-8">
+                <p> '.$arr['subject'].' </p>
+                </div>
+                </div>
+
+                <div class="row">   
+                 <div class="col-4">
+                <b> Description :</b><br>
+                </div>
+                <div class="col-8">
+                <p> '.$arr['description'].' </p>
+                </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div></form>';
+}
 
 if(isset($_POST['compsubmit'])){
 	$compid=$_POST['compid'];
