@@ -21,12 +21,12 @@
     <ul class="navbar-nav ml-auto">
       <!-- Navbar Search -->
       <li class="nav-item">
-        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+        <a class="nav-link" data-widget="fullscreen" href="#" role="button" data-toggle="tooltip" data-placement="bottom" title="Fullscreen">
           <i class="fas fa-expand-arrows-alt"></i>
         </a>
       </li>
       <li class="nav-item">
-                      <a href="profile" class="nav-link">
+                      <a href="profile" class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Profile">
                           <i class="nav-icon fas fa-user"></i>
                       </a>
                   </li>

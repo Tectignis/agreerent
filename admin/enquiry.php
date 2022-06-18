@@ -77,9 +77,9 @@ if(isset($_GET['delid'])){
                                     <div class="card-tools">
                                         <ul class="nav nav-pills ml-auto">
                                             <li class="nav-item">
-                                                <a href="addnewenquiry.php"class="nav-link active"  data-tt="tooltip"
+                                                <!-- <a href="addnewenquiry.php"class="nav-link active"  data-tt="tooltip"
                                                     title="" data-original-title="Click here to Add New Enquiry"><i
-                                                        class="fas fa-user-friends mr-2"></i>Add New Enquiry</a>
+                                                        class="fas fa-user-friends mr-2"></i>Add New Enquiry</a> -->
                                             </li>
                                         </ul>
                                     </div>

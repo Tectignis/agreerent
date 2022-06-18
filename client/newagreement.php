@@ -737,6 +737,10 @@ $id=$_GET['id'];
                                                 </div>
                                             </div>
                                             <div class="">
+                                            <button type="button" name="savepayment" id="savepayment"
+                                                    class="btn btn-info" data-tt="tooltip" title=""
+                                                    data-original-title="Click here to Save"
+                                                    >Save as Draft</button>
                                                 <input type="hidden" name="agreement_details" value="">
                                                 <a class="btn btn-primary previous " style="color: aliceblue" id="">
                                                     Previous<i class="mdi mdi-chevron-left"></i></a>
