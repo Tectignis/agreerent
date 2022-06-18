@@ -16,7 +16,7 @@ if(isset($_POST['submit'])){
     $location=$_POST['location'];
 
 
-    $sql = mysqli_query($conn,"INSERT INTO `leads`(`user_id`,`client_name`, `mobile`, `type`, `requirement`, `area`,`location`,`firm_name`) VALUES ('".$_SESSION['id']."','$client_name','$mobile_no', '$type','$requirement','$area','$location','$firm_name')");
+    $sql = mysqli_query($conn,"INSERT INTO `leads`(`user_id`,`client_name`, `mobile`, `type`, `requirement`, `area`,`location`,`firm_name`) VALUES ('".$_SESSION['aid']."','$client_name','$mobile_no', '$type','$requirement','$area','$location','$firm_name')");
 }
 
 
