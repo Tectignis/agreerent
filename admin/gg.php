@@ -25,10 +25,14 @@ if(isset($_POST['sub'])){
     $size     = $_FILES['image']['size']; 
     $type     = $_FILES['image']['type']; 
     $error     = $_FILES['image']['error'];
+  $loc="dist/img/agent_photo/".$image;
+    move_uploaded_file($tmp_name, $loc);
 
-  $loc="dist/img/";
+$imgEncoded = base64_encode(file_get_contents($tmp_name));
 
-  move_uploaded_file($_FILES['image']['tmp_name'],$loc.$image);
+//   $loc="dist/img/";
+
+//   move_uploaded_file($_FILES['image']['tmp_name'],$loc.$image);
 
  
 $from = 'Enquiry <'.$email.'>' . "\r\n";
@@ -39,7 +43,7 @@ $from = 'Agreerent: 1.0' . "\r\n";
 $from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 $from .= "Content-Type: multipart/mixed;"; 
 $from .= "boundary = $boundary\r\n"; 
-$from .=AddEmbeddedImage(dirname(__FILE__). '/'.$image.'', $image);
+
 
 $emailText = '
 <html>
@@ -295,7 +299,7 @@ ul.social li{
             	<tr>
 			          <td style="text-align: center;">
 			          	<div class="text-author">
-				          	<img src="https://agreerent.in/admin/dist/img/cid:'.$image.'" alt="" style="width: 100px; max-width: 600px; height: auto; margin: auto; display: block;">
+				          	<img src="https://agreerent.in/admin/dist/img/agent_photo/'.$image.'" alt="" style="width: 100px; max-width: 600px; height: auto; margin: auto; display: block;">
 				          	<h3 class="name">'.$agent_name.'</h3>
 				          	<span class="position">Firm Name</span>
 							<p>Client Code&nbsp;:&nbsp;<b>Client Code</b><br>Username&nbsp;:&nbsp;<b>'.$email_no.'</b><br>Password&nbsp;:&nbsp;<b>'.$pass.'</b></p> 
@@ -322,15 +326,15 @@ try{
     }
   }
  if( mail($sendTo,$subject,$emailText, "From:" .$from)){
-//   $passwordhash=password_hash($pass,PASSWORD_BCRYPT);
+  $passwordhash=password_hash($pass,PASSWORD_BCRYPT);
 
-//   $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`status`) 
-//    VALUES ('$user_id','$agent_name','$email_no','$passwordhash','$rera','$office_address','$mobile_no','$status')");
-//    if($sql=1){
-//      echo "<script>alert('Agent Registered Successfully');</script>";    }
-//    else{
-//      echo "<script>alert('Something Wrong');</script>";
-//    }
+  $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`status`) 
+   VALUES ('$user_id','$agent_name','$email_no','$passwordhash','$rera','$office_address','$mobile_no','$status')");
+   if($sql=1){
+     echo "<script>alert('Agent Registered Successfully');</script>";    }
+   else{
+     echo "<script>alert('Something Wrong');</script>";
+   }
  }else{
     echo "eeee $sendTo $subject $emailText $from";
  }
