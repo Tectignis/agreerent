@@ -12,6 +12,7 @@ $res=mysqli_query($conn,"SELECT * FROM `email_configuration`");
 if(isset($_POST['sub'])){
 
   $user_id=$_POST['no'];
+  $firm_name=$_POST['firmName'];
   $agent_name=$_POST['name'];
   $mobile_no=$_POST['mobile_no'];
   $office_address=$_POST['office_address'];
@@ -301,8 +302,8 @@ ul.social li{
 			          	<div class="text-author">
 				          	<img src="https://agreerent.in/admin/dist/img/agent_photo/'.$image.'" alt="" style="width: 100px; max-width: 600px; height: auto; margin: auto; display: block;">
 				          	<h3 class="name">'.$agent_name.'</h3>
-				          	<span class="position">Firm Name</span>
-							<p>Client Code&nbsp;:&nbsp;<b>Client Code</b><br>Username&nbsp;:&nbsp;<b>'.$email_no.'</b><br>Password&nbsp;:&nbsp;<b>'.$pass.'</b></p> 
+				          	<span class="position">'.$firm_name.'</span>
+							<p>Client Code&nbsp;:&nbsp;<b>'.$user_id.'</b><br>Username&nbsp;:&nbsp;<b>'.$email_no.'</b><br>Password&nbsp;:&nbsp;<b>'.$pass.'</b></p> 
 				           	<p><a href="https://www.agreerent.in/client/" class="btn btn-primary">Login Now</a></p>
 				           	<p><a href="https://www.agreerent.in/" class="btn-custom">Visit Our Website</a></p>
 							
@@ -328,8 +329,8 @@ try{
  if( mail($sendTo,$subject,$emailText, "From:" .$from)){
   $passwordhash=password_hash($pass,PASSWORD_BCRYPT);
 
-  $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`status`) 
-   VALUES ('$user_id','$agent_name','$email_no','$passwordhash','$rera','$office_address','$mobile_no','$status')");
+  $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`firm_name`,`status`) 
+   VALUES ('$user_id','$agent_name','$email_no','$passwordhash','$rera','$office_address','$mobile_no','$firm_name','$status')");
    if($sql=1){
      echo "<script>alert('Agent Registered Successfully');</script>";    }
    else{
@@ -438,9 +439,17 @@ else{
                                         </div>
                                     </div>
 
+                                    <div class="form-group row">
+                                        <label for="exampleaddress" class="col-sm-2 col-form-label">Firm
+                                            Name<label style="color:Red">*</label></label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="firmName" placeholder="Enter Name"
+                                                required>
+                                        </div>
+                                    </div>
 
                                     <div class="form-group row">
-                                        <label for="exampleaddress" class="col-sm-2 col-form-label">Consultant
+                                        <label for="exampleaddress" class="col-sm-2 col-form-label">Agent
                                             Name<label style="color:Red">*</label></label>
                                         <div class="col-sm-10">
                                             <input type="text" class="form-control" name="name" placeholder="Enter Name"
