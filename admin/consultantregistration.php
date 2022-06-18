@@ -12,6 +12,7 @@ $res=mysqli_query($conn,"SELECT * FROM `email_configuration`");
 if(isset($_POST['sub'])){
 
   $user_id=$_POST['no'];
+  $firm_name=$_POST['firmName'];
   $agent_name=$_POST['name'];
   $mobile_no=$_POST['mobile_no'];
   $office_address=$_POST['office_address'];
@@ -20,6 +21,20 @@ if(isset($_POST['sub'])){
   $status=1;
   $pass= rand(100000, 999999);
   $email=$row['email'];
+  $image=$_FILES['file']['name'];
+  $tmp_name = $_FILES['file']['tmp_name']; 
+    $size     = $_FILES['file']['size']; 
+    $type     = $_FILES['file']['type']; 
+    $error     = $_FILES['file']['error'];
+  $loc="dist/img/agent_photo/".basename($image);
+    move_uploaded_file($tmp_name, $loc);
+
+$imgEncoded = base64_encode(file_get_contents($tmp_name));
+
+//   $loc="dist/img/";
+
+//   move_uploaded_file($_FILES['image']['tmp_name'],$loc.$image);
+
  
 $from = 'Enquiry <'.$email.'>' . "\r\n";
 $sendTo = 'Enquiry <'.$email_no.'>';
@@ -27,6 +42,9 @@ $subject = 'Agreerent';
 // $fields = array( 'name' => 'name' );
 $from = 'Agreerent: 1.0' . "\r\n";
 $from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+$from .= "Content-Type: multipart/mixed;"; 
+$from .= "boundary = $boundary\r\n"; 
+
 
 $emailText = '
 <html>
@@ -282,10 +300,10 @@ ul.social li{
             	<tr>
 			          <td style="text-align: center;">
 			          	<div class="text-author">
-				          	<img src="https://agreerent.in/admin/dist/img/avatar2.png" alt="" style="width: 100px; max-width: 600px; height: auto; margin: auto; display: block;">
+				          	<img src="https://agreerent.in/admin/dist/img/agent_photo/'.$image.'" alt="" style="width: 100px; max-width: 600px; height: auto; margin: auto; display: block;">
 				          	<h3 class="name">'.$agent_name.'</h3>
-				          	<span class="position">Firm Name</span>
-							<p>Client Code&nbsp;:&nbsp;<b>Client Code</b><br>Username&nbsp;:&nbsp;<b>'.$email_no.'</b><br>Password&nbsp;:&nbsp;<b>'.$pass.'</b></p> 
+				          	<span class="position">'.$firm_name.'</span>
+							<p>Client Code&nbsp;:&nbsp;<b>'.$user_id.'</b><br>Username&nbsp;:&nbsp;<b>'.$email_no.'</b><br>Password&nbsp;:&nbsp;<b>'.$pass.'</b></p> 
 				           	<p><a href="https://www.agreerent.in/client/" class="btn btn-primary">Login Now</a></p>
 				           	<p><a href="https://www.agreerent.in/" class="btn-custom">Visit Our Website</a></p>
 							
@@ -303,8 +321,6 @@ ul.social li{
 </html>';
 
 try{
- 
-
   foreach($_POST as $key => $value){
     if(isset($fields[$key])){
       $emailText.="$fields[$key]: $value\n";
@@ -313,8 +329,8 @@ try{
  if( mail($sendTo,$subject,$emailText, "From:" .$from)){
   $passwordhash=password_hash($pass,PASSWORD_BCRYPT);
 
-  $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`status`) 
-   VALUES ('$user_id','$agent_name','$email_no','$passwordhash','$rera','$office_address','$mobile_no','$status')");
+  $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`firm_name`,`status`,`image`) 
+   VALUES ('$user_id','$agent_name','$email_no','$passwordhash','$rera','$office_address','$mobile_no','$firm_name','$status','$image')");
    if($sql=1){
      echo "<script>alert('Agent Registered Successfully');</script>";    }
    else{
@@ -423,9 +439,17 @@ else{
                                         </div>
                                     </div>
 
+                                    <div class="form-group row">
+                                        <label for="exampleaddress" class="col-sm-2 col-form-label">Firm
+                                            Name<label style="color:Red">*</label></label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="firmName" placeholder="Enter Name"
+                                                required>
+                                        </div>
+                                    </div>
 
                                     <div class="form-group row">
-                                        <label for="exampleaddress" class="col-sm-2 col-form-label">Consultant
+                                        <label for="exampleaddress" class="col-sm-2 col-form-label">Agent
                                             Name<label style="color:Red">*</label></label>
                                         <div class="col-sm-10">
                                             <input type="text" class="form-control" name="name" placeholder="Enter Name"
@@ -478,7 +502,7 @@ else{
                                                 style="color:Red">*</label></label>
                                         <div class="col-sm-10">
                                             <input type="file" name="file">
-                                            <!-- <a href="upload_image.php" class="btn btn-success"> Upload</a>  -->
+                                            
                                         </div>
                                     </div>
 
