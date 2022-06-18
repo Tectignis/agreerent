@@ -22,7 +22,11 @@ if(isset($_POST['sub'])){
   $dd=$_FILES['image']['name'];
   $dgffd=$_FILES['image']['tmp_name'];
 
-move_uploaded_file($dgffd,"dist/img/profile/".$dd);
+if(move_uploaded_file($dgffd,"dist/img/profile/".$dd)){
+    echo "fgfdg";
+}else{
+    echo "fgs";
+}
 
   
 }
