@@ -86,7 +86,7 @@ include("../config/config.php");
     <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="dist/js/adminlte.min.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 </body>
 <?php
 session_start();
@@ -118,7 +118,7 @@ $(document).ready(function() {
   title: 'Success',
   text: 'Login Successfully',
   showConfirmButton: false,
-  timer: 2000
+  timer: 5000
 }).then(function() {
         // Redirect the user
         window.location.href = "index";
@@ -138,7 +138,7 @@ $(document).ready(function() {
   title: 'Error',
   text: 'Invalid Email or Password',
   showConfirmButton: false,
-  timer: 2000
+  timer: 5000
 }).then(function() {
         // Redirect the user
         window.location.href = "clientlogin";
