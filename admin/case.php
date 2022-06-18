@@ -119,7 +119,7 @@ if(isset($_GET['gen'])){
                                                                           <table id="table_id" class="table table-bordered table-striped dataTable dtr-inline" aria-describedby="table_id_info">
                                                                           <thead>
                                                                     <tr>
-                                                                        <th>Sr.no</th>
+                                                                       
                                                                         <th>Sr.no</th>
                                                                         <th>Document No</th>
                                                                         <th>Owner Name</th>
@@ -148,7 +148,6 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
 
                                         ?>
                                                                     <tr>
-                                                                         <td><?php echo $_SESSION['id']; ?> </td>
                                                                         <td><?php echo $count; ?> </td>
                                                                         <td><?php echo $row['newdoc']; ?></td>
                                                                         <td><?php echo $row['tname']; ?></td>
