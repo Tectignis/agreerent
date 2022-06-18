@@ -2,7 +2,7 @@
 session_start();
 if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 {
- header("Location:clientlogin.php"); 
+//  header("Location:adminlogin"); 
 }
 
 include("../config/config.php");
@@ -10,15 +10,39 @@ include("../config/config.php");
 
 // include('form.php');
 
-$id=$_GET['id'];
+$basicid=$_GET['documentbasid'];
 
+if(isset($_GET['familydelid'])){
+$deleteid=$_GET['familydelid'];	
+ $query=mysqli_query($conn,"select * from family_members where id='$deleteid'");
+    $res=mysqli_fetch_array($query);
+    $id=$res['document_no'];
+	$sql=mysqli_query($conn,"delete from family_members where id='$deleteid'");
+   
+	if($sql==1){	
+	header("location:newagreement.php?documentbasid=$id");
+  	}else{
+		echo "<script>alert('Something went wrong');</script>";
+	}
+}
+
+if(isset($_GET['deleteid'])){
+$deleteid=$_GET['deleteid'];
+$query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
+    $res=mysqli_fetch_array($query);
+    $id=$res['document_no'];	
+	$sql=mysqli_query($conn,"delete from amenities where id='$deleteid'");
+	if($sql==1){	
+	header("location:newagreement.php?documentbasid=$id");
+  	}else{
+		echo "<script>alert('Something went wrong');</script>";
+	}
+}
 ?>
-
 
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -123,12 +147,14 @@ $id=$_GET['id'];
                                         <div class="card-body">
 
                                             <form class="forms-sample" method="post">
+                                                 <input type="hidden" id="no" name="no1"
+                                                            value="<?php echo $basicid;?>" readonly>
                                                 <div class="form-group row">
+                                                     
                                                     <label for="examplename" class="col-sm-2 col-form-label">Full
                                                         Name<label style="color:Red">*</label> </label>
                                                     <div class="col-sm-2">
-                                                        <input type="hidden" id="no" name="no1"
-                                                            value="<?php echo $id;?>">
+                                                      
 
                                                         <select class="form-control" name="abbreviation" id="examplemr"
                                                             required>
@@ -214,12 +240,14 @@ $id=$_GET['id'];
                                         <div class="card-body">
 
                                             <form class="forms-sample" method="post">
+                                                  <input type="hidden" id="no2" name="no2" value="<?php echo $basicid;?>"
+                                                            class="form-control" id="exampledno" readonly >
                                                 <div class="form-group row">
+                                                   
                                                     <label for="examplename" class="col-sm-2 col-form-label">Full
                                                         Name<label style="color:Red">*</label></label>
                                                     <div class="col-sm-2">
-                                                        <input type="hidden" name="no2" value="<?php echo $id;?>"
-                                                            class="form-control" id="exampledno" readonly>
+                                                       
                                                         <select class="form-control" id="exampleSelectmr"
                                                             name="abbreviation" required>
                                                             <option value="" disabled selected hidden>select</option>
@@ -263,10 +291,9 @@ $id=$_GET['id'];
                                                     <label for="exampleaadhaar" class="col-sm-2 col-form-label">Aadhaar
                                                         Card No.<label style="color:Red">*</label></label>
                                                     <div class="col-sm-4">
-                                                    <input type="number" name="aadhaar" class="form-control"
-                                                            id="txAdhar" placeholder="Enter Aadhaar card No"
-                                                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                                            maxlength="12" required>
+                                                        <input type="text" class="form-control" name="aadhaar"
+                                                            id="txtAadhar1" placeholder="Enter Aadhaar Card number"
+                                                            required>
                                                         <span id="spanAadharCard"></span>
                                                     </div>
                                                 </div>
@@ -332,14 +359,15 @@ $id=$_GET['id'];
                                         aria-labelledby="custom-tabs-two-settings-tab">
                                         <div class="card-body">
 
-                                            <form class="forms-sample" method="post">
+                                            <form class="forms-sample" method="post" >
                                                 <div class="form-group row">
+                                                    <input type="hidden" name="no3" id="no3"
+                                                            value="<?php echo $basicid;?>" readonly>
                                                     <label for="examplename" class="col-2 col-form-label">Property
                                                         Type<label style="color:Red">*</label></label>
 
                                                     <div class="col-sm-2 col-lg-2">
-                                                        <input type="hidden" name="no3" id="no3"
-                                                            value="<?php echo $id;?>">
+                                                        
 
                                                         <!-- <input type="text" for="examplename" name="type" id="propertyTypeVal" class="form-control" readonly> -->
                                                         <select class="form-control" name="type" id="exampleproperties"
@@ -443,8 +471,8 @@ $id=$_GET['id'];
                                                 <div class="row">
                                                     <div class="col-sm-6">
                                                         <div class="form-group row">
-                                                            <input type="hidden" name="no4" id="no4"
-                                                                value="<?php echo $id;?>">
+                                                             <input type="hidden" name="no4" id="no4"
+                                                                value="<?php echo $basicid;?>">
                                                             <label for="examplename"
                                                                 class="col-sm-3 col-form-label-sm">Name<label
                                                                     style="color:Red">*</label></label>
@@ -538,7 +566,7 @@ $id=$_GET['id'];
                                                     <h4>Owner Witness </h4>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <input type="hidden" name="no5" id="no5" value="<?php echo $id;?>">
+                                                    <input type="hidden" name="no5" id="no5" value="<?php echo $basicid;?>">
                                                     <label for="exampleInputtran"
                                                         class="col-sm-2 col-form-label">1<sup>st</sup> Person<label
                                                             style="color:Red">*</label></label>
@@ -613,7 +641,7 @@ $id=$_GET['id'];
                                                     <div class="col-sm-6">
                                                         <div class="form-group row">
                                                             <input type="hidden" name="no6" id="no6"
-                                                                value="<?php echo $id;?>">
+                                                                value="<?php echo $basicid;?>">
                                                             <label for="examplename"
                                                                 class="col-sm-3 col-form-label-sm">Name<label
                                                                     style="color:Red">*</label></label>
@@ -664,7 +692,7 @@ $id=$_GET['id'];
                                                 <label for="examplename" class="col-sm-2 col-form-label-sm">Security
                                                     Deposit<label style="color:Red">*</label></label>
                                                 <div class="col-sm-4">
-                                                    <input type="hidden" name="no7" id="no7" value="<?php echo $id;?>">
+                                                    <input type="hidden" name="no7" id="no7" value="<?php echo $basicid;?>">
                                                     <input type="number" id="deposit" class="form-control"
                                                         name="security_deposit" placeholder="Deposit" required>
                                                 </div>
@@ -684,24 +712,17 @@ $id=$_GET['id'];
                                                     <select class="form-control select2 select2-hidden-accessible"
                                                         name="method" id="checkselec" style="width: 100%;"
                                                         data-select2-id="3" tabindex="-1" aria-hidden="true">
-                                                        <option selected="selected" data-select2-id="4">Alabama</option>
-                                                        <option>Alaska</option>
-                                                        <option>California</option>
-                                                        <option>Delaware</option>
-                                                        <option>Tennessee</option>
-                                                        <option>Texas</option>
-                                                        <option>Washington</option>
+                                                        <option selected="selected" data-select2-id="4">CASH</option>
+                                                        <option>CHEQUE</option>
+                                                        <option>BANK TRASFER</option>
+                                                        <option>GOOGLE PAY</option>
+                                                        <option>PHONE PAY</option>
+                                                        <option>PAYTYM</option>
+                                                        
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="form-group row">
-                                                <label for="exampldate" class="col-sm-2 col-form-label">Date Of Rent
-                                                    Payment<label style="color:Red">*</label></label>
-                                                <div class="col-sm-4">
-                                                    <input type="date" class="form-control" name="date_of_payment" id="date1"
-                                                        required>
-                                                </div>
-                                            </div>
+                                           
                                             <div class="form-group row">
                                                 <label for="exampleage" class="col-sm-2 col-form-label-sm">Bank<label
                                                         style="color:Red">*</label></label>
@@ -709,19 +730,27 @@ $id=$_GET['id'];
                                                     <select class="form-control select2 select2-hidden-accessible"
                                                         name="bank" id="bank" style="width: 100%;" data-select2-id="1"
                                                         tabindex="-2" aria-hidden="true">
-                                                        <option selected="selected" data-select2-id="2">Alabama</option>
-                                                        <option>Alaska</option>
-                                                        <option>California</option>
-                                                        <option>Delaware</option>
-                                                        <option>Tennessee</option>
-                                                        <option>Texas</option>
-                                                        <option>Washington</option>
+                                                        <option selected="selected" data-select2-id="2">SBI</option>
+                                                        <option>UNION</option>
+                                                        <option>AXIS</option>
+                                                        <option>KOTAK</option>
+                                                        <option>HDFC</option>
+                                                        <option>ICICI</option>
+                                                        <option>BOI</option>
+                                                        <option>YES BANK</option>
                                                     </select>
                                                 </div>
                                             </div>
-
                                             <div class="form-group row">
-                                                <label for="exampldate" class="col-sm-2 col-form-label">Date Of
+                                                <label for="exampldate" class="col-sm-2 col-form-label">Date Of 
+                                                    Rent Payment<label style="color:Red">*</label></label>
+                                                <div class="col-sm-4">
+                                                    <input type="number" class="form-control" id="rentpay"
+                                                        required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="exampldate" class="col-sm-2 col-form-label">Date Of 
                                                     Payment<label style="color:Red">*</label></label>
                                                 <div class="col-sm-4">
                                                     <input type="date" class="form-control" name="date" id="date"
@@ -738,7 +767,7 @@ $id=$_GET['id'];
                                                 </div>
                                             </div>
                                             <div class="">
-                                            <button type="button" name="savepayment" id="savepayment"
+                                                <button type="button" name="savepayment" id="savepayment"
                                                     class="btn btn-info" data-tt="tooltip" title=""
                                                     data-original-title="Click here to Save"
                                                     >Save as Draft</button>
@@ -765,7 +794,13 @@ $id=$_GET['id'];
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-        <?php include 'include/footer.php'; ?>
+        <footer class="main-footer">
+            <div class="float-right d-none d-sm-block">
+                <b>Version</b> 3.2.0
+            </div>
+            <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights
+            reserved.
+        </footer>
 
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
@@ -793,7 +828,7 @@ $id=$_GET['id'];
     <script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- AdminLTE App -->
     <script src="dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
@@ -832,7 +867,6 @@ $id=$_GET['id'];
         $('.nav-tabs > .nav-item > .active').parent().prev('li').find('a').trigger('click');
     });
     </script>
-
 <script>
 let subm = document.getElementById("subm");
 subm.addEventListener("click", function(){
@@ -862,13 +896,12 @@ let name1 = document.getElementById("txtname3").value;
 let mobile = document.getElementById("phone").value;
 let email = document.getElementById("emailcheck").value;
 
-
 let aadhaar = document.getElementById("txtAadhar1").value;
 let age = document.getElementById("id2").value;
 let pancard = document.getElementById("txtPANCard1").value;
 let address = document.getElementById("residenceAddress").value;
 let permanent_address = document.getElementById("presentAddress").value;
-if(no2 == "" || abbreviation == "" || name1 == "" || mobile == "" || email == ""  || aadhaar == "" || age == "" || pancard == "" || address == "" || permanent_address == ""  ){
+if(no2 == "" || abbreviation == "" || name1 == "" || mobile == "" || email == "" || aadhaar == "" || age == "" || pancard == "" || address == "" || permanent_address == ""  ){
     swal("Oops...", "Please fill all the fields", "error");
 }
     else{
@@ -967,6 +1000,8 @@ if(no7 == "" || rent_amount == "" || method == "" || date_of_payment == "" || ba
     }
 });
 </script>
+
+
 
 </body>
 
