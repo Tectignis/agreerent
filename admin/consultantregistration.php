@@ -301,13 +301,6 @@ ul.social li{
     </div>
 </body>
 </html>';
-$file = file_get_contents("https://agreerent.in/admin/dist/img/'.$image.'");
-$emailText .= "Content-Type: image/jpeg; name=\"http://localhost/a/img/1.jpg\"\r\n"
-."Content-Transfer-Encoding: base64\r\n"
-."Content-ID: <https://agreerent.in/admin/dist/img/'.$image.'>\r\n"
-."\r\n"
-.chunk_split(base64_encode($file))
-.$bound_last;
 
 try{
  
