@@ -1,6 +1,6 @@
 <?php
 include("../config/config.php");
-if(isset($_SESSION['id'])) 
+if(isset($_SESSION['admin']) == 1) 
 {
  header("Location:index.php"); 
 }
@@ -101,17 +101,17 @@ if(isset($_POST["login"])){
 	$email=$_POST["email"];
 	$password=$_POST["password"];
 
-	$sql = mysqli_query($conn,"SELECT * FROM users WHERE email='$email' AND status='1'") ;
+	$sql = mysqli_query($conn,"SELECT * FROM users WHERE email='$email' AND is_admin='1'");
 	if(mysqli_num_rows($sql)>0){
 		$row=mysqli_fetch_assoc($sql); 
 		$verify=password_verify($password,$row['password']);
-	
 
 	 if($verify==1){
-	  $_SESSION['email']=$row['email'];
-      $_SESSION['name']=$row['agent_name'];
-      $_SESSION['id']=$row['user_id'];
-      $_SESSION['address']=$row['office_address'];
+	  $_SESSION['aemail']=$row['email'];
+      $_SESSION['aname']=$row['agent_name'];
+      $_SESSION['aid']=$row['user_id'];
+      $_SESSION['aaddress']=$row['office_address'];
+      $_SESSION['admin']=$row['is_admin'];
       ?>
 
 <script type="text/javascript">
@@ -121,7 +121,7 @@ $(document).ready(function() {
   title: 'Success',
   text: 'Login Successfully',
   showConfirmButton: false,
-  timer: 5000
+  timer: 3000
 }).then(function() {
         // Redirect the user
         window.location.href = "index";
