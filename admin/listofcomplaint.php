@@ -129,12 +129,25 @@ if($dnk=1){
                                                 </td>
                                                 
                                                 <td>
+                                                     <?php
+                                                                                $status=$arr['status'];
+                                                                                if($status=='Closed'){
+                                                                                ?>
+ <a href="listofcomplaint.php?delid=<?php echo $arr['id']; ?>"><button
+                                                            type="button" class="btn btn-danger btn-rounded btn-icon"
+                                                            onclick="ConfirmDelete()" style="color: aliceblue"> <i
+                                                                class="fas fa-trash"></i> </button></a>
+                                                                            <?php
+                                                                                }
+                                                                                else{
+                                                                                ?>
                                                 <button class="btn btn-sm btn-primary dnkeditid" data-id='<?php echo $arr['id']; ?>'><i class="fas fa-edit"></i></button>
                                                     <a href="listofcomplaint.php?delid=<?php echo $arr['id']; ?>"><button
                                                             type="button" class="btn btn-danger btn-rounded btn-icon"
                                                             onclick="ConfirmDelete()" style="color: aliceblue"> <i
                                                                 class="fas fa-trash"></i> </button></a>
-
+                                                                <?php } ?>
+</td>
                                             </tr>
 
                                             <?php $count++;   } ?>
