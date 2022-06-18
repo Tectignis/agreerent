@@ -982,6 +982,7 @@ if(no6 == "" || name3 == "" || number == ""   ){
     }
 });
 </script>
+
 <script>
 let submitpayment = document.getElementById("submitpayment");
 submitpayment.addEventListener("click", function(){
