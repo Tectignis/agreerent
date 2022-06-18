@@ -118,7 +118,22 @@ if($sql=1){
                                                 <td> <?php echo $arr['date'];?></td>
                                                 <td> <?php echo $arr['complaint_code'];?></td>
                                                 <td> <?php echo $arr['subject'];?> </td>
-                                                <td>  <span class="badge badge-danger">Danger</span></td>
+                                                <td>                                                 <?php
+                                                $status=$arr['status'];
+                                                if($status=='0'){
+                                                    echo '<span class="badge badge-success">Open</span>';
+                                                }
+                                                else if($status=='Open'){
+                                                    echo '<span class="badge badge-success">Open</span>';
+                                                }
+                                                else if($status=='In Proccess'){
+                                                    echo '<span class="badge badge-danger">In Proccess</span>';
+                                                }else if($status=='Hold On'){
+                                                   echo '<span class="badge badge-warning">Hold On</span>';
+                                                }else if($status=='Closed'){
+                                                    echo '<span class="badge badge-secondary">Closed</span>';
+                                                }
+                                                ?> </td>
                                                 
                                                
                                                 
