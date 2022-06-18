@@ -124,72 +124,7 @@ function get_time_ago( $time )
                             </div>
                         </div>
                         <!-- ./col -->
-                        <div class="col-lg-3 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-success">
-                                <div class="inner">
-                                    <?php
-                               $Wuery=mysqli_query($conn,"select * from new_agreement where user_id='".$_SESSION['id']."'");
-                                $count2=mysqli_num_rows($Wuery);
-                            ?>
-                                    <h3><?php echo $count2; ?></h3>
-
-                                    <p>Total No Of Complaint</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-stats-bars"></i>
-                                </div>
-                                <a href="#" class="small-box-footer">More info <i
-                                        class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                        <!-- ./col -->
-                        <div class="col-lg-3 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-warning">
-                                <div class="inner">
-                                    <h3>44</h3>
-
-                                    <p>Total No Of Complaint Completed</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-person-add"></i>
-                                </div>
-                                <a href="#" class="small-box-footer">More info <i
-                                        class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                        <!-- ./col -->
-                        <div class="col-lg-3 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-danger">
-                                <div class="inner">
-                                    <h3>65</h3>
-
-                                    <p>Total No Of Complaint On Hold</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-pie-graph"></i>
-                                </div>
-                                <a href="#" class="small-box-footer">More info <i
-                                        class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-danger">
-                                <div class="inner">
-                                    <h3>65</h3>
-
-                                    <p>Total No Of Complaint Resolve</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-pie-graph"></i>
-                                </div>
-                                <a href="#" class="small-box-footer">More info <i
-                                        class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
+                        
                     </div>
                     <!-- ./col -->
                 </div>
@@ -201,8 +136,13 @@ function get_time_ago( $time )
 <div class="info-box">
 <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
 <div class="info-box-content">
+<?php
+                               $query=mysqli_query($conn,"select * from ticket where status = 'Open'");
+                                $count1=mysqli_num_rows($query);
+                            ?>
+                                   
 <span class="info-box-text">Open Complaint</span>
-<span class="info-box-number">10</span>
+<h3><?php echo $count1; ?></h3>
 </div>
 
 </div>
@@ -213,8 +153,13 @@ function get_time_ago( $time )
 <div class="info-box mb-3">
 <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
 <div class="info-box-content">
+<?php
+                               $query=mysqli_query($conn,"select * from ticket where status = 'In Proccess'");
+                                $count1=mysqli_num_rows($query);
+                            ?>
+                                 
 <span class="info-box-text">In Process</span>
-<span class="info-box-number">41,410</span>
+<h3><?php echo $count1; ?></h3>
 </div>
 
 </div>
@@ -227,8 +172,13 @@ function get_time_ago( $time )
 <div class="info-box mb-3">
 <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
 <div class="info-box-content">
+<?php
+                               $query=mysqli_query($conn,"select * from ticket where status = 'Hold On'");
+                                $count1=mysqli_num_rows($query);
+                            ?>
+                                 
 <span class="info-box-text">On Hold</span>
-<span class="info-box-number">760</span>
+<h3><?php echo $count1; ?></h3>
 </div>
 
 </div>
@@ -239,8 +189,13 @@ function get_time_ago( $time )
 <div class="info-box mb-3">
 <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
 <div class="info-box-content">
+<?php
+                               $query=mysqli_query($conn,"select * from ticket where status = 'Closed'");
+                                $count1=mysqli_num_rows($query);
+                            ?>
+                                 
 <span class="info-box-text">Resloved</span>
-<span class="info-box-number">2,000</span>
+<h3><?php echo $count1; ?></h3>
 </div>
 
 </div>
