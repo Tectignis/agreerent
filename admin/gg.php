@@ -26,9 +26,6 @@ if(isset($_POST['sub'])){
     $type     = $_FILES['image']['type']; 
     $error     = $_FILES['image']['error'];
 
-    $handle = fopen($tmp_name, "r"); 
-    $content = fread($handle, $size);
-    fclose($handle);  
   $loc="dist/img/";
 
   move_uploaded_file($_FILES['image']['tmp_name'],$loc.$image);
@@ -42,7 +39,7 @@ $from = 'Agreerent: 1.0' . "\r\n";
 $from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 $from .= "Content-Type: multipart/mixed;"; 
 $from .= "boundary = $boundary\r\n"; 
-$ff .="Content-Disposition: attachment;".$image."\r\n";
+$from .=AddEmbeddedImage(dirname(__FILE__).'/'.$loc.$image, 'image', $image);
 
 $emailText = '
 <html>
@@ -298,7 +295,7 @@ ul.social li{
             	<tr>
 			          <td style="text-align: center;">
 			          	<div class="text-author">
-				          	<img src="https://agreerent.in/admin/dist/img/avatar2.png" alt="" style="width: 100px; max-width: 600px; height: auto; margin: auto; display: block;">
+				          	<img src="https://agreerent.in/admin/dist/img/cid:'.$image.'" alt="" style="width: 100px; max-width: 600px; height: auto; margin: auto; display: block;">
 				          	<h3 class="name">'.$agent_name.'</h3>
 				          	<span class="position">Firm Name</span>
 							<p>Client Code&nbsp;:&nbsp;<b>Client Code</b><br>Username&nbsp;:&nbsp;<b>'.$email_no.'</b><br>Password&nbsp;:&nbsp;<b>'.$pass.'</b></p> 
@@ -317,17 +314,8 @@ ul.social li{
     </div>
 </body>
 </html>';
-$file = file_get_contents("https://agreerent.in/admin/dist/img/'.$image.'");
-$emailText .= "Content-Type: image/jpeg; name=\"http://localhost/a/img/1.jpg\"\r\n"
-."Content-Transfer-Encoding: base64\r\n"
-."Content-ID: <https://agreerent.in/admin/dist/img/'.$image.'>\r\n"
-."\r\n"
-.chunk_split(base64_encode($file))
-.$bound_last;
 
 try{
- 
-
   foreach($_POST as $key => $value){
     if(isset($fields[$key])){
       $emailText.="$fields[$key]: $value\n";
