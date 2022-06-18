@@ -133,17 +133,21 @@ if($dnk=1){
                                                                                 $status=$arr['status'];
                                                                                 if($status=='Closed'){
                                                                                 ?>
- <a href="listofcomplaint.php?delid=<?php echo $arr['id']; ?>"><button
-                                                            type="button" class="btn btn-danger btn-rounded btn-icon"
+                                                                   <button class="btn btn-sm btn-primary dnkediti" data-id='<?php echo $arr['id']; ?>'><i class="fas fa-eye"></i></button>
+
+                                                            <a href="listofcomplaint.php?delid=<?php echo $arr['id']; ?>">
+                                                            <button type="button" class="btn btn-danger btn-sm btn-icon"
                                                             onclick="ConfirmDelete()" style="color: aliceblue"> <i
                                                                 class="fas fa-trash"></i> </button></a>
                                                                             <?php
                                                                                 }
                                                                                 else{
                                                                                 ?>
+                                               <button class="btn btn-sm btn-primary dnkediti" data-id='<?php echo $arr['id']; ?>'><i class="fas fa-eye"></i></button>
+
                                                 <button class="btn btn-sm btn-primary dnkeditid" data-id='<?php echo $arr['id']; ?>'><i class="fas fa-edit"></i></button>
                                                     <a href="listofcomplaint.php?delid=<?php echo $arr['id']; ?>"><button
-                                                            type="button" class="btn btn-danger btn-rounded btn-icon"
+                                                            type="button" class="btn btn-danger btn-sm btn-icon"
                                                             onclick="ConfirmDelete()" style="color: aliceblue"> <i
                                                                 class="fas fa-trash"></i> </button></a>
                                                                 <?php } ?>
@@ -168,6 +172,15 @@ if($dnk=1){
         </div>
         
       <div class="modal fade" id="dnkModal">
+        <div class="modal-dialog">
+          <div class="modal-content body1">
+            
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+       <div class="modal fade" id="dnkModal1">
         <div class="modal-dialog">
           <div class="modal-content body1">
             
@@ -220,6 +233,23 @@ $('.dnkeditid').click(function(){
    success: function(response1){ 
      $('.body1').html(response1);
      $('#dnkModal').modal('show'); 
+   }
+ });
+});
+});
+</script>
+<script>
+$(document).ready(function(){
+$('.dnkediti').click(function(){
+  let dnkidno = $(this).data('id');
+
+  $.ajax({
+   url: 'form.php',
+   type: 'post',
+   data: {dnkidno: dnkidno},
+   success: function(response1){ 
+     $('.body1').html(response1);
+     $('#dnkModal1').modal('show'); 
    }
  });
 });
