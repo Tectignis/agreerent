@@ -1,3 +1,4 @@
+
 <?php  
 session_start();
 if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
@@ -54,7 +55,7 @@ function AmountInWords(float $amount)
 
 <head>
     <meta charset="utf-8">
-    <title>Agreement</title>
+    <title>Police NOC</title>
 </head>
 <style>
 table,
@@ -90,44 +91,16 @@ th {
 
 <body>
 
-<?php               
-$sql=mysqli_query($conn,"select owner.fullname as oname, owner.age as oage, owner.occupation as ooccupation,owner.aadhaar as oaadhaar,owner.pan_card as opancard, owner.address as oaddress, tenant.fullname as tname,tenant.aadhaar as taadhaar,tenant.pan_card as tpancard, tenant.age as tage, tenant.occupation as toccupation, tenant.address as taddress, new_agreement.date_of_agreement as doa,new_agreement.place_of_agreement as poa, new_agreement.document_no as docno from new_agreement inner join owner on new_agreement.document_no=owner.document_no inner join tenant on new_agreement.document_no=tenant.document_no where new_agreement.document_no='$fid'; ");
-$arr=mysqli_fetch_assoc($sql)
-						?>
-    <div class="page"
-        style="width:215mm; height:297mm; margin-top:200mm; margin-bottom:1cm; margin-left:3cm; margin-right:2cm; font-family: Arial; font-size:18px;">
-        <h2 align="center">LEAVE AND LICENSE AGREEMENT</h2>
-        <p align="center">This agreement is made and executed on <b><?php echo $arr['doa'];?></b> at
-            <b><?php echo $arr['poa'];?></b>
-        </p>
-        <p align="center">Between,</p>
-        <p><b><?php echo $arr['oname'];?>, &nbsp;</b>&nbsp;Age:<b>&nbsp;About <?php echo $arr['oage'];?></b>&nbsp;Years,
-            Occupation:<b>&nbsp;<?php echo $arr['ooccupation'];?></b>&nbsp;PANCARD:<b>&nbsp;<?php echo $arr['opancard'];?>,</b>&nbsp;
-            UID: <b><?php echo $arr['oaadhaar'];?></b>
-            . Residing at:<b><?php echo $arr['oaddress'];?></b>
-            HEREINAFTER called ‘the Licensor (which expression shall mean and include the Licensor above
-            named as also his respective heirs, successors, assigns, executors and administrators)</p>
-
-        <p align="center">AND</p>
-        <p><b><?php echo $arr['tname'];?>, &nbsp;</b>&nbsp;Age:<b>&nbsp;About <?php echo $arr['tage'];?></b>&nbsp;Years,
-            Occupation:<b>&nbsp;<?php echo $arr['tooccupation'];?>,</b>&nbsp;PANCARD:<b>&nbsp;<?php echo $arr['tpancard'];?>,</b>&nbsp;
-            UID: <b><?php echo $arr['taadhaar'];?></b>
-            . Residing at:<b><?php echo $arr['taddress'];?></b>
-            HEREINAFTER called ‘the Licensee’ (which expression shall mean and include only Licensee
-            above named).</p>
-
-    </div>
-    
-
 <?php 
 	
-	$sql=mysqli_query($conn,"select * from property_details where document_no='$fid'");
-	 $arr=mysqli_fetch_array($sql)
+	$sql=mysqli_query($conn,"select * from property_details");
+	 $arr=mysqli_fetch_array($sql);
+     $doc=$arr['document_no'];
 	?>
 
     <p><b>WHERE AS : </b> </p>
     <p>The LICENSOR is fully seized and possessed of or otherwise well and sufficiently entitled to hold the following
-    <?php echo $arr['property_type'];?>:</p> <br>
+    <?php if($doc==$fid){echo $arr['property_type']; }else{ echo ' - ' ;}?></p> <br>
 
     <div>
         <table style="width: 100%;">
@@ -156,13 +129,12 @@ $arr=mysqli_fetch_assoc($sql)
                     <td colspan="4">NODE:<b><?php echo $arr['node'];?></b></td>
                 </tr>
             </tbody>
-            
 
         </table>
         <?php 
 	
 	$sql=mysqli_query($conn,"select * from property_details where document_no='$fid'");
-	 ($arr=mysqli_fetch_array($sql))
+	 while($arr=mysqli_fetch_array($sql)){
 	?>
 
     </div><br>
@@ -171,19 +143,19 @@ $arr=mysqli_fetch_assoc($sql)
     <p>The owner who on account of certain personal reasons is not occupying the said premise; and the LICENSEE being
         temporarily in need of a RESIDENTIAL ACCOMODATION/BUSINESS PREMISES requested the owner to give on ''LEAVE &
         LICENSE BASIS , as a temporary facility, the use of the said premises, together with the fixtures and lying
-        thereon, on the terms and conditions recorded hereinafter.</p>  
+        thereon, on the terms and conditions recorded hereinafter.</p>  <?php } ?>
     <p><b>AND WHERE AS:</b></p>
     <?php 
 	
 	$sql=mysqli_query($conn,"select * from tenant where document_no='$fid'");
-	 ($arr=mysqli_fetch_array($sql))
+	 while($arr=mysqli_fetch_array($sql)){
 	?>
     <p>As per the recent orders from the Department of police, the Licensee furnish the following details and further
         agrees to co-operate in getting No Objection Certificate from the local police by appearing personally as when
         called by the police under which jurisdiction the said premise is covered.</p>
     <p>iPermanent Native Address:&nbsp;<?php echo $arr['permanent_address'];?></p>
     <p>iiPresent Address :&nbsp;<?php echo $arr['address'];?></p>
-   
+    <?php } ?>
     <p>iiiThe photograph of the LICENSOR and LICENSEE is a appended in appropriate place.</p>
     <?php 
 	
@@ -251,7 +223,7 @@ $arr=mysqli_fetch_assoc($sql)
 	
 	$sql=mysqli_query($conn,"select * from family_members where document_no='$fid'");
 	$count=1;
-	 ($arr=mysqli_fetch_array($sql))
+	 while($arr=mysqli_fetch_array($sql)){
 	?>
             <tr>
                 <td><?php echo $count;?></td>
@@ -260,7 +232,7 @@ $arr=mysqli_fetch_assoc($sql)
                 <td><?php echo $arr['age'];?></td>
             </tr>
 
-            <?php $count++; ?>
+            <?php $count++;} ?>
 
         </tbody>
     </table>
@@ -278,7 +250,7 @@ $arr=mysqli_fetch_assoc($sql)
 	
 	$sql=mysqli_query($conn,"select * from amenities where document_no='$fid'");
 	$count=1;
-	 ($arr=mysqli_fetch_array($sql))
+	 while($arr=mysqli_fetch_array($sql)){
 	?>
             <tr>
                 <td><?php echo $count;?></td>
@@ -287,14 +259,14 @@ $arr=mysqli_fetch_assoc($sql)
 
             </tr>
 
-            <?php $count++; ?>
+            <?php $count++;} ?>
 
         </tbody>
     </table>
     <?php 
 	
 	$sql=mysqli_query($conn,"SELECT * FROM `agent_details` WHERE user_id='$fid'");
-	 ($arr=mysqli_fetch_array($sql))
+	 while($arr=mysqli_fetch_array($sql)){
 
 	?>
     <p>IN CASE THE LEAVE & LICENSE AGREEMENT IS EXTENDED THEN THE LICENSEE SHALL PAY THE COMMISSION/BROKERAGE TO THE
@@ -302,25 +274,25 @@ $arr=mysqli_fetch_assoc($sql)
     <p>IN WITHNESS WHEREOF THE PARTIES HERETO HAVE EXECUTED THIS AGREEMENT IN THE MNNER HEREINAFTER APPEARING ON TH DAY
         AND THE YEAR FIRST HEREIN ABOVE WRI</p>
     <p><b>Within named 'LICENSOR'</b></p>
-
+    <?php } ?>
 
 
     <?php 
 	
 	$sql=mysqli_query($conn,"select * from owner where document_no='$fid'");
-	 ($arr=mysqli_fetch_array($sql))
+	 while($arr=mysqli_fetch_array($sql)){
 	?>
     <p><b><?php echo $arr['abbreviation'];?><u><?php echo $arr['fullname'];?> </b></u></p>
     <p>In the presence of ………</p>
 
     <p>1.<?php echo $arr['name1'];?></p>
     <p>2.<?php echo $arr['name2'];?></p>
-   
+    <?php } ?>
 
     <?php 
 	
 	$sql=mysqli_query($conn,"select * from tenant where document_no='$fid'");
-	 ($arr=mysqli_fetch_array($sql))
+	 while($arr=mysqli_fetch_array($sql)){
 	?>
     <p><b>SIGNED AND DEVELOPED by the</b></p>
     <p><b>Within named 'LICENSEE'</b></p>
@@ -329,7 +301,7 @@ $arr=mysqli_fetch_assoc($sql)
 
     <p>1.<?php echo $arr['name1'];?></p>
     <p>2.<?php echo $arr['name2'];?></p>
-    
+    <?php } ?>
 </body>
 
 </html>
