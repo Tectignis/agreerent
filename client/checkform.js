@@ -221,6 +221,35 @@ $(document).ready(function () {
        });
      });  
 
-  
+  //insert payment
+  $("#savepayment").on("click", function () {
+    let no7 = $("#no7").val();
+    let deposit = $("#deposit").val();
+    let rent = $("#rent").val();
+    let checkselec = $("#checkselec").val();
+    let bank = $("#bank").val();
+    let date = $("#date").val();
+    let tid = $("#tid").val();
+    let savepayment = $("#savepayment").val();
+
+    $.ajax({
+      url: "form.php",
+      type: "POST",
+      data: {
+        no7: no7,
+        deposit: deposit,
+        rent: rent,
+        checkselec: checkselec,
+        bank: bank,
+        date: date,
+        tid: tid,
+        savepayment: savepayment,
+      },
+      cache: false,
+      success: function (res7) {
+        alert(res7);
+      },
+    });
+  });
        
 });

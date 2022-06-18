@@ -195,6 +195,40 @@ if(isset($_POST['submitaminities'])){
   </table>";
 
 }
+
+//payment
+if(isset($_POST['savepayment'])){
+	$idpayment=$_POST['no7'];
+	$security_deposit=$_POST['deposit'];  
+  $rent_amount=$_POST['rent'];
+  $method=$_POST['checkselec'];  
+  $bank=$_POST['bank'];  
+  $date=$_POST['date'];  
+  $tid=$_POST['tid'];
+
+  $query2=mysqli_query($conn,"select * from payment where document_no='$idpayment' order by document_no desc");
+$num2=mysqli_fetch_array($query2);
+$document2=$num2['document_no'];
+if($document2==$idpayment){
+$sql=mysqli_query($conn,"UPDATE `payment` SET `document_no`='$idpayment',`security_deposit`='$security_deposit',`rent_amount`='$rent_amount',`bank`='$bank',`method`='$method',`date`='$date',`tid`='$tid' WHERE document_no='$idpayment'");
+if($sql==1){
+echo "Successfully Added";
+}else{
+echo "Something went wrong";
+}	
+}
+else{
+  $sql=mysqli_query($conn,"INSERT INTO `payment`(`document_no`, `security_deposit`, `rent_amount`, `bank`, `method`, `date`, `tid`) VALUES ('$idpayment','$security_deposit','$rent_amount','$bank','$method','$date','$tid')");
+if($sql==1){
+echo "Successfully Added";
+}else{
+echo "<script>
+alert('Something went wrong');
+</script>";
+}
+}
+}
+
 //payment
 if(isset($_POST['submitpayment'])){
 	$idpayment=$_POST['no7'];
