@@ -10,8 +10,8 @@ include("../config/config.php");
 
 // include('form.php');
 
-  $sql=mysqli_query($conn,"select * from new_agreement where user_id='".$_SESSION['id']."'");
-                            $query =mysqli_query($conn,"select * from users where user_id='".$_SESSION['id']."'");
+  $sql=mysqli_query($conn,"select * from new_agreement where user_id='".$_SESSION['aid']."'");
+                            $query =mysqli_query($conn,"select * from users where user_id='".$_SESSION['aid']."'");
                       $dnk=mysqli_num_rows($sql);
                       $lastid=$dnk+1;
                       $arr=mysqli_fetch_array($query);

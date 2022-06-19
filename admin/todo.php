@@ -9,7 +9,7 @@ if(isset($_POST['submit'])){
 	$todo=$_POST['todo'];
   $status=1;
 	
-	$sql=mysqli_query($conn,"INSERT INTO `todo`(`user_id`, `task`, `status`) VALUES ('".$_SESSION['id']."','$todo','$status')");
+	$sql=mysqli_query($conn,"INSERT INTO `todo`(`user_id`, `task`, `status`) VALUES ('".$_SESSION['aid']."','$todo','$status')");
 	if($sql==1){	
     header("location:todo");
 	}else{
@@ -130,7 +130,7 @@ function get_time_ago( $time )
                                                     <div class="card-body">
                                                         <div class="row">
                                                             <?php                
-                                                $sql=mysqli_query($conn,"select * from todo where user_id='".$_SESSION['id']."' AND status='1'");
+                                                $sql=mysqli_query($conn,"select * from todo where user_id='".$_SESSION['aid']."' AND status='1'");
                                                 while($arr=mysqli_fetch_array($sql)){
                                                 ?>
 
@@ -189,7 +189,7 @@ function get_time_ago( $time )
 
                                             <div class="card-body">
                                                 <?php                
-                                                $sql=mysqli_query($conn,"select * from todo where user_id='".$_SESSION['id']."' AND status='1'");
+                                                $sql=mysqli_query($conn,"select * from todo where user_id='".$_SESSION['aid']."' AND status='1'");
                                                 while($arr=mysqli_fetch_array($sql)){
                                                 ?>
                                                 <div class="card card-primary card-outline">

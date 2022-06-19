@@ -38,6 +38,9 @@ $(document).ready(function () {
     let exampleSelectmr = $("#exampleSelectmr").val();
     let txtname3 = $("#txtname3").val();
     let phone = $("#phone").val();
+    let officename = $("#officename").val();
+    let officeno = $("#officeno").val();
+    let officeaddress = $("#officeaddress").val();
     let emailcheck = $("#emailcheck").val();
     let passport = $("#passport").val();
     let txtAadhar1 = $("#txtAadhar1").val();
@@ -55,6 +58,9 @@ $(document).ready(function () {
         exampleSelectmr: exampleSelectmr,
         txtname3: txtname3,
         phone: phone,
+        officename: officename,
+        officeno: officeno,
+        officeaddress: officeaddress,
         emailcheck: emailcheck,
         passport: passport,
         id2: id2,
@@ -70,7 +76,6 @@ $(document).ready(function () {
       },
     });
   });
-
   //property
   $("#submitproperty").on("click", function () {
     let no3 = $("#no3").val();

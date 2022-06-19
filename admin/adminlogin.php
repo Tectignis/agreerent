@@ -93,7 +93,7 @@ if(isset($_SESSION['admin']) == 1)
 </body>
 <?php
 session_start();
-if(isset($_SESSION['id'])) // If session is not set then redirect to Login Page
+if(isset($_SESSION['aid'])) // If session is not set then redirect to Login Page
 {
  header("Location:index.php"); 
 }

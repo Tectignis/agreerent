@@ -74,7 +74,7 @@ include("../config/config.php");
                                 <!-- form start -->
                                 <form class="forms-sample" method="post">
                                     <?php
-                  $sql=mysqli_query($conn,"select * from users where user_id='".$_SESSION['id']."'");
+                  $sql=mysqli_query($conn,"select * from users where user_id='".$_SESSION['aid']."'");
                   while($arr=mysqli_fetch_array($sql)){
 
                   
