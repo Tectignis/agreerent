@@ -114,7 +114,7 @@
 
                   <li class="nav-item">
             <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-copy"></i>
+            <i class="nav-icon fas fa-columns"></i>
               <p>
               Setting
                 <i class="right fas fa-angle-left"></i>
@@ -129,25 +129,34 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="changepass" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p> Change pwd</p>
                 </a>
               </li>
+              </ul>
+          </li> 
               <li class="nav-item">
                 <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                  <p>Reports  <i class="right fas fa-angle-left"></i></p>
+                </a>
+                <ul class="nav nav-treeview">
+                <li class="nav-item">
+                <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Reports</p>
+                  <p>  Enquiry Report</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>  Enhancement</p>
+                  <p> Total Agreement</p>
                 </a>
               </li>
-            </ul>
-          </li>      
+              </li>
+              
+                
           </nav>
           <!-- /.sidebar-menu -->
       </div>
