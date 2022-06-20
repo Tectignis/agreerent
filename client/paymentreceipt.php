@@ -85,7 +85,7 @@ include("../config/config.php");
                   </thead>
                   <tbody>
                     <?php
-                    $sql=mysqli_query($conn,"select payment.document_no, payment.rent_amount, payment.security_deposit, tenant.fullname, owner.fullname, new_agreement.date_of_agreement,new_agreement.documentid from payment inner join tenant on payment.document_no=tenant.document_no inner join owner on tenant.document_no=owner.document_no inner join new_agreement on tenant.document_no=new_agreement.document_no");
+                    $sql=mysqli_query($conn,"select payment.document_no, payment.rent_amount, payment.security_deposit, tenant.fullname, owner.fullname, new_agreement.date_of_agreement,new_agreement.documentid from payment inner join tenant on payment.document_no=tenant.document_no inner join owner on tenant.document_no=owner.document_no inner join new_agreement on tenant.document_no=new_agreement.document_no where user_id='".$_SESSION['id']."'");
                     $count=1;
                     while($arr=mysqli_fetch_array($sql)){
                       ?>
