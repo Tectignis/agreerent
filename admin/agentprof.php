@@ -3,7 +3,7 @@ if(!isset($_SESSION['admin']) == 1) // If session is not set then redirect to Lo
 {
  header("Location:adminlogin.php"); 
 }
-if(!isset($_SESSION['id'])) 
+if(!isset($_SESSION['aid'])) 
 {
  header("Location:adminlogin.php"); 
 }
@@ -23,6 +23,10 @@ if(isset($_POST['edit'])){
 		echo "<script>alert('Something went wrong');</script>";
 	}
 }
+
+if($_GET['id']==''){
+    header('Location:index');
+    } 
 
 ?>
 <!DOCTYPE html>
