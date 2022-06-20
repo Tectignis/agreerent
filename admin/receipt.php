@@ -12,7 +12,7 @@ if(!isset($_SESSION['aid']))
 if($_GET['id']==''){
     header('Location:new_agreement.php');
     } 
-include("include/configure.inc.php");
+    include("../config/config.php");
 $fid=$_GET['id'];
 function AmountInWords(float $amount)
 {
