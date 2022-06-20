@@ -572,6 +572,7 @@ else{
                     cache: false,
                     success: function(dnk)
                     {
+                        alert(dnk);
                         $("#veriotp").css(visibility:visible);
                     }
                 });
