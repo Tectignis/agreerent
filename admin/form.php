@@ -333,7 +333,7 @@ else if($name1==""){
 echo "please fill witness details";
 }
 else{
-$sql=mysqli_query($conn,"UPDATE `payment` SET `document_no`='$idpayment',`security_deposit`='$security_deposit',`rent_amount`='$rent_amount',`bank`='$bank',`method`='$method',`date`='$date',`rentpay`='$rentpay',`tid`='$tid' WHERE document_no='$idpayment'");
+$sql=mysqli_query($conn,"UPDATE `payment` SET `document_no`='$idpayment',`security_deposit`='$security_deposit',`rent_amount`='$rent_amount',`bank`='$bank',`method`='$method',`date`='$date',`date_of_payment`='$rentpay',`tid`='$tid' WHERE document_no='$idpayment'");
 if($sql==1){
 echo "Successfully Added";
 }else{
