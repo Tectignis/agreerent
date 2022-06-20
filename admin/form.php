@@ -1,4 +1,5 @@
 <?php
+session_start();
 //new_agreement
 include("../config/config.php");
 
