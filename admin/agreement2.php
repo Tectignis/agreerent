@@ -87,10 +87,35 @@ th {
 .receipt {
     text-align: center;
 }
+
+.bluediv {
+  padding-top: 50px;
+}
+p.ex1 {
+  margin-left: 500px;
+}
+table , td, th {
+	border: 1px solid #595959;
+	border-collapse: collapse;
+}
+td, th {
+	padding: 3px;
+	width: 30px;
+	height: 25px;
+}
+th {
+	background: #f0e6cc;
+}
+.even {
+	background: #fbf8f0;
+}
+.odd {
+	background: #fefcf9;
+}	
 </style>
 
 <body>
-
+<!-- stamp paper -->
 <?php 
               
 $sql=mysqli_query($conn,"select owner.fullname as oname, owner.age as oage, owner.occupation as ooccupation,owner.aadhaar as oaadhaar,owner.pan_card as opancard, owner.address as oaddress, tenant.fullname as tname,tenant.aadhaar as taadhaar,tenant.pan_card as tpancard, tenant.age as tage, tenant.occupation as toccupation, tenant.address as taddress, new_agreement.date_of_agreement as doa,new_agreement.place_of_agreement as poa, new_agreement.document_no as docno from new_agreement inner join owner on new_agreement.document_no=owner.document_no inner join tenant on new_agreement.document_no=tenant.document_no where new_agreement.document_no");
@@ -121,7 +146,7 @@ $doc=$arr['docno'];
 
     </div>
     <?php if($doc==$fid){echo $arr['property_type']; }else{ echo ' - ' ;} ?>
-
+<!-- agreement -->
 <?php 
 	
 	$sql=mysqli_query($conn,"select * from property_details");
@@ -348,6 +373,330 @@ $doc=$arr['docno'];
     <p>1.<?php echo $arr['name1'];?></p>
     <p>2.<?php echo $arr['name2'];?></p>
     <?php if($doc==$fid){echo $arr['property_type']; }else{ echo ' - ' ;} ?>
+
+
+<!-- police noc form -->
+
+    <h2 align="center">भाडेकरु माहिती फॉर्म</h2>
+	<p class="ex1">रजिस्टर नंबर :-</p>
+	<p class="ex1">दिनांक :-</p>
+<!--	<div class="row" style="padding:10px;text-align:center;">
+<div class="row" style="display:flex;">
+                <div class="" style="padding-top:10px;" >
+				<img alt="Image html" style="max-height:800px;max-width:150px;" src="images/Shape 1.svg"height="100%">
+                </div>
+                <div class="" style="padding-top:10px;">
+				<img alt="Image html" style="max-height:600px;max-width:120px;" src="images/Shape 1.svg" width="90%" height="100%">
+                </div>
+                <div class="col" style="padding-top:10px;">
+				<img alt="Image html" style="max-height:600px;max-width:120px;" src="images/Shape 1.svg" width="90%" height="100%">
+                </div>
+                <div class="col" style="padding-top:10px;">
+				<img alt="Image html" style="max-height:600px;max-width:120px;" src="images/Shape 1.svg" width="90%" height="100%">
+                </div>
+                <div class="col" style="padding-top:10px;">
+				<img alt="Image html" style="max-height:600px;max-width:120px;" src="images/Shape 1.svg" width="90%" height="100%">
+                </div>						
+                </div>
+	</div> -->
+	<img src="images/photo001.jpg" width="1000px" height="200px" >
+	<table width="100%">
+	<tbody>
+	
+		<tr>
+
+			<td style="width:5%">१</td>
+			<td style="width:48%">घर मालकाचे संपूर्ण नाव, सध्याचा पत्ता, वय, मोबाईल क्रमांक <br>Owner Full Name, Address,Age & Mobile No. of Owner</td>
+			<?php 
+                        
+						$sql=mysqli_query($conn,"select * from owner where document_no");
+                        $arr=mysqli_fetch_array($sql);
+                        $doc=$arr['document_no'];
+						?>
+			<td colspan="3"><label><?php echo $arr['fullname'];?></label></br>
+						<label><?php echo $arr['address'];?></label></br>
+						<label><?php echo $arr['mobile'];?></label></td>
+				
+
+		</tr>
+		<tr>
+			<td>२</td>
+			<td>घरमालकाचे पॅनकार्ड क्रमांक आणि आधार कार्ड क्रमांक<br>Pancard No and Aadhar Card No of Owner</td>
+			<td  colspan="3"><label><?php echo $arr['pan_card'];?></label></br>
+                            <label><?php echo $arr['aadhaar'];?></label></br></td>
+		</tr>
+		<?php if($doc==$fid){echo $arr['property_type']; }else{ echo ' - ' ;} ?>
+		<tr>
+		<?php 
+                        
+						$sql=mysqli_query($conn,"select * from tenant where document_no");
+						$arr=mysqli_fetch_array($sql);
+                        $doc=$arr['document_no'];
+						?>
+			<td>३</td>
+			<td>भाडेकरुचे संपूर्ण नाव, यापूर्वीचा पत्ता, वय, मोबाईल क्रमांक<br>Tenant Name, Previous Address & Mobile No. of Tenant</td>
+			<td  colspan="3"><label><?php echo $arr['fullname'];?></label></br>
+						<label><?php echo $arr['address'];?></label></br>
+						<label><?php echo $arr['mobile'];?></label></td>
+		</tr>
+		<tr>
+			<td>४</td>
+			<td>भाडेकरूचे पॅनकार्ड क्रमांक आणि आधार कार्ड क्रमांक<br>Pancard No and Aadhar Card No of Tenant</td>
+			<td  colspan="3"><label><?php echo $arr['pan_card'];?></label></br>
+                            <label><?php echo $arr['aadhaar'];?></label></br></td>
+		</tr>
+		
+
+		<tr>
+			<td>५</td>
+			<td>भाडेकरुचे मूळ गावचा पत्ता<br>Tenant Permanent Address of Tenant</td>
+			<td  colspan="3"><?php echo $arr['permanent_address'];?></td>
+		</tr>
+		<?php if($doc==$fid){echo $arr['property_type']; }else{ echo ' - ' ;} ?>
+		<tr>
+		<?php 
+                        
+                        $sql=mysqli_query($conn,"select * from property_details where document_no");
+                        $arr=mysqli_fetch_array($sql);
+                        $doc=$arr['document_no'];
+                        ?>
+			<td>६</td>
+			<td>भाड्याने देण्यात येणाऱ्या जागेचा पत्ता <br>Address of Rental Room</td>
+			<td colspan="3"><label><?php echo $arr['address'];?></label></td>
+			<?php if($doc==$fid){echo $arr['property_type']; }else{ echo ' - ' ;} ?>
+		</tr>	
+
+		<tr>
+		<?php 
+                        
+                        $sql=mysqli_query($conn,"select * from agent_details where user_id='$_SESSION[id]'");
+                        $arr=mysqli_fetch_array($sql);
+                        $doc=$arr['document_no'];
+                        ?>
+			<td>७</td>
+			<td>एजंटचे नाव, पत्ता, मोबाईल क्रमांक<br>Name of Agent, Address & Mobile No.</td>
+			<td colspan="3"><label><?php echo $arr['agent_name'];?></label><br>
+			<label><?php echo $arr['office_address'];?></label><br>
+			<?php echo $arr['mobile_no'];?></label><br></td>
+			<?php if($doc==$fid){echo $arr['property_type']; }else{ echo ' - ' ;} ?>
+
+		</tr>		
+		<tr>
+			<td rowspan="2">८</td>
+			<td rowspan="2">भाडेकरुचे परिवारातील सदस्यांची संख्या <br> No. of Tenant Family Members</td>    
+			
+			<td align="center">पुरुष</td>
+			<td align="center">स्त्रिया</td>
+			<td align="center">लहान मुले</td>
+		</tr>
+		<tr >
+		    <?php 
+		    $sql=mysqli_query($conn,"select * from family_members where gender='male' and age>18 and document_no= '$fid'");
+		    $res=mysqli_num_rows($sql);
+		    ?>
+			<td align="center"><?php echo $res ?></td>
+			<?php 
+		    $sql1=mysqli_query($conn,"select * from family_members where gender='female' and age>18 and document_no= '$fid'");
+		    $res1=mysqli_num_rows($sql1);
+		    ?>
+			<td align="center"><?php echo $res1 ?></td>
+			<?php 
+		    $sql2=mysqli_query($conn,"select * from family_members where age<18 and document_no= '$fid'");
+		    $res2=mysqli_num_rows($sql2);
+		    ?>
+			<td align="center"><?php echo $res2 ?></td>
+		</tr>
+		<tr>
+		<?php 
+                        
+						$sql=mysqli_query($conn,"select * from tenant where document_no");
+                        $arr=mysqli_fetch_array($sql);
+                        $doc=$arr['document_no'];
+						?>
+			<td>९</td>
+			<td>भाडेकरुचे ई-मेल आयडी<br>E-mail ID of Tenant</td>
+			<td colspan="3"><label><?php echo $arr['email'];?></label></td>
+		</tr>
+		<tr>
+			<td>१०</td>
+			<td>भाडेकरुचे पासपोर्ट नंबर <br> Passport No. of Tenant</td>
+			<td colspan="3"><label><?php echo $arr['passport'];?></label></td>
+		</tr>
+		<tr>
+			<td>११</td>
+			<td>कामाचे स्वरूप [पुराव्यासह]<br>Nature of Work & Proof</td>
+			<td colspan="3"><label><?php echo $arr['occupation'];?></label></td>
+		</tr>
+		<tr>
+			<td>१२</td>
+			<td>काम करत असलेल्या कार्यालयाचे नाव, पत्ता, फोन नंबर <br>Office Name, Address & Phone No.</td>
+			<td colspan="3"><?php echo $arr['office_name'];?></label><br>
+			<?php echo $arr['office_addres'];?></label><br>
+			<?php echo $arr['office_phone'];?></label></td>
+		</tr>		
+		<tr>
+			<td>१३</td>
+			<td>भाडेकरुला ओळखणाऱ्या दोन व्यक्तीचे संपूर्ण नाव, पत्ता, मोबाईल क्रमांक <br>Two persons reference with Address & Mobile No.</td>
+			<td colspan="3"><label><?php echo $arr['name1'];?></label><br>
+			<label><?php echo $arr['name2'];?></label></td>
+		</tr>	
+		<?php if($doc==$fid){echo $arr['property_type']; }else{ echo ' - ' ;} ?>	
+		<tr>
+		<?php 
+                        
+						$sql=mysqli_query($conn,"select * ,date_add(date_of_agreement, INTERVAL no_of_month month)as Enddate from new_agreement Where document_no");
+                        $arr=mysqli_fetch_array($sql);
+                        $doc=$arr['document_no'];
+						?>
+			<td>१४</td>
+			<td>करार केल्याची तारीक व कराराचा कालावधी <br>Date of Agreement & Period</td>
+			<td colspan="3">Start Date:-&nbsp;<label><?php $input=$arr['date_of_agreement']; $date=strtotime($input);
+										echo date('d-m-Y',$date);?></label>&nbsp;&nbsp;&nbsp;
+							End Date:-&nbsp;<label><?php $input=$arr['Enddate'];$date=strtotime($input);
+										echo date('d-m-Y',$date);?></label></br>
+										
+
+			<label><?php echo $arr['no_of_month'];?>&nbsp;Months</label></td>
+			<?php if($doc==$fid){echo $arr['property_type']; }else{ echo ' - ' ;} ?>	
+
+		</tr>
+	</tbody>
+</table>
+	<p align="center">अर्जा सोबत सादर करावयाची छायांकीत प्रमाणपत्रे</p>
+   <div style="width: 100%;">
+        <div style="width: 50%;  float: left;"> 
+            <h4 align="center">घर मालक</h4>
+			<p>१) ओळखपत्र</p>
+			<p>२) राहण्याचा पुरावा</p>
+			<p>३) लाईटबील , पजेशन लेटर , पाणीबील , टॅक्सबील, सोसायटी मेंटेनन्स पावती यापैकी कोणतेही एक</p>
+			<h4 class="bluediv" align="center">घर मालकाची स्वाक्षरी&nbsp;&nbsp;Signature of Owner</h4>
+        </div>
+        <div style="margin-left: 50%;"> 
+            <h4 align="center">भाडेकरु</h4>
+			<p>१) कंपनीचे ओळखपत्र</p>
+			<p>२) काम करीत असलेल्या ठिकाणचे सिलसहित प्रमाणपत्र</p>
+			<p>३) मूळ वास्तव्याचा पुरावा [मतदान ओळखपत्र, पासपोर्ट, ग्रामपंचायत दाखला , शाळेचा दाखला , रेशनकार्ड यापैकी कोणतेही एक]</p>
+			<h4 class="bluediv" align="center">भाडेकरूची स्वाक्षरी&nbsp;&nbsp;Signature of Tenant</h4>
+        </div>
+    </div>
+
+	<h4 align="center">घोषणापत्र</h4>
+	<p align="center">वरील भरुन दिलेली माहिती ही खरी असून त्यामध्ये काही खोटे आढळल्यास भी कायदेशीर कार्यवाहीस पात्र राहिन.</p>
+	<p align="center">टिप:- सदर माहितीचा / फॉर्मचा उपयोग केवळ पोलीसांच्या रेकॉर्डसाठी असून अन्य कोणत्याही कारणासाठी पुरवा म्हणून वापरता येणार नाही. </p>
+
+    <!-- receipt -->
+    <h1 style="text-align: center">Receipt</h1>
+<?php $sql=mysqli_query($conn,"select tenant.fullname as tname, payment.document_no as dno, payment.security_deposit as rent from payment inner join tenant on payment.document_no=tenant.document_no where payment.document_no");
+                 
+          
+
+
+        $arr=mysqli_fetch_array($sql);
+        $doc=$arr['dno'];
+                    ?>
+
+		<p>RECEIVED OF AND FROM the withinamed LICENSEE MR/Mss:&nbsp;<b><u><?php echo $arr['tname'];?>.</u></b>
+		The sum of Rs.<b><u><?php echo $arr['rent'];?></u></b>/- (<b><u><?php echo $get_amount;?>Only</u></b>)</p>
+<?php if($doc==$fid){echo $arr['property_type']; }else{ echo ' - ' ;} ?>
+	<br>
+	<br>
+	<div>
+	<table style="width: 100%;">
+	<?php 
+	
+	$sql=mysqli_query($conn,"select * from property_details where document_no");
+    $arr=mysqli_fetch_array($sql);
+    $doc=$arr['document_no'];
+	?>
+	<tbody>
+
+		<tr>
+			<td>FLAT/SHOP NO.</td>
+			<td>PLOT NO.</td>
+			<td>SECTOR</td>
+			<td>AREA(in Sq.feet)</td>
+		</tr>
+		<tr>
+			<td><?php echo $arr['address'];?></td>
+			<td><?php echo $arr['plot_no'];?></td>
+			<td><?php echo $arr['sector'];?></td>
+			<td><?php echo $arr['area'];?></td>
+		</tr>
+		<tr>
+			<td colspan="4">CIDCO APARTMENT:<b><?php echo $arr['cidco'];?></b></td>
+		</tr>
+		<tr>
+			<td colspan="4">CO.OP.HSG.SOCITY:<b><?php echo $arr['chs'];?></b></td>
+		</tr>
+		<tr>
+			<td colspan="4">NODE:<b><?php echo $arr['node'];?></b></td>
+		</tr>
+	</tbody>
+	<?php if($doc==$fid){echo $arr['property_type']; }else{ echo ' - ' ;} ?>
+ 
+</table>
+</div>
+	<br>
+	<br>
+	<br>
+	<div>
+		<table style="width: 100%;">
+		<?php 
+	
+	$sql=mysqli_query($conn,"select * from payment where document_no");
+    $arr=mysqli_fetch_array($sql);
+    $doc=$arr['document_no'];
+	?>
+	<tbody style="text-align: center">
+		<tr style="text-align: center">
+			<td colspan="4">PAYMENT SCHEDULE OF SECURITY DEPOSIT</td>
+		</tr>
+		<tr style="text-align: center">
+			<td>Cheque/Cash</td>
+			<td>Date</td>
+			<td>Amount</td>
+			<td>Bank</td>
+		</tr>
+		<tr>
+			<td><?php echo $arr['method'];?></td>
+			<td><?php echo $arr['date'];?></td>
+			<td><?php echo $arr['security_deposit'];?></td>
+			<td><?php echo $arr['bank'];?></td>
+		</tr>
+	</tbody>
+	<?php if($doc==$fid){echo $arr['property_type']; }else{ echo ' - ' ;} ?>
+		</table>
+	</div>
+
+			<br>
+			<br>
+			<div style="padding-left: 70%;">I SAY RECEIVED</div>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<?php $sql=mysqli_query($conn,"select owner.fullname as oname,payment.document_no as pdno, owner.name1 as o1,owner.name2 as o2,owner.abbreviation as abb, payment.security_deposit as rent from payment inner join owner on payment.document_no=owner.document_no where payment.document_no");
+                 
+                 $arr=mysqli_fetch_array($sql);
+                 $doc=$arr['pdno'];
+                    ?>
+
+			<div style="padding-left: 70%;">Rs.<u><b><?php echo $get_amount;?>/-</u></b></div>
+			<br>
+			<br>
+			<div style="padding-left: 70%;"><u><b><?php echo $arr['abb'];?>.<?php echo $arr['oname'];?></u></b></div><br>
+			<div style="padding-left: 76%;">(LICENSOR)</div>
+			<div>WITNESSES:</div>
+			<br>
+			<br>
+			<div>1.<?php echo $arr['o1'];?></div>
+			<br>
+			<br>
+			<br>
+			<div>2.<?php echo $arr['o2'];?></div>
+			<?php if($doc==$fid){echo $arr['property_type']; }else{ echo ' - ' ;} ?>
 </body>
 
 </html>
