@@ -4,6 +4,10 @@ if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 {
  header("Location:clientlogin.php"); 
 }
+if(!isset($_SESSION['id'])) 
+{
+ header("Location:clientlogin.php"); 
+}
 include("../config/config.php");
 
 

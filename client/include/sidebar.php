@@ -143,13 +143,13 @@
                 </a>
                 <ul class="nav nav-treeview">
                 <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="enquiry" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>  Enquiry Report</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="case" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p> Total Agreement</p>
                 </a>

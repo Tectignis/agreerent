@@ -343,7 +343,7 @@ try{
   $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`firm_name`,`status`,`image`) 
    VALUES ('$user_id','$agent_name','$email_no','$passwordhash','$rera','$office_address','$mobile_no','$firm_name','$status','$image')");
    if($sql=1){
-     echo "<script>alert('Agent Registered Successfully');</script>";    }
+     echo "<script>alert('Agent Registered Successfully',window.location:'case');</script>";    }
    else{
      echo "<script>alert('Something Wrong');</script>";
    }
