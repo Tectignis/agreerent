@@ -6,7 +6,7 @@ if(!isset($_SESSION['admin']) == 1) // If session is not set then redirect to Lo
 }
 include("../config/config.php");
 $d=$_SESSION['aid'];
-echo $d;
+  
 if(isset($_POST["login"])){
 	$password=$_POST["password"];
 	$newpassword=$_POST["newpassword"];

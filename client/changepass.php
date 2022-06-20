@@ -6,7 +6,7 @@ if(!isset($_SESSION['admin']) == 1) // If session is not set then redirect to Lo
 }
 include("../config/config.php");
 $d=$_SESSION['id'];
-echo $d;
+
 if(isset($_POST["login"])){
 	$password=$_POST["password"];
 	$newpassword=$_POST["newpassword"];
@@ -21,7 +21,7 @@ if(isset($_POST["login"])){
 		if($verify==1){
 			$query=mysqli_query($conn,"UPDATE `agent_details` SET `password`='$hashpassword' WHERE user_id='$d'");
       if($query){
-        echo "<script>alert('Password Changed Successfully'),window.location='clientlogin.php';</script>";
+        echo "<script>alert('Password Changed Successfully'),window.location='index';</script>";
       }
 		}
 		else{
