@@ -5,28 +5,29 @@
         $result=mysqli_query($conn,$sql);
         $row=mysqli_fetch_assoc($result);
       ?>
- <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+
+
+<nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
 	  <li class="nav-item d-none d-sm-inline-block">
-      <a href="" class="nav-link"><strong><?php echo $id ?>
-      <?php echo $name ?></strong></a>
-      </li>	 
-    
-    </ul>
-
-    <ul class="navbar-nav " style="margin-left: 55%;">
+        <a href="#" class="nav-link"><strong><?php echo $id ?></strong></a>
+    </li>	  
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="listofcomplaint.php" class="nav-link"><strong>RAISE COMPLAINT</strong></a>
-      </li>	
-</ul>
+        <a href="#" class="nav-link"><strong><?php echo $name ?></strong></a>
+    </li>
+    </ul>
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Navbar Search -->
+      <li class="nav-item">
+        <a class="nav-link" href="listofcomplaint" role="button">Raise a Complaint
+        </a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button" data-toggle="tooltip" data-placement="bottom" title="Fullscreen">
           <i class="fas fa-expand-arrows-alt"></i>
@@ -43,4 +44,5 @@
                       </a>
       </li>
     </ul>
+
   </nav>
