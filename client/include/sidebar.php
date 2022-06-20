@@ -79,7 +79,7 @@
                       </a>
                   </li>
                   <li class="nav-item">
-                      <a href="paymentrecipt" class="nav-link">
+                      <a href="paymentreceipt" class="nav-link">
                           <i class="fa fa-industry"></i>
                           <p>
                              Payment Receipt
