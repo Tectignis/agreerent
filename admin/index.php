@@ -6,6 +6,16 @@ if(!isset($_SESSION['admin']) == 1) // If session is not set then redirect to Lo
  header("Location:adminlogin.php"); 
 }
 include("../config/config.php");
+
+
+if(isset($_GET['delid'])){
+    $id=mysqli_real_escape_string($conn,$_GET['delid']);
+    $sql=mysqli_query($conn,"delete from todo where id='$id'");
+    if($sql=1){
+      header("location:index");
+    }
+  }
+
 function get_time_ago( $time )
   {
     $time_difference = time() - $time;
@@ -135,7 +145,7 @@ function get_time_ago( $time )
 <div class="row">
 <div class="col-12 col-sm-6 col-md-3">
 <div class="info-box">
-<span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
+<span class="info-box-icon bg-info elevation-1"><i class="fa fa-envelope-open-text"></i></span>
 <div class="info-box-content">
 <?php
                                $query=mysqli_query($conn,"select * from ticket where status = 'Open'");
@@ -152,7 +162,7 @@ function get_time_ago( $time )
 
 <div class="col-12 col-sm-6 col-md-3">
 <div class="info-box mb-3">
-<span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
+<span class="info-box-icon bg-danger elevation-1"><i class="fa fa-spinner"></i></span>
 <div class="info-box-content">
 <?php
                                $query=mysqli_query($conn,"select * from ticket where status = 'In Proccess'");
@@ -171,7 +181,7 @@ function get_time_ago( $time )
 <div class="clearfix hidden-md-up"></div>
 <div class="col-12 col-sm-6 col-md-3">
 <div class="info-box mb-3">
-<span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+<span class="info-box-icon bg-success elevation-1"><i class="fa fa-pause"></i></i></span>
 <div class="info-box-content">
 <?php
                                $query=mysqli_query($conn,"select * from ticket where status = 'Hold On'");
@@ -188,7 +198,7 @@ function get_time_ago( $time )
 
 <div class="col-12 col-sm-6 col-md-3">
 <div class="info-box mb-3">
-<span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+<span class="info-box-icon bg-warning elevation-1"><i class="fa fa-check"></i></span>
 <div class="info-box-content">
 <?php
                                $query=mysqli_query($conn,"select * from ticket where status = 'Closed'");
@@ -242,8 +252,11 @@ function get_time_ago( $time )
                                                 class="far fa-clock"></i><?php  echo get_time_ago(strtotime($arr['date']) );?></small>
                                         <!-- General tools such as edit or delete-->
                                         <div class="tools">
-                                            <i class="fas fa-edit"></i>
-                                            <i class="fas fa-trash-o"></i>
+                                        <a href="index.php?delid=<?php echo $arr['id'] ?>"
+                                        class="btn btn-tool">
+
+
+                                            <i class="fas fa-trash"></i>
                                         </div>
                                     </li>
                                     <?php } ?>
