@@ -157,16 +157,25 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
                                                                         <td style="color:red">Pending</td>
                                                                         <td class="row mx-1">
                                                                         <div class="btn-group btn-group-sm" role="group" aria-label="">
-                                                                            <a href="agreement.php?id=<?php echo $row['newdoc'];?>"
-                                                                                class="btn btn-primary btn-rounded btn-icon"><i
-                                                                                    class="fas fa-eye"></i></a>
-                                                                            <a href="edit_newagreement.php?id=<?php echo $row['newdoc'];?>"
+                                                                            <a data-toggle="tooltip" data-placement="bottom" title="view" href="agreement.php?id=<?php echo $row['newdoc'];?>" target="_blank"
+                                                                                class="btn btn-primary btn-rounded btn-icon" ><i
+                                                                                    class="fas fa-eye"></i></a>&nbsp;
+                                                                            <!-- <a href="edit_newagreement.php?id=<?php echo $row['newdoc'];?>" 
                                                                                 class="btn btn-warning btn-rounded btn-icon"
                                                                                 style="color: aliceblue"><i
-                                                                                    class="fas fa-pen"></i></i></a>
-                                                                            <!-- <a href="case.php?eid=<?php echo $row['newdoc'];?>"
-                                                                                class="btn btn-success btn-rounded btn-icon">
-                                                                                Generate NOC</a> -->
+                                                                                    class="fas fa-pen"></i></i></a> -->
+                                                                                    <a data-toggle="tooltip" data-placement="bottom" title="Stamp Paper" href="stamppaperpage.php?eid=<?php echo $row['newdoc'];?>"  target="_blank"
+                                                                                class="btn btn-success btn-rounded btn-icon"><i class="fa fa-stamp"></i>
+                                                                               </a>&nbsp;
+                                                                               <a data-toggle="tooltip" data-placement="bottom" title="Agreement" href="agreement.php?eid=<?php echo $row['newdoc'];?>"  target="_blank"
+                                                                                class="btn btn-info btn-rounded btn-icon"><i class="fa fa-file-contract"></i>
+                                                                              </a>&nbsp;
+                                                                            <a data-toggle="tooltip" data-placement="bottom" title="NOC" href="case.php?eid=<?php echo $row['newdoc'];?>"  target="_blank"
+                                                                                class="btn btn-danger btn-rounded btn-icon">
+                                                                               NOC</a>&nbsp;
+                                                                               <a data-toggle="tooltip" data-placement="bottom" title="Payment Receipt" href="receipt.php?eid=<?php echo $row['newdoc'];?>"  target="_blank"
+                                                                                class="btn btn-warning btn-rounded btn-icon"><i class="fa fa-file-invoice-dollar"></i>
+                                                                               </a>
                                                                             </div>
                                                                         </td>
                                                                     </tr>
