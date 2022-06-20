@@ -79,11 +79,11 @@ try{
     }
   }
  if( mail($sendTo,$subject,$emailText, "From:" .$from)){
-  $otpsql=mysqli_query($conn,"SELECT * FROM otp where email='$email_no'");
+  $otpsql=mysqli_query($conn,"SELECT * FROM otp where email='$email'");
   $otprow=mysqli_fetch_assoc($otpsql);
   $emailotp=$otprow['email'];
-   if($emailotp==$email_no){
-    $sql=mysqli_query($conn,"UPDATE `otp` SET `otp`='$otp' WHERE email='$email_no'");
+   if($emailotp==$email){
+    $sql=mysqli_query($conn,"UPDATE `otp` SET `otp`='$otp' WHERE email='$email'");
    }
    else{
   $sql=mysqli_query($conn,"INSERT INTO `otp`(`document_no`, `email`, `otp`) VALUES ('$exampledno','$email','$otp')");}

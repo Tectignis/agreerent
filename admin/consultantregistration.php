@@ -46,6 +46,11 @@ $imgEncoded = base64_encode(file_get_contents($tmp_name));
 //   $loc="dist/img/";
 
 //   move_uploaded_file($_FILES['image']['tmp_name'],$loc.$image);
+$query=mysqli_query($conn,"select * from agent_details where email='$email_no'");
+if(mysqli_num_rows($query)>0){
+    echo "<script>alert('Email already Registered');</script>";
+}
+else{
 
 $from = 'Enquiry <'.$email.'>' . "\r\n";
 $sendTo = 'Enquiry <'.$email_no.'>';
@@ -343,9 +348,9 @@ try{
   $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`firm_name`,`status`,`image`) 
    VALUES ('$user_id','$agent_name','$email_no','$passwordhash','$rera','$office_address','$mobile_no','$firm_name','$status','$image')");
    if($sql=1){
-     echo "Agent Registered Successfully";    }
+     echo "<script>alert('Agent Registered Successfully');</script>";    }
    else{
-     echo "Something Wrong";
+     echo "<script>alert('Something Wrong');</script>";
    }
  }else{
     echo "eeee $sendTo $subject $emailText $from";
@@ -363,8 +368,10 @@ else{
   echo $responseArray['message'];
 }
 }
+}
+
 else{
-  echo "Invalid Otp";
+  echo "<script>alert('Invalid Otp');</script>";
 }
 }
 
@@ -505,6 +512,7 @@ else{
                                     <div class="collapse multi-collapse row" id="multiCollapseExample1">
                                         <label for="examplepan" class="col-sm-2 ml-1 col-form-label"></label>
                                         <input type="text" class="form-control mt-2 col-lg-6" name="veriotp" id="veriotp" >
+                                        <p style="color:red;font-size:12px;width:100%;margin-left:17%">Enter OTP sent to your registered email id</p>
                                      </div>
                                     </div>
                                     <div class="form-group row">
