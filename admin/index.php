@@ -128,7 +128,7 @@ function get_time_ago( $time )
                                     <p>No of Agents</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="ion ion-bag"></i>
+                                <i class="fa fa-user-tie"></i>
                                 </div>
                                 <a href="#" class="small-box-footer">More info <i
                                         class="fas fa-arrow-circle-right"></i></a>
