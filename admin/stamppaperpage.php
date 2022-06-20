@@ -4,6 +4,10 @@ if(!isset($_SESSION['aid'])) // If session is not set then redirect to Login Pag
 {
  header("Location:adminlogin"); 
 }
+if(!isset($_SESSION['id'])) 
+{
+ header("Location:adminlogin.php"); 
+}
 include("../config/config.php");
 $fid=$_GET['id'];
 if($_GET['id']==''){
