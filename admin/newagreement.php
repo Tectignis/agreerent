@@ -179,7 +179,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                         class="col-sm-2 col-form-label">Age<label
                                                             style="color:Red">*</label></label>
                                                     <div class="col-sm-4">
-                                                        <input type="number" name="age" class="form-control" id="id1"
+                                                        <input type="number" name="age"  class="form-control" id="id1"
                                                             placeholder="Enter Age" required>
                                                         <span id="demo"></span>
                                                     </div>
@@ -197,7 +197,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                     <label for="exampleaadhaar" class="col-sm-2 col-form-label">Aadhaar
                                                         Card No.<label style="color:Red">*</label></label>
                                                     <div class="col-sm-4">
-                                                        <input type="number" name="aadhaar" class="form-control"
+                                                        <input type="tel" name="aadhaar" class="form-control"
                                                             id="txAdhar" placeholder="Enter Aadhaar card No"
                                                             oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                                                             maxlength="12" required>

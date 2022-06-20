@@ -10,353 +10,6 @@ if(!isset($_SESSION['id']))
 }
 include("../config/config.php");
 
-$res=mysqli_query($conn,"SELECT * FROM `email_configuration`");
- $row=mysqli_fetch_array($res);	
-
-if(isset($_POST['sub'])){
-
-  $user_id=$_POST['no'];
-  $firm_name=$_POST['firmName'];
-  $agent_name=$_POST['name'];
-  $mobile_no=$_POST['mobile_no'];
-  $office_address=$_POST['office_address'];
-  $email_no=$_POST['email'];
-  $rera=$_POST['rera'];
-  $status=1;
-  $pass= rand(100000, 999999);
-  $email=$row['email'];
-  $image=$_FILES['file']['name'];
-  $tmp_name = $_FILES['file']['tmp_name']; 
-    $size     = $_FILES['file']['size']; 
-    $type     = $_FILES['file']['type']; 
-    $error     = $_FILES['file']['error'];
-  $loc="dist/img/agent_photo/".basename($image);
-    move_uploaded_file($tmp_name, $loc);
-
-$imgEncoded = base64_encode(file_get_contents($tmp_name));
-
-//   $loc="dist/img/";
-
-//   move_uploaded_file($_FILES['image']['tmp_name'],$loc.$image);
-
- 
-$from = 'Enquiry <'.$email.'>' . "\r\n";
-$sendTo = 'Enquiry <'.$email_no.'>';
-$subject = 'Agreerent';
-// $fields = array( 'name' => 'name' );
-$from = 'Agreerent: 1.0' . "\r\n";
-$from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-$from .= "Content-Type: multipart/mixed;"; 
-$from .= "boundary = $boundary\r\n"; 
-
-
-$emailText = '
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="x-apple-disable-message-reformatting"> 
-    <title></title>
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
-    <style>
-        html,
-body {
-    margin: 0 auto !important;
-    padding: 0 !important;
-    height: 100% !important;
-    width: 100% !important;
-    background: #f1f1f1;
-}
-* {
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-}
-div[style*="margin: 16px 0"] {
-    margin: 0 !important;
-}
-table,
-td {
-    mso-table-lspace: 0pt !important;
-    mso-table-rspace: 0pt !important;
-}
-table {
-    border-spacing: 0 !important;
-    border-collapse: collapse !important;
-    table-layout: fixed !important;
-    margin: 0 auto !important;
-}
-img {
-    -ms-interpolation-mode:bicubic;
-}
-a {
-    text-decoration: none;
-}
-*[x-apple-data-detectors], 
-.unstyle-auto-detected-links *,
-.aBn {
-    border-bottom: 0 !important;
-    cursor: default !important;
-    color: inherit !important;
-    text-decoration: none !important;
-    font-size: inherit !important;
-    font-family: inherit !important;
-    font-weight: inherit !important;
-    line-height: inherit !important;
-}
-.a6S {
-    display: none !important;
-    opacity: 0.01 !important;
-}
-.im {
-    color: inherit !important;
-}
-img.g-img + div {
-    display: none !important;
-}
-@media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
-    u ~ div .email-container {
-        min-width: 320px !important;
-    }
-}
-@media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
-    u ~ div .email-container {
-        min-width: 375px !important;
-    }
-}
-@media only screen and (min-device-width: 414px) {
-    u ~ div .email-container {
-        min-width: 414px !important;
-    }
-}
-    </style>
-    <style>
-	    .primary{
-	background: #17bebb;
-}
-.bg_white{
-	background: #ffffff;
-}
-.bg_light{
-	background: #f7fafa;
-}
-.bg_black{
-	background: #000000;
-}
-.bg_dark{
-	background: rgba(0,0,0,.8);
-}
-.email-section{
-	padding:2.5em;
-}
-.btn{
-	padding: 10px 15px;
-	display: inline-block;
-}
-.btn.btn-primary{
-	border-radius: 5px;
-	background: #A800BF;
-	color: #ffffff;
-}
-.btn.btn-white{
-	border-radius: 5px;
-	background: #ffffff;
-	color: #000000;
-}
-.btn.btn-white-outline{
-	border-radius: 5px;
-	background: transparent;
-	border: 1px solid #fff;
-	color: #fff;
-}
-.btn.btn-black-outline{
-	border-radius: 0px;
-	background: transparent;
-	border: 2px solid #000;
-	color: #000;
-	font-weight: 700;
-}
-.btn-custom{
-	color: rgba(0,0,0,.3);
-	text-decoration: underline;
-}
-h1,h2,h3,h4,h5,h6{
-	font-family: "Poppins", sans-serif;
-	color: #000000;
-	margin-top: 0;
-	font-weight: 400;
-}
-body{
-	font-family: "Poppins", sans-serif;
-	font-weight: 400;
-	font-size: 15px;
-	line-height: 1.8;
-	color: rgba(0 0 0 / 60%);
-}
-a{
-	color: #A800BF;
-}
-table{
-}
-.logo h1{
-	margin: 0;
-}
-.logo h1 a{
-	color: #A800BF;
-	font-size: 24px;
-	font-weight: 700;
-	font-family: "Poppins", sans-serif;
-}
-.hero{
-	position: relative;
-	z-index: 0;
-}
-.hero .text{
-	color: rgba(0,0,0,.3);
-}
-.hero .text h2{
-	color: #000;
-	font-size: 34px;
-	margin-bottom: 0;
-	font-weight: 200;
-	line-height: 1.4;
-}
-.hero .text h3{
-	font-size: 24px;
-	font-weight: 300;
-}
-.hero .text h2 span{
-	font-weight: 600;
-	color: #000;
-}
-.text-author{
-	bordeR: 1px solid rgba(0,0,0,.05);
-	max-width: 50%;
-	margin: 0 auto;
-	padding: 2em;
-}
-.text-author img{
-	border-radius: 50%;
-	padding-bottom: 20px;
-}
-.text-author h3{
-	margin-bottom: 0;
-}
-ul.social{
-	padding: 0;
-}
-ul.social li{
-	display: inline-block;
-	margin-right: 10px;
-}
-.footer{
-	border-top: 1px solid rgba(0,0,0,.05);
-	color: rgba(0,0,0,.5);
-}
-.footer .heading{
-	color: #000;
-	font-size: 20px;
-}
-.footer ul{
-	margin: 0;
-	padding: 0;
-}
-.footer ul li{
-	list-style: none;
-	margin-bottom: 10px;
-}
-.footer ul li a{
-	color: rgba(0,0,0,1);
-}
-@media screen and (max-width: 500px) {
-}
-    </style>
-</head>
-<body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #f1f1f1;">
-    <div style="display: none; font-size: 1px;max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
-      &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
-    </div>
-    <div style="max-width: 600px; margin: 0 auto;" class="email-container">
-    	<!-- BEGIN BODY -->
-      <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">
-      	<tr>
-          <td valign="top" class="bg_white" style="padding: 1em 2.5em 0 2.5em;">
-          	<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
-          		<tr>
-          			<td class="logo" style="text-align: center;">
-			            <h1><a href="#">AGREERENT</a></h1>
-			          </td>
-          		</tr>
-          	</table>
-          </td>
-	      </tr><!-- end tr -->
-				<tr>
-          <td valign="middle" class="hero bg_white" style="padding: 2em 0 4em 0;">
-            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
-            	<tr>
-            		<td style="padding: 0 2.5em; text-align: center; padding-bottom: 3em;">
-            			<div class="text">
-							<h3>Hello <b>'.$agent_name.'</b></h3>
-            				<h3>Congratulation your account has been Activated Successfully.</h3>
-            			</div>
-            		</td>
-            	</tr>
-            	<tr>
-			          <td style="text-align: center;">
-			          	<div class="text-author">
-				          	<img src="https://agreerent.in/admin/dist/img/agent_photo/'.$image.'" alt="" style="width: 100px; max-width: 600px; height: auto; margin: auto; display: block;">
-				          	<h3 class="name">'.$agent_name.'</h3>
-				          	<span class="position">'.$firm_name.'</span>
-							<p>Client Code&nbsp;:&nbsp;<b>'.$user_id.'</b><br>Username&nbsp;:&nbsp;<b>'.$email_no.'</b><br>Password&nbsp;:&nbsp;<b>'.$pass.'</b></p> 
-				           	<p><a href="https://www.agreerent.in/client/" class="btn btn-primary">Login Now</a></p>
-				           	<p><a href="https://www.agreerent.in/" class="btn-custom">Visit Our Website</a></p>
-							
-			           	</div>
-			          </td>
-			        </tr>
-            </table><br>
-		<h4 class="position" align="center">for any query feel free to email us<br><a href="mailto: support@agreerent.in"> support@agreerent.in</a></h4>			  
-          </td>
-	      </tr><!-- end tr -->
-      <!-- 1 Column Text + Button : END -->
-      </table>
-    </div>
-</body>
-</html>';
-
-try{
-  foreach($_POST as $key => $value){
-    if(isset($fields[$key])){
-      $emailText.="$fields[$key]: $value\n";
-    }
-  }
- if( mail($sendTo,$subject,$emailText, "From:" .$from)){
-  $passwordhash=password_hash($pass,PASSWORD_BCRYPT);
-
-  $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`firm_name`,`status`,`image`) 
-   VALUES ('$user_id','$agent_name','$email_no','$passwordhash','$rera','$office_address','$mobile_no','$firm_name','$status','$image')");
-   if($sql=1){
-     echo "<script>alert('Agent Registered Successfully');</script>";    }
-   else{
-     echo "<script>alert('Something Wrong');</script>";
-   }
- }else{
-    echo "eeee $sendTo $subject $emailText $from";
- }
-}
-catch(\Exception $e){
-  echo "not done";
-}
-if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
-  $encode=json_encode($responseArray);
-  header('content-Type: application/json');
-  echo $encoded;
-}
-else{
-  echo $responseArray['message'];
-}
-  
-}
 
 
 
@@ -565,6 +218,59 @@ else{
     
     <script>
         $(document).ready(function(){
+            $("#otpverifysub").on("click", function () {
+            let exampledno = $("#exampledno").val();
+            let email = $("#email").val();
+            let name = $("#name").val();
+            let firmName = $("#firmName").val();
+            let office_address = $("#office_address").val();
+            let examplemob = $("#examplemob").val();
+            let veriotp = $("#veriotp").val();
+            let otpverifysub = $("#otpverifysub").val();
+            let rera = $("#rera").val();
+                $.ajax({
+                    type: "POST",
+                    url: "newcheck.php",
+                    data:{
+                        exampledno:exampledno,
+                        email:email,
+                        firmName:firmName,
+                        name:name,
+                        office_address:office_address,
+                        examplemob:examplemob,
+                        veriotp:veriotp,
+                        otpverifysub:otpverifysub,
+                        rera:rera
+                    },
+                    cache: false,
+                    success: function(dnk)
+                    {
+                        alert(dnk);
+                    }
+                });
+            });
+
+            // $("#otpverifysub").on("click", function () {
+                
+
+            //     let exampledno = $("#exampledno").val();
+            //     let email = $("#email").val();
+            //     let name = $("#name").val();
+            //     let firmName = $("#firmName").val();
+            //     let office_address = $("#office_address").val();
+            //     let examplemob = $("#examplemob").val();
+            //     let veriotp = $("#veriotp").val();
+            //     let rera = $("#rera").val();
+
+                
+            //     else if(exampledno=='' || email=='' || name=='' || firmName=='' || office_address=='' || examplemob=='' || rera==''){
+            //           alert("please fill all the fields")
+            //     }
+            //     else{
+            //         $("#otpverifysub").prop('disabled',false);
+            //     }
+            // });
+
             $("#otp").on("click", function () {
             let exampledno = $("#exampledno").val();
             let email = $("#email").val();
@@ -586,32 +292,10 @@ else{
                     }
                 });
             });
-
-            $("#otpverifysub").prop('disabled',true);
-            $("#otpverifysub").on("click", function () {
-                
-
-                let exampledno = $("#exampledno").val();
-                let email = $("#email").val();
-                let name = $("#name").val();
-                let firmName = $("#firmName").val();
-                let office_address = $("#office_address").val();
-                let examplemob = $("#examplemob").val();
-                let veriotp = $("#veriotp").val();
-                let rera = $("#rera").val();
-
-                if(veriotp == ''){
-                    alert("Enter OTP");
-                }
-                else if(exampledno=='' || email=='' || name=='' || firmName=='' || office_address=='' || examplemob=='' || rera==''){
-                      alert("please fill all the fields")
-                }
-                else{
-                    $("#otpverifysub").prop('disabled',false);
-                }
-            });
         });
     </script>
+
+
 </body>
 
 </html>
