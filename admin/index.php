@@ -264,8 +264,8 @@ function get_time_ago( $time )
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer clearfix">
-                                <button type="button" class="btn btn-primary float-right"><i class="fas fa-plus"></i>
-                                    Add item</button>
+                                <a href="todo"> <button type="button" class="btn btn-primary float-right" ><i class="fas fa-plus"></i>
+                                    Add item</button></a>
                             </div>
                         </div>
                         <!-- /.card -->
