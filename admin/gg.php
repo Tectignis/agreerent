@@ -250,26 +250,6 @@ include("../config/config.php");
                 });
             });
 
-            // $("#otpverifysub").on("click", function () {
-                
-
-            //     let exampledno = $("#exampledno").val();
-            //     let email = $("#email").val();
-            //     let name = $("#name").val();
-            //     let firmName = $("#firmName").val();
-            //     let office_address = $("#office_address").val();
-            //     let examplemob = $("#examplemob").val();
-            //     let veriotp = $("#veriotp").val();
-            //     let rera = $("#rera").val();
-
-                
-            //     else if(exampledno=='' || email=='' || name=='' || firmName=='' || office_address=='' || examplemob=='' || rera==''){
-            //           alert("please fill all the fields")
-            //     }
-            //     else{
-            //         $("#otpverifysub").prop('disabled',false);
-            //     }
-            // });
 
             $("#otp").on("click", function () {
             let exampledno = $("#exampledno").val();
@@ -286,9 +266,9 @@ include("../config/config.php");
                         name:name,
                     },
                     cache: false,
-                    success: function(dnk)
+                    success: function(dnkotp)
                     {
-                        alert(dnk);
+                        alert(dnkotp);
                     }
                 });
             });
