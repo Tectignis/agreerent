@@ -4,6 +4,10 @@ if(!isset($_SESSION['admin']) == 0 AND ($_SESSION['aid'])) // If session is not 
 {
  header("Location:adminlogin.php"); 
 }
+if(!isset($_SESSION['id'])) 
+{
+ header("Location:adminlogin.php"); 
+}
 
 include("../config/config.php");
 echo $_SESSION['aid'];
