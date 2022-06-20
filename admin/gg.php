@@ -482,7 +482,7 @@ else{
                                                  placeholder="Enter Email ID" required>
                                                 <input type="button" id="otp" value="Send OTP" class="btn btn-primary " style="margin-left:-20px">
             </div>
-                                                <input type="hidden" class="form-control mt-2 col-lg-6" name="veriotp" id="veriotp" required>
+                                                <input type="text" class="form-control mt-2 col-lg-6" name="veriotp" style="visibility: hidden" id="veriotp" >
 
                                         </div>
                                     </div>
@@ -573,7 +573,7 @@ else{
                     success: function(dnk)
                     {
                         alert(dnk);
-                        $("#veriotp").css(visibility:visible);
+                        $("#veriotp").css('visibility','hidden');
                     }
                 });
             });
