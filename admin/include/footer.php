@@ -1,6 +1,5 @@
  <footer class="main-footer">
-    <strong>PRODUCT BY <a href="https://tectignis.in">TECTIGNIS IT SOLUTIONS</a>.</strong>
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 1.0
+    <div class="card-tools" style="margin-left:790px;">
+     <strong>PRODUCT BY <a href="https://tectignis.in">TECTIGNIS IT SOLUTIONS</a>.</strong>
     </div>
   </footer>
