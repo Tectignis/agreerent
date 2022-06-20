@@ -538,7 +538,7 @@ else{
     <!-- ./wrapper -->
 
     <!-- jQuery -->
-    <script src="plugins/jquery/jquery.min.js"></script>
+    <!-- <script src="plugins/jquery/jquery.min.js"></script> -->
     <!-- Bootstrap 4 -->
     <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- bs-custom-file-input -->
@@ -552,12 +552,14 @@ else{
         bsCustomFileInput.init();
     });
     </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
-        $("#otp").click(function(){
+            $("#otp").on("click", function () {
             let exampledno = $("#exampledno").val();
             let email = $("#email").val();
-            let name=$("#name").val();
+            let name = $("#name").val();
+            let otp = $("#otp").val();
                 $.ajax({
                     type: "POST",
                     url: "newcheck.php",
@@ -565,7 +567,7 @@ else{
                         exampledno:exampledno,
                         email:email,
                         otp:otp,
-                        name:name
+                        name:name,
                     },
                     cache: false,
                     success: function(dnk)
