@@ -452,7 +452,7 @@ else{
                                         <label for="exampleaddress" class="col-sm-2 col-form-label">Agent
                                             Name<label style="color:Red">*</label></label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="name" placeholder="Enter Name"
+                                            <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name"
                                                 required>
                                         </div>
                                     </div>
@@ -477,8 +477,9 @@ else{
                                         <label for="exampleemail" class="col-sm-2 col-form-label">Email ID<label
                                                 style="color:Red">*</label></label>
                                         <div class="col-sm-10">
-                                            <input type="email" class="form-control" name="email"
+                                            <input type="email" class="form-control" name="email" id="email"
                                                 placeholder="Enter Email ID" required>
+                                                <input type="hidden" id="otp" value="Send OTP" class="btn btn-primary">
 
                                         </div>
                                     </div>
@@ -549,6 +550,28 @@ else{
     $(function() {
         bsCustomFileInput.init();
     });
+    </script>
+    <script>
+        $("#otp").click(function(){
+            let exampledno = $("#exampledno").val();
+            let email = $("#email").val();
+           
+                $.ajax({
+                    type: "POST",
+                    url: "newcheck.php",
+                    data:{
+                        exampledno:exampledno,
+                        email:email,
+                        otp:otp,
+                        name:name
+                    },
+                    cache: false,
+                    success: function(dnk)
+                    {
+                        alert(dnk);
+                    }
+                });
+            });
     </script>
 </body>
 
