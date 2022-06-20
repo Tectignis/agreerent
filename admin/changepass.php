@@ -4,9 +4,13 @@ if(!isset($_SESSION['admin']) == 1) // If session is not set then redirect to Lo
 {
 // header("Location:dashboard.php"); 
 }
+if(!isset($_SESSION['aid'])) 
+{
+ header("Location:adminlogin.php"); 
+}
 include("../config/config.php");
 $d=$_SESSION['aid'];
-echo $d;
+  
 if(isset($_POST["login"])){
 	$password=$_POST["password"];
 	$newpassword=$_POST["newpassword"];
@@ -19,8 +23,9 @@ if(isset($_POST["login"])){
 	$hashpassword=password_hash($newpassword,PASSWORD_BCRYPT);
 
 		if($verify==1){
-			$query=mysqli_query($conn,"UPDATE `agent_details` SET `password`='$hashpassword' WHERE user_id='$id' ");
+			$query=mysqli_query($conn,"UPDATE `users` SET `password`='$hashpassword' WHERE user_id='$d'");
       if($query){
+        session_destroy();   // function that Destroys Session 
         echo "<script>alert('Password Changed Successfully'),window.location='adminlogin';</script>";
       }
 		}
@@ -55,7 +60,7 @@ if(isset($_POST["login"])){
     <div class="card-body">
       <p class="login-box-msg">You You Can Change Your Password Here</p>
       <form method="post">
-      <?php echo $d; ?>
+      
                 <div class="form-group">
                   <input type="password" class="form-control form-control-lg" name="password" id="exampleInputPassword1" placeholder="Old Password">
                 </div>

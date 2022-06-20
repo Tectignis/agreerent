@@ -2,9 +2,6 @@
 //new_agreement
 include("../config/config.php");
 
-session_start();
-
-
 if(isset($_POST['submit'])){
 	$document_main=$_POST['document_no11'];
 	$date=$_POST['date'];

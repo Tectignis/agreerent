@@ -1,25 +1,27 @@
 <?php
 session_start();
-if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
+if(!isset($_SESSION['admin']) == 1) // If session is not set then redirect to Login Page
 {
-header("Location:dashboard.php"); 
+// header("Location:dashboard.php"); 
 }
 include("../config/config.php");
+$d=$_SESSION['id'];
 
 if(isset($_POST["login"])){
 	$password=$_POST["password"];
 	$newpassword=$_POST["newpassword"];
-$id=$_SESSION['id'];
-	$sql = mysqli_query($conn,"SELECT * FROM agent_details WHERE user_id='$id'") ;
+
+
+	$sql = mysqli_query($conn,"SELECT * FROM agent_details WHERE user_id='$d'") ;
 		$row=mysqli_fetch_assoc($sql); 
 		$verify=password_verify($password,$row['password']);
 	
 	$hashpassword=password_hash($newpassword,PASSWORD_BCRYPT);
 
 		if($verify==1){
-			$query=mysqli_query($conn,"UPDATE `agent_details` SET `password`='$hashpassword' WHERE user_id='$id' ");
+			$query=mysqli_query($conn,"UPDATE `agent_details` SET `password`='$hashpassword' WHERE user_id='$d'");
       if($query){
-        echo "<script>alert('Password Changed Successfully'),window.location='clientlogin';</script>";
+        echo "<script>alert('Password Changed Successfully'),window.location='index';</script>";
       }
 		}
 		else{
@@ -53,15 +55,12 @@ $id=$_SESSION['id'];
     <div class="card-body">
       <p class="login-box-msg">You You Can Change Your Password Here</p>
       <form method="post">
-               
+      
                 <div class="form-group">
                   <input type="password" class="form-control form-control-lg" name="password" id="exampleInputPassword1" placeholder="Old Password">
                 </div>
                  <div class="form-group">
                   <input type="password" class="form-control form-control-lg" name="newpassword" id="exampleInputPassword1" placeholder="New Password">
-                </div>
-                 <div class="form-group">
-                  <input type="password" class="form-control form-control-lg" name="confirmopassword"onblur="Validate()" id="confirm_password" name="confPassword" placeholder="Confirm Password">
                 </div>
                 <div class="mt-6">
                   <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="Change Password" name="login">
@@ -83,13 +82,5 @@ $id=$_SESSION['id'];
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
-<script type="text/javascript">
-$('#confirm_password').on('keyup', function () {
-  if ($('#password').val() == $('#confirm_password').val()) {
-    $('#message').html('Matching').css('color', 'green');
-  } else 
-    $('#message').html('Not Matching').css('color', 'red');
-});
-</script>
 </body>
 </html>

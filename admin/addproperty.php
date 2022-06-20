@@ -4,7 +4,7 @@ if(!isset($_SESSION['admin']) == 1)
 {
  header("Location:adminlogin.php"); 
 }
-if(!isset($_SESSION['id'])) 
+if(!isset($_SESSION['aid'])) 
 {
  header("Location:adminlogin.php"); 
 }
