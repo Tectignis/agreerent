@@ -591,6 +591,7 @@ $doc=$arr['docno'];
 	<p align="center">टिप:- सदर माहितीचा / फॉर्मचा उपयोग केवळ पोलीसांच्या रेकॉर्डसाठी असून अन्य कोणत्याही कारणासाठी पुरवा म्हणून वापरता येणार नाही. </p>
     </div>
     <!-- receipt -->
+    <div class="pagebreak">
     <h1 style="text-align: center">Receipt</h1>
 <?php $sql=mysqli_query($conn,"select tenant.fullname as tname, payment.document_no as dno, payment.security_deposit as rent from payment inner join tenant on payment.document_no=tenant.document_no where payment.document_no");
                  
@@ -703,6 +704,7 @@ $doc=$arr['docno'];
 			<br>
 			<div>2.<?php echo $arr['o2'];?></div>
 			<?php if($doc==$fid){echo $arr['property_type']; }else{ echo ' - ' ;} ?>
+</div>
 </body>
 
 </html>
