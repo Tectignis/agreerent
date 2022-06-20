@@ -555,7 +555,6 @@ else{
     <script>
         $(document).ready(function(){
         $("#otp").click(function(){
-            alert('otp send');
             let exampledno = $("#exampledno").val();
             let email = $("#email").val();
             let name=$("#name").val();
