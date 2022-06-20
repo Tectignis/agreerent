@@ -58,6 +58,9 @@ function AmountInWords(float $amount)
     <title>Agreement</title>
 </head>
 <style>
+    @media print {
+    .pagebreak { page-break-before: always; } /* page-break-after works, as well */
+}
 table,
 td,
 th {
