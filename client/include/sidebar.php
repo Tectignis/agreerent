@@ -69,7 +69,7 @@
                   </li>
         
 
-                  <li class="nav-header">Police Noc</li>
+                  
                   <li class="nav-item">
                       <a href="policenoc" class="nav-link">
                           <i class="nav-icon fas fa-book"></i>
@@ -79,15 +79,15 @@
                       </a>
                   </li>
                   <li class="nav-item">
-                      <a href="paymentrecipt" class="nav-link">
-                          <i class="fa fa-industry"></i>
+                      <a href="paymentreceipt" class="nav-link">
+                          <i class="nav-icon fas fa-receipt"></i>
                           <p>
-                             Payment Recipt
+                             Payment Receipt
                           </p>
                       </a>
                   </li>
                   <li class="nav-item">
-                      <a href="#" class="nav-link">
+                      <a href="listofcomplaint" class="nav-link">
                           <i class="nav-icon fas fa-copy"></i>
                           <p>
                             Raise a Complaint
@@ -111,41 +111,43 @@
                           </p>
                       </a>
                   </li>
-                  <li class="nav-header">Setting</li>
-                  
+
                   <li class="nav-item">
-                      <a href="profile" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>
-                              Profile
-                          </p>
-                      </a>
-                  </li>
-                  <li class="nav-item">
-                      <a href="#" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>
-                             Change pwd
-                          </p>
-                      </a>
-                  </li>
-                  <li class="nav-item">
-                      <a href="#" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>
-                              Reports
-                          </p>
-                      </a>
-                      <li class="nav-item">
-                      <a href="#" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>
-                              Enhancement
-                          </p>
-                      </a>
-                  </li>
-                  </li>
-              </ul>
+            <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-copy"></i>
+              <p>
+              Setting
+                <i class="right fas fa-angle-left"></i>
+              </p>
+              </a>
+            <ul class="nav nav-treeview">
+              
+              <li class="nav-item">
+                <a href="profile" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p> Profile</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p> Change pwd</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Reports</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>  Enhancement</p>
+                </a>
+              </li>
+            </ul>
+          </li>      
           </nav>
           <!-- /.sidebar-menu -->
       </div>
