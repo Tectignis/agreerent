@@ -58,14 +58,6 @@ function AmountInWords(float $amount)
     <title>Agreement</title>
 </head>
 <style>
-.page {
-  width: 29.7cm;
-  min-height: 42cm;
-  margin: 1cm auto;
-  border: 1px #000000 solid;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
     @media print {
     .pagebreak { page-break-before: always; } /* page-break-after works, as well */
 }
@@ -390,7 +382,7 @@ $doc=$arr['docno'];
 
 <!-- police noc form -->
 <div class="pagebreak"> 
-<div class="page">
+
     <h2 align="center">भाडेकरु माहिती फॉर्म</h2>
 	<p class="ex1">रजिस्टर नंबर :-</p>
 	<p class="ex1">दिनांक :-</p>
@@ -597,11 +589,11 @@ $doc=$arr['docno'];
 	<h4 align="center">घोषणापत्र</h4>
 	<p align="center">वरील भरुन दिलेली माहिती ही खरी असून त्यामध्ये काही खोटे आढळल्यास भी कायदेशीर कार्यवाहीस पात्र राहिन.</p>
 	<p align="center">टिप:- सदर माहितीचा / फॉर्मचा उपयोग केवळ पोलीसांच्या रेकॉर्डसाठी असून अन्य कोणत्याही कारणासाठी पुरवा म्हणून वापरता येणार नाही. </p>
-</div> 
+
 </div>
     <!-- receipt -->
     <div class="pagebreak">
-        <div class="page">
+  
     <h1 style="text-align: center">Receipt</h1>
 <?php $sql=mysqli_query($conn,"select tenant.fullname as tname, payment.document_no as dno, payment.security_deposit as rent from payment inner join tenant on payment.document_no=tenant.document_no where payment.document_no");
                  
@@ -714,7 +706,7 @@ $doc=$arr['docno'];
 			<br>
 			<div>2.<?php echo $arr['o2'];?></div>
 			<?php if($doc==$fid){echo $arr['property_type']; }else{ echo ' - ' ;} ?>
-</div>
+
 </div>
 </body>
 
