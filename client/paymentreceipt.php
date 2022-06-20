@@ -78,22 +78,31 @@ include("../config/config.php");
                                 <th>Owner Name</th>
                                 <th>Tenant Name</th>
                                 <th>Date of Agreement</th>
+                                <th>Deposit</th>
+                                <th>Rent</th>
                                 <th> Action </th>
                               </tr>
                   </thead>
                   <tbody>
-
+                    <?php
+                    $sql=mysqli_query($conn,"select * from payment_receipt");
+                    $count=1;
+                    while($arr=mysqli_fetch_array($sql)){
+                      ?>
                            
                                                 <tr>
-                                                <td>.</td>
-                                                <td>  </td>
-                                                <td> </td>
-                                                <td> </td>
-                                                <td>  </td>
-                                                <td></td>
+                                                  <td><?php echo $count;?></td>
+                                                <td><?php echo $arr['document_no'];?></td>
+                                                <td><?php echo $arr['owner_name'];?></td>
+                                                <td><?php echo $arr['tenant_name'];?></td>
+                                                <td><?php echo $arr['date_of_agreement'];?></td>
+                                                <td><?php echo $arr['deposite'];?></td>
+                                                <td><?php echo $arr['rent'];?></td>
+                                                <td>  <a href="paymentreceipt.php?id=<?php echo $arr['did'] ?>"><button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue">  <i class="fas fa-eye"></i> </button></a></td>
                                               </tr>
-                                   
+                                   <?php $count++; }  ?>
                                           </tbody>
+                                          
                 </table>
               </div>
               <!-- /.card-body -->
