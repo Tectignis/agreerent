@@ -263,6 +263,24 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                         <span id="spanname"></span>
                                                     </div>
                                                 </div>
+                                                <!-- ss -->
+                                                <div class="form-group row">
+                                                    <label for="exampleInputMobile"
+                                                        class="col-sm-2 col-form-label">Office name<label
+                                                            style="color:Red">*</label></label>
+                                                    <div class="col-sm-4">
+                                                        <input type="text" class="form-control" id="officename" name="officename"
+                                                            placeholder="Enter Your Office Name" required>
+                                                    </div>
+
+                                                    <label for="exampleaadhaar" class="col-sm-2 col-  form-label">Office No.<label style="color:Red">*</label></label>
+                                                    <div class="col-sm-4">
+                                                        <input type="tel" class="form-control" name="officeno"
+                                                            id="officeno" placeholder="Enter Office Number" minlength="10"
+                                                            maxlength="10" required>
+                                                    </div>
+                                                </div>
+                                                <!-- ss -->
                                                 <div class="form-group row">
                                                     <label for="exampleInputMobile"
                                                         class="col-sm-2 col-form-label">Mobile No.<label
@@ -337,6 +355,16 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                         <textarea name="permanent_address" class="form-control"
                                                             cols="66" rows="4" placeholder="Enter Address"
                                                             id="presentAddress" required></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="exampleaddress"
+                                                        class="col-sm-2 col-form-label">Office Address<label
+                                                            style="color:Red">*</label></label>
+                                                    <div class="col-sm-10">
+                                                        <textarea name="officeaddr" cols="66" rows="4" class="form-control"
+                                                            placeholder="Enter Address" id="officeaddress"
+                                                            required></textarea>
                                                     </div>
                                                 </div>
 

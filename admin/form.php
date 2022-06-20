@@ -61,6 +61,9 @@ if(isset($_POST['tenant'])){
 	$surname=$_POST['exampleSelectmr'];
 	$name=$_POST['txtname3'];
   $age=$_POST['id2'];
+  $officename=$_POST['officename'];
+  $officeno=$_POST['officeno'];
+  $officeaddress=$_POST['officeaddress'];
   $permanent_address=$_POST['presentAddress'];
 	$address=$_POST['residenceAddress'];
 	$mobile=$_POST['phone'];
@@ -74,7 +77,7 @@ $num1=mysqli_fetch_array($query1);
 $document1=$num1['document_no'];
 
 	if($document1==$idtenant){
-		$sql=mysqli_query($conn,"UPDATE `tenant` SET `document_no`='$idtenant',`abbreviation`='$surname',`fullname`='$name',`age`='$age',`address`='$address',`permanent_address`='$permanent_address',`mobile`='$mobile',`email`='$email',`passport`='$passport',`aadhaar`='$aadhaar',`pan_card`='$pancard' WHERE document_no='$idtenant'");
+		$sql=mysqli_query($conn,"UPDATE `tenant` SET `document_no`='$idtenant',`abbreviation`='$surname',`fullname`='$name',`age`='$age',`address`='$address',`permanent_address`='$permanent_address',`mobile`='$mobile',`email`='$email',`passport`='$passport',`aadhaar`='$aadhaar',`pan_card`='$pancard',`office_name`='$officename',`office_addres`='$officeaddress',`office_phone`='$officeno'  WHERE document_no='$idtenant'");
 	if($sql==1){	
      echo "successfully updated";
   	}else{
@@ -83,8 +86,8 @@ $document1=$num1['document_no'];
 	
 	}
 	else{
-	$sql=mysqli_query($conn,"INSERT INTO `tenant`(`document_no`, `abbreviation`, `fullname`,`age`, `address`,`permanent_address`, `mobile`, `email`,`passport`,`aadhaar`, `pan_card`) VALUES 
-  ('$idtenant','$surname','$name','$age','$address','$permanent_address','$mobile','$email','$passport','$aadhaar','$pancard')");
+	$sql=mysqli_query($conn,"INSERT INTO `tenant`(`document_no`, `abbreviation`, `fullname`,`age`, `address`,`permanent_address`, `mobile`, `email`,`passport`,`aadhaar`, `pan_card`,`office_name`, `office_addres`, `office_phone`) VALUES 
+  ('$idtenant','$surname','$name','$age','$address','$permanent_address','$mobile','$email','$passport','$aadhaar','$pancard','$officename','$officeaddress','$officeno')");
 	if($sql==1){	
     echo "Successfully Added";
   	}else{
