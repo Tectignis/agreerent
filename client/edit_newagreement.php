@@ -46,7 +46,7 @@ $abbreviation1='';
 $fullname1='';
 $mobile1='';
 $email1='';
-$passport11='';
+$passport1='';
 $aadhaar1='';
 $age1='';
 $pan_card1='';
@@ -54,9 +54,12 @@ $address1='';
 $permanent_address1='';
 $tenantname1='';
 $tenantname2='';
+$office_name='';
+$office_addres='';
+$office_phone='';
 if(isset($_GET['id'])){
-    $id=$_GET['id'];
-                     $query2=mysqli_query($conn,"select * from tenant where document_no='$id'");
+    $basiid=$_GET['id'];
+                     $query2=mysqli_query($conn,"select * from tenant where document_no='$basiid'");
                  while($arr=mysqli_fetch_array($query2)){
                     $docid=$arr['document_no'] ?? null;
                     $abbreviation1=$arr['abbreviation'] ?? null;
@@ -64,8 +67,11 @@ if(isset($_GET['id'])){
                    $mobile1=$arr['mobile'] ?? null;
                    $email1=$arr['email'] ?? null;
                    $passport1=$arr['passport'] ?? null;
+                   $office_name=$arr['office_name'] ?? null;
+                   $office_addres=$arr['office_addres'] ?? null;
+                   $office_phone=$arr['office_phone'] ?? null;
                    $aadhaar1=$arr['aadhaar'] ?? null;
-                   $age1=$arr['age'] ?? null ?? null;
+                   $age1=$arr['age'] ?? null ;
                    $pan_card1=$arr['pan_card'] ?? null;
                    $address1=$arr['address'] ?? null;
                    $permanent_address1=$arr['permanent_address'] ?? null;
@@ -386,6 +392,24 @@ if(isset($_GET['id'])){
                                                         <span id="spanname"></span>
                                                     </div>
                                                 </div>
+                                                 <!-- ss -->
+                                                 <div class="form-group row">
+                                                    <label for="exampleInputMobile"
+                                                        class="col-sm-2 col-form-label">Office name<label
+                                                            style="color:Red">*</label></label>
+                                                    <div class="col-sm-4">
+                                                        <input type="text" class="form-control" id="officename" name="officename" value="<?php echo $office_name; ?>"
+                                                            placeholder="Enter Your Office Name" required>
+                                                    </div>
+
+                                                    <label for="exampleaadhaar" class="col-sm-2 col-  form-label">Office No.<label style="color:Red">*</label></label>
+                                                    <div class="col-sm-4">
+                                                        <input type="tel" class="form-control" name="officeno"
+                                                            id="officeno" value="<?php echo $office_phone; ?>" placeholder="Enter Office Number" minlength="10"
+                                                            maxlength="10" required>
+                                                    </div>
+                                                </div>
+                                                <!-- ss -->
                                                 <div class="form-group row">
                                                     <label for="exampleInputMobile"
                                                         class="col-sm-2 col-form-label">Mobile No.<label
@@ -466,7 +490,16 @@ if(isset($_GET['id'])){
                                                             required><?php echo $permanent_address1 ?></textarea>
                                                     </div>
                                                 </div>
-
+                                                <div class="form-group row">
+                                                    <label for="exampleaddress"
+                                                        class="col-sm-2 col-form-label">Office Address<label
+                                                            style="color:Red">*</label></label>
+                                                    <div class="col-sm-10">
+                                                        <textarea name="officeaddr" cols="66" rows="4" class="form-control"
+                                                            placeholder="Enter Address" id="officeaddress"
+                                                            required><?php echo $office_addres; ?></textarea>
+                                                    </div>
+                                                </div>
                                                 <div class="col" align="right">
 
                                                     <!-- <a href="owner.php?id=<?php //echo $id;?>"><button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue"><i class="mdi mdi-chevron-left"></i>Previous</button></a> -->
@@ -1051,19 +1084,22 @@ if(isset($_GET['id'])){
         });
 
         //tenant
-        $("#submitenant").on("click", function() {
+        $("#submitenan").on("click", function() {
             let exampledno = $("#exampledno").val();
             let exampleSelectmr = $("#exampleSelectmr").val();
             let txtname3 = $("#txtname3").val();
             let phone = $("#phone").val();
             let emailcheck = $("#emailcheck").val();
+            let officename = $("#officename").val();
+            let officeno = $("#officeno").val();
+            let officeaddress = $("#officeaddress").val();
             let passport = $("#passport").val();
             let txtAadhar1 = $("#txtAadhar1").val();
             let id2 = $("#id2").val();
             let txtPANCard1 = $("#txtPANCard1").val();
             let residenceAddress = $("#residenceAddress").val();
             let presentAddress = $("#presentAddress").val();
-            let tenant = $("#submitenant").val();
+            let submitenan = $("#submitenan").val();
 
             $.ajax({
                 url: "edit_newagreementform.php",
@@ -1075,12 +1111,15 @@ if(isset($_GET['id'])){
                     phone: phone,
                     emailcheck: emailcheck,
                     passport: passport,
+                    officename: officename,
+                    officeno: officeno,
+                    officeaddress: officeaddress,
                     id2: id2,
                     txtAadhar1: txtAadhar1,
                     txtPANCard1: txtPANCard1,
                     residenceAddress: residenceAddress,
                     presentAddress: presentAddress,
-                    tenant: tenant,
+                    submitenan: submitenan,
                 },
                 cache: false,
                 success: function(res2) {

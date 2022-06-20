@@ -53,7 +53,7 @@
                       </a>
                       
                   </li>
-                  <li class="nav-header">Rent Agreement</li>
+                  
                   <li class="nav-item">
                       <a href="case" class="nav-link">
                           <i class="nav-icon fas fa-edit"></i>
@@ -64,20 +64,12 @@
                       
                   </li>
            
-          
-        
-          
-
                           </p>
                       </a>
                   </li>
+        
+
                   
-                
-
-
-
-
-                  <li class="nav-header">Police Noc</li>
                   <li class="nav-item">
                       <a href="policenoc" class="nav-link">
                           <i class="nav-icon fas fa-book"></i>
@@ -86,7 +78,22 @@
                           </p>
                       </a>
                   </li>
-
+                  <li class="nav-item">
+                      <a href="paymentreceipt" class="nav-link">
+                          <i class="fa fa-industry"></i>
+                          <p>
+                             Payment Receipt
+                          </p>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="#" class="nav-link">
+                          <i class="nav-icon fas fa-copy"></i>
+                          <p>
+                            Raise a Complaint
+                          </p>
+                      </a>
+                  </li>
                   <li class="nav-header">Other</li>
                   <li class="nav-item">
                       <a href="todolist" class="nav-link">
@@ -104,23 +111,43 @@
                           </p>
                       </a>
                   </li>
+
                   <li class="nav-item">
-                      <a href="listofcomplaint" class="nav-link">
-                      <i class="nav-icon fa fa-clipboard-list"></i>
-                          <p>
-                              Complaint
-                          </p>
-                      </a>
-                  </li>
-                  <li class="nav-item">
-                      <a href="profile" class="nav-link">
-                          <i class="nav-icon fas fa-user"></i>
-                          <p>
-                              Profile
-                          </p>
-                      </a>
-                  </li>
-              </ul>
+            <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-copy"></i>
+              <p>
+              Setting
+                <i class="right fas fa-angle-left"></i>
+              </p>
+              </a>
+            <ul class="nav nav-treeview">
+              
+              <li class="nav-item">
+                <a href="profile" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p> Profile</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p> Change pwd</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Reports</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>  Enhancement</p>
+                </a>
+              </li>
+            </ul>
+          </li>      
           </nav>
           <!-- /.sidebar-menu -->
       </div>

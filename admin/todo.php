@@ -140,7 +140,7 @@ function get_time_ago( $time )
                                                                     <h5 class="card-title">
                                                                         <?php echo $arr['task'];?>
                                                                     </h5>
-                                                                    <small class="badge badge-info">
+                                                                    <small class="badge badge-info" style="margin-left:30px">
                                                                         <i class="far fa-clock">
                                                                         </i>
                                                                         <?php  echo get_time_ago(strtotime($arr['date']) );?>
@@ -149,7 +149,7 @@ function get_time_ago( $time )
                                                                     <div class="card-tools">
                                                                         <a href="todo.php?delid=<?php echo $arr['id'] ?>"
                                                                             class="btn btn-tool">
-                                                                            <i class="fas fa-trash"></i>
+                                                                            <i class="fas fa-trash"  style="margin-left:430px;"></i>
                                                                         </a>
                                                                     </div>
                                                                 </div>

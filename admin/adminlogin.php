@@ -112,6 +112,7 @@ if(isset($_POST["login"])){
       $_SESSION['aid']=$row['user_id'];
       $_SESSION['aaddress']=$row['office_address'];
       $_SESSION['admin']=$row['is_admin'];
+      $d=$_SESSION['aid'];
       ?>
 
 <script type="text/javascript">
