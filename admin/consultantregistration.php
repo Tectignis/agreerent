@@ -483,7 +483,7 @@ else{
                                         <label for="exampleInputMobile" class="col-sm-2 col-form-label">Office
                                             Address<label style="color:Red">*</label></label>
                                         <div class="col-sm-10">
-                                            <textarea name="office_address"  id= "office_address" style="width:100%;" rows="2"
+                                            <textarea class="form-control" name="office_address"  id= "office_address" style="width:100%;" rows="2"
                                                 placeholder="Enter Address" required></textarea>
                                         </div>
                                     </div>
@@ -541,7 +541,7 @@ else{
 
                                     <div class="col" align="right">
                                         <button type="submit" name="sub" id="otpverifysub" class="btn btn-primary  btn-lg"
-                                            style="color: aliceblue">Submit</button>
+                                            style="color: aliceblue" window.location:>Submit</button>
                                     </div>
                                 </form>
 

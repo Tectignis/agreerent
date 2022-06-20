@@ -777,7 +777,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                 <label for="exampldate" class="col-sm-2 col-form-label">Date Of 
                                                     Rent Payment<label style="color:Red">*</label></label>
                                                 <div class="col-sm-4">
-                                                    <input type="number" class="form-control" id="rentpay"
+                                                    <input type="number" class="form-control" id="rentpay" oninput="javascript: if (this.value.1 > this.31) this.value = this.value.slice(0, this.31);"
                                                         required>
                                                 </div>
                                             </div>
