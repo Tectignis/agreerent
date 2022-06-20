@@ -371,6 +371,7 @@ else{
     <title>AGREERENT | Profile</title>
 
     <!-- Google Font: Source Sans Pro -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
@@ -481,14 +482,19 @@ else{
                                         <label for="exampleemail" class="col-sm-2 col-form-label">Email ID<label
                                                 style="color:Red">*</label></label>
                                         <div class="col-sm-10">
-                                               <div class="d-flex">
+                                        <div class="input-group date" id="reservationdateAllowances" data-target-input="nearest">
                                                 <input type="email" class="form-control" name="email" id="email"
                                                  placeholder="Enter Email ID" required>
-                                                <input type="button" id="otp" value="Send OTP" class="btn btn-primary " style="margin-left:-20px">
+                                                 
+                                                <a class="btn btn-primary" id="otp" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Send OTP</a>
             </div>
-                                                <input type="text" class="form-control mt-2 col-lg-6" name="veriotp" style="visibility: hidden" id="veriotp" >
-
                                         </div>
+                                    </div>
+                                    <div class="form-group">
+                                    <div class="collapse multi-collapse row" id="multiCollapseExample1">
+                                        <label for="examplepan" class="col-sm-2 ml-1 col-form-label"></label>
+                                        <input type="text" class="form-control mt-2 col-lg-6" name="veriotp" id="veriotp" >
+                                     </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="examplepan" class="col-sm-2 col-form-label">Rera No.</label>
@@ -556,7 +562,7 @@ else{
     <script>
     
     </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
     <script>
         $(document).ready(function(){
             $("#otp").on("click", function () {
@@ -577,13 +583,13 @@ else{
                     success: function(dnk)
                     {
                         alert(dnk);
-                        $("#veriotp").css('visibility','visible');
                     }
                 });
             });
 
+            $("#otpverifysub").prop('disabled',true);
             $("#otpverifysub").on("click", function () {
-                $("#otpverifysub").prop('disabled',true);
+                
 
                 let exampledno = $("#exampledno").val();
                 let email = $("#email").val();

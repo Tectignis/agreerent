@@ -25,6 +25,7 @@ if(isset($_POST["login"])){
 		if($verify==1){
 			$query=mysqli_query($conn,"UPDATE `users` SET `password`='$hashpassword' WHERE user_id='$d'");
       if($query){
+        session_destroy();   // function that Destroys Session 
         echo "<script>alert('Password Changed Successfully'),window.location='adminlogin';</script>";
       }
 		}
