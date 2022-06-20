@@ -4,6 +4,13 @@ if(!isset($_SESSION['admin']) == 1)
 {
  header("Location:adminlogin.php"); 
 }
+if(!isset($_SESSION['id'])) 
+{
+ header("Location:adminlogin.php"); 
+}
+
+
+
 include("../config/config.php");
 
 if(isset($_POST['submit'])){
