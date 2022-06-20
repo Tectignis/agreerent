@@ -61,11 +61,8 @@ function AmountInWords(float $amount)
 .page {
   width: 29.7cm;
   min-height: 42cm;
-  padding: 2cm;
   margin: 1cm auto;
-  border: 1px #D3D3D3 solid;
-  border-radius: 5px;
-  background: white;
+  border: 1px #000000 solid;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
