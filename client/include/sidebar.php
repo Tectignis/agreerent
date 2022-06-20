@@ -53,7 +53,7 @@
                       </a>
                       
                   </li>
-                  <li class="nav-header">Rent Agreement</li>
+                  
                   <li class="nav-item">
                       <a href="case" class="nav-link">
                           <i class="nav-icon fas fa-edit"></i>
@@ -115,7 +115,7 @@
                   
                   <li class="nav-item">
                       <a href="profile" class="nav-link">
-                          <i class="nav-icon fas fa-user"></i>
+                          <i class="far fa-circle nav-icon"></i>
                           <p>
                               Profile
                           </p>
@@ -123,7 +123,7 @@
                   </li>
                   <li class="nav-item">
                       <a href="#" class="nav-link">
-                          <i class="fas fa-users"></i>
+                          <i class="far fa-circle nav-icon"></i>
                           <p>
                              Change pwd
                           </p>
@@ -131,14 +131,14 @@
                   </li>
                   <li class="nav-item">
                       <a href="#" class="nav-link">
-                          <i class="fas fa-users"></i>
+                          <i class="far fa-circle nav-icon"></i>
                           <p>
                               Reports
                           </p>
                       </a>
                       <li class="nav-item">
                       <a href="#" class="nav-link">
-                          <i class="fas fa-users"></i>
+                          <i class="far fa-circle nav-icon"></i>
                           <p>
                               Enhancement
                           </p>
