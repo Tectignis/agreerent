@@ -1,14 +1,19 @@
 <?php  
 session_start();
-$_SESSION['aid'];
 if(!isset($_SESSION['admin']) == 1) // If session is not set then redirect to Login Page
 {
  header("Location:adminlogin"); 
+}
+if(!isset($_SESSION['id'])) 
+{
+ header("Location:adminlogin.php"); 
 }
 include("../config/config.php");
 
 $res=mysqli_query($conn,"SELECT * FROM `email_configuration`");
  $row=mysqli_fetch_array($res);	
+
+ 
 
 if(isset($_POST['sub'])){
 
@@ -19,9 +24,15 @@ if(isset($_POST['sub'])){
   $office_address=$_POST['office_address'];
   $email_no=$_POST['email'];
   $rera=$_POST['rera'];
+  $veriotp=$_POST['veriotp'];
   $status=1;
   $pass= rand(100000, 999999);
   $email=$row['email'];
+  $otpsql=mysqli_query($conn,"SELECT * FROM otp where email='$email_no'");
+$otprow=mysqli_fetch_assoc($otpsql);
+$otp=$otprow['otp'];
+ 
+if($otp==$veriotp){
   $image=$_FILES['file']['name'];
   $tmp_name = $_FILES['file']['tmp_name']; 
     $size     = $_FILES['file']['size']; 
@@ -36,7 +47,6 @@ $imgEncoded = base64_encode(file_get_contents($tmp_name));
 
 //   move_uploaded_file($_FILES['image']['tmp_name'],$loc.$image);
 
- 
 $from = 'Enquiry <'.$email.'>' . "\r\n";
 $sendTo = 'Enquiry <'.$email_no.'>';
 $subject = 'Agreerent';
@@ -352,8 +362,12 @@ if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
 else{
   echo $responseArray['message'];
 }
-  
 }
+else{
+  echo "<script>alert('Invalid Otp');</script>";
+}
+}
+
 
 
 
@@ -368,6 +382,7 @@ else{
     <title>AGREERENT | Profile</title>
 
     <!-- Google Font: Source Sans Pro -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
@@ -444,7 +459,7 @@ else{
                                         <label for="exampleaddress" class="col-sm-2 col-form-label">Firm
                                             Name<label style="color:Red">*</label></label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="firmName"  placeholder="Enter Name"
+                                            <input type="text" class="form-control" name="firmName" id="firmName" placeholder="Enter Name"
                                                 required>
                                         </div>
                                     </div>
@@ -461,7 +476,7 @@ else{
                                         <label for="exampleInputMobile" class="col-sm-2 col-form-label">Office
                                             Address<label style="color:Red">*</label></label>
                                         <div class="col-sm-10">
-                                            <textarea name="office_address" style="width:100%;" rows="2"
+                                            <textarea name="office_address"  id= "office_address" style="width:100%;" rows="2"
                                                 placeholder="Enter Address" required></textarea>
                                         </div>
                                     </div>
@@ -478,16 +493,26 @@ else{
                                         <label for="exampleemail" class="col-sm-2 col-form-label">Email ID<label
                                                 style="color:Red">*</label></label>
                                         <div class="col-sm-10">
-                                            <input type="email" class="form-control" name="email" id="email"
-                                                placeholder="Enter Email ID" required>
-
+                                        <div class="input-group date" id="reservationdateAllowances" data-target-input="nearest">
+                                                <input type="email" class="form-control" name="email" id="email"
+                                                 placeholder="Enter Email ID" required>
+                                                 
+                                                <a class="btn btn-primary" id="otp" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Send OTP</a>
+            </div>
                                         </div>
+                                    </div>
+                                    <div class="form-group">
+                                    <div class="collapse multi-collapse row" id="multiCollapseExample1">
+                                        <label for="examplepan" class="col-sm-2 ml-1 col-form-label"></label>
+                                        <input type="text" class="form-control mt-2 col-lg-6" name="veriotp" id="veriotp" >
+                                        <p style="color:red;font-size:12px">Enter OTP sent to your registered email id</p>
+                                     </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="examplepan" class="col-sm-2 col-form-label">Rera No.</label>
                                         <div class="col-sm-10">
                                             <input type="text" class="form-control" name="rera"
-                                                placeholder="Enter Number" required>
+                                                placeholder="Enter Number" id="rera" required>
                                         </div>
                                     </div>
                                     <!-- <div class="form-group row">
@@ -502,13 +527,13 @@ else{
                                         <label for="examplepan" class="col-sm-2 col-form-label">Photo<label
                                                 style="color:Red">*</label></label>
                                         <div class="col-sm-10">
-                                            <input type="file" name="file">
+                                            <input type="file" id="image_input_field" name="file">
                                             
                                         </div>
                                     </div>
 
                                     <div class="col" align="right">
-                                        <button type="submit" name="sub" class="btn btn-primary  btn-lg"
+                                        <button type="submit" name="sub" id="otpverifysub" class="btn btn-primary  btn-lg"
                                             style="color: aliceblue">Submit</button>
                                     </div>
                                 </form>
@@ -537,7 +562,7 @@ else{
     <!-- ./wrapper -->
 
     <!-- jQuery -->
-    <script src="plugins/jquery/jquery.min.js"></script>
+    <!-- <script src="plugins/jquery/jquery.min.js"></script> -->
     <!-- Bootstrap 4 -->
     <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- bs-custom-file-input -->
@@ -547,10 +572,37 @@ else{
     <!-- AdminLTE for demo purposes -->
     <!-- Page specific script -->
     <script>
-    $(function() {
-        bsCustomFileInput.init();
-    });
+    
     </script>
+    
+    <script>
+        $(document).ready(function(){
+
+            $("#otp").on("click", function () {
+            let exampledno = $("#exampledno").val();
+            let email = $("#email").val();
+            let name = $("#name").val();
+            let otp = $("#otp").val();
+                $.ajax({
+                    type: "POST",
+                    url: "newcheck.php",
+                    data:{
+                        exampledno:exampledno,
+                        email:email,
+                        otp:otp,
+                        name:name,
+                    },
+                    cache: false,
+                    success: function(dnkotp)
+                    {
+                        alert(dnkotp);
+                    }
+                });
+            });
+        });
+    </script>
+
+
 </body>
 
 </html>

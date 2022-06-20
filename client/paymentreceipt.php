@@ -78,22 +78,31 @@ include("../config/config.php");
                                 <th>Owner Name</th>
                                 <th>Tenant Name</th>
                                 <th>Date of Agreement</th>
+                                <th>Deposit</th>
+                                <th>Rent</th>
                                 <th> Action </th>
                               </tr>
                   </thead>
                   <tbody>
-
+                    <?php
+                    $sql=mysqli_query($conn,"select payment.document_no, payment.rent_amount, payment.security_deposit, tenant.fullname, owner.fullname, new_agreement.date_of_agreement,new_agreement.documentid from payment inner join tenant on payment.document_no=tenant.document_no inner join owner on tenant.document_no=owner.document_no inner join new_agreement on tenant.document_no=new_agreement.document_no");
+                    $count=1;
+                    while($arr=mysqli_fetch_array($sql)){
+                      ?>
                            
                                                 <tr>
-                                                <td>.</td>
-                                                <td>  </td>
-                                                <td> </td>
-                                                <td> </td>
-                                                <td>  </td>
-                                                <td></td>
+                                                  <td><?php echo $count;?></td>
+                                                <td><?php echo $arr['document_no'];?></td>
+                                                <td><?php echo $arr['fullname'];?></td>
+                                                <td><?php echo $arr['fullname'];?></td>
+                                                <td><?php echo $arr['date_of_agreement'];?></td>
+                                                <td><?php echo $arr['security_deposit'];?></td>
+                                                <td><?php echo $arr['rent_amount'];?></td>
+                                                <td>  <a href="receipt.php?id=<?php echo $arr['documentid'] ?>"target="_blank"><button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue">  <i class="fas fa-eye"></i> </button></a></td>
                                               </tr>
-                                   
+                                   <?php $count++; }  ?>
                                           </tbody>
+                                          
                 </table>
               </div>
               <!-- /.card-body -->

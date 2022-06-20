@@ -4,6 +4,10 @@ if(!isset($_SESSION['admin']) == 1) // If session is not set then redirect to Lo
 {
  header("Location:adminlogin"); 
 }
+if(!isset($_SESSION['id'])) 
+{
+ header("Location:adminlogin.php"); 
+}
 include("../config/config.php");
 
 if(isset($_POST['otp'])){
@@ -75,12 +79,18 @@ try{
     }
   }
  if( mail($sendTo,$subject,$emailText, "From:" .$from)){
-
-  $sql=mysqli_query($conn,"INSERT INTO `otp`(`document_no`, `email`, `otp`) VALUES ('$exampledno','$email','$otp')");
+  $otpsql=mysqli_query($conn,"SELECT * FROM otp where email='$email'");
+  $otprow=mysqli_fetch_assoc($otpsql);
+  $emailotp=$otprow['email'];
+   if($emailotp==$email){
+    $sql=mysqli_query($conn,"UPDATE `otp` SET `otp`='$otp' WHERE email='$email'");
+   }
+   else{
+  $sql=mysqli_query($conn,"INSERT INTO `otp`(`document_no`, `email`, `otp`) VALUES ('$exampledno','$email','$otp')");}
    if($sql=1){
      echo "Otp send in your email";    }
    else{
-     echo "<script>alert('Something Wrong');</script>";
+     echo "Something Wrong";
    }
  }else{
     echo "eeee $sendTo $subject $emailText $from";
@@ -101,5 +111,6 @@ else{
 }
 
 
+//
 
 ?>

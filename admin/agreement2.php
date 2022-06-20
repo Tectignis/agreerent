@@ -5,6 +5,10 @@ if(!isset($_SESSION['admin']) == 1) // If session is not set then redirect to Lo
 {
  header("Location:login.php"); 
 }
+if(!isset($_SESSION['aid'])) 
+{
+ header("Location:adminlogin.php"); 
+}
 include("../config/config.php");
 $fid=$_GET['id'];
 
@@ -218,8 +222,8 @@ $doc=$arr['docno'];
     <p>As per the recent orders from the Department of police, the Licensee furnish the following details and further
         agrees to co-operate in getting No Objection Certificate from the local police by appearing personally as when
         called by the police under which jurisdiction the said premise is covered.</p>
-    <p>iPermanent Native Address:&nbsp;<?php echo $arr['permanent_address'];?></p>
-    <p>iiPresent Address :&nbsp;<?php echo $arr['address'];?></p>
+    <p>iPermanent Native Address:&nbsp;<b><?php echo $arr['permanent_address'];?></b></p>
+    <p>iiPresent Address :&nbsp;<b><?php echo $arr['address'];?></b></p>
     <?php if($doc==$fid){echo $arr['property_type']; }else{ echo ' - ' ;} ?>
     <p>iiiThe photograph of the LICENSOR and LICENSEE is a appended in appropriate place.</p>
     <?php 
@@ -235,11 +239,11 @@ $doc=$arr['docno'];
     <p><b>NOW THIS AGREEMENT WITNESSETH AS UNDER</b></p>
     <p>1. The owner do hereby grants to the LICENSEE his/her permission to enter upon, occupy and look after,
         temporarily, the said premises for a certain period of MONTHS, which shall commence from DAY of
-        <?php echo $arr['date_of_agreement'];?>. And shall expire on this day of <?php echo $arr['property_type'];?></p>
+        <b><?php echo $arr['date_of_agreement'];?></b>. And shall expire on this day of <b><?php echo $arr['property_type'];?></b></p>
     <p>2. The LICENSEE convents with the owenr that LICENSEE shall observe and perform the following terms and
         conditions:</p>
     <p>b To pay a Monthly compensation of sum of <b>Rs.<?php echo $arr['rent_amount'];?>/- </b>
-        (<u><?php echo $get_amount;?></u> ONLY.) as per English calendar month, in advance and thereafter on the<b><?php echo $arr['date_of_payment'];?></b> of
+        (<u>`<?php echo $get_amount;?></u> ONLY.) as per English calendar month, in advance and thereafter on the<b><?php echo $arr['date_of_payment'];?></b> of
         each ensuring month.</p>
     <p>C The Electricity, water and any others applicable service charges shall be regularly paid by the LICENSEE, where
         society maintenance charges and Lease Tax , property TAX , if any shall be paid by the OWNER/LICENSOR.</p>
@@ -294,10 +298,10 @@ $doc=$arr['docno'];
         $doc=$arr['document_no'];
 	?>
             <tr>
-                <td><?php echo $count;?></td>
-                <td><?php echo $arr['name'];?></td>
-                <td><?php echo $arr['relation'];?></td>
-                <td><?php echo $arr['age'];?></td>
+                <td><b><?php echo $count;?></b></td>
+                <td><b><?php echo $arr['name'];?></b></td>
+                <td><b><?php echo $arr['relation'];?></b></td>
+                <td><b><?php echo $arr['age'];?></b></td>
             </tr>
 
             <?php $count++; if($doc==$fid){echo $arr[' ']; }else{ echo ' - ' ;} ?>
@@ -322,9 +326,9 @@ $doc=$arr['docno'];
         $doc=$arr['document_no'];
 	?>
             <tr>
-                <td><?php echo $count;?></td>
-                <td><?php echo $arr['name'];?></td>
-                <td><?php echo $arr['number'];?></td>
+                <td><b><?php echo $count;?></b></td>
+                <td><b><?php echo $arr['name'];?></b></td>
+                <td><b><?php echo $arr['number'];?></b></td>
 
             </tr>
 
@@ -359,8 +363,8 @@ $doc=$arr['docno'];
     <p><b><?php echo $arr['abbreviation'];?><u><?php echo $arr['fullname'];?> </b></u></p>
     <p>In the presence of ………</p>
 
-    <p>1.<?php echo $arr['name1'];?></p>
-    <p>2.<?php echo $arr['name2'];?></p>
+    <p>1.<b><?php echo $arr['name1'];?></b></p>
+    <p>2.<b><?php echo $arr['name2'];?></b></p>
     <?php if($doc==$fid){echo $arr['property_type']; }else{ echo ' - ' ;} ?>
 
     <?php 
@@ -375,8 +379,8 @@ $doc=$arr['docno'];
     <p><b><?php echo $arr['abbreviation'];?><u><?php echo $arr['fullname'];?> </b></u></p>
     <p>In the presence of ………</p>
 
-    <p>1.<?php echo $arr['name1'];?></p>
-    <p>2.<?php echo $arr['name2'];?></p>
+    <p>1.<b><?php echo $arr['name1'];?></b></p>
+    <p>2.<b><?php echo $arr['name2'];?></b></p>
     <?php if($doc==$fid){echo $arr['property_type']; }else{ echo ' - ' ;} ?>
 
 
@@ -419,17 +423,17 @@ $doc=$arr['docno'];
                         $arr=mysqli_fetch_array($sql);
                         $doc=$arr['document_no'];
 						?>
-			<td colspan="3"><label><?php echo $arr['fullname'];?></label></br>
-						<label><?php echo $arr['address'];?></label></br>
-						<label><?php echo $arr['mobile'];?></label></td>
+			<td colspan="3"><label><b><?php echo $arr['fullname'];?></b></label></br>
+						<label><b><?php echo $arr['address'];?></b></label></br>
+						<label><b><?php echo $arr['mobile'];?></b></label></td>
 				
 
 		</tr>
 		<tr>
 			<td>२</td>
 			<td>घरमालकाचे पॅनकार्ड क्रमांक आणि आधार कार्ड क्रमांक<br>Pancard No and Aadhar Card No of Owner</td>
-			<td  colspan="3"><label><?php echo $arr['pan_card'];?></label></br>
-                            <label><?php echo $arr['aadhaar'];?></label></br></td>
+			<td  colspan="3"><label><b><?php echo $arr['pan_card'];?></b></label></br>
+                            <label><b><?php echo $arr['aadhaar'];?></b></label></br></td>
 		</tr>
 		<?php if($doc==$fid){echo $arr['property_type']; }else{ echo ' - ' ;} ?>
 		<tr>
@@ -441,22 +445,22 @@ $doc=$arr['docno'];
 						?>
 			<td>३</td>
 			<td>भाडेकरुचे संपूर्ण नाव, यापूर्वीचा पत्ता, वय, मोबाईल क्रमांक<br>Tenant Name, Previous Address & Mobile No. of Tenant</td>
-			<td  colspan="3"><label><?php echo $arr['fullname'];?></label></br>
-						<label><?php echo $arr['address'];?></label></br>
-						<label><?php echo $arr['mobile'];?></label></td>
+			<td  colspan="3"><label><b><?php echo $arr['fullname'];?></b></label></br>
+						<label><b><?php echo $arr['address'];?></b></label></br>
+						<label><b><?php echo $arr['mobile'];?></b></label></td>
 		</tr>
 		<tr>
 			<td>४</td>
 			<td>भाडेकरूचे पॅनकार्ड क्रमांक आणि आधार कार्ड क्रमांक<br>Pancard No and Aadhar Card No of Tenant</td>
-			<td  colspan="3"><label><?php echo $arr['pan_card'];?></label></br>
-                            <label><?php echo $arr['aadhaar'];?></label></br></td>
+			<td  colspan="3"><label><b><?php echo $arr['pan_card'];?></b></label></br>
+                            <label><b><?php echo $arr['aadhaar'];?></b></label></br></td>
 		</tr>
 		
 
 		<tr>
 			<td>५</td>
 			<td>भाडेकरुचे मूळ गावचा पत्ता<br>Tenant Permanent Address of Tenant</td>
-			<td  colspan="3"><?php echo $arr['permanent_address'];?></td>
+			<td  colspan="3"><b><?php echo $arr['permanent_address'];?></b></td>
 		</tr>
 		<?php if($doc==$fid){echo $arr['property_type']; }else{ echo ' - ' ;} ?>
 		<tr>
@@ -468,22 +472,22 @@ $doc=$arr['docno'];
                         ?>
 			<td>६</td>
 			<td>भाड्याने देण्यात येणाऱ्या जागेचा पत्ता <br>Address of Rental Room</td>
-			<td colspan="3"><label><?php echo $arr['address'];?></label></td>
+			<td colspan="3"><label><b><?php echo $arr['address'];?></b></label></td>
 			<?php if($doc==$fid){echo $arr['property_type']; }else{ echo ' - ' ;} ?>
 		</tr>	
 
 		<tr>
 		<?php 
                         
-                        $sql=mysqli_query($conn,"select * from agent_details where user_id='$_SESSION[id]'");
+                        $sql=mysqli_query($conn,"select * from agent_details ");
                         $arr=mysqli_fetch_array($sql);
                         $doc=$arr['document_no'];
                         ?>
 			<td>७</td>
 			<td>एजंटचे नाव, पत्ता, मोबाईल क्रमांक<br>Name of Agent, Address & Mobile No.</td>
-			<td colspan="3"><label><?php echo $arr['agent_name'];?></label><br>
-			<label><?php echo $arr['office_address'];?></label><br>
-			<?php echo $arr['mobile_no'];?></label><br></td>
+			<td colspan="3"><label><b><?php echo $arr['agent_name'];?></b></label><br>
+			<label><b><?php echo $arr['office_address'];?></b></label><br>
+			<b><?php echo $arr['mobile_no'];?></b></label><br></td>
 			<?php if($doc==$fid){echo $arr['property_type']; }else{ echo ' - ' ;} ?>
 
 		</tr>		
@@ -500,17 +504,17 @@ $doc=$arr['docno'];
 		    $sql=mysqli_query($conn,"select * from family_members where gender='male' and age>18 and document_no= '$fid'");
 		    $res=mysqli_num_rows($sql);
 		    ?>
-			<td align="center"><?php echo $res ?></td>
+			<td align="center"><b><?php echo $res ?></b></td>
 			<?php 
 		    $sql1=mysqli_query($conn,"select * from family_members where gender='female' and age>18 and document_no= '$fid'");
 		    $res1=mysqli_num_rows($sql1);
 		    ?>
-			<td align="center"><?php echo $res1 ?></td>
+			<td align="center"><b><?php echo $res1 ?></b></td>
 			<?php 
 		    $sql2=mysqli_query($conn,"select * from family_members where age<18 and document_no= '$fid'");
 		    $res2=mysqli_num_rows($sql2);
 		    ?>
-			<td align="center"><?php echo $res2 ?></td>
+			<td align="center"><b><?php echo $res2 ?></b></td>
 		</tr>
 		<tr>
 		<?php 
@@ -521,30 +525,30 @@ $doc=$arr['docno'];
 						?>
 			<td>९</td>
 			<td>भाडेकरुचे ई-मेल आयडी<br>E-mail ID of Tenant</td>
-			<td colspan="3"><label><?php echo $arr['email'];?></label></td>
+			<td colspan="3"><label><b><?php echo $arr['email'];?></b></label></td>
 		</tr>
 		<tr>
 			<td>१०</td>
 			<td>भाडेकरुचे पासपोर्ट नंबर <br> Passport No. of Tenant</td>
-			<td colspan="3"><label><?php echo $arr['passport'];?></label></td>
+			<td colspan="3"><label><b><?php echo $arr['passport'];?></b></label></td>
 		</tr>
 		<tr>
 			<td>११</td>
 			<td>कामाचे स्वरूप [पुराव्यासह]<br>Nature of Work & Proof</td>
-			<td colspan="3"><label><?php echo $arr['occupation'];?></label></td>
+			<td colspan="3"><label><b><?php echo $arr['occupation'];?></b></label></td>
 		</tr>
 		<tr>
 			<td>१२</td>
 			<td>काम करत असलेल्या कार्यालयाचे नाव, पत्ता, फोन नंबर <br>Office Name, Address & Phone No.</td>
 			<td colspan="3"><?php echo $arr['office_name'];?></label><br>
-			<?php echo $arr['office_addres'];?></label><br>
-			<?php echo $arr['office_phone'];?></label></td>
+			<b><?php echo $arr['office_addres'];?></b></label><br>
+			<b><?php echo $arr['office_phone'];?></b></label></td>
 		</tr>		
 		<tr>
 			<td>१३</td>
 			<td>भाडेकरुला ओळखणाऱ्या दोन व्यक्तीचे संपूर्ण नाव, पत्ता, मोबाईल क्रमांक <br>Two persons reference with Address & Mobile No.</td>
-			<td colspan="3"><label><?php echo $arr['name1'];?></label><br>
-			<label><?php echo $arr['name2'];?></label></td>
+			<td colspan="3"><label><b><?php echo $arr['name1'];?></b></label><br>
+			<label><b><?php echo $arr['name2'];?></b></label></td>
 		</tr>	
 		<?php if($doc==$fid){echo $arr['property_type']; }else{ echo ' - ' ;} ?>	
 		<tr>
@@ -556,13 +560,13 @@ $doc=$arr['docno'];
 						?>
 			<td>१४</td>
 			<td>करार केल्याची तारीक व कराराचा कालावधी <br>Date of Agreement & Period</td>
-			<td colspan="3">Start Date:-&nbsp;<label><?php $input=$arr['date_of_agreement']; $date=strtotime($input);
-										echo date('d-m-Y',$date);?></label>&nbsp;&nbsp;&nbsp;
-							End Date:-&nbsp;<label><?php $input=$arr['Enddate'];$date=strtotime($input);
-										echo date('d-m-Y',$date);?></label></br>
+			<td colspan="3">Start Date:-&nbsp;<label><b><?php $input=$arr['date_of_agreement']; $date=strtotime($input);
+										echo date('d-m-Y',$date);?></b></label>&nbsp;&nbsp;&nbsp;
+							End Date:-&nbsp;<label><b><?php $input=$arr['Enddate'];$date=strtotime($input);
+										echo date('d-m-Y',$date);?></b></label></br>
 										
 
-			<label><?php echo $arr['no_of_month'];?>&nbsp;Months</label></td>
+			<label><b><?php echo $arr['no_of_month'];?></b>&nbsp;Months</label></td>
 			<?php if($doc==$fid){echo $arr['property_type']; }else{ echo ' - ' ;} ?>	
 
 		</tr>
@@ -626,10 +630,10 @@ $doc=$arr['docno'];
 			<td>AREA(in Sq.feet)</td>
 		</tr>
 		<tr>
-			<td><?php echo $arr['address'];?></td>
-			<td><?php echo $arr['plot_no'];?></td>
-			<td><?php echo $arr['sector'];?></td>
-			<td><?php echo $arr['area'];?></td>
+			<td><b><?php echo $arr['address'];?></b></td>
+			<td><b><?php echo $arr['plot_no'];?></b></td>
+			<td><b><?php echo $arr['sector'];?></b></td>
+			<td><b><?php echo $arr['area'];?></b></td>
 		</tr>
 		<tr>
 			<td colspan="4">CIDCO APARTMENT:<b><?php echo $arr['cidco'];?></b></td>
@@ -667,10 +671,10 @@ $doc=$arr['docno'];
 			<td>Bank</td>
 		</tr>
 		<tr>
-			<td><?php echo $arr['method'];?></td>
-			<td><?php echo $arr['date'];?></td>
-			<td><?php echo $arr['security_deposit'];?></td>
-			<td><?php echo $arr['bank'];?></td>
+			<td><b><?php echo $arr['method'];?></b></td>
+			<td><b><?php echo $arr['date'];?></b></td>
+			<td><b><?php echo $arr['security_deposit'];?></b></td>
+			<td><b><?php echo $arr['bank'];?></b></td>
 		</tr>
 	</tbody>
 	<?php if($doc==$fid){echo $arr['property_type']; }else{ echo ' - ' ;} ?>
