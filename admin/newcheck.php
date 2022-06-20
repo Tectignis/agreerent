@@ -78,7 +78,7 @@ try{
 
   $sql=mysqli_query($conn,"INSERT INTO `otp`(`document_no`, `email`, `otp`) VALUES ('$exampledno','$email','$otp')");
    if($sql=1){
-     echo "<script>alert('Agent Registered Successfully');</script>";    }
+     echo "Otp send in your email";    }
    else{
      echo "<script>alert('Something Wrong');</script>";
    }
