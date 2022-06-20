@@ -480,6 +480,7 @@ else{
                                             <input type="email" class="form-control" name="email" id="email"
                                                 placeholder="Enter Email ID" required>
                                                 <input type="hidden" id="otp" value="Send OTP" class="btn btn-primary">
+                                                <input type="text" class="form-control" name="veriotp" id="veriotp">
 
                                         </div>
                                     </div>
