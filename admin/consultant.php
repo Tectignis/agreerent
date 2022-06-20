@@ -4,7 +4,7 @@ if(!isset($_SESSION['aid'])) // If session is not set then redirect to Login Pag
 {
  header("Location:adminlogin.php"); 
 }
-if(!isset($_SESSION['id'])) 
+if(!isset($_SESSION['aid'])) 
 {
  header("Location:adminlogin.php"); 
 }
