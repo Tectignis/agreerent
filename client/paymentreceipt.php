@@ -15,7 +15,7 @@ include("../config/config.php");
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AGREERENT | Payment Recipt</title>
+  <title>AGREERENT | Payment Receipt</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -46,12 +46,12 @@ include("../config/config.php");
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Payment Recipt</h1>
+            <h1>Payment Receipt</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Payment Recipt</li>
+              <li class="breadcrumb-item active">Payment Receiptt</li>
             </ol>
           </div>
         </div>
@@ -66,7 +66,7 @@ include("../config/config.php");
             <!-- /.card -->
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Payment Recipt</h3>
+                <h3 class="card-title">Payment Receipt</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
