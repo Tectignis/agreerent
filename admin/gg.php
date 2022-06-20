@@ -477,10 +477,16 @@ else{
                                         <label for="exampleemail" class="col-sm-2 col-form-label">Email ID<label
                                                 style="color:Red">*</label></label>
                                         <div class="col-sm-10">
-                                            <input type="email" class="form-control" name="email" id="email"
-                                                placeholder="Enter Email ID" required>
+                                               <div class="d-flex">
+                                                <input type="email" class="form-control" name="email" id="email"
+                                                 placeholder="Enter Email ID" required>
+                                                 <div class="input-group-append" >
+                                                <button type="button" class=" btn btn-primary" data-bs-toggle="collapse"
+                                                href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Get an OTP</button>
+                                                 </div>
                                                 <input type="button" id="otp" value="Send OTP" class="btn btn-primary">
-                                                <input type="text" class="form-control" name="veriotp" id="veriotp">
+            </div>
+                                                <input type="hidden" class="form-control mt-2" name="veriotp" id="veriotp" required>
 
                                         </div>
                                     </div>
@@ -570,7 +576,7 @@ else{
                     cache: false,
                     success: function(dnk)
                     {
-                        alert(dnk);
+                        $("#veriotp").css(visibility:visible);
                     }
                 });
             });
