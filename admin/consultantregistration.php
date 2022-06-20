@@ -343,9 +343,9 @@ try{
   $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`firm_name`,`status`,`image`) 
    VALUES ('$user_id','$agent_name','$email_no','$passwordhash','$rera','$office_address','$mobile_no','$firm_name','$status','$image')");
    if($sql=1){
-     echo "Agent Registered Successfully";    }
+     echo "<script>alert('Agent Registered Successfully');</script>";    }
    else{
-     echo "Something Wrong";
+     echo "<script>alert('Something Wrong');</script>";
    }
  }else{
     echo "eeee $sendTo $subject $emailText $from";
@@ -364,7 +364,7 @@ else{
 }
 }
 else{
-  echo "Invalid Otp";
+  echo "<script>alert('Invalid Otp');</script>";
 }
 }
 
@@ -505,6 +505,7 @@ else{
                                     <div class="collapse multi-collapse row" id="multiCollapseExample1">
                                         <label for="examplepan" class="col-sm-2 ml-1 col-form-label"></label>
                                         <input type="text" class="form-control mt-2 col-lg-6" name="veriotp" id="veriotp" >
+                                        <p>Enter OTP sent to your registered email id</p>
                                      </div>
                                     </div>
                                     <div class="form-group row">
