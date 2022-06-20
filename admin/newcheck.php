@@ -8,6 +8,7 @@ include("../config/config.php");
 
 if(isset($_POST['otp'])){
 
+  echo "<script>alert('hello')</script>";
   $exampledno=$_POST['exampledno'];
   $email=$_POST['email'];
   $name=$_POST['name'];

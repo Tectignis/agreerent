@@ -553,10 +553,12 @@ else{
     });
     </script>
     <script>
+        $(document).ready(function(){
         $("#otp").click(function(){
+            alert('otp send');
             let exampledno = $("#exampledno").val();
             let email = $("#email").val();
-           
+            let name=$("#name").val();
                 $.ajax({
                     type: "POST",
                     url: "newcheck.php",
@@ -573,6 +575,7 @@ else{
                     }
                 });
             });
+        });
     </script>
 </body>
 
