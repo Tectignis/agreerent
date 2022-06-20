@@ -80,14 +80,14 @@
                   </li>
                   <li class="nav-item">
                       <a href="paymentreceipt" class="nav-link">
-                          <i class="fa fa-industry"></i>
+                          <i class="nav-icon fas fa-receipt"></i>
                           <p>
                              Payment Receipt
                           </p>
                       </a>
                   </li>
                   <li class="nav-item">
-                      <a href="#" class="nav-link">
+                      <a href="listofcomplaint" class="nav-link">
                           <i class="nav-icon fas fa-copy"></i>
                           <p>
                             Raise a Complaint
