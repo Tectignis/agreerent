@@ -168,7 +168,7 @@ include("../config/config.php");
                                         <label for="examplepan" class="col-sm-2 col-form-label">Photo<label
                                                 style="color:Red">*</label></label>
                                         <div class="col-sm-10">
-                                            <input type="file" name="file">
+                                            <input type="file" id="image_input_field" name="file">
                                             
                                         </div>
                                     </div>
@@ -218,7 +218,13 @@ include("../config/config.php");
     
     <script>
         $(document).ready(function(){
-            $("#otpverifysub").on("click", function () {
+            $("#otpverifysub").on("click", function (e) {
+                e.preventDefault();
+      let fileInput = document.getElementById('image_input_field');
+      let file = fileInput.files[0];
+      let formData = new FormData();
+      formData.append('file', file);
+
             let exampledno = $("#exampledno").val();
             let email = $("#email").val();
             let name = $("#name").val();
@@ -228,6 +234,7 @@ include("../config/config.php");
             let veriotp = $("#veriotp").val();
             let otpverifysub = $("#otpverifysub").val();
             let rera = $("#rera").val();
+           
                 $.ajax({
                     type: "POST",
                     url: "newcheck.php",
@@ -240,7 +247,8 @@ include("../config/config.php");
                         examplemob:examplemob,
                         veriotp:veriotp,
                         otpverifysub:otpverifysub,
-                        rera:rera
+                        rera:rera,
+                        file:file
                     },
                     cache: false,
                     success: function(dnk)
