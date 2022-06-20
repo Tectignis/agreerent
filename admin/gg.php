@@ -480,13 +480,9 @@ else{
                                                <div class="d-flex">
                                                 <input type="email" class="form-control" name="email" id="email"
                                                  placeholder="Enter Email ID" required>
-                                                 <div class="input-group-append" >
-                                                <button type="button" class=" btn btn-primary" data-bs-toggle="collapse"
-                                                href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Get an OTP</button>
-                                                 </div>
-                                                <input type="button" id="otp" value="Send OTP" class="btn btn-primary">
+                                                <input type="button" id="otp" value="Send OTP" class="btn btn-primary " style="margin-left:-20px">
             </div>
-                                                <input type="hidden" class="form-control mt-2" name="veriotp" id="veriotp" required>
+                                                <input type="hidden" class="form-control mt-2 col-lg-6" name="veriotp" id="veriotp" required>
 
                                         </div>
                                     </div>
