@@ -4,6 +4,10 @@ if(!isset($_SESSION['admin']) == 1) // If session is not set then redirect to Lo
 {
 // header("Location:dashboard.php"); 
 }
+if(!isset($_SESSION['aid'])) 
+{
+ header("Location:adminlogin.php"); 
+}
 include("../config/config.php");
 $d=$_SESSION['aid'];
   
@@ -21,6 +25,7 @@ if(isset($_POST["login"])){
 		if($verify==1){
 			$query=mysqli_query($conn,"UPDATE `users` SET `password`='$hashpassword' WHERE user_id='$d'");
       if($query){
+        session_destroy();   // function that Destroys Session 
         echo "<script>alert('Password Changed Successfully'),window.location='adminlogin';</script>";
       }
 		}
