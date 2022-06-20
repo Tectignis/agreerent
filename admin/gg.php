@@ -443,7 +443,7 @@ else{
                                         <label for="exampleaddress" class="col-sm-2 col-form-label">Firm
                                             Name<label style="color:Red">*</label></label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="firmName" placeholder="Enter Name"
+                                            <input type="text" class="form-control" name="firmName" id="firmName" placeholder="Enter Name"
                                                 required>
                                         </div>
                                     </div>
@@ -460,7 +460,7 @@ else{
                                         <label for="exampleInputMobile" class="col-sm-2 col-form-label">Office
                                             Address<label style="color:Red">*</label></label>
                                         <div class="col-sm-10">
-                                            <textarea name="office_address" style="width:100%;" rows="2"
+                                            <textarea name="office_address"  id= "office_address" style="width:100%;" rows="2"
                                                 placeholder="Enter Address" required></textarea>
                                         </div>
                                     </div>
@@ -477,10 +477,12 @@ else{
                                         <label for="exampleemail" class="col-sm-2 col-form-label">Email ID<label
                                                 style="color:Red">*</label></label>
                                         <div class="col-sm-10">
-                                            <input type="email" class="form-control" name="email" id="email"
-                                                placeholder="Enter Email ID" required>
-                                                <input type="button" id="otp" value="Send OTP" class="btn btn-primary">
-                                                <input type="text" class="form-control" name="veriotp" id="veriotp">
+                                               <div class="d-flex">
+                                                <input type="email" class="form-control" name="email" id="email"
+                                                 placeholder="Enter Email ID" required>
+                                                <input type="button" id="otp" value="Send OTP" class="btn btn-primary " style="margin-left:-20px">
+            </div>
+                                                <input type="text" class="form-control mt-2 col-lg-6" name="veriotp" style="visibility: hidden" id="veriotp" >
 
                                         </div>
                                     </div>
@@ -488,7 +490,7 @@ else{
                                         <label for="examplepan" class="col-sm-2 col-form-label">Rera No.</label>
                                         <div class="col-sm-10">
                                             <input type="text" class="form-control" name="rera"
-                                                placeholder="Enter Number" required>
+                                                placeholder="Enter Number" id="rera" required>
                                         </div>
                                     </div>
                                     <!-- <div class="form-group row">
@@ -509,7 +511,7 @@ else{
                                     </div>
 
                                     <div class="col" align="right">
-                                        <button type="submit" name="sub" class="btn btn-primary  btn-lg"
+                                        <button type="submit" name="sub" id="otpverifysub" class="btn btn-primary  btn-lg"
                                             style="color: aliceblue">Submit</button>
                                     </div>
                                 </form>
@@ -538,7 +540,7 @@ else{
     <!-- ./wrapper -->
 
     <!-- jQuery -->
-    <script src="plugins/jquery/jquery.min.js"></script>
+    <!-- <script src="plugins/jquery/jquery.min.js"></script> -->
     <!-- Bootstrap 4 -->
     <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- bs-custom-file-input -->
@@ -548,16 +550,16 @@ else{
     <!-- AdminLTE for demo purposes -->
     <!-- Page specific script -->
     <script>
-    $(function() {
-        bsCustomFileInput.init();
-    });
+    
     </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
-        $("#otp").click(function(){
+            $("#otp").on("click", function () {
             let exampledno = $("#exampledno").val();
             let email = $("#email").val();
-            let name=$("#name").val();
+            let name = $("#name").val();
+            let otp = $("#otp").val();
                 $.ajax({
                     type: "POST",
                     url: "newcheck.php",
@@ -565,14 +567,38 @@ else{
                         exampledno:exampledno,
                         email:email,
                         otp:otp,
-                        name:name
+                        name:name,
                     },
                     cache: false,
                     success: function(dnk)
                     {
                         alert(dnk);
+                        $("#veriotp").css('visibility','visible');
                     }
                 });
+            });
+
+            $("#otpverifysub").on("click", function () {
+                $("#otpverifysub").prop('disabled',true);
+
+                let exampledno = $("#exampledno").val();
+                let email = $("#email").val();
+                let name = $("#name").val();
+                let firmName = $("#firmName").val();
+                let office_address = $("#office_address").val();
+                let examplemob = $("#examplemob").val();
+                let veriotp = $("#veriotp").val();
+                let rera = $("#rera").val();
+
+                if(veriotp == ''){
+                    alert("Enter OTP");
+                }
+                else if(exampledno=='' || email=='' || name=='' || firmName=='' || office_address=='' || examplemob=='' || rera==''){
+                      alert("please fill all the fields")
+                }
+                else{
+                    $("#otpverifysub").prop('disabled',false);
+                }
             });
         });
     </script>
