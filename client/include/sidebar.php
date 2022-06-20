@@ -64,18 +64,10 @@
                       
                   </li>
            
-          
-        
-          
-
                           </p>
                       </a>
                   </li>
-                  
-                
-
-
-
+        
 
                   <li class="nav-header">Police Noc</li>
                   <li class="nav-item">
@@ -86,7 +78,22 @@
                           </p>
                       </a>
                   </li>
-
+                  <li class="nav-item">
+                      <a href="#" class="nav-link">
+                          <i class="fa fa-industry"></i>
+                          <p>
+                             Payment Recipt
+                          </p>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="#" class="nav-link">
+                          <i class="nav-icon fas fa-copy"></i>
+                          <p>
+                            Raise a Complaint
+                          </p>
+                      </a>
+                  </li>
                   <li class="nav-header">Other</li>
                   <li class="nav-item">
                       <a href="todolist" class="nav-link">
@@ -104,14 +111,8 @@
                           </p>
                       </a>
                   </li>
-                  <li class="nav-item">
-                      <a href="listofcomplaint" class="nav-link">
-                      <i class="nav-icon fa fa-clipboard-list"></i>
-                          <p>
-                              Complaint
-                          </p>
-                      </a>
-                  </li>
+                  <li class="nav-header">Setting</li>
+                  
                   <li class="nav-item">
                       <a href="profile" class="nav-link">
                           <i class="nav-icon fas fa-user"></i>
@@ -119,6 +120,30 @@
                               Profile
                           </p>
                       </a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="#" class="nav-link">
+                          <i class="fas fa-users"></i>
+                          <p>
+                             Change pwd
+                          </p>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="#" class="nav-link">
+                          <i class="fas fa-users"></i>
+                          <p>
+                              Reports
+                          </p>
+                      </a>
+                      <li class="nav-item">
+                      <a href="#" class="nav-link">
+                          <i class="fas fa-users"></i>
+                          <p>
+                              Enhancement
+                          </p>
+                      </a>
+                  </li>
                   </li>
               </ul>
           </nav>
