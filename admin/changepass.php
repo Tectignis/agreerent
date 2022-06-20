@@ -5,12 +5,14 @@ if(!isset($_SESSION['admin']) == 1) // If session is not set then redirect to Lo
 // header("Location:dashboard.php"); 
 }
 include("../config/config.php");
-
+$d=$_SESSION['aid'];
+echo $d;
 if(isset($_POST["login"])){
 	$password=$_POST["password"];
 	$newpassword=$_POST["newpassword"];
-$id=$_SESSION['aid'];
-	$sql = mysqli_query($conn,"SELECT * FROM agent_details WHERE user_id='$id'") ;
+
+
+	$sql = mysqli_query($conn,"SELECT * FROM users WHERE user_id='$d'") ;
 		$row=mysqli_fetch_assoc($sql); 
 		$verify=password_verify($password,$row['password']);
 	
@@ -53,7 +55,7 @@ $id=$_SESSION['aid'];
     <div class="card-body">
       <p class="login-box-msg">You You Can Change Your Password Here</p>
       <form method="post">
-               
+      <?php echo $d; ?>
                 <div class="form-group">
                   <input type="password" class="form-control form-control-lg" name="password" id="exampleInputPassword1" placeholder="Old Password">
                 </div>
