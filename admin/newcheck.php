@@ -82,7 +82,7 @@ try{
   $otpsql=mysqli_query($conn,"SELECT * FROM otp where email='$email_no'");
   $otprow=mysqli_fetch_assoc($otpsql);
   $emailotp=$otprow['email'];
-   if($emailotp==$email_no){
+   if(mysqli_num_rows($query)>0){
     $sql=mysqli_query($conn,"UPDATE `otp` SET `otp`='$otp' WHERE email='$email_no'");
    }
    else{
