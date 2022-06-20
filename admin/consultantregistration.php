@@ -444,7 +444,7 @@ else{
                                         <label for="exampleaddress" class="col-sm-2 col-form-label">Firm
                                             Name<label style="color:Red">*</label></label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="firmName" placeholder="Enter Name"
+                                            <input type="text" class="form-control" name="firmName"  placeholder="Enter Name"
                                                 required>
                                         </div>
                                     </div>
@@ -453,7 +453,7 @@ else{
                                         <label for="exampleaddress" class="col-sm-2 col-form-label">Agent
                                             Name<label style="color:Red">*</label></label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="name" placeholder="Enter Name"
+                                            <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name"
                                                 required>
                                         </div>
                                     </div>
@@ -478,7 +478,7 @@ else{
                                         <label for="exampleemail" class="col-sm-2 col-form-label">Email ID<label
                                                 style="color:Red">*</label></label>
                                         <div class="col-sm-10">
-                                            <input type="email" class="form-control" name="email"
+                                            <input type="email" class="form-control" name="email" id="email"
                                                 placeholder="Enter Email ID" required>
 
                                         </div>

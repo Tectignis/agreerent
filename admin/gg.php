@@ -452,7 +452,7 @@ else{
                                         <label for="exampleaddress" class="col-sm-2 col-form-label">Agent
                                             Name<label style="color:Red">*</label></label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="name" placeholder="Enter Name"
+                                            <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name"
                                                 required>
                                         </div>
                                     </div>
@@ -477,8 +477,10 @@ else{
                                         <label for="exampleemail" class="col-sm-2 col-form-label">Email ID<label
                                                 style="color:Red">*</label></label>
                                         <div class="col-sm-10">
-                                            <input type="email" class="form-control" name="email"
+                                            <input type="email" class="form-control" name="email" id="email"
                                                 placeholder="Enter Email ID" required>
+                                                <input type="button" id="otp" value="Send OTP" class="btn btn-primary">
+                                                <input type="text" class="form-control" name="veriotp" id="veriotp">
 
                                         </div>
                                     </div>
@@ -536,7 +538,7 @@ else{
     <!-- ./wrapper -->
 
     <!-- jQuery -->
-    <script src="plugins/jquery/jquery.min.js"></script>
+    <!-- <script src="plugins/jquery/jquery.min.js"></script> -->
     <!-- Bootstrap 4 -->
     <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- bs-custom-file-input -->
@@ -546,9 +548,33 @@ else{
     <!-- AdminLTE for demo purposes -->
     <!-- Page specific script -->
     <script>
-    $(function() {
-        bsCustomFileInput.init();
-    });
+    
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#otp").on("click", function () {
+            let exampledno = $("#exampledno").val();
+            let email = $("#email").val();
+            let name = $("#name").val();
+            let otp = $("#otp").val();
+                $.ajax({
+                    type: "POST",
+                    url: "newcheck.php",
+                    data:{
+                        exampledno:exampledno,
+                        email:email,
+                        otp:otp,
+                        name:name,
+                    },
+                    cache: false,
+                    success: function(dnk)
+                    {
+                        alert(dnk);
+                    }
+                });
+            });
+        });
     </script>
 </body>
 
