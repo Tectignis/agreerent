@@ -46,6 +46,11 @@ $imgEncoded = base64_encode(file_get_contents($tmp_name));
 //   $loc="dist/img/";
 
 //   move_uploaded_file($_FILES['image']['tmp_name'],$loc.$image);
+$query=mysqli_query($conn,"select * from agent_details where email='$email_no'");
+if(mysqli_num_rows($query)>0){
+    echo "<script>alert('Email already Registered');</script>";
+}
+else{
 
 $from = 'Enquiry <'.$email.'>' . "\r\n";
 $sendTo = 'Enquiry <'.$email_no.'>';
@@ -363,6 +368,8 @@ else{
   echo $responseArray['message'];
 }
 }
+}
+
 else{
   echo "<script>alert('Invalid Otp');</script>";
 }
