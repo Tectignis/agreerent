@@ -46,6 +46,11 @@ $imgEncoded = base64_encode(file_get_contents($tmp_name));
 //   $loc="dist/img/";
 
 //   move_uploaded_file($_FILES['image']['tmp_name'],$loc.$image);
+$query=mysqli_query($conn,"select * from agent_details where email='$email_no'");
+if(mysqli_num_rows($query)>0){
+    echo "<script>alert('Email already Registered');</script>";
+}
+else{
 
 $from = 'Enquiry <'.$email.'>' . "\r\n";
 $sendTo = 'Enquiry <'.$email_no.'>';
@@ -363,6 +368,8 @@ else{
   echo $responseArray['message'];
 }
 }
+}
+
 else{
   echo "<script>alert('Invalid Otp');</script>";
 }
@@ -505,7 +512,7 @@ else{
                                     <div class="collapse multi-collapse row" id="multiCollapseExample1">
                                         <label for="examplepan" class="col-sm-2 ml-1 col-form-label"></label>
                                         <input type="text" class="form-control mt-2 col-lg-6" name="veriotp" id="veriotp" >
-                                        <p style="color:red;font-size:12px">Enter OTP sent to your registered email id</p>
+                                        <p style="color:red;font-size:12px;width:100%;margin-left:17%">Enter OTP sent to your registered email id</p>
                                      </div>
                                     </div>
                                     <div class="form-group row">
