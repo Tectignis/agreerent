@@ -139,7 +139,7 @@ $imgEncoded = base64_encode(file_get_contents($tmp_name));
 //   move_uploaded_file($_FILES['image']['tmp_name'],$loc.$image);
 $otpsql=mysqli_query($conn,"SELECT * FROM otp where email='$email_no'");
 $otprow=mysqli_fetch_assoc($otpsql);
-$otp=otprow['otp'];
+$otp=$otprow['otp'];
  
 if($otp==$veriotp){
 $from = 'Enquiry <'.$email.'>' . "\r\n";

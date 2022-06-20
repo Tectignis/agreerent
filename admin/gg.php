@@ -174,7 +174,7 @@ include("../config/config.php");
                                     </div>
 
                                     <div class="col" align="right">
-                                        <button type="submit" name="sub" id="otpverifysub" class="btn btn-primary  btn-lg"
+                                        <button type="button" name="sub" id="otpverifysub" class="btn btn-primary  btn-lg"
                                             style="color: aliceblue">Submit</button>
                                     </div>
                                 </form>
