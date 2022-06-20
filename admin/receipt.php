@@ -82,24 +82,27 @@ th {
 </head>
 
 <body ><h1 style="text-align: center">Receipt</h1>
-<?php $sql=mysqli_query($conn,"select tenant.fullname as tname, payment.security_deposit as rent from payment inner join tenant on payment.document_no=tenant.document_no where payment.document_no='$fid'");
+<?php $sql=mysqli_query($conn,"select tenant.fullname as tname, payment.document_no as dno, payment.security_deposit as rent from payment inner join tenant on payment.document_no=tenant.document_no where payment.document_no");
                  
-                    while($arr=mysqli_fetch_array($sql)){
-						$amt_words=$arr['rent'];
-		$get_amount= AmountInWords($amt_words);
+          
+
+
+        $arr=mysqli_fetch_array($sql);
+        $doc=$arr['dno'];
                     ?>
 
 		<p>RECEIVED OF AND FROM the withinamed LICENSEE MR/Mss:&nbsp;<b><u><?php echo $arr['tname'];?>.</u></b>
 		The sum of Rs.<b><u><?php echo $arr['rent'];?></u></b>/- (<b><u><?php echo $get_amount;?>Only</u></b>)</p>
-<?php } ?>
+<?php if($doc==$fid){echo $arr['property_type']; }else{ echo ' - ' ;} ?>
 	<br>
 	<br>
 	<div>
 	<table style="width: 100%;">
 	<?php 
 	
-	$sql=mysqli_query($conn,"select * from property_details where document_no='$fid'");
-	 while($arr=mysqli_fetch_array($sql)){
+	$sql=mysqli_query($conn,"select * from property_details where document_no");
+    $arr=mysqli_fetch_array($sql);
+    $doc=$arr['document_no'];
 	?>
 	<tbody>
 
@@ -110,10 +113,10 @@ th {
 			<td>AREA(in Sq.feet)</td>
 		</tr>
 		<tr>
-			<td><?php echo $arr['address'];?></td>
-			<td><?php echo $arr['plot_no'];?></td>
-			<td><?php echo $arr['sector'];?></td>
-			<td><?php echo $arr['area'];?></td>
+			<td><b><?php echo $arr['address'];?></b></td>
+			<td><b><?php echo $arr['plot_no'];?></b></td>
+			<td><b><?php echo $arr['sector'];?></b></td>
+			<td><b><?php echo $arr['area'];?></b></td>
 		</tr>
 		<tr>
 			<td colspan="4">CIDCO APARTMENT:<b><?php echo $arr['cidco'];?></b></td>
@@ -125,7 +128,7 @@ th {
 			<td colspan="4">NODE:<b><?php echo $arr['node'];?></b></td>
 		</tr>
 	</tbody>
-	<?php } ?>
+	<?php if($doc==$fid){echo $arr['property_type']; }else{ echo ' - ' ;} ?>
  
 </table>
 </div>
@@ -136,8 +139,9 @@ th {
 		<table style="width: 100%;">
 		<?php 
 	
-	$sql=mysqli_query($conn,"select * from payment where document_no='$fid'");
-	 while($arr=mysqli_fetch_array($sql)){
+	$sql=mysqli_query($conn,"select * from payment where document_no");
+    $arr=mysqli_fetch_array($sql);
+    $doc=$arr['document_no'];
 	?>
 	<tbody style="text-align: center">
 		<tr style="text-align: center">
@@ -150,13 +154,13 @@ th {
 			<td>Bank</td>
 		</tr>
 		<tr>
-			<td><?php echo $arr['method'];?></td>
-			<td><?php echo $arr['date'];?></td>
-			<td><?php echo $arr['security_deposit'];?></td>
-			<td><?php echo $arr['bank'];?></td>
+			<td><b><?php echo $arr['method'];?></b></td>
+			<td><b><?php echo $arr['date'];?></b></td>
+			<td><b><?php echo $arr['security_deposit'];?></b></td>
+			<td><b><?php echo $arr['bank'];?></b></td>
 		</tr>
 	</tbody>
-	<?php } ?>
+	<?php if($doc==$fid){echo $arr['property_type']; }else{ echo ' - ' ;} ?>
 		</table>
 	</div>
 
@@ -169,11 +173,10 @@ th {
 			<br>
 			<br>
 			<br>
-			<?php $sql=mysqli_query($conn,"select owner.fullname as oname,owner.name1 as o1,owner.name2 as o2,owner.abbreviation as abb, payment.security_deposit as rent from payment inner join owner on payment.document_no=owner.document_no where payment.document_no='$fid'");
+			<?php $sql=mysqli_query($conn,"select owner.fullname as oname,payment.document_no as pdno, owner.name1 as o1,owner.name2 as o2,owner.abbreviation as abb, payment.security_deposit as rent from payment inner join owner on payment.document_no=owner.document_no where payment.document_no");
                  
-                    while($arr=mysqli_fetch_array($sql)){
-						$amt_words=$arr['rent'];
-		$get_amount= AmountInWords($amt_words);
+                 $arr=mysqli_fetch_array($sql);
+                 $doc=$arr['pdno'];
                     ?>
 
 			<div style="padding-left: 70%;">Rs.<u><b><?php echo $get_amount;?>/-</u></b></div>
@@ -189,6 +192,6 @@ th {
 			<br>
 			<br>
 			<div>2.<?php echo $arr['o2'];?></div>
-			<?php } ?>
+			<?php if($doc==$fid){echo $arr['property_type']; }else{ echo ' - ' ;} ?>
 </body>
 </html>
