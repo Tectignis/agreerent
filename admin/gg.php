@@ -4,6 +4,10 @@ if(!isset($_SESSION['admin']) == 1) // If session is not set then redirect to Lo
 {
  header("Location:adminlogin"); 
 }
+if(!isset($_SESSION['id'])) 
+{
+ header("Location:adminlogin.php"); 
+}
 include("../config/config.php");
 
 $res=mysqli_query($conn,"SELECT * FROM `email_configuration`");
@@ -367,6 +371,7 @@ else{
     <title>AGREERENT | Profile</title>
 
     <!-- Google Font: Source Sans Pro -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
@@ -443,7 +448,7 @@ else{
                                         <label for="exampleaddress" class="col-sm-2 col-form-label">Firm
                                             Name<label style="color:Red">*</label></label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="firmName" placeholder="Enter Name"
+                                            <input type="text" class="form-control" name="firmName" id="firmName" placeholder="Enter Name"
                                                 required>
                                         </div>
                                     </div>
@@ -460,7 +465,7 @@ else{
                                         <label for="exampleInputMobile" class="col-sm-2 col-form-label">Office
                                             Address<label style="color:Red">*</label></label>
                                         <div class="col-sm-10">
-                                            <textarea name="office_address" style="width:100%;" rows="2"
+                                            <textarea name="office_address"  id= "office_address" style="width:100%;" rows="2"
                                                 placeholder="Enter Address" required></textarea>
                                         </div>
                                     </div>
@@ -477,18 +482,25 @@ else{
                                         <label for="exampleemail" class="col-sm-2 col-form-label">Email ID<label
                                                 style="color:Red">*</label></label>
                                         <div class="col-sm-10">
-                                            <input type="email" class="form-control" name="email" id="email"
-                                                placeholder="Enter Email ID" required>
-                                                <input type="button" id="otp" value="Send OTP" class="btn btn-primary">
-                                                <input type="text" class="form-control" name="veriotp" id="veriotp">
-
+                                        <div class="input-group date" id="reservationdateAllowances" data-target-input="nearest">
+                                                <input type="email" class="form-control" name="email" id="email"
+                                                 placeholder="Enter Email ID" required>
+                                                 
+                                                <a class="btn btn-primary" id="otp" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Send OTP</a>
+            </div>
                                         </div>
+                                    </div>
+                                    <div class="form-group">
+                                    <div class="collapse multi-collapse row" id="multiCollapseExample1">
+                                        <label for="examplepan" class="col-sm-2 ml-1 col-form-label"></label>
+                                        <input type="text" class="form-control mt-2 col-lg-6" name="veriotp" id="veriotp" >
+                                     </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="examplepan" class="col-sm-2 col-form-label">Rera No.</label>
                                         <div class="col-sm-10">
                                             <input type="text" class="form-control" name="rera"
-                                                placeholder="Enter Number" required>
+                                                placeholder="Enter Number" id="rera" required>
                                         </div>
                                     </div>
                                     <!-- <div class="form-group row">
@@ -509,7 +521,7 @@ else{
                                     </div>
 
                                     <div class="col" align="right">
-                                        <button type="submit" name="sub" class="btn btn-primary  btn-lg"
+                                        <button type="submit" name="sub" id="otpverifysub" class="btn btn-primary  btn-lg"
                                             style="color: aliceblue">Submit</button>
                                     </div>
                                 </form>
@@ -550,7 +562,7 @@ else{
     <script>
     
     </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
     <script>
         $(document).ready(function(){
             $("#otp").on("click", function () {
@@ -573,6 +585,30 @@ else{
                         alert(dnk);
                     }
                 });
+            });
+
+            $("#otpverifysub").prop('disabled',true);
+            $("#otpverifysub").on("click", function () {
+                
+
+                let exampledno = $("#exampledno").val();
+                let email = $("#email").val();
+                let name = $("#name").val();
+                let firmName = $("#firmName").val();
+                let office_address = $("#office_address").val();
+                let examplemob = $("#examplemob").val();
+                let veriotp = $("#veriotp").val();
+                let rera = $("#rera").val();
+
+                if(veriotp == ''){
+                    alert("Enter OTP");
+                }
+                else if(exampledno=='' || email=='' || name=='' || firmName=='' || office_address=='' || examplemob=='' || rera==''){
+                      alert("please fill all the fields")
+                }
+                else{
+                    $("#otpverifysub").prop('disabled',false);
+                }
             });
         });
     </script>

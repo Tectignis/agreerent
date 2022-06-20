@@ -1,24 +1,21 @@
 <?php
 session_start();
-if(!isset($_SESSION['aid'])) // If session is not set then redirect to Login Page
+if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 {
- header("Location:adminlogin"); 
-}
-if(!isset($_SESSION['id'])) 
-{
- header("Location:adminlogin.php"); 
+ header("Location:clientlogin.php"); 
 }
 include("../config/config.php");
 
 
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AGEERENT | COMPLAINT STATUS</title>
+  <title>AGREERENT | Payment Receipt</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -30,13 +27,13 @@ include("../config/config.php");
   <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
-	<script src="https://kit.fontawesome.com/088a5b2b51.js" crossorigin="anonymous"></script>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <!-- Navbar -->
-  <?php include 'include/header.php'; ?>
+
   <!-- /.navbar -->
+  <?php include 'include/header.php'; ?>
 
   <!-- Main Sidebar Container -->
  <?php include 'include/sidebar.php'; ?>
@@ -49,12 +46,12 @@ include("../config/config.php");
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Complaint Status</h1>
+            <h1>Payment Receipt</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Complaint Status</li>
+              <li class="breadcrumb-item active">Payment Receiptt</li>
             </ol>
           </div>
         </div>
@@ -69,57 +66,43 @@ include("../config/config.php");
             <!-- /.card -->
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Complaint Status</h3>
-              <div class="card-tools">
-                <ul class="nav nav-pills ml-auto">
-                  <li class="nav-item">
-                    <a class="nav-link active" href="complaintform.php" data-tt="tooltip" title="" data-original-title="Click here to Add New Enquiry"><i class="fa-solid fa-circle-question"></i>&nbsp; Raise a complaint</a>
-                  </li>
-                </ul>
-              </div>				  
+                <h3 class="card-title">Payment Receipt</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Sr. No</th>
-                    <th>Complaint No.</th>
-                    <th>Subject</th>
-                    <th>Description</th>
-                    <th>Status</th>
-                  </tr>
+                                <th class="th-sm">Sr.No</th>
+                                <th>Document No</th>
+                                <th>Owner Name</th>
+                                <th>Tenant Name</th>
+                                <th>Date of Agreement</th>
+                                <th>Deposit</th>
+                                <th>Rent</th>
+                                <th> Action </th>
+                              </tr>
                   </thead>
                   <tbody>
-                    <?php 
-                        
-                        $sql=mysqli_query($conn,"select * from ticket where user_id='".$_SESSION['aid']."'");
-                        $count=1;
-                         while($arr=mysqli_fetch_array($sql)){
-                        ?>
-                  <tr>
-                    <td><?php echo $count;?></td>
-                    <td><?php echo $arr['complaint_code'];?>
-                    </td>
-                    <td><?php echo $arr['subject'];?></td>
-                    <td> <?php echo $arr['description'];?></td>
-                  <?php if($arr['status']=='0'){
-                  
-                  ?>
-                  <td><span class="badge badge-danger">OPEN</span></td>
-                  <?php }else{
-                    ?>
-                    <td><span class="badge badge-success">CLOSED</span></td>
-                    
                     <?php
-                  }
-                  
-                    ?>
-                  </tr>
-                  <?php } ?>
-                
-                  </tbody>
-                
+                    $sql=mysqli_query($conn,"select * from payment_receipt");
+                    $count=1;
+                    while($arr=mysqli_fetch_array($sql)){
+                      ?>
+                           
+                                                <tr>
+                                                  <td><?php echo $count;?></td>
+                                                <td><?php echo $arr['document_no'];?></td>
+                                                <td><?php echo $arr['owner_name'];?></td>
+                                                <td><?php echo $arr['tenant_name'];?></td>
+                                                <td><?php echo $arr['date_of_agreement'];?></td>
+                                                <td><?php echo $arr['deposite'];?></td>
+                                                <td><?php echo $arr['rent'];?></td>
+                                                <td>  <a href="paymentreceipt.php?id=<?php echo $arr['did'] ?>"><button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue">  <i class="fas fa-eye"></i> </button></a></td>
+                                              </tr>
+                                   <?php $count++; }  ?>
+                                          </tbody>
+                                          
                 </table>
               </div>
               <!-- /.card-body -->
@@ -135,7 +118,7 @@ include("../config/config.php");
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
- <?php include 'include/footer.php'; ?>
+   <?php include 'include/footer.php'; ?>
 
 
   <!-- Control Sidebar -->
@@ -164,25 +147,9 @@ include("../config/config.php");
 <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- AdminLTE App -->
+<script src="dist/js/table.js"></script>
 <script src="dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
 <!-- Page specific script -->
-<!-- <script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script> -->
+
 </body>
 </html>

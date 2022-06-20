@@ -47,7 +47,7 @@ include("../config/config.php");
           <div class="col-sm-5">
             <h1>Profile</h1>
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-7">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
               <li class="breadcrumb-item active">Profile</li>
@@ -109,9 +109,9 @@ include("../config/config.php");
                       </div>
                     </div>
                     <?php  } ?>
-                    <div class="card-footer">
+                   
                   <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
+               
                   </div>
             </form>
             </div>

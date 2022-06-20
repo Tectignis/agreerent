@@ -3,6 +3,10 @@ if(!isset($_SESSION['admin']) == 1) // If session is not set then redirect to Lo
 {
  header("Location:adminlogin.php"); 
 }
+if(!isset($_SESSION['id'])) 
+{
+ header("Location:adminlogin.php"); 
+}
 include("../config/config.php");
 
 ?>
@@ -156,7 +160,6 @@ include("../config/config.php");
     <!-- AdminLTE App -->
     <script src="dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="dist/js/demo.js"></script>
     <!-- Page specific script -->
     <script>
     $(function() {
