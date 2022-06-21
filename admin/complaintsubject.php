@@ -142,7 +142,7 @@ if(isset($_POST['submit']))
                 </div><!-- /.container-fluid -->
             </section>
             <!-- /.content -->
-   
+                         
         <!-- /.content-wrapper -->
         <?php include 'include/footer.php'; ?>
 
