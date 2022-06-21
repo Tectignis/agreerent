@@ -12,7 +12,7 @@ include("../config/config.php");
 
 if(isset($_GET['delid'])){
 $id=mysqli_real_escape_string($conn,$_GET['delid']);
-$sql=mysqli_query($conn,"delete from paidleads where id='$id'");
+$sql=mysqli_query($conn,"delete from leads where id='$id'");
 if($sql=1){
     header("location:paidleads.php");
 }
