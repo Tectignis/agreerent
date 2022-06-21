@@ -116,7 +116,7 @@ if($sql=1){
                         ?>
                                             <tr>
                                                 <td> <?php echo $arr['id'];?> </td>
-                                                <td> <?php echo $arr['client_name'];?> </td>
+                                                <td> <?php echo $arr['user_id'];?> </td>
                                                 <td> <?php echo $arr['client_name'];?> </td>
                                                 <td> <?php echo $arr['mobile'];?></td>
                                                 <td> <?php echo $arr['type'];?></td>
