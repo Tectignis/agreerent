@@ -110,12 +110,12 @@ if($sql=1){
                                         <tbody>
                                             <?php 
                         
-                        $sql=mysqli_query($conn,"select * from `paidleads` where user_id='$_SESSION[aid]'");
-                     
+                        $sql=mysqli_query($conn,"select * from `se` where user_id='$_SESSION[aid]'");
+                        $count=1;
                          while($arr=mysqli_fetch_array($sql)){
                         ?>
                                             <tr>
-                                                <td> <?php echo $arr['id'];?> </td>
+                                            <td>  <?php echo $count;?> </td>
                                                 <td> <?php echo $arr['client_name'];?> </td>
                                                 <td> <?php echo $arr['client_name'];?> </td>
                                                 <td> <?php echo $arr['mobile'];?></td>
@@ -131,7 +131,7 @@ if($sql=1){
 
                                             </tr>
 
-                                            <?php   } ?>
+                                            <?php $count++;  } ?>
                                         </tbody>
                                     </table>
                                 </div>
