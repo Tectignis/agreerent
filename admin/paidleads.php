@@ -111,11 +111,11 @@ if($sql=1){
                                             <?php 
                         
                         $sql=mysqli_query($conn,"select * from `leads` where user_id='$_SESSION[aid]'");
-                     
+                        $count=1;
                          while($arr=mysqli_fetch_array($sql)){
                         ?>
                                             <tr>
-                                                <td> <?php echo $arr['id'];?> </td>
+                                            <td>  <?php echo $count;?> </td>
                                                 <td> <?php echo $arr['user_id'];?> </td>
                                                 <td> <?php echo $arr['client_name'];?> </td>
                                                 <td> <?php echo $arr['mobile'];?></td>
