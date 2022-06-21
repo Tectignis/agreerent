@@ -12,7 +12,7 @@ include("../config/config.php");
 
 if(isset($_GET['delid'])){
 $id=mysqli_real_escape_string($conn,$_GET['delid']);
-$sql=mysqli_query($conn,"delete from paidleads where id='$id'");
+$sql=mysqli_query($conn,"delete from leads where id='$id'");
 if($sql=1){
     header("location:paidleads.php");
 }
@@ -115,9 +115,9 @@ if($sql=1){
                          while($arr=mysqli_fetch_array($sql)){
                         ?>
                                             <tr>
-                                            <td>  <?php echo $count;?> </td>
-                                                <td> <?php echo $arr['user_id'];?> </td>
-                                                <td> <?php echo $arr['client_name'];?> </td>
+                                            <td><?php echo $count;?> </td>
+                                                <td><?php echo $arr['user_id'];?> </td>
+                                                <td> <?php echo $arr['client_name'];?></td>
                                                 <td> <?php echo $arr['mobile'];?></td>
                                                 <td> <?php echo $arr['type'];?></td>
                                                 <td> <?php echo $arr['area'];?> </td>
