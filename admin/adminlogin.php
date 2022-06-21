@@ -122,7 +122,7 @@ $(document).ready(function() {
   title: 'Success',
   text: 'Login Successfully',
   showConfirmButton: false,
-  timer: 3000
+  timer: 1000
 }).then(function() {
         // Redirect the user
         window.location.href = "index";
