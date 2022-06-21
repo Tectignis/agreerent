@@ -110,7 +110,7 @@ if($sql=1){
                                         <tbody>
                                             <?php 
                         
-                        $sql=mysqli_query($conn,"select * from `paidleads` where user_id='$_SESSION[id]'");
+                        $sql=mysqli_query($conn,"select * from `paidleads` where user_id='$_SESSION[aid]'");
                      
                          while($arr=mysqli_fetch_array($sql)){
                         ?>
