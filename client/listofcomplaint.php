@@ -108,7 +108,7 @@ if($sql=1){
                                         <tbody>
                                             <?php 
                         
-                        $sql=mysqli_query($conn,"select * from `ticket`");
+                        $sql=mysqli_query($conn,"select * from `ticket` where user_id='$_SESSION[id]'");
                      $count=1;
                          while($arr=mysqli_fetch_array($sql)){
                         ?>
