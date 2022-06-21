@@ -131,7 +131,7 @@ if($sql=1){
 
                                             </tr>
 
-                                            <?php   } ?>
+                                            <?php $count++;  } ?>
                                         </tbody>
                                     </table>
                                 </div>
