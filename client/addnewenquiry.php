@@ -14,7 +14,7 @@ if(isset($_POST['submit'])){
   $description=$_POST['description'];
 
 	
-	$sql=mysqli_query($conn,"INSERT INTO `enquiry`(`name`,`mob_no`,`email`,`description`) VALUES ('$name','$mob_no','$email','$description')");
+	$sql=mysqli_query($conn,"INSERT INTO `clientenquiry`(`name`,`mob_no`,`email`,`description`) VALUES ('$name','$mob_no','$email','$description')");
   
 	if($sql==1){	
     header("location:enquiry.php");
