@@ -1,17 +1,18 @@
 <?php
 //new_agreement
+session_start();
 include("../config/config.php");
 
 if(isset($_POST['submit'])){
-	$document_main=$_POST['document_no11'];
+	$document_main=$_POST['no'];
 	$date=$_POST['date'];
 	$type=$_POST['type'];
 	$month=$_POST['month'];
   $place=$_POST['place'];
   $status=0;
 	
-	$sql=mysqli_query($conn,"INSERT INTO `new_agreement`(`user_id`,`document_no`, `property_type`, `date_of_agreement`, `no_of_month`,`place_of_agreement`) VALUES ('".$_SESSION['aid']."','$document_main','$type','$date','$month','$place')");
-  $query =mysqli_query($conn,"INSERT INTO `noc`(`document_no`, `status`) VALUES ('$no','$status')");
+	$sql=mysqli_query($conn,"INSERT INTO `new_agreement`(`user_id`,`document_no`, `property_type`, `date_of_agreement`, `no_of_month`,`place_of_agreement`) VALUES ('".$_SESSION['id']."','$document_main','$type','$date','$month','$place')");
+  $query =mysqli_query($conn,"INSERT INTO `noc`(`document_no`, `status`) VALUES ('$document_main','$status')");
 	if($sql==1){			
       
 		header("location:newagreement.php?documentbasid=".$document_main);

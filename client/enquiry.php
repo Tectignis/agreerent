@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['email'])) // If session is not set then redirect to Login Page
+if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 {
  header("Location:clientlogin.php"); 
 }
@@ -96,7 +96,7 @@ include("../config/config.php");
                                         <tbody>
                                         <?php 
                         
-                        $sql=mysqli_query($conn,"select * from enquiry");
+                        $sql=mysqli_query($conn,"select * from enquiry where user_id='".$_SESSION['id']."'");
                         $count=1;
                          while($arr=mysqli_fetch_array($sql)){
                         ?>
