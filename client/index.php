@@ -6,6 +6,14 @@ if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 }
 include("../config/config.php");
 
+if(isset($_GET['delid'])){
+  $id=mysqli_real_escape_string($conn,$_GET['delid']);
+  $sql=mysqli_query($conn,"delete from todo where id='$id'");
+  if($sql=1){
+    header("location:index");
+  }
+}
+
 
 function get_time_ago( $time )
   {
@@ -209,7 +217,7 @@ function get_time_ago( $time )
                     <small class="badge badge-danger"><i class="far fa-clock"></i><?php  echo get_time_ago(strtotime($arr['date']) );?></small>
                     <!-- General tools such as edit or delete-->
                     <div class="tools">
-                       <a href="todolist.php?delid=<?php echo $arr['id'] ?>" classb="tn btn-tool">
+                       <a href="index.php?delid=<?php echo $arr['id'] ?>" classb="tn btn-tool">
                     <i class="fas fa-trash"></i>
                   </a>
                     </div>
