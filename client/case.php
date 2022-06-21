@@ -94,7 +94,7 @@ if(isset($_GET['gen'])){
               <div class="card-header p-0 pt-1 ">
                 <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
                   <li class="nav-item">
-                  <a class="nav-link active" id="custom-tabs-two-home-tab" data-toggle="pill" href="#custom-tabs-two-home" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true"><h6> Pending Cases</h6></a> 
+                  <a class="nav-link active" id="custom-tabs-two-home-tab" data-toggle="pill" href="#custom-tabs-two-home" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true"><h6> Pending</h6></a> 
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" id="custom-tabs-two-profile-tab" data-toggle="pill" href="#custom-tabs-two-profile" role="tab" aria-controls="custom-tabs-two-profile" aria-selected="false"><h6>Complete</h6></a>
@@ -214,11 +214,11 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
                                         while($row=mysqli_fetch_array($sql)){
 
                                         ?>
-                                                                    <tr>
-                                                                        <td><?php echo $count; ?> </td>
-                                                                        <td><?php echo $row['newdoc']; ?></td>
-                                                                        <td><?php echo $row['tname']; ?></td>
-                                                                        <td><?php echo $row['owname']; ?></td>
+                                         <tr>
+                                             <td><?php echo $count; ?> </td>
+                                              <td><?php echo $row['newdoc']; ?></td>
+                                            <td><?php echo $row['tname']; ?></td>
+                                         <td><?php echo $row['owname']; ?></td>
                                                                         <td><?php echo $row['newdate']; ?></td>
                                                                         <td><?php echo $row['month']; ?></td>
                                                                         <td style="color:blue">Complete</td>

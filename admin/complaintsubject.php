@@ -1,41 +1,10 @@
-<?php
-session_start();
-if(!isset($_SESSION['admin']) == 0 AND ($_SESSION['aid'])) // If session is not set then redirect to Login Page
-{
- header("Location:adminlogin.php"); 
-}
-if(!isset($_SESSION['aid'])) 
-{
- header("Location:adminlogin.php"); 
-}
-
-include("../config/config.php");
-echo $_SESSION['aid'];
-echo $_SESSION['admin'];
-
-if(isset($_POST['submit'])){
-	$name=$_POST['name'];
-  $mob_no=$_POST['mob_no'];
-	$email=$_POST['email'];
-  $description=$_POST['description'];
-
-	
-	$sql=mysqli_query($conn,"INSERT INTO `enquiry`(`user_id`,`name`,`mob_no`,`email`,`description`) VALUES ('".$_SESSION['aid']."','$name','$mob_no','$email','$description')");
-  
-	if($sql==1){	
-    header("location:enquiry.php");
-	}else{
-		echo "<script>alert('Something went wrong');</script>";
-	}
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AGREERENT | Add New Enquiry</title>
+    <title>AGREERENT | Complaint Subject</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -49,12 +18,11 @@ if(isset($_POST['submit'])){
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
         <!-- Navbar -->
-        <?php include 'include/header.php'; ?>
-
+    
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <?php include 'include/sidebar.php'; ?>
+     
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -63,12 +31,12 @@ if(isset($_POST['submit'])){
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Add New Enquiry Form</h1>
+                            <h1>Complaint Form</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Add New Enquiry Form</li>
+                                <li class="breadcrumb-item active">Complaint Subject</li>
                             </ol>
                         </div>
                     </div>
@@ -84,30 +52,15 @@ if(isset($_POST['submit'])){
                             <!-- general form elements -->
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Add New Enquiry Form</h3>
+                                    <h3 class="card-title">Complaint Subject Form</h3>
                                 </div>
                                 <!-- /.card-header -->
                                 <!-- form start -->
-                                <form method="post">
+                                <form method="post">    
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="exampleInputname">Client Name</label>
-                                            <input type="text" class="form-control" id="exampleInputname" name="name"
-                                                placeholder="Enter Client Name">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputmobile">Mobile No</label>
-                                            <input type="phone" class="form-control" id="exampleInputmobile"
-                                                name="mob_no" placeholder="Enter Mobile No">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Email address</label>
-                                            <input type="email" name="email" class="form-control"
-                                                id="exampleInputEmail1" placeholder="Enter Email">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputdescription">Description</label>
-                                            <input type="textbox" name="description" class="form-control"
+                                            <label for="exampleInputdescription">Subject</label>
+                                            <input type="textbox" class="form-control" name="description"
                                                 id="exampleInputdescription" placeholder="Enter Description">
                                         </div>
                                     </div>
@@ -130,7 +83,7 @@ if(isset($_POST['submit'])){
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-        <?php include 'include/footer.php'; ?>
+   
 
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
@@ -149,7 +102,6 @@ if(isset($_POST['submit'])){
     <!-- AdminLTE App -->
     <script src="dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="dist/js/demo.js"></script>
     <!-- Page specific script -->
     <script>
     $(function() {

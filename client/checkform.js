@@ -76,6 +76,7 @@ $(document).ready(function () {
       },
     });
   });
+
   //property
   $("#submitproperty").on("click", function () {
     let no3 = $("#no3").val();

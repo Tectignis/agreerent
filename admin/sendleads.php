@@ -4,7 +4,7 @@ if(!isset($_SESSION['admin']) == 1) // If session is not set then redirect to Lo
 {
  header("Location:adminlogin"); 
 }
-if(!isset($_SESSION['id'])) 
+if(!isset($_SESSION['aid'])) 
 {
  header("Location:adminlogin.php"); 
 }
@@ -21,6 +21,11 @@ if(isset($_POST['submit'])){
 
 
     $sql = mysqli_query($conn,"INSERT INTO `leads`(`user_id`,`client_name`, `mobile`, `type`, `requirement`, `area`,`location`,`firm_name`) VALUES ('".$_SESSION['aid']."','$client_name','$mobile_no', '$type','$requirement','$area','$location','$firm_name')");
+    if($sql==1){	
+      header("location:paidleads");
+    }else{
+      echo "<script>alert('Something went wrong');</script>";
+    }
 }
 
 

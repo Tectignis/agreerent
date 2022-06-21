@@ -4,7 +4,7 @@ if(!isset($_SESSION['admin']) == 1) // If session is not set then redirect to Lo
 {
  header("Location:adminlogin.php"); 
 }
-if(!isset($_SESSION['id'])) 
+if(!isset($_SESSION['aid'])) 
 {
  header("Location:adminlogin.php"); 
 }
@@ -12,7 +12,7 @@ include("../config/config.php");
 
 if(isset($_GET['delid'])){
 $id=mysqli_real_escape_string($conn,$_GET['delid']);
-$sql=mysqli_query($conn,"delete from paidleads where id='$id'");
+$sql=mysqli_query($conn,"delete from leads where id='$id'");
 if($sql=1){
     header("location:paidleads.php");
 }
@@ -110,13 +110,13 @@ if($sql=1){
                                         <tbody>
                                             <?php 
                         
-                        $sql=mysqli_query($conn,"select * from `paidleads` where user_id='$_SESSION[id]'");
-                     
+                        $sql=mysqli_query($conn,"select * from `leads` where user_id='$_SESSION[aid]'");
+                        $count=1;
                          while($arr=mysqli_fetch_array($sql)){
                         ?>
                                             <tr>
-                                                <td> <?php echo $arr['id'];?> </td>
-                                                <td> <?php echo $arr['client_name'];?> </td>
+                                            <td>  <?php echo $count;?> </td>
+                                                <td> <?php echo $arr['user_id'];?> </td>
                                                 <td> <?php echo $arr['client_name'];?> </td>
                                                 <td> <?php echo $arr['mobile'];?></td>
                                                 <td> <?php echo $arr['type'];?></td>
@@ -131,7 +131,7 @@ if($sql=1){
 
                                             </tr>
 
-                                            <?php   } ?>
+                                            <?php $count++;  } ?>
                                         </tbody>
                                     </table>
                                 </div>

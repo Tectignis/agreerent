@@ -1,15 +1,15 @@
 <?php  
 session_start();
 
-if(!isset($_SESSION['aid'])) 
+if(!isset($_SESSION['id'])) 
 {
  header("Location:clientlogin.php"); 
 }
 
 if($_GET['id']==''){
-    header('Location:new_agreement.php');
+    header('Location:basic_detail.php');
     } 
-    include("../config/config.php");
+include("../config/config.php");
 $fid=$_GET['id'];
 function AmountInWords(float $amount)
 {

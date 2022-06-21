@@ -110,7 +110,7 @@ require '../PHPMailer/src/Exception.php';
 </div>
 </div>
 <div class="row">
-<div class="col-12"><a class="btn btn-block btn-secondary btn-lg font-weight-medium auth-form-btn" href="login.php">Cancel</a>
+<div class="col-12"><a class="btn btn-block btn-secondary btn-lg font-weight-medium auth-form-btn" href="adminlogin.php">Cancel</a>
 <button type="submit" onclick="fun()" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" name="forget" >Submit</button>
 </div>
 

@@ -1,12 +1,10 @@
 <?php
 //new_agreement
+session_start();
 include("../config/config.php");
 
-session_start();
-
-
 if(isset($_POST['submit'])){
-	$document_main=$_POST['document_no11'];
+	$document_main=$_POST['no'];
 	$date=$_POST['date'];
 	$type=$_POST['type'];
 	$month=$_POST['month'];
@@ -14,7 +12,7 @@ if(isset($_POST['submit'])){
   $status=0;
 	
 	$sql=mysqli_query($conn,"INSERT INTO `new_agreement`(`user_id`,`document_no`, `property_type`, `date_of_agreement`, `no_of_month`,`place_of_agreement`) VALUES ('".$_SESSION['id']."','$document_main','$type','$date','$month','$place')");
-  $query =mysqli_query($conn,"INSERT INTO `noc`(`document_no`, `status`) VALUES ('$no','$status')");
+  $query =mysqli_query($conn,"INSERT INTO `noc`(`document_no`, `status`) VALUES ('$document_main','$status')");
 	if($sql==1){			
       
 		header("location:newagreement.php?documentbasid=".$document_main);
@@ -57,45 +55,44 @@ else{
 
 //tenant
 if(isset($_POST['tenant'])){
-  $idtenant=$_POST['exampledno'];
-$surname=$_POST['exampleSelectmr'];
-$name=$_POST['txtname3'];
-$age=$_POST['id2'];
-$officename=$_POST['officename'];
-$officeno=$_POST['officeno'];
-$officeaddress=$_POST['officeaddress'];
-$permanent_address=$_POST['presentAddress'];
-$address=$_POST['residenceAddress'];
-$mobile=$_POST['phone'];
-$aadhaar=$_POST['txtAadhar1'];
-$pancard=$_POST['txtPANCard1'];
-$email=$_POST['emailcheck'];
-$passport=$_POST['passport'];
-
-$query1=mysqli_query($conn,"select document_no from tenant where document_no='$idtenant' order by document_no desc");
+     $idtenant=$_POST['exampledno'];
+	$surname=$_POST['exampleSelectmr'];
+	$name=$_POST['txtname3'];
+  $age=$_POST['id2'];
+  $officename=$_POST['officename'];
+  $officeno=$_POST['officeno'];
+  $officeaddress=$_POST['officeaddress'];
+  $permanent_address=$_POST['presentAddress'];
+	$address=$_POST['residenceAddress'];
+	$mobile=$_POST['phone'];
+	$aadhaar=$_POST['txtAadhar1'];
+	$pancard=$_POST['txtPANCard1'];
+  $email=$_POST['emailcheck'];
+	$passport=$_POST['passport'];
+	
+	$query1=mysqli_query($conn,"select document_no from tenant where document_no='$idtenant' order by document_no desc");
 $num1=mysqli_fetch_array($query1);
 $document1=$num1['document_no'];
 
-if($document1==$idtenant){
- $sql=mysqli_query($conn,"UPDATE `tenant` SET `document_no`='$idtenant',`abbreviation`='$surname',`fullname`='$name',`age`='$age',`address`='$address',`permanent_address`='$permanent_address',`mobile`='$mobile',`email`='$email',`passport`='$passport',`aadhaar`='$aadhaar',`pan_card`='$pancard',`office_name`='$officename',`office_addres`='$officeaddress',`office_phone`='$officeno'  WHERE document_no='$idtenant'");
-if($sql==1){	
-  echo "successfully updated";
- }else{
- echo "something went wrong";
+	if($document1==$idtenant){
+		$sql=mysqli_query($conn,"UPDATE `tenant` SET `document_no`='$idtenant',`abbreviation`='$surname',`fullname`='$name',`age`='$age',`address`='$address',`permanent_address`='$permanent_address',`mobile`='$mobile',`email`='$email',`passport`='$passport',`aadhaar`='$aadhaar',`pan_card`='$pancard',`office_name`='$officename',`office_addres`='$officeaddress',`office_phone`='$officeno'  WHERE document_no='$idtenant'");
+	if($sql==1){	
+     echo "successfully updated";
+  	}else{
+		echo "something went wrong";
+	}
+	
+	}
+	else{
+	$sql=mysqli_query($conn,"INSERT INTO `tenant`(`document_no`, `abbreviation`, `fullname`,`age`, `address`,`permanent_address`, `mobile`, `email`,`passport`,`aadhaar`, `pan_card`,`office_name`, `office_addres`, `office_phone`) VALUES 
+  ('$idtenant','$surname','$name','$age','$address','$permanent_address','$mobile','$email','$passport','$aadhaar','$pancard','$officename','$officeaddress','$officeno')");
+	if($sql==1){	
+    echo "Successfully Added";
+  	}else{
+		echo "Something went wrong";
+	}
 }
-
 }
-else{
-$sql=mysqli_query($conn,"INSERT INTO `tenant`(`document_no`, `abbreviation`, `fullname`,`age`, `address`,`permanent_address`, `mobile`, `email`,`passport`,`aadhaar`, `pan_card`,`office_name`, `office_addres`, `office_phone`) VALUES 
-('$idtenant','$surname','$name','$age','$address','$permanent_address','$mobile','$email','$passport','$aadhaar','$pancard','$officename','$officeaddress','$officeno')");
-if($sql==1){	
- echo "Successfully Added";
- }else{
- echo "Something went wrong";
-}
-}
-}
-
 
 
 //property
@@ -324,11 +321,11 @@ echo "please fill owner details";
 else if($document1!=$idpayment){
 echo "please fill tenant details";
 }
-elseif($doc2!=$idpayment){
-  echo "please fill property details";
-  }
 else if($document3!=$idpayment){
 echo "please fill family details";
+}
+elseif($doc2!=$idpayment){
+echo "please fill property details";
 }
 else if($document4!=$idpayment){
 echo "please fill amenities details";
@@ -337,7 +334,7 @@ else if($name1==""){
 echo "please fill witness details";
 }
 else{
-$sql=mysqli_query($conn,"UPDATE `payment` SET `document_no`='$idpayment',`security_deposit`='$security_deposit',`rent_amount`='$rent_amount',`bank`='$bank',`method`='$method',`date`='$date',`rentpay`='$rentpay',`tid`='$tid' WHERE document_no='$idpayment'");
+$sql=mysqli_query($conn,"UPDATE `payment` SET `document_no`='$idpayment',`security_deposit`='$security_deposit',`rent_amount`='$rent_amount',`bank`='$bank',`method`='$method',`date`='$date',`date_of_payment`='$rentpay',`tid`='$tid' WHERE document_no='$idpayment'");
 if($sql==1){
 echo "Successfully Added";
 }else{

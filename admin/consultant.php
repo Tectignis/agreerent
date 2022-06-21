@@ -4,7 +4,7 @@ if(!isset($_SESSION['aid'])) // If session is not set then redirect to Login Pag
 {
  header("Location:adminlogin.php"); 
 }
-if(!isset($_SESSION['id'])) 
+if(!isset($_SESSION['aid'])) 
 {
  header("Location:adminlogin.php"); 
 }
@@ -94,7 +94,7 @@ if(isset($_POST['submit'])){
 <div class="card-tools">
     <ul class="nav nav-pills ml-auto">
         <li class="nav-item">
-            <a class="nav-link active" href="consultantregistration" data-tt="tooltip" title="" data-original-title="Click here to Add New Enquiry"><i class="fas fa-user-friends mr-2"></i>Add</a>
+            <a class="nav-link active" href="gg.php" data-tt="tooltip" title="" data-original-title="Click here to Add New Enquiry"><i class="fas fa-user-friends mr-2"></i>Add</a>
         </li>
     </ul>
 </div>

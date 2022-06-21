@@ -4,7 +4,7 @@ if(!isset($_SESSION['admin']) == 1) // If session is not set then redirect to Lo
 {
 //  header("Location:adminlogin"); 
 }
-if(!isset($_SESSION['id'])) 
+if(!isset($_SESSION['aid'])) 
 {
  header("Location:adminlogin.php"); 
 }
@@ -777,7 +777,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                 <label for="exampldate" class="col-sm-2 col-form-label">Date Of 
                                                     Rent Payment<label style="color:Red">*</label></label>
                                                 <div class="col-sm-4">
-                                                    <input type="number" class="form-control" id="rentpay"
+                                                    <input type="number" class="form-control" id="rentpay" oninput="javascript: if (this.value.1 > this.31) this.value = this.value.slice(0, this.31);"
                                                         required>
                                                 </div>
                                             </div>
@@ -922,7 +922,6 @@ if(no1 == "" || abbreviation == "" || name == "" || age == "" || mobile == "" ||
 <script>
 let submitenant = document.getElementById("submitenant");
 submitenant.addEventListener("click", function(){
-let no2 = document.getElementById("no2").value;
 let abbreviation = document.getElementById("exampleSelectmr").value;
 let name1 = document.getElementById("txtname3").value;
 let mobile = document.getElementById("phone").value;
@@ -933,7 +932,7 @@ let age = document.getElementById("id2").value;
 let pancard = document.getElementById("txtPANCard1").value;
 let address = document.getElementById("residenceAddress").value;
 let permanent_address = document.getElementById("presentAddress").value;
-if(no2 == "" || abbreviation == "" || name1 == "" || mobile == "" || email == "" || aadhaar == "" || age == "" || pancard == "" || address == "" || permanent_address == ""  ){
+if( abbreviation == "" || name1 == "" || mobile == "" || email == "" || aadhaar == "" || age == "" || pancard == "" || address == "" || permanent_address == ""  ){
     swal("Oops...", "Please fill all the fields", "error");
 }
     else{

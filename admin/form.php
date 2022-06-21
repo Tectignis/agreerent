@@ -1,13 +1,8 @@
 <?php
+session_start();
 //new_agreement
 include("../config/config.php");
 
-session_start();
-
-if(!isset($_SESSION['id'])) 
-{
- header("Location:adminlogin.php"); 
-}
 if(isset($_POST['submit'])){
 	$document_main=$_POST['document_no11'];
 	$date=$_POST['date'];
@@ -17,7 +12,7 @@ if(isset($_POST['submit'])){
   $status=0;
 	
 	$sql=mysqli_query($conn,"INSERT INTO `new_agreement`(`user_id`,`document_no`, `property_type`, `date_of_agreement`, `no_of_month`,`place_of_agreement`) VALUES ('".$_SESSION['aid']."','$document_main','$type','$date','$month','$place')");
-  $query =mysqli_query($conn,"INSERT INTO `noc`(`document_no`, `status`) VALUES ('$no','$status')");
+  $sql =mysqli_query($conn,"INSERT INTO `noc`(`document_no`, `status`) VALUES ('$document_main','$status')");
 	if($sql==1){			
       
 		header("location:newagreement.php?documentbasid=".$document_main);
@@ -339,7 +334,7 @@ else if($name1==""){
 echo "please fill witness details";
 }
 else{
-$sql=mysqli_query($conn,"UPDATE `payment` SET `document_no`='$idpayment',`security_deposit`='$security_deposit',`rent_amount`='$rent_amount',`bank`='$bank',`method`='$method',`date`='$date',`rentpay`='$rentpay',`tid`='$tid' WHERE document_no='$idpayment'");
+$sql=mysqli_query($conn,"UPDATE `payment` SET `document_no`='$idpayment',`security_deposit`='$security_deposit',`rent_amount`='$rent_amount',`bank`='$bank',`method`='$method',`date`='$date',`date_of_payment`='$rentpay',`tid`='$tid' WHERE document_no='$idpayment'");
 if($sql==1){
 echo "Successfully Added";
 }else{

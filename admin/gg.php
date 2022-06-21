@@ -13,6 +13,8 @@ include("../config/config.php");
 $res=mysqli_query($conn,"SELECT * FROM `email_configuration`");
  $row=mysqli_fetch_array($res);	
 
+ 
+
 if(isset($_POST['sub'])){
 
   $user_id=$_POST['no'];
@@ -22,9 +24,15 @@ if(isset($_POST['sub'])){
   $office_address=$_POST['office_address'];
   $email_no=$_POST['email'];
   $rera=$_POST['rera'];
+  $veriotp=$_POST['veriotp'];
   $status=1;
   $pass= rand(100000, 999999);
   $email=$row['email'];
+  $otpsql=mysqli_query($conn,"SELECT * FROM otp where email='$email_no'");
+$otprow=mysqli_fetch_assoc($otpsql);
+$otp=$otprow['otp'];
+ 
+if($otp==$veriotp){
   $image=$_FILES['file']['name'];
   $tmp_name = $_FILES['file']['tmp_name']; 
     $size     = $_FILES['file']['size']; 
@@ -39,7 +47,6 @@ $imgEncoded = base64_encode(file_get_contents($tmp_name));
 
 //   move_uploaded_file($_FILES['image']['tmp_name'],$loc.$image);
 
- 
 $from = 'Enquiry <'.$email.'>' . "\r\n";
 $sendTo = 'Enquiry <'.$email_no.'>';
 $subject = 'Agreerent';
@@ -336,7 +343,7 @@ try{
   $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`firm_name`,`status`,`image`) 
    VALUES ('$user_id','$agent_name','$email_no','$passwordhash','$rera','$office_address','$mobile_no','$firm_name','$status','$image')");
    if($sql=1){
-     echo "<script>alert('Agent Registered Successfully');</script>";    }
+     echo "<script>alert('Agent Registered Successfully',window.location:'case');</script>";    }
    else{
      echo "<script>alert('Something Wrong');</script>";
    }
@@ -355,8 +362,12 @@ if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
 else{
   echo $responseArray['message'];
 }
-  
 }
+else{
+  echo "<script>alert('Invalid Otp');</script>";
+}
+}
+
 
 
 
@@ -494,6 +505,7 @@ else{
                                     <div class="collapse multi-collapse row" id="multiCollapseExample1">
                                         <label for="examplepan" class="col-sm-2 ml-1 col-form-label"></label>
                                         <input type="text" class="form-control mt-2 col-lg-6" name="veriotp" id="veriotp" >
+                                        <p>Enter OTP sent to your registered email id</p>
                                      </div>
                                     </div>
                                     <div class="form-group row">
@@ -515,7 +527,7 @@ else{
                                         <label for="examplepan" class="col-sm-2 col-form-label">Photo<label
                                                 style="color:Red">*</label></label>
                                         <div class="col-sm-10">
-                                            <input type="file" name="file">
+                                            <input type="file" id="image_input_field" name="file">
                                             
                                         </div>
                                     </div>
@@ -565,6 +577,7 @@ else{
     
     <script>
         $(document).ready(function(){
+
             $("#otp").on("click", function () {
             let exampledno = $("#exampledno").val();
             let email = $("#email").val();
@@ -580,38 +593,16 @@ else{
                         name:name,
                     },
                     cache: false,
-                    success: function(dnk)
+                    success: function(dnkotp)
                     {
-                        alert(dnk);
+                        alert(dnkotp);
                     }
                 });
             });
-
-            $("#otpverifysub").prop('disabled',true);
-            $("#otpverifysub").on("click", function () {
-                
-
-                let exampledno = $("#exampledno").val();
-                let email = $("#email").val();
-                let name = $("#name").val();
-                let firmName = $("#firmName").val();
-                let office_address = $("#office_address").val();
-                let examplemob = $("#examplemob").val();
-                let veriotp = $("#veriotp").val();
-                let rera = $("#rera").val();
-
-                if(veriotp == ''){
-                    alert("Enter OTP");
-                }
-                else if(exampledno=='' || email=='' || name=='' || firmName=='' || office_address=='' || examplemob=='' || rera==''){
-                      alert("please fill all the fields")
-                }
-                else{
-                    $("#otpverifysub").prop('disabled',false);
-                }
-            });
         });
     </script>
+
+
 </body>
 
 </html>
