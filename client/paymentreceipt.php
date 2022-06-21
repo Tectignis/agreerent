@@ -102,8 +102,7 @@ include("../config/config.php");
                                                 <td><?php echo $arr['date_of_agreement'];?></td>
                                                 <td><?php echo $arr['security_deposit'];?></td>
                                                 <td><?php echo $arr['rent_amount'];?></td>
-                                                <td>  <a href="receipt.php?id=<?php echo $arr['documentid'] ?>"target="_blank"><button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue">  <i class="fas fa-eye"></i> </button></a>
-                                              <a href="receipt.php?id=<?php echo $arr['documentid'] ?>"target="_blank"><button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue">  <i class="fas fa-eye"></i> </button></a></td>
+                                                <td>  <a href="receipt.php?id=<?php echo $arr['documentid'] ?>"target="_blank"><button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue">  <i class="fas fa-eye"></i> </button></a></td>
                                               </tr>
                                    <?php $count++; }  ?>
                                           </tbody>
