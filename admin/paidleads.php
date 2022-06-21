@@ -115,9 +115,9 @@ if($sql=1){
                          while($arr=mysqli_fetch_array($sql)){
                         ?>
                                             <tr>
-                                            <td>  <?php echo $count;?> </td>
-                                                <td> <?php echo $arr['user_id'];?> </td>
-                                                <td> <?php echo $arr['client_name'];?> </td>
+                                            <td><?php echo $count;?> </td>
+                                                <td><?php echo $arr['user_id'];?> </td>
+                                                <td> <?php echo $arr['client_name'];?></td>
                                                 <td> <?php echo $arr['mobile'];?></td>
                                                 <td> <?php echo $arr['type'];?></td>
                                                 <td> <?php echo $arr['area'];?> </td>
