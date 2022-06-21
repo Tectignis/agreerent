@@ -1,3 +1,30 @@
+<?php
+session_start();
+if(!isset($_SESSION['aid'])) // If session is not set then redirect to Login Page
+{
+ header("Location:adminlogin"); 
+}
+if(!isset($_SESSION['aid'])) 
+{
+ header("Location:adminlogin.php"); 
+}
+include("../config/config.php");
+
+if(isset($_POST['submit']))
+    {
+        $name = $_POST['name'];
+
+        $sql="INSERT INTO `subject`(`name`) VALUES ('$name')";
+        if (mysqli_query($conn, $sql)){
+          echo "<script> alert ('New record has been added successfully !');</script>";
+       }
+        else {
+          echo "<script> alert ('connection failed !');</script>";
+       }
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +45,12 @@
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
         <!-- Navbar -->
-    
+    <?php include 'include/header.php'; ?>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+ <?php include 'include/sidebar.php'; ?>
+
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
@@ -60,7 +92,7 @@
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="exampleInputdescription">Subject</label>
-                                            <input type="textbox" class="form-control" name="description"
+                                            <input type="textbox" class="form-control" name="name"
                                                 id="exampleInputdescription" placeholder="Enter Description">
                                         </div>
                                     </div>
@@ -69,21 +101,50 @@
                                     <div class="card-footer">
                                         <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                                     </div>
+</div>
                                 </form>
                             </div>
                         </div>
                         <!--/.col (left) -->
                         <!-- right column -->
-
+                        <div class="card card-primary">
+                        <div class="card-body">
+                        <div class="row">
+                        <div class="col-12">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                                <th class="th-sm">Sr.No</th>
+                                <th>subject</th>
+                               
+                              </tr>
+                  </thead>
+                  <tbody>
+                  <?php 
+                        
+                        $sql=mysqli_query($conn,"select * from subject ");
+                        $count=1;
+                         while($arr=mysqli_fetch_array($sql)){
+                        ?>
+                        <tr>
+                                <td><?php echo $count;?></td>
+                                <td><?php echo $arr['name'];?></td>
+                                <?php  $count++; } ?> </tbody>
+                         </tr>       
+                </table>
+              </div>
+</div>
+</div>
+</div>
                         <!--/.col (right) -->
                     </div>
                     <!-- /.row -->
                 </div><!-- /.container-fluid -->
             </section>
             <!-- /.content -->
-        </div>
-        <!-- /.content-wrapper -->
    
+        <!-- /.content-wrapper -->
+        <?php include 'include/footer.php'; ?>
 
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
