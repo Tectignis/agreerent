@@ -90,7 +90,7 @@ function get_time_ago( $time )
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard v1</li>
+              <li class="breadcrumb-item active">Dashboard</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -108,7 +108,7 @@ function get_time_ago( $time )
             <div class="small-box bg-info">
               <div class="inner">
                 <?php
-                               $query=mysqli_query($conn,"select * from enquiry where user_id='".$_SESSION['id']."'");
+                               $query=mysqli_query($conn,"select * from clientenquiry where user_id='".$_SESSION['id']."'");
                                 $count1=mysqli_num_rows($query);
                             ?>
                 <h3><?php echo $count1; ?></h3>
