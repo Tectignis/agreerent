@@ -14,8 +14,9 @@ $client_code=$_POST['number'];
 date_default_timezone_set('Asia/Kolkata');
     $date=date('Y-m-d H:i:s');
 	$status='Open';
+    $sess=$_SESSION['id'];
 	
-	$sql = mysqli_query($conn,"INSERT INTO `ticket`( `user_id`,`complaint_code`, `email_id`, `subject`, `description`, `date`,`status`) VALUES ('".$_SESSION['id']."','$client_code','$email', '$subject','$description', '$date','$status')") ;
+	$sql = mysqli_query($conn,"INSERT INTO `ticket`( `user_id`,`complaint_code`, `email_id`, `subject`, `description`, `date`,`status`) VALUES ('$sess','$client_code','$email', '$subject','$description', '$date','$status')") ;
   if($sql==1){
     echo "<script>alert('Register successfully'),window.location='listofcomplaint.php';</script>";
    
@@ -88,7 +89,7 @@ date_default_timezone_set('Asia/Kolkata');
                                     <?php $sql=mysqli_query($conn,"select * from ticket where user_id='".$_SESSION['id']."'");
                             $query =mysqli_query($conn,"select * from agent_details where user_id='".$_SESSION['id']."'");
                       $dnk=mysqli_num_rows($sql);
-                      $lastid=$dnk+1;
+                      $lastid=$dnk+2;
                       $arr=mysqli_fetch_array($query);
                       $name=$arr['agent_name'];
                       $first=$name;
@@ -116,7 +117,7 @@ date_default_timezone_set('Asia/Kolkata');
                                             <?php 
                    $query=mysqli_query($conn,"select * from subject");
                    ?>
- 
+ <?php echo $number; ?>
                        <select class="form-control select2" name="subject" style="width: 100%;" required>
                          <option selected="selected" disabled>select</option>
                          <?php

@@ -218,7 +218,9 @@ $(document).ready(function () {
       },
       cache: false,
       success: function (res7) {
-        swal("", res7, "success");
+        swal("", res7, "success").then(function() {
+          window.location.href = "case.php";
+      });
       },
     });
   });

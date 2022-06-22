@@ -306,7 +306,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                         No</label>
                                                     <div class="col-sm-4">
                                                         <input type="text" class="form-control" name="passport"
-                                                            id="passport" placeholder="Enter Passport Number">
+                                                            id="passport" placeholder="Enter Passport Number" required>
                                                     </div>
 
                                                     <label for="exampleaadhaar" class="col-sm-2 col-form-label">Aadhaar

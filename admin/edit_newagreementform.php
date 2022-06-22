@@ -61,20 +61,21 @@ if(isset($_POST['submitenan'])){
   $email=$_POST['emailcheck'];
 	$passport=$_POST['passport'];
 
-$query=mysqli_query($conn,"select * from tenant where document_no='$id' order by document_no desc");
+$query=mysqli_query($conn,"select * from tenant where document_no='$id'");
 $num=mysqli_fetch_array($query);
-$document=$num['document_no'];
 
-	if($document!=$idtenant){
+
+	if(!mysqli_num_rows($query)>0){
 		$sql=mysqli_query($conn,"INSERT INTO `tenant`(`document_no`, `abbreviation`, `fullname`,`age`, `address`,`permanent_address`, `mobile`, `email`,`passport`,`aadhaar`, `pan_card`,`office_name`, `office_addres`, `office_phone`) VALUES 
   ('$idtenant','$surname','$name','$age','$address','$permanent_address','$mobile','$email','$passport','$aadhaar','$pancard','$officename','$officeaddress','$officeno')");
 	if($sql==1){	
-     echo "successfully updated";
+     echo "successfully inserted";
   	}else{
 		echo "something went wrong";
 	}
 	}
 	else{
+		$document=$num['document_no'];
 	$sql=mysqli_query($conn,"UPDATE `tenant` SET `document_no`='$idtenant',`abbreviation`='$surname',`fullname`='$name',`age`='$age',`address`='$address',`permanent_address`='$permanent_address',`mobile`='$mobile',`email`='$email',`passport`='$passport',`aadhaar`='$aadhaar',`pan_card`='$pancard',`office_name`='$officename',`office_addres`='$officeaddress',`office_phone`='$officeno' WHERE document_no='$idtenant'");
 	if($sql==1){	
      echo "successfully updated";
