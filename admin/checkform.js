@@ -72,8 +72,11 @@ $(document).ready(function () {
       },
       cache: false,
       success: function (res2) {
-        alert(res2)
-        swal("Oops...", res2, "error");
+        if(success){
+        swal("Saved...", res2, "success");}
+        else{
+          swal("oops", res2, "error");
+        }
       },
     });
   });
