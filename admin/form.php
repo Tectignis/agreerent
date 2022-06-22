@@ -1,10 +1,10 @@
 <?php
-session_start();
 //new_agreement
+session_start();
 include("../config/config.php");
 
 if(isset($_POST['submit'])){
-	$document_main=$_POST['document_no11'];
+	$document_main=$_POST['no'];
 	$date=$_POST['date'];
 	$type=$_POST['type'];
 	$month=$_POST['month'];
@@ -65,7 +65,7 @@ if(isset($_POST['tenant'])){
   $permanent_address=$_POST['presentAddress'];
 	$address=$_POST['residenceAddress'];
 	$mobile=$_POST['phone'];
-	$aadhaar=$_POST['txtAadhar1'];
+	$aadhaar=$_POST['txAdhar'];
 	$pancard=$_POST['txtPANCard1'];
   $email=$_POST['emailcheck'];
 	$passport=$_POST['passport'];
