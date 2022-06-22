@@ -717,6 +717,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                             </div>
                                         </div>
                                     </div>
+                                    </div>
                                     <div class="tab-pane fade " id="payment" role="tabpanel"
                                         aria-labelledby="custom-tabs-two-settings-tab">
                                         <form method="post">
