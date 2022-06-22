@@ -312,7 +312,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                     <label for="exampleaadhaar" class="col-sm-2 col-form-label">Aadhaar
                                                         Card No.<label style="color:Red">*</label></label>
                                                     <div class="col-sm-4">
-                                                    <input type="number" name="aadhaar" class="form-control"
+                                                    <input type="tel" name="aadhaar" class="form-control"
                                                             id="txAdhar" placeholder="Enter Aadhaar card No" minlength="12"
                                                             maxlength="12" required>
                                                         <span id="spanAadharCard"></span>
