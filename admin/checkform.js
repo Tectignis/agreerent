@@ -140,19 +140,20 @@ $(document).ready(function () {
     });
   });
 
-$("#deletebutton").on("click", function(){
-  let delid=$("#deleteid").val();
-  $.ajax({    
-    type: "GET",
-    url: "delete-data.php", 
-    data:{delid:delid},            
-    dataType: "html",                  
-    success: function(data){   
-      swal("", res2, "success");
-   ;
+$(".deletebutton").on("click", function(){
+  alert('gggg');
+//   let delid=$("#deleteid").val();
+//   $.ajax({    
+//     type: "GET",
+//     url: "delete-data.php", 
+//     data:{delid:delid},            
+//     dataType: "html",                  
+//     success: function(data){   
+//       swal("", res2, "success");
+//    ;
        
-    }
-});
+//     }
+// });
 });
 
   //witness

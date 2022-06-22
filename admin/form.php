@@ -175,7 +175,7 @@ if(isset($_POST['submitmember'])){
         <td>". $arr['relation'] ."</td>
        <td>". $arr['age'] ."</td>
        <td>". $arr['gender'] ."</td>
-	   <td><button type='button' id='deletebutton' alt='delete'><i class='fas fa-trash'></i></button></td>
+	     <td><span class='btn btn-primary deletebutton' alt='delete' data-id='".$arr['id']."'><i class='fas fa-trash'></i></span></td> 
       </tr></form>";
        } 
     echo "</tbody>
