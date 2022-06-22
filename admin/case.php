@@ -161,29 +161,34 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
                                                                         <td style="color:red">Pending</td>
                                                                         <td class="row mx-1">
                                                                         <div class="btn-group btn-group-sm" role="group" aria-label="">
-                                                                            <a data-toggle="tooltip" data-placement="bottom" title="view" href="agreement.php?id=<?php echo $row['newdoc'];?>" target="_blank"
+                                                                            <!-- <a data-toggle="tooltip" data-placement="bottom" title="view" href="agreement.php?id=<?php echo $row['newdoc'];?>" target="_blank"
                                                                                 class="btn btn-primary btn-rounded btn-icon" ><i
-                                                                                    class="fas fa-eye"></i></a>&nbsp;
+                                                                                    class="fas fa-eye"></i></a>&nbsp; -->
                                                                             <!-- <a href="edit_newagreement.php?id=<?php echo $row['newdoc'];?>" 
                                                                                 class="btn btn-warning btn-rounded btn-icon"
                                                                                 style="color: aliceblue"><i
                                                                                     class="fas fa-pen"></i></i></a> -->
                                                                                     <a href="edit_newagreement.php?id=<?php echo $row['newdoc'];?>"
-                                                                                class="btn col btn-warning btn-rounded btn-sm btn-icon"
+                                                                                class="btn btn-warning btn-rounded btn-icon"
                                                                                 style="color: aliceblue"><i
                                                                                     class="fas fa-pen"></i></i></a>&nbsp;
-                                                                                    <a data-toggle="tooltip" data-placement="bottom" title="Stamp Paper" href="stamppaperpage.php?eid=<?php echo $row['newdoc'];?>"  target="_blank"
+                                                                                    <!-- <a data-toggle="tooltip" data-placement="bottom" title="Stamp Paper" href="stamppaperpage.php?eid=<?php echo $row['newdoc'];?>"  target="_blank"
                                                                                 class="btn btn-success btn-rounded btn-icon"><i class="fa fa-stamp"></i>
-                                                                               </a>&nbsp;
-                                                                               <a data-toggle="tooltip" data-placement="bottom" title="Agreement" href="agreement.php?eid=<?php echo $row['newdoc'];?>"  target="_blank"
+                                                                               </a>&nbsp; -->
+                                                                               <!-- <a data-toggle="tooltip" data-placement="bottom" title="Agreement" href="agreement.php?eid=<?php echo $row['newdoc'];?>"  target="_blank"
                                                                                 class="btn btn-info btn-rounded btn-icon"><i class="fa fa-file-contract"></i>
-                                                                              </a>&nbsp;
-                                                                            <a data-toggle="tooltip" data-placement="bottom" title="NOC" href="case.php?eid=<?php echo $row['newdoc'];?>"  target="_blank"
+                                                                              </a>&nbsp; -->
+                                                                            <!-- <a data-toggle="tooltip" data-placement="bottom" title="NOC" href="case.php?eid=<?php echo $row['newdoc'];?>"  target="_blank"
                                                                                 class="btn btn-danger btn-rounded btn-icon">
-                                                                               NOC</a>&nbsp;
-                                                                               <a data-toggle="tooltip" data-placement="bottom" title="Payment Receipt" href="receipt.php?eid=<?php echo $row['newdoc'];?>"  target="_blank"
+                                                                               NOC</a>&nbsp; -->
+                                                                               <!-- <a data-toggle="tooltip" data-placement="bottom" title="Payment Receipt" href="receipt.php?eid=<?php echo $row['newdoc'];?>"  target="_blank"
                                                                                 class="btn btn-warning btn-rounded btn-icon"><i class="fa fa-file-invoice-dollar"></i>
-                                                                               </a>
+                                                                               </a> -->
+
+                                                                               <a href="case.php?delid=<?php echo $arr['id']; ?>"><button
+                                                            type="button" class="btn btn-danger btn-rounded btn-icon"
+                                                            onclick="ConfirmDelete()" style="color: aliceblue"> <i
+                                                                class="fas fa-trash"></i> </button></a>
                                                                             </div>
                                                                         </td>
                                                                     </tr>
@@ -243,7 +248,7 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
                                          <td style="color:blue">Complete</td>
                                           <td class="row mx-1">
                                             <div class="btn-group btn-group-sm" role="group" aria-label="">
-                                            <a href="agreement.php?id=<?php echo $row['newdoc'];?>"  class="btn col btn-primary btn-rounded btn-sm btn-icon"><i  class="fas fa-eye"></i></a>
+                                            <a href="agreement2.php?id=<?php echo $row['newdoc'];?>"  class="btn col btn-primary btn-rounded btn-sm btn-icon"><i  class="fas fa-eye"></i></a>&nbsp;
                                             <a href="agreement.php?id=<?php echo $row['newdoc'];?>"
                                         class="btn col btn-info btn-rounded btn-sm btn-icon"><i class="fa fa-download"></i></a>
 
@@ -257,14 +262,30 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
                                                                                 }
                                                                                 elseif($status==0){
                                                                                 ?>
-                                                                            <a href="edit_newagreement.php?id=<?php echo $row['newdoc'];?>"
+                                                                            &nbsp;<a href="edit_newagreement.php?id=<?php echo $row['newdoc'];?>"
                                                                                 class="btn col btn-warning btn-rounded btn-sm btn-icon"
                                                                                 style="color: aliceblue"><i
-                                                                                    class="fas fa-pen"></i></i></a>
+                                                                                    class="fas fa-pen"></i></a>
+                                                                                    &nbsp;
                                                                             <a href="case.php?gen=<?php echo $row['newdoc'];?>"
                                                                                 class="btn col btn-success btn-sm btn-rounded btn-icon">
                                                                                 <i
                                                                                     class="fa fa-file"></i></a>
+                                                                                    &nbsp;
+                                                                                     <a data-toggle="tooltip" data-placement="bottom" title="Stamp Paper" href="stamppaperpage.php?eid=<?php echo $row['newdoc'];?>"  target="_blank"
+                                                                                class="btn btn-success btn-rounded btn-icon"><i class="fa fa-stamp"></i>
+                                                                               </a>
+
+                                                                               &nbsp;
+                                                                               <a data-toggle="tooltip" data-placement="bottom" title="Agreement" href="agreement.php?eid=<?php echo $row['newdoc'];?>"  target="_blank"
+                                                                                class="btn btn-info btn-rounded btn-icon"><i class="fa fa-file-contract"></i>
+                                                                              </a>&nbsp;
+                                                                            <!-- <a data-toggle="tooltip" data-placement="bottom" title="NOC" href="case.php?eid=<?php echo $row['newdoc'];?>"  target="_blank"
+                                                                                class="btn btn-danger btn-rounded btn-icon">
+                                                                               NOC</a>&nbsp; -->
+                                                                               <a data-toggle="tooltip" data-placement="bottom" title="Payment Receipt" href="receipt.php?eid=<?php echo $row['newdoc'];?>"  target="_blank"
+                                                                                class="btn btn-warning btn-rounded btn-icon"><i class="fa fa-file-invoice-dollar"></i>
+                                                                               </a>
                                                                                     </div>
                                                                             <?php
                                                                           
