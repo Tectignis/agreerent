@@ -53,7 +53,7 @@ if(isset($_POST["login"])){
      <h3>AGREERENT</h3>
     </div>
     <div class="card-body">
-      <p class="login-box-msg">You You Can Change Your Password Here</p>
+      <p class="login-box-msg"> You Can Change Your Password Here</p>
       <form method="post">
       
                 <div class="form-group">
