@@ -168,6 +168,10 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
                                                                                 class="btn btn-warning btn-rounded btn-icon"
                                                                                 style="color: aliceblue"><i
                                                                                     class="fas fa-pen"></i></i></a> -->
+                                                                                    <a href="edit_newagreement.php?id=<?php echo $row['newdoc'];?>"
+                                                                                class="btn col btn-warning btn-rounded btn-sm btn-icon"
+                                                                                style="color: aliceblue"><i
+                                                                                    class="fas fa-pen"></i></i></a>&nbsp;
                                                                                     <a data-toggle="tooltip" data-placement="bottom" title="Stamp Paper" href="stamppaperpage.php?eid=<?php echo $row['newdoc'];?>"  target="_blank"
                                                                                 class="btn btn-success btn-rounded btn-icon"><i class="fa fa-stamp"></i>
                                                                                </a>&nbsp;
