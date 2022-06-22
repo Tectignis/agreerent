@@ -4,7 +4,7 @@ session_start();
 include("../config/config.php");
 
 if(isset($_POST['submit'])){
-	$document_main=$_POST['exampledno'];
+	$document_main=$_POST['document_no11'];
 	$date=$_POST['date'];
 	$type=$_POST['type'];
 	$month=$_POST['month'];
