@@ -914,7 +914,7 @@ if(no1 == "" || abbreviation == "" || name == "" || age == "" || mobile == "" ||
 </script>
 
 <script>
-$("")
+$("#checkselec")
 </script>
 
 <script>
