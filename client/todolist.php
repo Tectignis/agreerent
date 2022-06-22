@@ -212,13 +212,13 @@ function get_time_ago( $time )
                 <!-- content-wrapper ends -->
                 <!-- partial:../../partials/_footer.html -->
                 <?php include 'include/footer.php'; ?>
-                <!-- partial -->
 
-            </div>
-            <!-- main-panel ends -->
-        </div>
-        <!-- page-body-wrapper ends -->
-    </div>
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+  <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
+</div>
     <!-- container-scroller -->
 
     <!-- plugins:js -->

@@ -853,28 +853,14 @@ if(isset($_POST["login"])){
           <!-- row -->
         </div>
         <!-- footer widget -->
-        <div class="footer-copyright">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="copyright d-sm-flex justify-content-between">
-                <div class="copyright-content">
-                  <p class="text">
-                    Designed and Developed by
-                    <a href="https://tectignis.in/" rel="nofollow">TECTIGNIS IT SOLUTIONS PRIVATE LIMITED.</a>
-                  </p>
-                </div>
-                <!-- copyright content -->
-              </div>
-              <!-- copyright -->
-            </div>
-          </div>
-          <!-- row -->
-        </div>
-        <!-- footer copyright -->
-      </div>
-      <!-- container -->
-      <div id="particles-2"></div>
-    </footer>
+        <?php include 'include/footer.php'; ?>
+
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+  <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
+</div>
     <!--====== FOOTER PART ENDS ======-->
 
     <!--====== BACK TOP TOP PART START ======-->
