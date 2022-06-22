@@ -313,8 +313,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                         Card No.<label style="color:Red">*</label></label>
                                                     <div class="col-sm-4">
                                                     <input type="number" name="aadhaar" class="form-control"
-                                                            id="txAdhar" placeholder="Enter Aadhaar card No"
-                                                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                            id="txAdhar" placeholder="Enter Aadhaar card No" minlength="12"
                                                             maxlength="12" required>
                                                         <span id="spanAadharCard"></span>
                                                     </div>
