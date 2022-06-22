@@ -97,8 +97,8 @@ include("../config/config.php");
                                                 <tr>
                                                   <td><?php echo $count;?></td>
                                                 <td><?php echo $arr['document_no'];?></td>
-                                                <td><?php echo $arr['fullname'];?></td>
                                                 <td><?php echo $arr['oname'];?></td>
+                                                <td><?php echo $arr['fullname'];?></td>
                                                 <td><?php echo $arr['date_of_agreement'];?></td>
                                                 <td><?php echo $arr['security_deposit'];?></td>
                                                 <td><?php echo $arr['rent_amount'];?></td>
