@@ -170,7 +170,7 @@ if(isset($_POST['submitmember'])){
 	while($arr=mysqli_fetch_array($sql)){
     
      echo " <form method='post'><tr>
-     <input type='".$arr['id']."' id='deleteid'>
+     <input type='text' value='".$arr['id']."' id='deleteid'>
         <td>". $arr['name']."</td>
         <td>". $arr['relation'] ."</td>
        <td>". $arr['age'] ."</td>
