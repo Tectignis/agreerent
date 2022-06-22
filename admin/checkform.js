@@ -73,10 +73,7 @@ $(document).ready(function () {
       cache: false,
       success: function (res2) {
         if(success){
-        swal("Saved...", res2, "success");}
-        else{
-          swal("oops", res2, "error");
-        }
+        swal("", res2, "success");}
       },
     });
   });
