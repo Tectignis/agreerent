@@ -89,7 +89,7 @@ date_default_timezone_set('Asia/Kolkata');
                                     <?php $sql=mysqli_query($conn,"select * from ticket where user_id='".$_SESSION['id']."'");
                             $query =mysqli_query($conn,"select * from agent_details where user_id='".$_SESSION['id']."'");
                       $dnk=mysqli_num_rows($sql);
-                      $lastid=$dnk+2;
+                      $lastid=$dnk+1;
                       $arr=mysqli_fetch_array($query);
                       $name=$arr['agent_name'];
                       $first=$name;
@@ -112,6 +112,7 @@ date_default_timezone_set('Asia/Kolkata');
                                                 id="exampleInputdescription" value="<?php echo $number; ?>"
                                                 placeholder="Enter Description">
                                         </div>
+                                        <?php echo $number; ?>
                                         <div class="form-group">
                                             <label for="exampleInputsubject">Subject</label>
                                             <?php 
