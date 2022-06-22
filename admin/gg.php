@@ -27,7 +27,9 @@ if(isset($_POST['sub'])){
   $otpsql=mysqli_query($conn,"SELECT * FROM otp where email='$email_no'");
 $otprow=mysqli_fetch_assoc($otpsql);
 $otp=$otprow['otp'];
- 
+if($veriotp == ""){
+    echo "<script>alert('please Verify your email first then submit');</script>";
+}else{
 if($otp==$veriotp){
   $image=$_FILES['file']['name'];
   $tmp_name = $_FILES['file']['tmp_name']; 
@@ -42,6 +44,11 @@ $imgEncoded = base64_encode(file_get_contents($tmp_name));
 //   $loc="dist/img/";
 
 //   move_uploaded_file($_FILES['image']['tmp_name'],$loc.$image);
+$query=mysqli_query($conn,"select * from agent_details where email='$email_no'");
+if(mysqli_num_rows($query)>0){
+    echo "<script>alert('Email already Registered');</script>";
+}
+else{
 
 $from = 'Enquiry <'.$email.'>' . "\r\n";
 $sendTo = 'Enquiry <'.$email_no.'>';
@@ -339,7 +346,7 @@ try{
   $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`firm_name`,`status`,`image`) 
    VALUES ('$user_id','$agent_name','$email_no','$passwordhash','$rera','$office_address','$mobile_no','$firm_name','$status','$image')");
    if($sql=1){
-     echo "<script>alert('Agent Registered Successfully',window.location:'case');</script>";    }
+     echo "<script>alert('Agent Registered Successfully');</script>";    }
    else{
      echo "<script>alert('Something Wrong');</script>";
    }
@@ -359,8 +366,11 @@ else{
   echo $responseArray['message'];
 }
 }
+}
+
 else{
   echo "<script>alert('Invalid Otp');</script>";
+}
 }
 }
 
@@ -472,7 +482,7 @@ else{
                                         <label for="exampleInputMobile" class="col-sm-2 col-form-label">Office
                                             Address<label style="color:Red">*</label></label>
                                         <div class="col-sm-10">
-                                            <textarea name="office_address"  id= "office_address" style="width:100%;" rows="2"
+                                            <textarea class="form-control" name="office_address"  id= "office_address" style="width:100%;" rows="2"
                                                 placeholder="Enter Address" required></textarea>
                                         </div>
                                     </div>
@@ -501,7 +511,9 @@ else{
                                     <div class="collapse multi-collapse row" id="multiCollapseExample1">
                                         <label for="examplepan" class="col-sm-2 ml-1 col-form-label"></label>
                                         <input type="text" class="form-control mt-2 col-lg-6" name="veriotp" id="veriotp" >
-                                        <p>Enter OTP sent to your registered email id</p>
+                                        <?php
+                                        ?>
+                                        <p style="color:red;font-size:12px;width:100%;margin-left:17%">Enter OTP sent to your registered email id</p>
                                      </div>
                                     </div>
                                     <div class="form-group row">
@@ -511,13 +523,6 @@ else{
                                                 placeholder="Enter Number" id="rera" required>
                                         </div>
                                     </div>
-                                    <!-- <div class="form-group row">
-              <label for="examplepan" class="col-sm-2 col-form-label">Document Prefix<label style="color:Red">*</label></label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" placeholder="TECT-00001" name="prefix">
-              </div>
-            </div> -->
-
 
                                     <div class="form-group row">
                                         <label for="examplepan" class="col-sm-2 col-form-label">Photo<label
@@ -530,7 +535,7 @@ else{
 
                                     <div class="col" align="right">
                                         <button type="submit" name="sub" id="otpverifysub" class="btn btn-primary  btn-lg"
-                                            style="color: aliceblue">Submit</button>
+                                            style="color: aliceblue" window.location:>Submit</button>
                                     </div>
                                 </form>
 
@@ -589,9 +594,9 @@ else{
                         name:name,
                     },
                     cache: false,
-                    success: function(dnkotp)
+                    success: function(datadnk)
                     {
-                        alert(dnkotp);
+                        alert("success");
                     }
                 });
             });
