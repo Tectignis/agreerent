@@ -1116,9 +1116,12 @@ if(isset($_GET['id'])){
                     subm: subm
                 },
                 cache: false,
-                success: function(res) {
-                    alert(res);
-                },
+                success: function (res) {
+                swal("Done!", res, "success");
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                swal("Error deleting!", res, "error");
+            },
             });
         });
 
