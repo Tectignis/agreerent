@@ -207,7 +207,7 @@ if(isset($_POST['submit'])){
                         <!-- /.col -->
                     </div>
                     <!-- /.row -->
-                </div>
+                
                 <!-- /.container-fluid -->
             </section>
             <!-- /.content -->

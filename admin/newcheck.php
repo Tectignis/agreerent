@@ -1,13 +1,4 @@
 <?php
-session_start();
-if(!isset($_SESSION['admin']) == 1) // If session is not set then redirect to Login Page
-{
- header("Location:adminlogin"); 
-}
-if(!isset($_SESSION['id'])) 
-{
- header("Location:adminlogin.php"); 
-}
 include("../config/config.php");
 
 if(isset($_POST['otp'])){
@@ -17,7 +8,12 @@ if(isset($_POST['otp'])){
   $name=$_POST['name'];
   $otp= rand(100000, 999999);
   $image=$_FILES['file']['name'];
-  
+
+  $query=mysqli_query($conn,"select * from agent_details where email='$email'");
+if(mysqli_num_rows($query)>0){
+    echo "Email already Registered";
+}
+else{
 $from = 'Enquiry <naiduvedant@gmail.com>' . "\r\n";
 $sendTo = 'Enquiry <'.$email.'>';
 $subject = 'Your OTP for Verification Email';
@@ -110,7 +106,7 @@ else{
   
 }
 
-
+}
 //
 
 ?>
