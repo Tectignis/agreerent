@@ -169,14 +169,13 @@ if(isset($_POST['submitmember'])){
     <tbody>";
 	while($arr=mysqli_fetch_array($sql)){
     
-     echo " <form method='post'><tr>
-     <input type='text' value='".$arr['id']."' id='deleteid'>
+     echo " 
         <td>". $arr['name']."</td>
         <td>". $arr['relation'] ."</td>
        <td>". $arr['age'] ."</td>
        <td>". $arr['gender'] ."</td>
-	     <td><span class='btn btn-primary deletebutton' alt='delete' data-id='".$arr['id']."'><i class='fas fa-trash'></i></span></td> 
-      </tr></form>";
+	     <td><button type='button' class='btn btn-primary delete' data-id='".$arr['id']."'><i class='fas fa-trash'></i></button></td> 
+      </tr>";
        } 
     echo "</tbody>
   </table>";
