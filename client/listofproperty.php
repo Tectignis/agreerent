@@ -153,16 +153,10 @@ if($dnk=1){
 
 <!-- Control Sidebar -->
 <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
+  <!-- Control sidebar content goes here -->
 </aside>
 <!-- /.control-sidebar -->
-
-
-
-        <!-- Control Sidebar -->
-
-        <!-- /.control-sidebar -->
-    </div>
+</div>
     <!-- ./wrapper -->
 
     <!-- jQuery -->
