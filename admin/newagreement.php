@@ -16,18 +16,18 @@ include("../config/config.php");
 $basicid=$_GET['documentbasid'];
 
 if(isset($_GET['familydelid'])){
-$deleteid=$_GET['familydelid'];	
- $query=mysqli_query($conn,"select * from family_members where id='$deleteid'");
-    $res=mysqli_fetch_array($query);
-    $id=$res['document_no'];
-	$sql=mysqli_query($conn,"delete from family_members where id='$deleteid'");
-   
-	if($sql==1){	
-	header("location:newagreement.php?documentbasid=$id");
-  	}else{
-		echo "<script>alert('Something went wrong');</script>";
-	}
-}
+    $deleteid=$_GET['familydelid'];	
+     $query=mysqli_query($conn,"select * from family_members where id='$deleteid'");
+        $res=mysqli_fetch_array($query);
+        $id=$res['document_no'];
+        $sql=mysqli_query($conn,"delete from family_members where id='$deleteid'");
+       
+        if($sql==1){	
+        header("location:newagreement.php?documentbasid=$id");
+          }else{
+            echo "<script>alert('Something went wrong');</script>";
+        }
+    }
 
 if(isset($_GET['deleteid'])){
 $deleteid=$_GET['deleteid'];
@@ -312,9 +312,8 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                     <label for="exampleaadhaar" class="col-sm-2 col-form-label">Aadhaar
                                                         Card No.<label style="color:Red">*</label></label>
                                                     <div class="col-sm-4">
-                                                    <input type="number" name="aadhaar" class="form-control"
-                                                            id="txAdhar" placeholder="Enter Aadhaar card No"
-                                                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                    <input type="tel" name="aadhaar" class="form-control"
+                                                            id="txAdhar" placeholder="Enter Aadhaar card No" minlength="12"
                                                             maxlength="12" required>
                                                         <span id="spanAadharCard"></span>
                                                     </div>
@@ -717,6 +716,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                             </div>
                                         </div>
                                     </div>
+                                    </div>
                                     <div class="tab-pane fade " id="payment" role="tabpanel"
                                         aria-labelledby="custom-tabs-two-settings-tab">
                                         <form method="post">
@@ -826,13 +826,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-        <footer class="main-footer">
-            <div class="float-right d-none d-sm-block">
-                <b>Version</b> 3.2.0
-            </div>
-            <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights
-            reserved.
-        </footer>
+        <?php include 'include/footer.php'; ?>
 
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
@@ -920,25 +914,25 @@ if(no1 == "" || abbreviation == "" || name == "" || age == "" || mobile == "" ||
 </script>
 
 <script>
-let submitenant = document.getElementById("submitenant");
-submitenant.addEventListener("click", function(){
-let abbreviation = document.getElementById("exampleSelectmr").value;
-let name1 = document.getElementById("txtname3").value;
-let mobile = document.getElementById("phone").value;
-let email = document.getElementById("emailcheck").value;
+// let submitenant = document.getElementById("submitenant");
+// submitenant.addEventListener("click", function(){
+// let abbreviation = document.getElementById("exampleSelectmr").value;
+// let name1 = document.getElementById("txtname3").value;
+// let mobile = document.getElementById("phone").value;
+// let email = document.getElementById("emailcheck").value;
 
-let aadhaar = document.getElementById("txtAadhar1").value;
-let age = document.getElementById("id2").value;
-let pancard = document.getElementById("txtPANCard1").value;
-let address = document.getElementById("residenceAddress").value;
-let permanent_address = document.getElementById("presentAddress").value;
-if( abbreviation == "" || name1 == "" || mobile == "" || email == "" || aadhaar == "" || age == "" || pancard == "" || address == "" || permanent_address == ""  ){
-    swal("Oops...", "Please fill all the fields", "error");
-}
-    else{
-        swal("Saved!", "Agreement Save", "success");
-    }
-});
+// let aadhaar = document.getElementById("txtAadhar1").value;
+// let age = document.getElementById("id2").value;
+// let pancard = document.getElementById("txtPANCard1").value;
+// let address = document.getElementById("residenceAddress").value;
+// let permanent_address = document.getElementById("presentAddress").value;
+// if( abbreviation == "" || name1 == "" || mobile == "" || email == "" || aadhaar == "" || age == "" || pancard == "" || address == "" || permanent_address == ""  ){
+//     swal("Oops...", "Please fill all the fields", "error");
+// }
+//     else{
+//         swal("Saved!", "Agreement Save", "success");
+//     }
+// });
 </script>
 
 <script>

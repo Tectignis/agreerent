@@ -143,6 +143,7 @@ include("../config/config.php");
         </div>
         <!-- /.content-wrapper -->
         <?php include 'include/footer.php'; ?>
+
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Control sidebar content goes here -->

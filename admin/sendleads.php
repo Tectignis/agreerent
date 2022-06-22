@@ -20,7 +20,7 @@ if(isset($_POST['submit'])){
     $location=$_POST['location'];
 
 
-    $sql = mysqli_query($conn,"INSERT INTO `leads`(`user_id`,`client_name`, `mobile`, `type`, `requirement`, `area`,`location`,`firm_name`) VALUES ('".$_SESSION['aid']."','$client_name','$mobile_no', '$type','$requirement','$area','$location','$firm_name')");
+    $sql = mysqli_query($conn,"INSERT INTO `leads`(`user_id`,`client_name`, `mobile`, `type`, `requirement`, `area`,`location`,`firm_name`) VALUES ('$firm_name','$client_name','$mobile_no', '$type','$requirement','$area','$location','$firm_name')");
     if($sql==1){	
       header("location:paidleads");
     }else{
@@ -123,7 +123,7 @@ if(isset($_POST['submit'])){
 
                         ?>
 
-                        <option value="<?php echo $sql['agent_name']; ?>"> <?php echo $sql['agent_name'].' - '.$sql['user_id']; ?></option>
+                        <option value="<?php echo $sql['user_id']; ?>"> <?php echo $sql['agent_name'].' - '.$sql['user_id']; ?></option>
                         <?php } ?>
                       </select>
                                                     <!-- <select class="form-control select2 select2-hidden-accessible" name="client_name" id="exampledno" style="width: 100%;" data-select2-id="3" tabindex="-1" aria-hidden="true">
