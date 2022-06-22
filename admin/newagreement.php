@@ -16,18 +16,18 @@ include("../config/config.php");
 $basicid=$_GET['documentbasid'];
 
 if(isset($_GET['familydelid'])){
-$deleteid=$_GET['familydelid'];	
- $query=mysqli_query($conn,"select * from family_members where id='$deleteid'");
-    $res=mysqli_fetch_array($query);
-    $id=$res['document_no'];
-	$sql=mysqli_query($conn,"delete from family_members where id='$deleteid'");
-   
-	if($sql==1){	
-	header("location:newagreement.php?documentbasid=$id");
-  	}else{
-		echo "<script>alert('Something went wrong');</script>";
-	}
-}
+    $deleteid=$_GET['familydelid'];	
+     $query=mysqli_query($conn,"select * from family_members where id='$deleteid'");
+        $res=mysqli_fetch_array($query);
+        $id=$res['document_no'];
+        $sql=mysqli_query($conn,"delete from family_members where id='$deleteid'");
+       
+        if($sql==1){	
+        header("location:newagreement.php?documentbasid=$id");
+          }else{
+            echo "<script>alert('Something went wrong');</script>";
+        }
+    }
 
 if(isset($_GET['deleteid'])){
 $deleteid=$_GET['deleteid'];
