@@ -71,7 +71,7 @@ th {
                 </div>						
                 </div>
 	</div> -->
-	<img src="images/photo001.jpg" width="1000px" height="200px" >
+	<img src="dist/img/photo001.png" width="1000px" height="200px" >
 	<table width="100%">
 	<tbody>
 	
