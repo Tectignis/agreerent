@@ -85,7 +85,7 @@ th {
 
 
         $arr=mysqli_fetch_array($sql);
-        $doc=$arr['dno'];
+        $document_no=$arr['dno'];
 		$amt_words=$arr['rent'];
 		$get_amount=AmountInWords($amt_words);
 

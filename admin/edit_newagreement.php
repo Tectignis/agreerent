@@ -1126,7 +1126,7 @@ if(isset($_GET['id'])){
         });
 
         //tenant
-        $("#submitenan").on("click", function() {
+        $("#submitenan").on("click",function() {
             let exampledno = $("#exampledno").val();
             let exampleSelectmr = $("#exampleSelectmr").val();
             let txtname3 = $("#txtname3").val();
