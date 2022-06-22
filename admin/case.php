@@ -234,19 +234,19 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
                                         while($row=mysqli_fetch_array($sql)){
 
                                         ?>
-                                                                    <tr>
-                                                                        <td><?php echo $count; ?> </td>
-                                                                        <td><?php echo $row['newdoc']; ?></td>
-                                                                        <td><?php echo $row['tname']; ?></td>
-                                                                        <td><?php echo $row['owname']; ?></td>
-                                                                        <td><?php echo $row['newdate']; ?></td>
-                                                                        <td><?php echo $row['month']; ?></td>
-                                                                        <td style="color:blue">Complete</td>
-                                                                        <td class="row mx-1">
-                                                                        <div class="btn-group btn-group-sm" role="group" aria-label="">
-                                                                            <a href="agreement.php?id=<?php echo $row['newdoc'];?>"
-                                                                                class="btn col btn-primary btn-rounded btn-sm btn-icon"><i
-                                                                                    class="fas fa-eye"></i></a>
+                                            <tr>
+                                                <td><?php echo $count; ?> </td>
+                                                <td><?php echo $row['newdoc']; ?></td>
+                                                <td><?php echo $row['tname']; ?></td>
+                                             <td><?php echo $row['owname']; ?></td>
+                                         <td><?php echo $row['newdate']; ?></td>
+                                                 <td><?php echo $row['month']; ?></td>
+                                         <td style="color:blue">Complete</td>
+                                          <td class="row mx-1">
+                                            <div class="btn-group btn-group-sm" role="group" aria-label="">
+                                            <a href="agreement.php?id=<?php echo $row['newdoc'];?>"  class="btn col btn-primary btn-rounded btn-sm btn-icon"><i  class="fas fa-eye"></i></a>
+                                            <a href="agreement.php?id=<?php echo $row['newdoc'];?>"
+                                        class="btn col btn-info btn-rounded btn-sm btn-icon"><i class="fa fa-download"></i></a>
 
 
                                                                             <?php

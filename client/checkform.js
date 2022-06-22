@@ -43,7 +43,7 @@ $(document).ready(function () {
     let officeaddress = $("#officeaddress").val();
     let emailcheck = $("#emailcheck").val();
     let passport = $("#passport").val();
-    let txtAadhar1 = $("#txtAadhar1").val();
+    let txAdhar = $("#txAdhar").val();
     let id2 = $("#id2").val();
     let txtPANCard1 = $("#txtPANCard1").val();
     let residenceAddress = $("#residenceAddress").val();
@@ -64,7 +64,7 @@ $(document).ready(function () {
         emailcheck: emailcheck,
         passport: passport,
         id2: id2,
-        txtAadhar1: txtAadhar1,
+        txAdhar: txAdhar,
         txtPANCard1: txtPANCard1,
         residenceAddress: residenceAddress,
         presentAddress: presentAddress,
@@ -72,7 +72,8 @@ $(document).ready(function () {
       },
       cache: false,
       success: function (res2) {
-        //  alert(res2);
+        alert(res2)
+        swal("Oops...", res2, "error");
       },
     });
   });

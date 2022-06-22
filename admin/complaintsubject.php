@@ -9,6 +9,13 @@ if(!isset($_SESSION['aid']))
  header("Location:adminlogin.php"); 
 }
 include("../config/config.php");
+if(isset($_GET['delid'])){
+    $id=mysqli_real_escape_string($conn,$_GET['delid']);
+    $dnk=mysqli_query($conn,"delete from subject where id='$id'");
+    if($dnk=1){
+        header("location:complaintsubject.php");
+    }
+    }
 
 if(isset($_POST['submit']))
     {
@@ -116,7 +123,7 @@ if(isset($_POST['submit']))
                   <tr>
                                 <th class="th-sm">Sr.No</th>
                                 <th>subject</th>
-                               
+                               <th>Action</th>
                               </tr>
                   </thead>
                   <tbody>
@@ -129,6 +136,10 @@ if(isset($_POST['submit']))
                         <tr>
                                 <td><?php echo $count;?></td>
                                 <td><?php echo $arr['name'];?></td>
+                                <td> <a href="complaintsubject.php?delid=<?php echo $arr['id']; ?>"><button
+                                                            type="button" class="btn btn-danger btn-sm btn-icon"
+                                                            onclick="ConfirmDelete()" style="color: aliceblue"> <i
+                                                                class="fas fa-trash"></i> </button></a></td>
                                 <?php  $count++; } ?> </tbody>
                          </tr>       
                 </table>
