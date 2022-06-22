@@ -128,7 +128,7 @@ if($sql=1){
  <button class="btn btn-sm btn-primary dnkediti1" data-id='<?php echo $arr['user_id']; ?>'><i class="fas fa-eye"></i></button>
 
                                                     <a href="paidleads.php?delid=<?php echo $arr['id']; ?>"><button
-                                                            type="button" class="btn btn-danger btn-rounded btn-icon"
+                                                            type="button" class="btn btn-sm btn-danger btn-rounded btn-icon"
                                                             onclick="ConfirmDelete()" style="color: aliceblue"> <i
                                                                 class="fas fa-trash"></i> </button></a>
 
