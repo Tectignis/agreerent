@@ -150,11 +150,12 @@ if($sql=1){
         <!-- /.content-wrapper -->
         <?php include 'include/footer.php'; ?>
 
-
-        <!-- Control Sidebar -->
-
-        <!-- /.control-sidebar -->
-    </div>
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
+</div>
     <!-- ./wrapper -->
 
     <!-- jQuery -->

@@ -176,7 +176,14 @@ if(isset($_POST['submit'])){
     <!-- /.content -->
   </div>
 <!-- ./wrapper -->
+<?php include 'include/footer.php'; ?>
 
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
+</div>
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->

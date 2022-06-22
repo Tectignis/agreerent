@@ -196,6 +196,13 @@ if($dnk=1){
         <!-- /.content-wrapper -->
         <?php include 'include/footer.php'; ?>
 
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
+
+
 
         <!-- Control Sidebar -->
 
