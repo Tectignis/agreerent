@@ -184,12 +184,12 @@ if($dnk=1){
 <script>
 $(document).ready(function(){
 $('.dnkediti').click(function(){
-  let dnkid = $(this).data('id');
+  let dnkid1 = $(this).data('id');
 
   $.ajax({
    url: 'form.php',
    type: 'post',
-   data: {dnkid: dnkid},
+   data: {dnkid1: dnkid1},
    success: function(response1){ 
      $('.body1').html(response1);
      $('#dnkModal').modal('show'); 
