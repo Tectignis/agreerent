@@ -216,45 +216,41 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
                                         ?>
                                          <tr>
                                              <td><?php echo $count; ?> </td>
-                                              <td><?php echo $row['newdoc']; ?></td>
+                                            <td><?php echo $row['newdoc']; ?></td>
                                             <td><?php echo $row['tname']; ?></td>
-                                         <td><?php echo $row['owname']; ?></td>
-                                                                        <td><?php echo $row['newdate']; ?></td>
-                                                                        <td><?php echo $row['month']; ?></td>
-                                                                        <td style="color:blue">Complete</td>
-                                                                        <td class="row mx-1">
-                                                                        <div class="btn-group btn-group-sm" role="group" aria-label="">
-                                                                            <a href="agreement.php?id=<?php echo $row['newdoc'];?>"
-                                                                                class="btn col btn-primary btn-rounded btn-sm btn-icon"><i
-                                                                                    class="fas fa-eye"></i></a>
+                                            <td><?php echo $row['owname']; ?></td>
+                                            <td><?php echo $row['newdate']; ?></td>
+                                            <td><?php echo $row['month']; ?></td>
+                                            <td style="color:blue">Complete</td>
+                                            <td class="row mx-1">
+                                            <div class="btn-group btn-group-sm" role="group" aria-label="">
+                                        <a href="agreement.php?id=<?php echo $row['newdoc'];?>"
+                                        class="btn col btn-primary btn-rounded btn-sm btn-icon"><i class="fas fa-eye"></i></a>
+                                       
 
 
-                                                                            <?php
-                                                                                $status=$row['nstatus'];
-                                                                                if($status==1){
-                                                                                ?>
+                                        <?php $status=$row['nstatus'];
+                                         if($status==1){
+                                        ?>
 
-                                                                            <?php
-                                                                                }
-                                                                                elseif($status==0){
-                                                                                ?>
-                                                                            <a href="edit_newagreement.php?id=<?php echo $row['newdoc'];?>"
-                                                                                class="btn col btn-warning btn-rounded btn-sm btn-icon"
-                                                                                style="color: aliceblue"><i
-                                                                                    class="fas fa-pen"></i></i></a>
-                                                                            <a href="case.php?gen=<?php echo $row['newdoc'];?>"
-                                                                                class="btn col btn-success btn-sm btn-rounded btn-icon">
-                                                                                <i
-                                                                                    class="fa fa-file"></i></a>
-                                                                                    </div>
-                                                                            <?php
+                                        <?php
+                                         }
+                                        elseif($status==0){
+                                         ?>
+                                        <a href="edit_newagreement.php?id=<?php echo $row['newdoc'];?>"
+                                         class="btn col btn-warning btn-rounded btn-sm btn-icon"  style="color: aliceblue"><i class="fas fa-pen"></i></i></a>
+                                         <a href="case.php?gen=<?php echo $row['newdoc'];?>"
+                                            class="btn col btn-success btn-sm btn-rounded btn-icon">
+                                         <i class="fa fa-file"></i></a>
+                                     </div>
+                                     <?php
                                                                           
 }
 ?>
 
-                                                                        </td>
-                                                                    </tr>
-                                                                    <?php $count++; } ?>
+                                         </td>
+                                     </tr>
+                                     <?php $count++; } ?>
                                                                 </tbody>
                                                                                <tfoot>
                                                   
