@@ -16,7 +16,7 @@ if(isset($_POST['submit'])){
   $area=$_POST['area'];
   $location=$_POST['location'];
 
-  $sql=mysqli_query($conn,"INSERT INTO `property`(`user_id`,`property_for`,`client_name`,`mobile_no`,`type`,`requirement`,`area`,`location`) VALUES ('$property_for','$client_name','$mobile_no','$type','$requirement','$area','$location')");
+  $sql=mysqli_query($conn,"INSERT INTO `property`(`user_id`,`property_for`,`client_name`,`mobile_no`,`type`,`requirement`,`area`,`location`) VALUES ('".$_SESSION['id']."','$property_for','$client_name','$mobile_no','$type','$requirement','$area','$location')");
   if($sql==1){	
     header("location:listofproperty.php");
 	}else{
