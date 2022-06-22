@@ -11,8 +11,8 @@ if(isset($_POST['submit'])){
   $place=$_POST['place'];
   $status=0;
 	
-	$sql=mysqli_query($conn,"INSERT INTO `new_agreement`(`user_id`,`document_no`, `property_type`, `date_of_agreement`, `no_of_month`,`place_of_agreement`) VALUES ('".$_SESSION['id']."','$document_main','$type','$date','$month','$place')");
-  $query =mysqli_query($conn,"INSERT INTO `noc`(`document_no`, `status`) VALUES ('$document_main','$status')");
+	$sql=mysqli_query($conn,"INSERT INTO `new_agreement`(`user_id`,`document_no`, `property_type`, `date_of_agreement`, `no_of_month`,`place_of_agreement`) VALUES ('".$_SESSION['aid']."','$document_main','$type','$date','$month','$place')");
+  $sql =mysqli_query($conn,"INSERT INTO `noc`(`document_no`, `status`) VALUES ('$document_main','$status')");
 	if($sql==1){			
       
 		header("location:newagreement.php?documentbasid=".$document_main);
@@ -65,7 +65,7 @@ if(isset($_POST['tenant'])){
   $permanent_address=$_POST['presentAddress'];
 	$address=$_POST['residenceAddress'];
 	$mobile=$_POST['phone'];
-	$aadhaar=$_POST['txtAadhar1'];
+	$aadhaar=$_POST['txAdhar'];
 	$pancard=$_POST['txtPANCard1'];
   $email=$_POST['emailcheck'];
 	$passport=$_POST['passport'];
