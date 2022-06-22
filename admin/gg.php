@@ -512,17 +512,8 @@ else{
                                         <label for="examplepan" class="col-sm-2 ml-1 col-form-label"></label>
                                         <input type="text" class="form-control mt-2 col-lg-6" name="veriotp" id="veriotp" >
                                         <?php
-                                        if(isset($_POST['otp'])){
-                                        $query=mysqli_query($conn,"select * from agent_details where email='$email_no'");
-                                        if(mysqli_num_rows($query)>0){
-                                            echo "Email already Registered";
-                                        }
-                                        else{
-                                           echo '<p style="color:red;font-size:12px;width:100%;margin-left:17%">Enter OTP sent to your registered email id</p>';
-                                        }
-                                    }
                                         ?>
-                                        
+                                        <p style="color:red;font-size:12px;width:100%;margin-left:17%">Enter OTP sent to your registered email id</p>
                                      </div>
                                     </div>
                                     <div class="form-group row">
@@ -605,7 +596,7 @@ else{
                     cache: false,
                     success: function(datadnk)
                     {
-                        alert(datadnk);
+                        alert("success");
                     }
                 });
             });
