@@ -25,7 +25,7 @@ if($dnk=1){
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AGREERENT | List Of Complaint</title>
+    <title>AGREERENT | List Of Property</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -63,7 +63,7 @@ if($dnk=1){
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>List Of Complaint</h1>
+                            <h1>List Of Property</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -81,6 +81,9 @@ if($dnk=1){
                     <div class="row">
                         <div class="col-12">
                             <!-- /.card -->
+                            <div class="card-tools my-3" style="text-align:end;">
+                                                <a class="btn btn-primary" href="addproperty.php" data-tt="tooltip" title="" data-original-title="Click here to Add New Enquiry">Add Property</a>
+                                    </div>
                             <div class="card">
                                 
                                 <!-- /.card-header -->
@@ -92,22 +95,29 @@ if($dnk=1){
                                                 <th>Client Name</th>
                                                 <th>Mobile</th>
                                                 <th>Property type</th>
+                                                <th>Action</th>
                                                 
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php 
                         
-                        $sql=mysqli_query($conn,"select * from `property` where user_id=".$_SESSION['id']."");
+                        $sql=mysqli_query($conn,"select * from property where user_id='".$_SESSION['id']."'");
                      $count=1;
-                         while($arr=mysqli_fetch_array($sql)){
+                         while($arr=mysqli_fetch_assoc($sql)){
                         ?>
                                             <tr>
-                                                <td> <?php echo $count;?> </td>
+                                                <td><?php echo $count;?> </td>
+                                                
                                                 <td> <?php echo $arr['client_name'];?></td>
                                                 <td> <?php echo $arr['mobile_no'];?> </td>
                                                 <td> <?php echo $arr['property_for'];?> </td>
-                                               
+     <td>
+     <button class="btn btn-sm btn-primary dnkediti" data-id='<?php echo $arr['id']; ?>'><i class="fas fa-eye"></i></button>
+
+                            <a href="listofproperty.php?delid=<?php echo $arr['id']; ?>"><button type="button" class="btn btn-sm btn-danger btn-rounded btn-icon" style="color: aliceblue"> <i class="fas fa-trash"></i> </button></a>
+                            
+                              </td>
                                                 
                                             </tr>
 
@@ -137,15 +147,7 @@ if($dnk=1){
         </div>
         <!-- /.modal-dialog -->
       </div>
-       <div class="modal fade" id="dnkModal1">
-        <div class="modal-dialog">
-          <div class="modal-content body1">
-            
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
+      
         <!-- /.content-wrapper -->
         <?php include 'include/footer.php'; ?>
 
@@ -187,7 +189,7 @@ if($dnk=1){
 
 <script>
 $(document).ready(function(){
-$('.dnkeditid').click(function(){
+$('.dnkediti').click(function(){
   let dnkid = $(this).data('id');
 
   $.ajax({
@@ -202,23 +204,7 @@ $('.dnkeditid').click(function(){
 });
 });
 </script>
-<script>
-$(document).ready(function(){
-$('.dnkediti').click(function(){
-  let dnkidno = $(this).data('id');
 
-  $.ajax({
-   url: 'form.php',
-   type: 'post',
-   data: {dnkidno: dnkidno},
-   success: function(response1){ 
-     $('.body1').html(response1);
-     $('#dnkModal1').modal('show'); 
-   }
- });
-});
-});
-</script>
 </body>
 <script>
      $(function() {
