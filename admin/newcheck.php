@@ -17,7 +17,12 @@ if(isset($_POST['otp'])){
   $name=$_POST['name'];
   $otp= rand(100000, 999999);
   $image=$_FILES['file']['name'];
-  
+
+  $query=mysqli_query($conn,"select * from agent_details where email='$email_no'");
+if(mysqli_num_rows($query)>0){
+    echo "<script>alert('Email already Registered');</script>";
+}
+else{
 $from = 'Enquiry <naiduvedant@gmail.com>' . "\r\n";
 $sendTo = 'Enquiry <'.$email.'>';
 $subject = 'Your OTP for Verification Email';
@@ -110,7 +115,7 @@ else{
   
 }
 
-
+}
 //
 
 ?>
