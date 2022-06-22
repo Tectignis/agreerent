@@ -27,7 +27,9 @@ if(isset($_POST['sub'])){
   $otpsql=mysqli_query($conn,"SELECT * FROM otp where email='$email_no'");
 $otprow=mysqli_fetch_assoc($otpsql);
 $otp=$otprow['otp'];
- 
+if($veriotp == ""){
+    echo "<script>alert('please fill otp');</script>";
+}else{
 if($otp==$veriotp){
   $image=$_FILES['file']['name'];
   $tmp_name = $_FILES['file']['tmp_name']; 
@@ -370,6 +372,7 @@ else{
   echo "<script>alert('Invalid Otp');</script>";
 }
 }
+}
 
 
 
@@ -518,13 +521,6 @@ else{
                                                 placeholder="Enter Number" id="rera" required>
                                         </div>
                                     </div>
-                                    <!-- <div class="form-group row">
-              <label for="examplepan" class="col-sm-2 col-form-label">Document Prefix<label style="color:Red">*</label></label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" placeholder="TECT-00001" name="prefix">
-              </div>
-            </div> -->
-
 
                                     <div class="form-group row">
                                         <label for="examplepan" class="col-sm-2 col-form-label">Photo<label
