@@ -11,7 +11,7 @@ if(isset($_POST['otp'])){
 
   $query=mysqli_query($conn,"select * from agent_details where email='$email_no'");
 if(mysqli_num_rows($query)>0){
-    echo "<script>alert('Email already Registered');</script>";
+    echo "Email already Registered";
 }
 else{
 $from = 'Enquiry <naiduvedant@gmail.com>' . "\r\n";

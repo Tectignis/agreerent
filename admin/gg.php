@@ -592,9 +592,9 @@ else{
                         name:name,
                     },
                     cache: false,
-                    success: function(dnkotp)
+                    success: function(datadnk)
                     {
-                        alert(dnkotp);
+                        alert(datadnk);
                     }
                 });
             });
