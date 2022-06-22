@@ -161,7 +161,7 @@ if($dnk=1){
                                             <?php $count++;   } ?>
                                         </tbody>
                                     </table>
-                                </div>
+                                </div>                                 
                                 <!-- /.card-body -->
                             </div>
                             <!-- /.card -->
@@ -249,6 +249,7 @@ $('.dnkeditid').click(function(){
 });
 });
 </script>
+
 <script>
 $(document).ready(function(){
 $('.dnkediti').click(function(){

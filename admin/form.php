@@ -500,5 +500,97 @@ if(isset($_POST['compsubmit'])){
 		echo "Something went wrong";
 	}
 }
+if(isset($_POST['dnkidno1'])){
+	$sql=mysqli_query($conn,"select leads.user_id,leads.requirement,leads.location,leads.mobile,leads.area,leads.id,leads.type,leads.client_name,agent_details.firm_name from leads inner join agent_details on leads.user_id=agent_details.user_id  where leads.user_id='".$_POST['dnkidno1']."'");
+ 
+	$arr=mysqli_fetch_array($sql);
+	echo '<div class="modal-header">
+              <h4 class="modal-title">'.$arr['firm_name'].'</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+			<form method="post" action="form.php">
+            <div class="modal-body body1">
+                <div class="row">   
+                <div class="col-4">
+                <b> Client Code :</b><br>
+                </div>
+                <div class="col-8">
+                <p> '.$arr['user_id'].' </p>
+                </div>
+                </div>
+
+                <div class="row">   
+                <div class="col-4">
+               <b>Client Name :</b><br>
+               </div>
+               <div class="col-8">
+               <p> '.$arr['client_name'].' </p>
+               </div>
+               </div>
+
+               <div class="row">   
+               <div class="col-4">
+              <b> Firm Name :</b><br>
+              </div>
+              <div class="col-8">
+              <p> '.$arr['firm_name'].' </p>
+              </div>
+              </div>
+
+              
+
+                <div class="row">   
+                 <div class="col-4">
+                <b> Mobile No :</b><br>
+                </div>
+                <div class="col-8">
+                <p> '.$arr['mobile'].' </p>
+                </div>
+                </div>
+
+                <div class="row">   
+                <div class="col-4">
+               <b> Property Type :</b><br>
+               </div>
+               <div class="col-8">
+               <p> '.$arr['type'].' </p>
+               </div>
+               </div>
+
+               <div class="row">   
+                 <div class="col-4">
+                <b> Requirement :</b><br>
+                </div>
+                <div class="col-8">
+                <p> '.$arr['requirement'].' </p>
+                </div>
+                </div>
+
+
+                <div class="row">   
+                 <div class="col-4">
+                <b> Location :</b><br>
+                </div>
+                <div class="col-8">
+                <p> '.$arr['location'].' </p>
+                </div>
+                </div>
+
+                <div class="row">   
+                 <div class="col-4">
+                <b> Area :</b><br>
+                </div>
+                <div class="col-8">
+                <p> '.$arr['area'].' </p>
+                </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div></form>';
+}
+
 
 ?>

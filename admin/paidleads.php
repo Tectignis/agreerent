@@ -41,6 +41,9 @@ if($sql=1){
     <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css"> -->
 
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -121,6 +124,9 @@ if($sql=1){
                                                 <td> <?php echo $arr['firm_name'];?> </td>
                                                
                                                 <td>
+                                          
+ <button class="btn btn-sm btn-primary dnkediti1" data-id='<?php echo $arr['user_id']; ?>'><i class="fas fa-eye"></i></button>
+
                                                     <a href="paidleads.php?delid=<?php echo $arr['id']; ?>"><button
                                                             type="button" class="btn btn-danger btn-rounded btn-icon"
                                                             onclick="ConfirmDelete()" style="color: aliceblue"> <i
@@ -145,6 +151,16 @@ if($sql=1){
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
+        <div class="modal fade" id="dnkModal1">
+        <div class="modal-dialog">
+          <div class="modal-content body1">
+            
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      
         <?php include 'include/footer.php'; ?>
 
 <!-- Control Sidebar -->
@@ -179,6 +195,24 @@ if($sql=1){
 
 
 </body>
+<script>
+$(document).ready(function(){
+$('.dnkediti1').click(function(){
+  let dnkidno1 = $(this).data('id');
+
+  $.ajax({
+   url: 'form.php',
+   type: 'post',
+   data: {dnkidno1: dnkidno1},
+   success: function(response1){ 
+     $('.body1').html(response1);
+     $('#dnkModal1').modal('show'); 
+   }
+ });
+});
+});
+</script>
+
 <script>
 $(function() {
     $("#example1").DataTable({
