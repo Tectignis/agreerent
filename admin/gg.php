@@ -28,7 +28,7 @@ if(isset($_POST['sub'])){
 $otprow=mysqli_fetch_assoc($otpsql);
 $otp=$otprow['otp'];
 if($veriotp == ""){
-    echo "<script>alert('please fill otp');</script>";
+    echo "<script>alert('please Verify your email first then submit');</script>";
 }else{
 if($otp==$veriotp){
   $image=$_FILES['file']['name'];
