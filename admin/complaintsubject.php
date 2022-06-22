@@ -1,38 +1,37 @@
 <?php
 session_start();
-$email = $_SESSION['email'];
-if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
+if(!isset($_SESSION['aid'])) // If session is not set then redirect to Login Page
 {
- header("Location:clientlogin.php"); 
+ header("Location:adminlogin"); 
 }
-$client_id=$_SESSION['id'];
+if(!isset($_SESSION['aid'])) 
+{
+ header("Location:adminlogin.php"); 
+}
 include("../config/config.php");
-if(isset($_POST['submit'])){
-  $subject=$_POST['subject'];
-	$description=$_POST['description'];
-$client_code=$_POST['number'];
-date_default_timezone_set('Asia/Kolkata');
-    $date=date('Y-m-d H:i:s');
-	$status='Open';
-	
-	$sql = mysqli_query($conn,"INSERT INTO `ticket`( `user_id`,`complaint_code`, `email_id`, `subject`, `description`, `date`,`status`) VALUES ('".$_SESSION['id']."','$client_code','$email', '$subject','$description', '$date','$status')") ;
-  if($sql==1){
-    echo "<script>alert('Register successfully'),window.location='listofcomplaint.php';</script>";
-   
 
-  }else{
-    echo "<script>alert('something went wrong');</script>";
-  }
+if(isset($_POST['submit']))
+    {
+        $name = $_POST['name'];
 
-  }
+        $sql="INSERT INTO `subject`(`name`) VALUES ('$name')";
+        if (mysqli_query($conn, $sql)){
+          echo "<script> alert ('New record has been added successfully !');</script>";
+       }
+        else {
+          echo "<script> alert ('connection failed !');</script>";
+       }
+    }
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AGREERENT | Complaint Form</title>
+    <title>AGREERENT | Complaint Subject</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -46,11 +45,16 @@ date_default_timezone_set('Asia/Kolkata');
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
         <!-- Navbar -->
-        <?php include 'include/header.php'; ?>
+    <?php include 'include/header.php'; ?>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+ <?php include 'include/sidebar.php'; ?>
+
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <?php include 'include/sidebar.php'; ?>
+     
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -64,7 +68,7 @@ date_default_timezone_set('Asia/Kolkata');
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Complaint Form</li>
+                                <li class="breadcrumb-item active">Complaint Subject</li>
                             </ol>
                         </div>
                     </div>
@@ -80,57 +84,15 @@ date_default_timezone_set('Asia/Kolkata');
                             <!-- general form elements -->
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Complaint Form</h3>
+                                    <h3 class="card-title">Complaint Subject Form</h3>
                                 </div>
                                 <!-- /.card-header -->
                                 <!-- form start -->
-                                <form method="post">
-                                    <?php $sql=mysqli_query($conn,"select * from ticket where user_id='".$_SESSION['id']."'");
-                            $query =mysqli_query($conn,"select * from agent_details where user_id='".$_SESSION['id']."'");
-                      $dnk=mysqli_num_rows($sql);
-                      $lastid=$dnk+1;
-                      $arr=mysqli_fetch_array($query);
-                      $name=$arr['agent_name'];
-                      $first=$name;
-                      
-                      $res= preg_replace('~\S\K\S*\s*~u', '', $first);
-                      if(empty($lastid)){
-						           $number=$res."-000";
-					           }else{
-						          $id=str_pad($lastid + 0, 3,0, STR_PAD_LEFT);
-					        	  $number=$res."CP"."-$id";
-					            }	
-                    
-                      
-                      					  ?>
-
+                                <form method="post">    
                                     <div class="card-body">
-                                        <div class="form-group" style="display:none">
-                                            <label for="exampleInputdescription">Description</label>
-                                            <input type="textbox" class="form-control" name="number"
-                                                id="exampleInputdescription" value="<?php echo $number; ?>"
-                                                placeholder="Enter Description">
-                                        </div>
                                         <div class="form-group">
-                                            <label for="exampleInputsubject">Subject</label>
-                                            <?php 
-                   $query=mysqli_query($conn,"select * from subject");
-                   ?>
- 
-                       <select class="form-control select2" name="subject" style="width: 100%;" required>
-                         <option selected="selected" disabled>select</option>
-                         <?php
-                    while($sql=mysqli_fetch_array($query))
-                    {
-                      ?>
-
-                         <option value="<?php echo $sql['name']; ?>"> <?php echo $sql['name']; ?></option>
-                         <?php } ?>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputdescription">Description</label>
-                                            <input type="textbox" class="form-control" name="description"
+                                            <label for="exampleInputdescription">Subject</label>
+                                            <input type="textbox" class="form-control" name="name"
                                                 id="exampleInputdescription" placeholder="Enter Description">
                                         </div>
                                     </div>
@@ -139,19 +101,48 @@ date_default_timezone_set('Asia/Kolkata');
                                     <div class="card-footer">
                                         <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                                     </div>
+</div>
                                 </form>
                             </div>
                         </div>
                         <!--/.col (left) -->
                         <!-- right column -->
-
+                        <div class="card card-primary">
+                        <div class="card-body">
+                        <div class="row">
+                        <div class="col-12">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                                <th class="th-sm">Sr.No</th>
+                                <th>subject</th>
+                               
+                              </tr>
+                  </thead>
+                  <tbody>
+                  <?php 
+                        
+                        $sql=mysqli_query($conn,"select * from subject ");
+                        $count=1;
+                         while($arr=mysqli_fetch_array($sql)){
+                        ?>
+                        <tr>
+                                <td><?php echo $count;?></td>
+                                <td><?php echo $arr['name'];?></td>
+                                <?php  $count++; } ?> </tbody>
+                         </tr>       
+                </table>
+              </div>
+</div>
+</div>
+</div>
                         <!--/.col (right) -->
                     </div>
                     <!-- /.row -->
                 </div><!-- /.container-fluid -->
             </section>
             <!-- /.content -->
-        </div>
+                         
         <!-- /.content-wrapper -->
         <?php include 'include/footer.php'; ?>
 

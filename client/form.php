@@ -1,9 +1,10 @@
 <?php
 //new_agreement
+session_start();
 include("../config/config.php");
 
 if(isset($_POST['submit'])){
-	$document_main=$_POST['document_no11'];
+	$document_main=$_POST['no'];
 	$date=$_POST['date'];
 	$type=$_POST['type'];
 	$month=$_POST['month'];

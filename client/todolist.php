@@ -113,7 +113,7 @@ function get_time_ago( $time )
                                     <div class="card">
                                         <div class="card-body">
                                             <h4 class="card-title">To Do List</h4>
-                                            <form method="post" action="table.php">
+                                            <form method="post" action="todolist.php">
 
                                                 <div class="form-group">
 
@@ -124,42 +124,38 @@ function get_time_ago( $time )
                                                 <button type="submit" class="btn btn-primary"
                                                     name="submit">Submit</button>
                                             </form>
-                                            <div class="list-wrapper">
-                                                <ul class="d-flex flex-column-reverse todo-list">
 
-                                                    <div class="card-body">
-                                                        <div class="row">
+                                                        <div class="row my-2">
                                                             <?php                
-                                                $sql=mysqli_query($conn,"select * from todo where user_id='".$_SESSION['id']."' AND status='1'");
-                                                while($arr=mysqli_fetch_array($sql)){
-                                                ?>
+                                                                    $sql=mysqli_query($conn,"select * from todo where user_id='".$_SESSION['id']."'                    AND status='1'");
+                                                                   while($arr=mysqli_fetch_array($sql)){
+                                                                   ?>
 
-                                                            <div class="card col-6"
-                                                                style="height:100%; width:min-content">
-                                                                <div class="card-header d-flex">
-                                                                    <h5 class="card-title">
+                                                            <div class="col-6">
+                                                                <div class="card">
+                                                                    <div class="card-body row">
+                                                                  <div class="col-11">
+                                                                       <h5 class="card-title">
                                                                         <?php echo $arr['task'];?> 
-                                                                    </h5>
-                                                                    <small class="badge badge-info" style="margin-left:30px">
+                                                                       </h5>
+                                                                        <small class="badge badge-info" style="margin-left:20px">
                                                                         <i class="far fa-clock">
                                                                         </i>
                                                                         <?php  echo get_time_ago(strtotime($arr['date']) );?>
-                                                                    </small>
-
-                                                                    <div class="card-tools">
-                                                                        <a href="table.php?delid=<?php echo $arr['id'] ?>"
-                                                                            class="btn btn-tool">
-                                                                            <i class="fas fa-trash" style="margin-left:430px;"></i>
-                                                                        </a>
+                                                                          </small>
                                                                     </div>
+                                                                        <div class="col-1">
+                                                                          <a href="todolist.php?delid=<?php echo $arr['id'] ?>"
+                                                                            class="btn btn-tool">
+                                                                              <i class="fas fa-trash"></i>
+                                                                           </a>
+                                                                        </div>
+                                                                </div>
+                                                                    
                                                                 </div>
                                                             </div>
                                                             <?php } ?>
                                                         </div>
-                                                    </div>
-
-                                                </ul>
-                                            </div>
                                         </div>
                                     </div>
 

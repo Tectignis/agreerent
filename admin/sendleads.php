@@ -21,6 +21,11 @@ if(isset($_POST['submit'])){
 
 
     $sql = mysqli_query($conn,"INSERT INTO `leads`(`user_id`,`client_name`, `mobile`, `type`, `requirement`, `area`,`location`,`firm_name`) VALUES ('".$_SESSION['aid']."','$client_name','$mobile_no', '$type','$requirement','$area','$location','$firm_name')");
+    if($sql==1){	
+      header("location:paidleads");
+    }else{
+      echo "<script>alert('Something went wrong');</script>";
+    }
 }
 
 
@@ -31,7 +36,7 @@ if(isset($_POST['submit'])){
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AGREERENT | Send Ledas</title>
+    <title>AGREERENT | Send Leads</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"

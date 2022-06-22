@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_SESSION['id'])) // If session is not set then redirect to Login Page
+if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 {
  header("Location:clientlogin.php"); 
 }
@@ -8,13 +8,14 @@ if(isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 include("../config/config.php");
 
 if(isset($_POST['submit'])){
+  $user_id=$_SESSION['id'];
 	$name=$_POST['name'];
   $mob_no=$_POST['mob_no'];
 	$email=$_POST['email'];
   $description=$_POST['description'];
 
 	
-	$sql=mysqli_query($conn,"INSERT INTO `enquiry`(`name`,`mob_no`,`email`,`description`) VALUES ('$name','$mob_no','$email','$description')");
+	$sql=mysqli_query($conn,"INSERT INTO `clientenquiry`(`user_id`,`name`,`mob_no`,`email`,`description`) VALUES ('".$_SESSION['id']."','$name','$mob_no','$email','$description')");
   
 	if($sql==1){	
     header("location:enquiry.php");

@@ -6,6 +6,14 @@ if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
 }
 include("../config/config.php");
 
+if(isset($_GET['delid'])){
+  $id=mysqli_real_escape_string($conn,$_GET['delid']);
+  $sql=mysqli_query($conn,"delete from todo where id='$id'");
+  if($sql=1){
+    header("location:index");
+  }
+}
+
 
 function get_time_ago( $time )
   {
@@ -68,7 +76,7 @@ function get_time_ago( $time )
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="" height="60" width="60">
   </div>
 
   <!-- Navbar -->
@@ -90,7 +98,7 @@ function get_time_ago( $time )
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard v1</li>
+              <li class="breadcrumb-item active">Dashboard</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -108,7 +116,7 @@ function get_time_ago( $time )
             <div class="small-box bg-info">
               <div class="inner">
                 <?php
-                               $query=mysqli_query($conn,"select * from enquiry where user_id='".$_SESSION['id']."'");
+                               $query=mysqli_query($conn,"select * from clientenquiry where user_id='".$_SESSION['id']."'");
                                 $count1=mysqli_num_rows($query);
                             ?>
                 <h3><?php echo $count1; ?></h3>
@@ -118,7 +126,7 @@ function get_time_ago( $time )
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="enquiry" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -137,7 +145,7 @@ function get_time_ago( $time )
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="case" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -209,7 +217,7 @@ function get_time_ago( $time )
                     <small class="badge badge-danger"><i class="far fa-clock"></i><?php  echo get_time_ago(strtotime($arr['date']) );?></small>
                     <!-- General tools such as edit or delete-->
                     <div class="tools">
-                       <a href="todolist.php?delid=<?php echo $arr['id'] ?>" classb="tn btn-tool">
+                       <a href="index.php?delid=<?php echo $arr['id'] ?>" classb="tn btn-tool">
                     <i class="fas fa-trash"></i>
                   </a>
                     </div>

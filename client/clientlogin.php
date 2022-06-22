@@ -118,7 +118,7 @@ $(document).ready(function() {
   title: 'Success',
   text: 'Login Successfully',
   showConfirmButton: false,
-  timer: 5000
+  timer: 1000
 }).then(function() {
         // Redirect the user
         window.location.href = "index";
@@ -138,7 +138,7 @@ $(document).ready(function() {
   title: 'Error',
   text: 'Invalid Email or Password',
   showConfirmButton: false,
-  timer: 5000
+  timer: 2000
 }).then(function() {
         // Redirect the user
         window.location.href = "clientlogin";
