@@ -375,7 +375,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                         class="btn btn-info" data-tt="tooltip" title=""
                                                         data-original-title="Click here to Save">Save as
                                                         Draft</button>&nbsp;
-                                                    <button type="button" class="btn btn-primary  "
+                                                    <button type="button" class="btn btn-primary  next"
                                                         style="color: aliceblue" id=""> Next<i
                                                             class="mdi mdi-chevron-right"></i></button>
                                                 </div>
@@ -526,7 +526,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                         class="btn btn-info" data-tt="tooltip" title=""
                                                         data-original-title="Click here to Save">Save as
                                                         Draft</button>&nbsp;
-                                                    <button type="button" class="btn btn-primary  "
+                                                    <button type="button" class="btn btn-primary next "
                                                         style="color: aliceblue" name="submit" id="sub">Next<i
                                                             class="mdi mdi-chevron-right"></i></button>
                                                 </div>
@@ -636,7 +636,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                         class="btn btn-info" data-tt="tooltip" title=""
                                                         data-original-title="Click here to Save">Save as
                                                         Draft</button>&nbsp;
-                                                    <button type="button" name="submit" class="btn btn-primary  "
+                                                    <button type="button" name="submit" class="btn btn-primary next "
                                                         style="color: aliceblue">Next<i
                                                             class="mdi mdi-chevron-right"></i></button>
                                                 </div>
@@ -718,7 +718,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                         class="btn btn-info" data-tt="tooltip" title=""
                                                         data-original-title="Click here to Save">Save as
                                                         Draft</button>&nbsp;
-                                                    <button type="button" class="btn btn-primary  "
+                                                    <button type="button" class="btn btn-primary next "
                                                         style="color: aliceblue">Next<i
                                                             class="mdi mdi-chevron-right"></i></button>
                                                 </div>
@@ -840,7 +840,7 @@ if(isset($_GET['id'])){
                                                         class="btn btn-info" data-tt="tooltip" title=""
                                                         data-original-title="Click here to Save">Save as
                                                         Draft</button>&nbsp;
-                                                    <button type="button" name="submit" class="btn btn-primary "
+                                                    <button type="button" name="submit" class="btn btn-primary next "
                                                         style="color: aliceblue" id="sub">Next</button>
                                                 </div>
                                             </form>
@@ -889,7 +889,7 @@ if(isset($_GET['id'])){
                                                         class="btn btn-info" data-tt="tooltip" title=""
                                                        >Save as
                                                         Draft</button>&nbsp;
-                                                    <button type="button" class="btn btn-primary "
+                                                    <button type="button" class="btn btn-primary next"
                                                         style="color: aliceblue">Next<i
                                                             class="mdi mdi-chevron-right"></i></button>
                                                 </div>
@@ -1334,16 +1334,24 @@ if(isset($_GET['id'])){
                 },
                 cache: false,
                 success: function (res7) {
-                swal("Done!",res7, "success");
+                swal("Done!",res7, "success").then(function() {
+          window.location.href = "case.php";
+      });
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 swal("Error",res7, "error");
             },
             });
         });
+    });
+    </script>
+    <script>
+    $('.next').click(function() {
+        $('.nav-tabs > .nav-item > .active').parent().next('li').find('a').trigger('click');
+    });
 
-
-
+    $('.previous').click(function() {
+        $('.nav-tabs > .nav-item > .active').parent().prev('li').find('a').trigger('click');
     });
     </script>
 </body>
