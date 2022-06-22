@@ -100,7 +100,7 @@ include("../config/config.php");
                                             <div class="col-sm-4">
 
                                                 <input type="text" name="document_no11" value="<?php echo $number;?>"
-                                                    class="form-control" id="no" readonly>
+                                                    class="form-control" id="exampledno" readonly>
 
                                             </div>
                                         </div>
