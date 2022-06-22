@@ -1,12 +1,9 @@
 <?php 
 session_start();
-if(!isset($_SESSION['admin']) == 1) // If session is not set then redirect to Login Page
+
+if(!isset($_SESSION['id'])) 
 {
-//  header("Location:adminlogin"); 
-}
-if(!isset($_SESSION['aid'])) 
-{
- header("Location:adminlogin.php"); 
+ header("Location:clientlogin.php"); 
 }
 include("../config/config.php");
 
@@ -157,7 +154,6 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                     <label for="examplename" class="col-sm-2 col-form-label">Full
                                                         Name<label style="color:Red">*</label> </label>
                                                     <div class="col-sm-2">
-                                                        
                                                       
 
                                                         <select class="form-control" name="abbreviation" id="examplemr"
@@ -190,9 +186,8 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                             style="color:Red">*</label></label>
                                                     <div class="col-sm-4">
                                                         <input type="tel" name="mobile" id="mobile" class="form-control"
-                                                           maxlength="10" 
+                                                            minlength="10" maxlength="10" pattern="[7-9]{1}[0-9]{9}"
                                                             placeholder="Enter Mobile Number" required>
-                                                            <span id="mobilespan"></span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -263,9 +258,9 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                     </div>
                                                     <div class="col-sm-8">
                                                         <input type="text" class="form-control" name="name1"
-                                                            id="txtNameTenant" placeholder="Enter Name"
+                                                            id="txtname3" placeholder="Enter Name"
                                                             style="text-transform:uppercase" required>
-                                                        <span id="spannameTenant"></span>
+                                                        <span id="spanname"></span>
                                                     </div>
                                                 </div>
                                                 <!-- ss -->
@@ -291,18 +286,16 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                         class="col-sm-2 col-form-label">Mobile No.<label
                                                             style="color:Red">*</label></label>
                                                     <div class="col-sm-4">
-                                                        <input type="tel" class="form-control" id="phoneTenant" name="mobile"
-                                                            placeholder="Enter Mobile Number" 
+                                                        <input type="tel" class="form-control" id="phone" name="mobile"
+                                                            placeholder="Enter Mobile Number" minlength="10"
                                                             maxlength="10" required>
-                                                            <span id="phoneTenantSpan"></span>
                                                     </div>
 
                                                     <label for="exampleaadhaar" class="col-sm-2 col-  form-label">E-mail
                                                         ID<label style="color:Red">*</label></label>
                                                     <div class="col-sm-4">
                                                         <input type="email" class="form-control" name="email"
-                                                            id="emailcheckTenant" placeholder="Enter Email" required>
-                                                            <span id="emailcheckTenantSpan"></span>
+                                                            id="emailcheck" placeholder="Enter Email" required>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -310,16 +303,16 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                         No</label>
                                                     <div class="col-sm-4">
                                                         <input type="text" class="form-control" name="passport"
-                                                            id="passport" placeholder="Enter Passport Number" required>
+                                                            id="passport" placeholder="Enter Passport Number">
                                                     </div>
 
                                                     <label for="exampleaadhaar" class="col-sm-2 col-form-label">Aadhaar
                                                         Card No.<label style="color:Red">*</label></label>
                                                     <div class="col-sm-4">
                                                     <input type="tel" name="aadhaar" class="form-control"
-                                                            id="txAdharTenant" placeholder="Enter Aadhaar card No" minlength="12"
+                                                            id="txAdhar" placeholder="Enter Aadhaar card No" minlength="12"
                                                             maxlength="12" required>
-                                                        <span id="spanAadharCardTenant"></span>
+                                                        <span id="spanAadharCard"></span>
                                                     </div>
                                                 </div>
 
@@ -328,8 +321,9 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                         class="col-sm-2 col-form-label">Age<label
                                                             style="color:Red">*</label></label>
                                                     <div class="col-sm-4">
-                                                        <input type="number" class="form-control" name="age" id="idTenant" placeholder="Enter Age" required>
-                                                        <p id="demoTenant"></p>
+                                                        <input type="number" class="form-control" name="age" min="18"
+                                                            max="100" id="id2" placeholder="Enter Age" required>
+                                                        <p id="demo"></p>
                                                     </div>
 
 
@@ -337,9 +331,9 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                         No.<label style="color:Red">*</label></label>
                                                     <div class="col-sm-4">
                                                         <input type="text" class="form-control" name="pancard"
-                                                            id="txtPANCardTenant" placeholder="Enter Pancard number"
+                                                            id="txtPANCard1" placeholder="Enter Pancard number"
                                                             style="text-transform:uppercase" required>
-                                                        <span id="spanCardTenant"></span>
+                                                        <span id="spanCard"></span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -505,15 +499,15 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                 <div class="row">
                                                     <div class="col-sm-6">
                                                         <div class="form-group row">
-                                                             <input type="hidden" name="no4" id="noFamily"
+                                                             <input type="hidden" name="no4" id="no4"
                                                                 value="<?php echo $basicid;?>">
                                                             <label for="examplename"
                                                                 class="col-sm-3 col-form-label-sm">Name<label
                                                                     style="color:Red">*</label></label>
                                                             <div class="col-sm-9">
-                                                                <input type="text" class="form-control" id="txtnameFamily"
+                                                                <input type="text" class="form-control" id="txtname1"
                                                                     name="name2" placeholder="Enter Name" required>
-                                                                <span id="spannameFamily"></span>
+                                                                <span id="spanname"></span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -547,7 +541,6 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                             <div class="col-sm-9">
                                                                 <input type="number" class="form-control" name="age"
                                                                     id="relativeage" placeholder="Enter Age" required>
-                                                                    <span id="demoFamily"></span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -601,15 +594,14 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                     <h4>Owner Witness </h4>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <input type="hidden" name="no5" id="noWitness" value="<?php echo $basicid;?>">
+                                                    <input type="hidden" name="no5" id="no5" value="<?php echo $basicid;?>">
                                                     <label for="exampleInputtran"
                                                         class="col-sm-2 col-form-label">1<sup>st</sup> Person<label
                                                             style="color:Red">*</label></label>
                                                     <div class="col-sm-10">
                                                         <input type="text" style="text-transform:uppercase"
-                                                            class="form-control " id="owitness1" name="owitness1"
+                                                            class="form-control " id="nameowner" name="owitness1"
                                                             placeholder="Enter Name" required>
-                                                            <span id="owitness1span"></span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -620,7 +612,6 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                         <input type="text" style="text-transform:uppercase"
                                                             class="form-control txtname" id="nameowner2"
                                                             name="owitness2" placeholder="Enter Name" required>
-                                                            <span id="nameowner2span"></span>
 
 
                                                     </div>
@@ -639,7 +630,6 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                         <input type="text" style="text-transform:uppercase"
                                                             class="form-control " id="twitness1" name="twitness1"
                                                             placeholder="Enter Name" txtname required>
-                                                            <span id="twitness1span"></span>
 
                                                     </div>
                                                 </div>
@@ -651,7 +641,6 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                         <input type="text" style="text-transform:uppercase"
                                                             class="form-control " id="twitness2" name="twitness2"
                                                             placeholder="Enter Name" txtname required>
-                                                            <span id="twitness2span"></span>
 
                                                     </div>
                                                 </div>
@@ -679,16 +668,16 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                 <div class="row">
                                                     <div class="col-sm-6">
                                                         <div class="form-group row">
-                                                            <input type="hidden" name="no6" id="noAmenities"
+                                                            <input type="hidden" name="no6" id="no6"
                                                                 value="<?php echo $basicid;?>">
                                                             <label for="examplename"
                                                                 class="col-sm-3 col-form-label-sm">Name<label
                                                                     style="color:Red">*</label></label>
                                                             <div class="col-sm-9">
                                                                 <input type="text" style="text-transform:uppercase"
-                                                                    class="form-control" id="txtnameAmenities" name="name3"
+                                                                    class="form-control" id="txtname2" name="name3"
                                                                     placeholder="Enter Name" required>
-                                                                <span id="spannameAmenities"></span>
+                                                                <span id="spanname"></span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -699,7 +688,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                                     style="color:Red">*</label></label>
                                                             <div class="col-sm-9">
                                                                 <input type="number" class="form-control" name="number"
-                                                                    id="itemnumber" placeholder="Enter Number of items"
+                                                                    id="itemnumbe" placeholder="Enter Number of items"
                                                                     required>
                                                             </div>
                                                         </div>
@@ -902,11 +891,45 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
     });
     </script>
 <script>
-
+let subm = document.getElementById("subm");
+subm.addEventListener("click", function(){
+let no1 = document.getElementById("no").value;
+let abbreviation = document.getElementById("examplemr").value;
+let name = document.getElementById("txtname").value;
+let age = document.getElementById("id1").value;
+let mobile = document.getElementById("mobile").value;
+let aadhaar = document.getElementById("txAdhar").value;
+let pancard = document.getElementById("txtPANCard").value;
+let address = document.getElementById("address").value;
+if(no1 == "" || abbreviation == "" || name == "" || age == "" || mobile == "" || aadhaar== "" || pancard== "" || address== ""  ){
+    swal("Oops...", "Please fill all the fields", "error");
+}
+    else{
+      swal("Saved!", "Agreement Save", "success");
+    }
+});
 </script>
 
 <script>
-$("#checkselec")
+// let submitenant = document.getElementById("submitenant");
+// submitenant.addEventListener("click", function(){
+// let abbreviation = document.getElementById("exampleSelectmr").value;
+// let name1 = document.getElementById("txtname3").value;
+// let mobile = document.getElementById("phone").value;
+// let email = document.getElementById("emailcheck").value;
+
+// let aadhaar = document.getElementById("txtAadhar1").value;
+// let age = document.getElementById("id2").value;
+// let pancard = document.getElementById("txtPANCard1").value;
+// let address = document.getElementById("residenceAddress").value;
+// let permanent_address = document.getElementById("presentAddress").value;
+// if( abbreviation == "" || name1 == "" || mobile == "" || email == "" || aadhaar == "" || age == "" || pancard == "" || address == "" || permanent_address == ""  ){
+//     swal("Oops...", "Please fill all the fields", "error");
+// }
+//     else{
+//         swal("Saved!", "Agreement Save", "success");
+//     }
+// });
 </script>
 
 <script>
@@ -929,9 +952,58 @@ if(exampleproperties == "" || address == "" || sector == "" || plotno == "" || c
     }
 });
 </script>
+<script>
+let submitmember = document.getElementById("submitmember");
+submitmember.addEventListener("click", function(){
+let no4 = document.getElementById("no4").value;
+let name2 = document.getElementById("txtname1").value;
+let relation = document.getElementById("exampleSelectrelation").value;
+let age = document.getElementById("relativeage").value;
+let gender = document.getElementById("relativegender").value;
+
+if(no4 == "" || name2 == "" || relation == "" || age == "" || gender == ""  ){
+    swal("Oops...", "Please fill all the fields", "error");
+}
+    else{
+        swal("Saved!", "Agreement Save", "success");
+    }
+});
+</script>
+<script>
+let submitwitness = document.getElementById("submitwitness");
+submitwitness.addEventListener("click", function(){
+let no5 = document.getElementById("no5").value;
+let owitness1 = document.getElementById("nameowner").value;
+let owitness2 = document.getElementById("nameowner2").value;
+let twitness1 = document.getElementById("twitness1").value;
+let twitness2 = document.getElementById("twitness2").value;
+
+
+if(no5 == "" || owitness1 == "" || owitness2 == "" || twitness1 == "" || twitness2 == ""  ){
+    swal("Oops...", "Please fill all the fields", "error");
+}
+    else{
+        swal("Saved!", "Agreement Save", "success");
+    }
+});
+</script>
+<script>
+let submitaminities = document.getElementById("submitaminities");
+submitaminities.addEventListener("click", function(){
+let no6 = document.getElementById("no6").value;
+let name3 = document.getElementById("txtname2").value;
+let number = document.getElementById("itemnumbe").value;
 
 
 
+if(no6 == "" || name3 == "" || number == ""   ){
+    swal("Oops...", "Please fill all the fields", "error");
+}
+    else{
+        swal("Saved!", "Agreement Save", "success");
+    }
+});
+</script>
 <script>
 let submitpayment = document.getElementById("submitpayment");
 submitpayment.addEventListener("click", function(){
@@ -949,877 +1021,9 @@ if(no7 == "" || rent_amount == "" || method == "" || date_of_payment == "" || ba
         swal("Saved!", "Agreement Save", "success");
     }
 });
-
-
-</script>
-<!-- owner -->
-<script>
-	let validName, validAge, validAadhar, validPan, validMobile;
-  $(document).ready(function(){
-   //TEXT VALIDATION
-   $("#spanname").hide();
-	    $("#txtname").keyup(function(){
-	     txt_check();
-	   });
-	   function txt_check(){
-		   let txt=$("#txtname").val();
-		   let vali =/^[A-Za-z ]+$/;
-		   if(!vali.test(txt)){
-			validName="no";
-			  $("#spanname").show().html("Enter Alphabets only").css("color","red").focus();
-			  txt_err=false;
-			  return false;
-			
-		   }
-		   else{
-			validName="yes";
-		       $("#spanname").hide();
-		       
-		   }
-	   }
-
-	   $("#sub").click(function(){
-       txt_err = true;
-             txt_check();
-			   
-			   if((txt_err==true)){
-			      return true;
-			   }
-			   else{return false;}
-		  });
-
-
-      //PAN card validation
-	   $("#spanCard").hide();
-	    $("#txtPANCard").keyup(function(){
-	     pan_check();
-	   });
-	   function pan_check(){
-		   let pancard=$("#txtPANCard").val();
-		   let vali =/([A-Za-z]){5}([0-9]){4}([A-Za-z]){1}$/;  
-		   if(!vali.test(pancard)){
-			validPan="no";
-			    $("#spanCard").show().html("*Invalid Pan No").css("color","red").focus();
-			 pan_err=false;
-			 return false;
-		   }
-		   else{
-			validPan="yes";
-		       $("#spanCard").hide();
-		   }
-	   }
-
-	   $("#sub").click(function(){
-	           pan_err = true;
-		       pan_check();
-			   
-			   if((pan_err==true)){
-			      return true;
-			   }
-			   else{return false;}
-		  });
-
-
-      //AADHAR CARD VALIDATION
-      $("#spanAadharCard").hide();
-	    $("#txAdhar").keyup(function(){
-	     aadhar_check();
-	   });
-	   function aadhar_check(){
-		   let aadharcard=$("#txAdhar").val();
-		   let vali =/^\d{12}$/; 
-		   if(!vali.test(aadharcard)){
-			validAadhar="no";
-			    $("#spanAadharCard").show().html("*Invalid Aadhar No").css("color","red").focus();
-          aadhar_err=false;
-			 return false;
-		   }
-		   else{
-			validAadhar="yes";
-		       $("#spanAadharCard").hide(); 
-		   }
-	   }
-
-	   $("#sub").click(function(){
-	           aadhar_err = true;
-             aadhar_check();
-			   
-			   if((aadhar_err==true)){
-			      return true;
-			   }
-			   else{return false;}
-		  });
-
-		   //MOBILE NO VALIDATION
-		   $("#mobilespan").hide();
-	    $("#mobile").keyup(function(){
-			mobile_check();
-	   });
-	   function mobile_check(){
-		   let mobileno=$("#mobile").val();
-		   let vali =/^[6-9]\d{9}$/; 
-		   if(!vali.test(mobileno)){
-			validMobile="no";
-			    $("#mobilespan").show().html("*Invalid Mobile No").css("color","red").focus();
-				mobile_err=false;
-			 return false;
-		   }
-		   else{
-			validMobile="yes";
-		       $("#mobilespan").hide(); 
-		   }
-	   }
-
-	   $("#sub").click(function(){
-		mobile_err = true;
-			   mobile_check();
-			   
-			   if((mobile_err==true)){
-			      return true;
-			   }
-			   else{return false;}
-		  });
-
-
-
-      //age validation
-      $("#demo").hide();
-	    $("#id1").keyup(function(){
-	     age_check();
-	   });
-	   function age_check(){
-		   let age=$("#id1").val();
-        let vali =/^(1[89]|[2-9]\d)$/;
-        
-        
-       if(!vali.test(age)){
-	     	validAge="no";
-            $("#demo").show().html("*Age should be between 18 to 100").css("color","red").focus();
-            age_err=false;
-            return false;
-        }
-        else{
-			validAge="yes";
-            $("#demo").hide();
-        }
-      }
-
-	   $("#sub").click(function(){
-      age_err = true;
-      age_check();
-			   
-			   if((age_err==true)){
-			      return true;
-			   }
-			   else{return false;}
-		  });
-
-
-
-  });
-  let subm = document.getElementById("subm");
-  subm.addEventListener("click", function(){
-  // let no1 = document.getElementById("no").value;
-  let abbreviation = document.getElementById("examplemr").value;
-  let name = document.getElementById("txtname").value;
-  let age = document.getElementById("id1").value;
-  let mobile = document.getElementById("mobile").value;
-  let aadhaar = document.getElementById("txAdhar").value;
-  let pancard = document.getElementById("txtPANCard").value;
-  let address = document.getElementById("address").value;
-  if( validName == "no" || validAge == "no" || validAadhar== "no" || validPan== "no" ||abbreviation == "" || name == "" || age == "" || mobile == "" || aadhaar== "" || pancard== "" || address== ""  ){
-    swal("Oops...", "Please fill all the fields", "error");
-  }
-      else{
-      swal("Saved!", "Agreement Save", "success");
-    }
-  });
-    // let subm = document.getElementById("subm");
-    //   subm.addEventListener("click", function(){
-    //   let no1 = document.getElementById("no").value;
-    //   let abbreviation = document.getElementById("examplemr").value;
-    //   let address = document.getElementById("address").value;
-    //   let ownername = document.getElementById("textname").value;
-
-    //   // if(no1 == "" || abbreviation == "" || name == "" || age == "" || mobile == "" || aadhaar== "" || pancard== "" || address== ""  ){
-    //   //     swal("Oops...", "Please fill all the fields", "error");
-    //   // }
-      
-    //   // if(no1 == "" || abbreviation == "" || validName == "no" || validAge == "no" || mobile == "" || validAadhar== "no" || validPan== "no" || address== ""  ){
-    //   //     swal("Oops...", "Please fill all the fields", "error");
-    //   // }
-    //   if( no1 == "" || ownername == "" || abbreviation == "" || validName == "no" || validAge == "no" || validMobile == "no" || validAadhar== "no" || validPan== "no" || address== ""  ){
-    //       swal("Oops...", "Please fill all the fields", "error");
-    //   }
-    //       else{
-    //         swal("Saved!", "Agreement Save", "success");
-    //       }
-    //   });
-</script>
-
-<!-- Tenant -->
-
-<script>
-
- let validTenantName, validTenantAge, validTenantAadhar, validTenantPan, validTenantMobile, validTenantEmail;
-
-  $(document).ready(function(){
-   //TEXT VALIDATION
-   $("#spannameTenant").hide();
-	    $("#txtNameTenant").keyup(function(){
-	     txt_check();
-	   });
-	   function txt_check(){
-		validTenantName="no";
-		   let txt=$("#txtNameTenant").val();
-		   let vali =/^[A-Za-z ]+$/;
-		   if(!vali.test(txt)){
-			  $("#spannameTenant").show().html("Enter Alphabets only").css("color","red").focus();
-			  txt_err=false;
-			  return false;
-		   }
-		   else{
-			validTenantName="yes";
-		       $("#spannameTenant").hide();
-		       
-		   }
-	   }
-
-	   $("#sub").click(function(){
-       txt_err = true;
-             txt_check();
-			   
-			   if((txt_err==true)){
-			      return true;
-			   }
-			   else{return false;}
-		  });
-
-
-	
-
-		  
-
-      //PAN card validation
-	   $("#spanCardTenant").hide();
-	    $("#txtPANCardTenant").keyup(function(){
-	     pan_check();
-	   });
-	   function pan_check(){
-		   let pancard=$("#txtPANCardTenant").val();
-		   let vali =/([A-Za-z]){5}([0-9]){4}([A-Za-z]){1}$/;  
-		   if(!vali.test(pancard)){
-			validTenantPan="no";
-			    $("#spanCardTenant").show().html("*Invalid Pan No").css("color","red").focus();
-			 pan_err=false;
-			 return false;
-		   }
-		   else{
-			validTenantPan="yes";
-		       $("#spanCardTenant").hide();
-		   }
-	   }
-
-	   $("#sub").click(function(){
-	           pan_err = true;
-		       pan_check();
-			   
-			   if((pan_err==true)){
-			      return true;
-			   }
-			   else{return false;}
-		  });
-
-
-      //AADHAR CARD VALIDATION
-      $("#spanAadharCardTenant").hide();
-	    $("#txAdharTenant").keyup(function(){
-	     aadhar_check();
-	   });
-	   function aadhar_check(){
-		   let aadharcard=$("#txAdharTenant").val();
-		   let vali =/^\d{12}$/; 
-		   if(!vali.test(aadharcard)){
-			validTenantAadhar="no";
-			    $("#spanAadharCardTenant").show().html("*Invalid Aadhar No").css("color","red").focus();
-          aadhar_err=false;
-			 return false;
-		   }
-		   else{
-			validTenantAadhar="yes";
-		       $("#spanAadharCardTenant").hide(); 
-		   }
-	   }
-
-	   $("#sub").click(function(){
-	           aadhar_err = true;
-             aadhar_check();
-			   
-			   if((aadhar_err==true)){
-			      return true;
-			   }
-			   else{return false;}
-		  });
-
-
-		  	  
-		   //MOBILE NO VALIDATION
-		   $("#phoneTenantSpan").hide();
-	    $("#phoneTenant").keyup(function(){
-	     mobile_check();
-	   });
-	   function mobile_check(){
-		   let mobileno=$("#phoneTenant").val();
-		   let vali =/^[6-9]\d{9}$/; 
-		   if(!vali.test(mobileno)){
-			validTenantMobile="no";
-			    $("#phoneTenantSpan").show().html("*Invalid Mobile No").css("color","red").focus();
-				mobile_err=false;
-			 return false;
-		   }
-		   else{
-			validTenantMobile="yes";
-		       $("#phoneTenantSpan").hide(); 
-		   }
-	   }
-
-	   $("#sub").click(function(){
-		mobile_err = true;
-		mobile_check();
-			   
-			   if((mobile_err==true)){
-			      return true;
-			   }
-			   else{return false;}
-		  });
-
-		
-		  
-      //age validation
-      $("#demoTenant").hide();
-	    $("#idTenant").keyup(function(){
-	     age_check();
-	   });
-	   function age_check(){
-		   let age=$("#idTenant").val();
-        let vali =/^(1[89]|[2-9]\d)$/;
-        
-        
-       if(!vali.test(age)){
-		validTenantAge="no";
-            $("#demoTenant").show().html("*Age should be between 18 to 100").css("color","red").focus();
-            age_err=false;
-            return false;
-        }
-        else{
-			validTenantAge="yes";
-            $("#demoTenant").hide();
-        }
-      }
-
-	   $("#sub").click(function(){
-      age_err = true;
-      age_check();
-			   
-			   if((age_err==true)){
-			      return true;
-			   }
-			   else{return false;}
-		  });
-
-		    // EMAIL NO
-			$("#emailcheckTenantSpan").hide();
-	    $("#emailcheckTenant").keyup(function(){
-			email_check();
-	   });
-	   function email_check(){
-	
-		   let email=$("#emailcheckTenant").val();
-		   let vali =/^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
-		   if(!vali.test(email)){
-			validTenantEmail="no";
-			  $("#emailcheckTenantSpan").show().html("Enter Valid Email No").css("color","red").focus();
-			  txt_err=false;
-			  return false;
-		   }
-		   else{
-			validTenantEmail="yes";
-		       $("#emailcheckTenantSpan").hide();
-		       
-		   }
-	   }
-
-	   $("#sub").click(function(){
-		email_err = true;
-	   email_check();
-			   
-			   if((email_err==true)){
-			      return true;
-			   }
-			   else{return false;}
-		  });
-
-
-
-
- });
- let submitenant = document.getElementById("submitenant");
-     submitenant.addEventListener("click", function(){
-     // let no2 = document.getElementById("no2").value;
-     let name1 = document.getElementById("txtNameTenant").value;
-     let officename = document.getElementById("officename").value;
-     let officeno = document.getElementById("officeno").value;
-     let phoneTenant = document.getElementById("phoneTenant").value;
-     let txAdharTenant = document.getElementById("txAdharTenant").value;
-     let emailcheckTenant = document.getElementById("emailcheckTenant").value;
-     let idTenant = document.getElementById("idTenant").value;
-     let pan = document.getElementById("txtPANCardTenant").value;
-     let officeaddress = document.getElementById("officeaddress").value;
-     let abbreviation = document.getElementById("exampleSelectmr").value;
-     let address = document.getElementById("residenceAddress").value;
-     let permanent_address = document.getElementById("presentAddress").value;
-    
-     // if( no2 == "" || abbreviation == "" || validTenantName == "no" || validTenantMobile == "no" || validTenantEmail == "no" || validTenantAadhar == "no" || validTenantAge == "no" || validTenantPan == "no" || address == "" || permanent_address == ""  ){
-     //     swal("Oops...", "Please fill all the fields", "error");
-     // }
-     if( name1=="" || officename=="" || officeno=="" || phoneTenant=="" || txAdharTenant=="" || emailcheckTenant=="" || idTenant=="" || pan=="" || officeaddress=="" ||abbreviation == "" || validTenantName == "no" || validTenantMobile == "no" || validTenantEmail == "no" || validTenantAadhar == "no" || validTenantAge == "no" || validTenantPan == "no" || address == "" || permanent_address == ""  ){
-         swal("Oops...", "Please fill all the fields", "error");
-     }
-         else{
-             swal("Saved!", "Agreement Save", "success");
-         }
-     });
-</script>
-
-<!-- Property -->
-<script>
-  $(document).ready(function(){
-   //TEXT VALIDATION
-   $("#spannameTenant").hide();
-	    $("#txtNameTenant").keyup(function(){
-	     txt_check();
-	   });
-	   function txt_check(){
-		   let txt=$("#txtNameTenant").val();
-		   let vali =/^[A-Za-z ]+$/;
-		   if(!vali.test(txt)){
-			  $("#spannameTenant").show().html("Enter Alphabets only").css("color","red").focus();
-			  txt_err=false;
-			  return false;
-		   }
-		   else{
-		       $("#spannameTenant").hide();
-		       
-		   }
-	   }
-
-	   $("#sub").click(function(){
-       txt_err = true;
-             txt_check();
-			   
-			   if((txt_err==true)){
-			      return true;
-			   }
-			   else{return false;}
-		  });
-
-
-      //PAN card validation
-	   $("#spanCardTenant").hide();
-	    $("#txtPANCardTenant").keyup(function(){
-	     pan_check();
-	   });
-	   function pan_check(){
-		   let pancard=$("#txtPANCardTenant").val();
-		   let vali =/([A-Za-z]){5}([0-9]){4}([A-Za-z]){1}$/;  
-		   if(!vali.test(pancard)){
-			    $("#spanCardTenant").show().html("*Invalid Pan No").css("color","red").focus();
-			 pan_err=false;
-			 return false;
-		   }
-		   else{
-		       $("#spanCardTenant").hide();
-		   }
-	   }
-
-	   $("#sub").click(function(){
-	           pan_err = true;
-		       pan_check();
-			   
-			   if((pan_err==true)){
-			      return true;
-			   }
-			   else{return false;}
-		  });
-
-
-      //AADHAR CARD VALIDATION
-      $("#spanAadharCardTenant").hide();
-	    $("#txAdharTenant").keyup(function(){
-	     aadhar_check();
-	   });
-	   function aadhar_check(){
-		   let aadharcard=$("#txAdharTenant").val();
-		   let vali =/^\d{12}$/; 
-		   if(!vali.test(aadharcard)){
-			    $("#spanAadharCardTenant").show().html("*Invalid Aadhar No").css("color","red").focus();
-          aadhar_err=false;
-			 return false;
-		   }
-		   else{
-		       $("#spanAadharCardTenant").hide(); 
-		   }
-	   }
-
-	   $("#sub").click(function(){
-	           aadhar_err = true;
-             aadhar_check();
-			   
-			   if((aadhar_err==true)){
-			      return true;
-			   }
-			   else{return false;}
-		  });
-
-
-      //age validation
-      $("#demoTenant").hide();
-	    $("#idTenant").keyup(function(){
-	     age_check();
-	   });
-	   function age_check(){
-		   let age=$("#idTenant").val();
-        let vali =/^(1[89]|[2-9]\d)$/;
-        
-        
-       if(!vali.test(age)){
-            $("#demoTenant").show().html("*Age should be between 18 to 100").css("color","red").focus();
-            age_err=false;
-            return false;
-        }
-        else{
-            $("#demoTenant").hide();
-        }
-      }
-
-	   $("#sub").click(function(){
-      age_err = true;
-      age_check();
-			   
-			   if((age_err==true)){
-			      return true;
-			   }
-			   else{return false;}
-		  });
-
-
-
- });
-</script>
-
-<!-- Family Member -->
-<script>
-	let validFamilyName, validFamilyAge;
-  $(document).ready(function(){
-   //TEXT VALIDATION
-   $("#spannameFamily").hide();
-	    $("#txtnameFamily").keyup(function(){
-	     txt_check();
-	   });
-	   function txt_check(){
-		   let txt=$("#txtnameFamily").val();
-		   let vali =/^[A-Za-z ]+$/;
-		   if(!vali.test(txt)){
-			validFamilyName="no";
-			  $("#spannameFamily").show().html("Enter Alphabets only").css("color","red").focus();
-			  txt_err=false;
-			  return false;
-		   }
-		   else{
-			validFamilyName="yes";
-		       $("#spannameFamily").hide();
-		       
-		   }
-	   }
-
-	   $("#sub").click(function(){
-       txt_err = true;
-             txt_check();
-			   
-			   if((txt_err==true)){
-			      return true;
-			   }
-			   else{return false;}
-		  });
-
-      //age validation
-      $("#demoFamily").hide();
-	    $("#relativeage").keyup(function(){
-	     age_check();
-	   });
-	   function age_check(){
-		   let age=$("#relativeage").val();
-        let vali =/^(1[89]|[2-9]\d)$/;
-        
-        
-       if(!vali.test(age)){
-		validFamilyAge="no";
-            $("#demoFamily").show().html("*Age should be between 18 to 100").css("color","red").focus();
-            age_err=false;
-            return false;
-        }
-        else{
-			validFamilyAge="yes";
-            $("#demoFamily").hide();
-        }
-      }
-
-	   $("#sub").click(function(){
-      age_err = true;
-      age_check();
-			   
-			   if((age_err==true)){
-			      return true;
-			   }
-			   else{return false;}
-		  });
-
-
-
- });
- let submitmember = document.getElementById("submitmember");
- submitmember.addEventListener("click", function(){
- // let no4 = document.getElementById("noFamily").value;
- let relation = document.getElementById("exampleSelectrelation").value;
- let gender = document.getElementById("relativegender").value; 
- let relativeage = document.getElementById("relativeage").value;
- let txtnameFamily = document.getElementById("txtnameFamily").value;
-
- // if(no4 == "" || name2 == "" || relation == "" || age == "" || gender == ""  ){
- //     swal("Oops...", "Please fill all the fields", "error");
- // }
- if(relativeage=="" || txtnameFamily=="" ||  validFamilyName == "no" || relation == "" || validFamilyAge == "no" || gender == ""  ){
-    swal("Oops...", "Please fill all the fields", "error");
- }
-    else{
-        swal("Saved!", "Agreement Save", "success");
-    }
- });
 </script>
 
 
-<!-- Witness -->
-<script>
- let validOwn1, validOwn2, validT1, validT2;
-
- $(document).ready(function(){
-
-	
-		   //Owner witness
-		   $("#owitness1span").hide();
-	    $("#owitness1").keyup(function(){
-	     ownerW_check();
-	   });
-	   function ownerW_check(){
-		   let ownerW=$("#owitness1").val();
-		   let vali =/^[A-Za-z ]+$/;
-		   if(!vali.test(ownerW)){
-			validOwn1="no";
-			  $("#owitness1span").show().html("Enter Alphabets only").css("color","red").focus();
-			  ownerW_err=false;
-			  return false;
-		   }
-		   else{
-			validOwn1="yes";
-		       $("#owitness1span").hide();
-		       
-		   }
-	   }
-
-	   $("#sub").click(function(){
-		ownerW_err = true;
-		ownerW_check();
-			   
-			   if((ownerW_err==true)){
-			      return true;
-			   }
-			   else{return false;}
-		  });
-
-		    //Owner name
-			$("#nameowner2span").hide();
-	    $("#nameowner2").keyup(function(){
-			ownerN_check();
-	   });
-	   function ownerN_check(){
-		   let ownerN=$("#nameowner2").val();
-		   let vali =/^[A-Za-z ]+$/;
-		   if(!vali.test(ownerN)){
-			validOwn2="no";
-			  $("#nameowner2span").show().html("Enter Alphabets only").css("color","red").focus();
-			  ownerN_err=false;
-			  return false;
-		   }
-		   else{
-			validOwn2="yes";
-		       $("#nameowner2span").hide();
-		       
-		   }
-	   }
-
-	   $("#sub").click(function(){
-		ownerN_err = true;
-		ownerN_check();
-			   
-			   if((ownerN_err==true)){
-			      return true;
-			   }
-			   else{return false;}
-		  });
-
-
-   //TENANT Witness
-   $("#twitness1span").hide();
-	    $("#twitness1").keyup(function(){
-	     tenantW_check();
-	   });
-	   function tenantW_check(){
-		   let tenantW=$("#twitness1").val();
-		   let vali =/^[A-Za-z ]+$/;
-		   if(!vali.test(tenantW)){
-			validT1="no";
-			  $("#twitness1span").show().html("Enter Alphabets only").css("color","red").focus();
-			  tenantW_err=false;
-			  return false;
-		   }
-		   else{
-			validT1="yes";
-		       $("#twitness1span").hide();
-		       
-		   }
-	   }
-
-	   $("#sub").click(function(){
-		tenantW_err = true;
-		tenantW_check();
-			   
-			   if((tenantW_err==true)){
-			      return true;
-			   }
-			   else{return false;}
-		  });
-
-		  //TENANT Witness
-		  $("#twitness2span").hide();
-	    $("#twitness2").keyup(function(){
-			tenantN_check();
-	   });
-	   function tenantN_check(){
-		   let tenantN=$("#twitness2").val();
-		   let vali =/^[A-Za-z ]+$/;
-		   if(!vali.test(tenantN)){
-			validT2="no";
-		   $("#twitness2span").show().html("Enter Alphabets only").css("color","red").focus();
-			  tenantN_err=false;
-			  return false;
-		   }
-		   else{
-			validT2="yes";
-		       $("#twitness2span").hide();
-		       
-		   }
-	   }
-
-	   $("#sub").click(function(){
-		tenantN_err = true;
-		tenantN_check();
-			   
-			   if((tenantN_err==true)){
-			      return true;
-			   }
-			   else{return false;}
-		  });
- });
-
- let submitwitness = document.getElementById("submitwitness");
- submitwitness.addEventListener("click", function(){
- // let noWitness = document.getElementById("noWitness").value;
- let owitness1 = document.getElementById("owitness1").value;
- let owitness2 = document.getElementById("nameowner2").value;
- let twitness1 = document.getElementById("twitness1").value;
- let twitness2 = document.getElementById("twitness2").value;
-
-
- // if(noWitness == "" || owitness1 == "" || owitness2 == "" || twitness1 == "" || twitness2 == ""  ){
- //     swal("Oops...", "Please fill all the fields", "error");
- // }
- if(owitness1 == "" || owitness2 == "" || twitness1 == "" || twitness2 == "" || validOwn1 == "no" || validOwn2 == "no" || validT1 == "no" || validT2 == "no"  ){
-    swal("Oops...", "Please fill all the fields", "error");
- }
-    else{
-        swal("Saved!", "Agreement Save", "success");
-    }
- });
-
-</script>
-
-<!-- Amenities -->
-<script>
-	let AmenitiesName;
-
-   $(document).ready(function(){
-	   //TENANT
-	   $("#spannameAmenities").hide();
-	    $("#txtnameAmenities").keyup(function(){
-	     txt_check();
-	   });
-	   function txt_check(){
-		   let txt=$("#txtnameAmenities").val();
-		   let vali =/^[A-Za-z ]+$/;
-		   if(!vali.test(txt)){
-			AmenitiesName="no";
-			  $("#spannameAmenities").show().html("Enter Alphabets only").css("color","red").focus();
-			  txt_err=false;
-			  return false;
-		   }
-		   else{
-			AmenitiesName="yes";
-		       $("#spannameAmenities").hide();
-		       
-		   }
-	   }
-
-	   $("#sub").click(function(){
-       txt_err = true;
-             txt_check();
-			   
-			   if((txt_err==true)){
-			      return true;
-			   }
-			   else{return false;}
-		  });
-	
-   });
-   let submitaminities = document.getElementById("submitaminities");
- submitaminities.addEventListener("click", function(){
- // let no6 = document.getElementById("noAmenities").value;
- let txtnameAmenities = document.getElementById("txtnameAmenities").value;
- let number = document.getElementById("itemnumber").value;
-
-
-
- // if(no6 == "" || name3 == "" || number == ""   ){
- //     swal("Oops...", "Please fill all the fields", "error");
- // }
-
- if( AmenitiesName == "no" || number == ""  || txtnameAmenities==""  ){
-    swal("Oops...", "Please fill all the fields", "error");
- }
-    else{
-        swal("Saved!", "Agreement Save", "success");
-    }
- });
-</script>
 
 </body>
 
