@@ -1,9 +1,5 @@
 <?php  
 session_start();
-if(!isset($_SESSION['admin']) == 1) // If session is not set then redirect to Login Page
-{
- header("Location:adminlogin"); 
-}
 if(!isset($_SESSION['aid'])) 
 {
  header("Location:adminlogin.php"); 
@@ -31,7 +27,9 @@ if(isset($_POST['sub'])){
   $otpsql=mysqli_query($conn,"SELECT * FROM otp where email='$email_no'");
 $otprow=mysqli_fetch_assoc($otpsql);
 $otp=$otprow['otp'];
- 
+if($veriotp == ""){
+    echo "<script>alert('please Verify your email first then submit');</script>";
+}else{
 if($otp==$veriotp){
   $image=$_FILES['file']['name'];
   $tmp_name = $_FILES['file']['tmp_name']; 
@@ -374,6 +372,7 @@ else{
   echo "<script>alert('Invalid Otp');</script>";
 }
 }
+}
 
 
 
@@ -512,6 +511,8 @@ else{
                                     <div class="collapse multi-collapse row" id="multiCollapseExample1">
                                         <label for="examplepan" class="col-sm-2 ml-1 col-form-label"></label>
                                         <input type="text" class="form-control mt-2 col-lg-6" name="veriotp" id="veriotp" >
+                                        <?php
+                                        ?>
                                         <p style="color:red;font-size:12px;width:100%;margin-left:17%">Enter OTP sent to your registered email id</p>
                                      </div>
                                     </div>
@@ -522,13 +523,6 @@ else{
                                                 placeholder="Enter Number" id="rera" required>
                                         </div>
                                     </div>
-                                    <!-- <div class="form-group row">
-              <label for="examplepan" class="col-sm-2 col-form-label">Document Prefix<label style="color:Red">*</label></label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" placeholder="TECT-00001" name="prefix">
-              </div>
-            </div> -->
-
 
                                     <div class="form-group row">
                                         <label for="examplepan" class="col-sm-2 col-form-label">Photo<label
@@ -600,9 +594,9 @@ else{
                         name:name,
                     },
                     cache: false,
-                    success: function(dnkotp)
+                    success: function(datadnk)
                     {
-                        alert(dnkotp);
+                        alert(datadnk);
                     }
                 });
             });
