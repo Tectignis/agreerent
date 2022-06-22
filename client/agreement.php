@@ -1,9 +1,13 @@
 
 <?php  
 session_start();
-if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
+if(!isset($_SESSION['admin']) == 1) // If session is not set then redirect to Login Page
 {
- header("Location:clientlogin.php"); 
+ header("Location:login.php"); 
+}
+if(!isset($_SESSION['aid'])) 
+{
+ header("Location:adminlogin.php"); 
 }
 include("../config/config.php");
 $fid=$_GET['id'];
