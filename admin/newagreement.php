@@ -914,25 +914,7 @@ if(no1 == "" || abbreviation == "" || name == "" || age == "" || mobile == "" ||
 </script>
 
 <script>
-// let submitenant = document.getElementById("submitenant");
-// submitenant.addEventListener("click", function(){
-// let abbreviation = document.getElementById("exampleSelectmr").value;
-// let name1 = document.getElementById("txtname3").value;
-// let mobile = document.getElementById("phone").value;
-// let email = document.getElementById("emailcheck").value;
-
-// let aadhaar = document.getElementById("txtAadhar1").value;
-// let age = document.getElementById("id2").value;
-// let pancard = document.getElementById("txtPANCard1").value;
-// let address = document.getElementById("residenceAddress").value;
-// let permanent_address = document.getElementById("presentAddress").value;
-// if( abbreviation == "" || name1 == "" || mobile == "" || email == "" || aadhaar == "" || age == "" || pancard == "" || address == "" || permanent_address == ""  ){
-//     swal("Oops...", "Please fill all the fields", "error");
-// }
-//     else{
-//         swal("Saved!", "Agreement Save", "success");
-//     }
-// });
+$("")
 </script>
 
 <script>
