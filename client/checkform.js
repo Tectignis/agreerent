@@ -72,7 +72,7 @@ $(document).ready(function () {
       },
       cache: false,
       success: function (res2) {
-        //  alert(res2);
+        swal("Oops...", res2, "error");
       },
     });
   });
