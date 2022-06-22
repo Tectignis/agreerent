@@ -117,7 +117,6 @@ date_default_timezone_set('Asia/Kolkata');
                                             <?php 
                    $query=mysqli_query($conn,"select * from subject");
                    ?>
-
                        <select class="form-control select2" name="subject" style="width: 100%;" required>
                          <option selected="selected" disabled>select</option>
                          <?php
