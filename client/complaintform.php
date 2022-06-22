@@ -112,7 +112,6 @@ date_default_timezone_set('Asia/Kolkata');
                                                 id="exampleInputdescription" value="<?php echo $number; ?>"
                                                 placeholder="Enter Description">
                                         </div>
-                                        <?php echo $number; ?>
                                         <div class="form-group">
                                             <label for="exampleInputsubject">Subject</label>
                                             <?php 
