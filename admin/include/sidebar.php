@@ -129,6 +129,14 @@
                       </a>
                   </li>
                   <li class="nav-item">
+                      <a href="complaintsubject" class="nav-link">
+                      <i class="nav-icon fas fa-book"></i>
+                          <p>
+                              Complaint Subject
+                          </p>
+                      </a>
+                  </li>
+                  <li class="nav-item">
                       <a href="listofcomplaint" class="nav-link">
                           <i class="nav-icon fa fa-clipboard-list"></i>
                           <p>
