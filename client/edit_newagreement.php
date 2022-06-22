@@ -1,8 +1,12 @@
 <?php 
 session_start();
-if(!isset($_SESSION['id'])) // If session is not set then redirect to Login Page
+if(!isset($_SESSION['admin']) == 1) // If session is not set then redirect to Login Page
 {
- header("Location:clientlogin.php"); 
+  header("Location:adminlogin"); 
+}
+if(!isset($_SESSION['aid'])) 
+{
+ header("Location:adminlogin.php"); 
 }
 
 include("../config/config.php");
@@ -11,7 +15,7 @@ include("../config/config.php");
 // include('form.php');
 
 
-$id=$_GET['id'];
+$basiid=$_GET['id'];
 
 //editowner
 $document_no='';
@@ -25,8 +29,8 @@ $address='';
 $ownername1='';
 $ownername2='';
 if(isset($_GET['id'])){
-    $id=$_GET['id'];
-                     $query3=mysqli_query($conn,"select * from owner where document_no='$id'");
+    $basiid=$_GET['id'];
+                     $query3=mysqli_query($conn,"select * from owner where document_no='$basiid'");
                  while($arr=mysqli_fetch_array($query3)){
                     $document_no=$arr['document_no'] ?? null;
                     $abbreviation=$arr['abbreviation'] ?? null;
@@ -90,8 +94,8 @@ $area='';
 $chs='';
 $node='';
 if(isset($_GET['id'])){
-    $id=$_GET['id'];
-                     $query3=mysqli_query($conn,"select * from property_details where document_no='$id'");
+    $basiid=$_GET['id'];
+                     $query3=mysqli_query($conn,"select * from property_details where document_no='$basiid'");
                  while($arr=mysqli_fetch_array($query3)){
                     $document_no2=$arr['document_no'] ?? null;
                     $property_type=$arr['property_type'] ?? null;
@@ -112,8 +116,8 @@ $relation3='';
 $age3='';
 $gender3='';
 if(isset($_GET['id'])){
-    $id=$_GET['id'];
-                     $query3=mysqli_query($conn,"select * from family_members where document_no='$id'");
+    $basiid=$_GET['id'];
+                     $query3=mysqli_query($conn,"select * from family_members where document_no='$basiid'");
                  while($arr=mysqli_fetch_array($query3)){
                      $familyid=$arr['id'] ?? null;
                     $document_no3=$arr['document_no'] ?? null;
@@ -125,20 +129,7 @@ if(isset($_GET['id'])){
                                   }                 }
 
 //aminities
-$amenitiesid='';
-$document_no4='';
-$name4='';
-$number='';
-if(isset($_GET['id'])){
-    $id=$_GET['id'];
-                     $query3=mysqli_query($conn,"select * from amenities where document_no='$id'");
-                 while($arr=mysqli_fetch_array($query3)){
-                      $amenitiesid=$arr['id'] ?? null;
-                    $document_no4=$arr['document_no'] ?? null;
-                    $name4=$arr['name'] ?? null;
-                    $number=$arr['number'] ?? null;
-                  
-                                  }                 }
+
 
 //payment
 $docid2='';
@@ -149,8 +140,8 @@ $bank='';
 $date='';
 $tid='';
 if(isset($_GET['id'])){
-    $id=$_GET['id'];
-                     $query2=mysqli_query($conn,"select * from payment where document_no='$id'");
+    $basiid=$_GET['id'];
+                     $query2=mysqli_query($conn,"select * from payment where document_no='$basiid'");
                  while($arr=mysqli_fetch_array($query2)){
                     $docid2=$arr['document_no'] ?? null;
                     $security_deposit=$arr['security_deposit'] ?? null;
@@ -161,6 +152,33 @@ if(isset($_GET['id'])){
                    $tid=$arr['tid'] ?? null;
                                     }                 }
 
+
+if(isset($_GET['familydelid'])){
+$deleteid=$_GET['familydelid'];	
+ $query=mysqli_query($conn,"select * from family_members where id='$deleteid'");
+    $res=mysqli_fetch_array($query);
+    $id=$res['document_no'];
+	$sql=mysqli_query($conn,"delete from family_members where id='$deleteid'");
+   
+	if($sql==1){	
+	header("location:edit_newagreement.php?id=$id");
+  	}else{
+		echo "<script>alert('Something went wrong');</script>";
+	}
+}
+
+if(isset($_GET['deleteid'])){
+$deleteid=$_GET['deleteid'];
+$query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
+    $res=mysqli_fetch_array($query);
+    $id=$res['document_no'];	
+	$sql=mysqli_query($conn,"delete from amenities where id='$deleteid'");
+	if($sql==1){	
+	header("location:edit_newagreement.php?id=$id");
+  	}else{
+		echo "<script>alert('Something went wrong');</script>";
+	}
+}
 
 ?>
 
@@ -186,6 +204,7 @@ if(isset($_GET['id'])){
     <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -205,12 +224,12 @@ if(isset($_GET['id'])){
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Create New Agreement</h1>
+                            <h1>Edit Agreement</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Create New Agreement</li>
+                                <li class="breadcrumb-item active">Edit Agreement</li>
                             </ol>
                         </div>
                     </div>
@@ -278,8 +297,8 @@ if(isset($_GET['id'])){
                                                     <label for="examplename" class="col-sm-2 col-form-label">Full
                                                         Name<label style="color:Red">*</label> </label>
                                                     <div class="col-sm-2">
-                                                        <input type="hidden" id="no" name="no1"
-                                                            value="<?php echo $id;?>">
+                                                        <input type="hidden" id="no1" name="no1"
+                                                            value="<?php echo $basiid;?>">
                                                         <select class="form-control" name="abbreviation" id="examplemr"
                                                             required>
                                                             <option value="" disabled selected hidden>select</option>
@@ -369,11 +388,12 @@ if(isset($_GET['id'])){
 
                                             <form class="forms-sample" method="post">
                                                 <div class="form-group row">
+                                                    <input type="hidden" name="no2" value="<?php echo $basiid;?>"
+                                                            class="form-control" id="exampledno" readonly>
                                                     <label for="examplename" class="col-sm-2 col-form-label">Full
                                                         Name<label style="color:Red">*</label></label>
                                                     <div class="col-sm-2">
-                                                        <input type="hidden" name="no2" value="<?php echo $id;?>"
-                                                            class="form-control" id="exampledno" readonly>
+                                                        
                                                         <select class="form-control" id="exampleSelectmr"
                                                             name="abbreviation" required>
                                                             <option value="<?php echo $abbreviation1 ?>" selected>
@@ -434,7 +454,7 @@ if(isset($_GET['id'])){
                                                         No</label>
                                                     <div class="col-sm-4">
                                                         <input type="text" class="form-control" name="passport"
-                                                            id="passport" value="<?php echo $passport1?>"
+                                                            id="passport" value="<?php echo $passport1; ?>"
                                                             placeholder="Enter Passport Number">
                                                     </div>
 
@@ -502,8 +522,7 @@ if(isset($_GET['id'])){
                                                 </div>
                                                 <div class="col" align="right">
 
-                                                    <!-- <a href="owner.php?id=<?php //echo $id;?>"><button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue"><i class="mdi mdi-chevron-left"></i>Previous</button></a> -->
-                                                    <button type="button" name="submitenant" id="submitenant"
+                                                    <button type="button" name="submitenant" id="submitenan"
                                                         class="btn btn-info" data-tt="tooltip" title=""
                                                         data-original-title="Click here to Save">Save as
                                                         Draft</button>&nbsp;
@@ -519,12 +538,13 @@ if(isset($_GET['id'])){
                                         <div class="card-body">
                                             <form class="forms-sample" method="post">
                                                 <div class="form-group row">
+                                                    <input type="hidden" name="no3" id="no3"
+                                                            value="<?php echo $basiid;?>">
                                                     <label for="examplename" class="col-2 col-form-label">Property
                                                         Type<label style="color:Red">*</label></label>
 
                                                     <div class="col-sm-2 col-lg-2">
-                                                        <input type="hidden" name="no3" id="no3"
-                                                            value="<?php echo $id;?>">
+                                                        
 
                                                         <!-- <input type="text" for="examplename" name="type" id="propertyTypeVal" class="form-control" readonly> -->
                                                         <select class="form-control" name="type" id="exampleproperties"
@@ -632,7 +652,7 @@ if(isset($_GET['id'])){
                                                     <div class="col-sm-6">
                                                         <div class="form-group row">
                                                             <input type="hidden" name="no4" id="no4"
-                                                                value="<?php echo $id;?>">
+                                                                value="<?php echo $basiid;?>">
 
                                                             <label for="examplename"
                                                                 class="col-sm-3 col-form-label-sm">Name<label
@@ -719,15 +739,29 @@ if(isset($_GET['id'])){
                                                         </tr>
                                                     </thead>
                                                     <tbody id="displayfamily">
-
-                                                        <tr>
-                                                            <td><?php echo $name3 ?></td>
-                                                            <td><?php echo $relation3  ?></td>
-                                                            <td><?php echo $age3 ?></td>
-                                                            <td><?php echo $gender3; ?></td>
-                                                            <td><a href="edit_newagreementform.php?familydelid=<?php echo $familyid; ?>"
+<?php
+if(isset($_GET['id'])){
+    $basiid=$_GET['id'];
+                     $query3=mysqli_query($conn,"select * from family_members where document_no='$basiid'");
+                 while($arr=mysqli_fetch_array($query3)){
+                     $familyid=$arr['id'] ?? null;
+                    $document_no3=$arr['document_no'] ?? null;
+                    $name3=$arr['name'] ?? null;
+                    $relation3=$arr['relation'] ?? null;
+                   $age3=$arr['age'] ?? null;
+                   $gender3=$arr['gender'] ?? null; ?>
+                  
+                                                       <tr>
+                                                            <td><?php echo $arr['name'] ?></td>
+                                                            <td><?php echo $arr['relation']  ?></td>
+                                                            <td><?php echo $arr['age'] ?></td>
+                                                            <td><?php echo $arr['gender']; ?></td>
+                                                            <td><a href="edit_newagreement.php?familydelid=<?php echo $arr['id']; ?>"
                                                                     alt="delete"><i class="fas fa-trash"></i></a></td>
                                                         </tr>
+                                                        <?php   }                 }
+?>
+                                 
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -746,7 +780,7 @@ if(isset($_GET['id'])){
                                                     <h4>Owner Witness </h4>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <input type="hidden" name="no5" id="no5" value="<?php echo $id;?>">
+                                                    <input type="hidden" name="no5" id="no5" value="<?php echo $basiid;?>">
                                                     <label for="exampleInputtran"
                                                         class="col-sm-2 col-form-label">1<sup>st</sup> Person<label
                                                             style="color:Red">*</label></label>
@@ -823,9 +857,10 @@ if(isset($_GET['id'])){
                                             <form class="forms-sample" name="form1" method="post">
                                                 <div class="row">
                                                     <div class="col-sm-6">
+                                                         <input type="hidden" name="no6" id="no6"
+                                                                value="<?php echo $basiid;?>" />
                                                         <div class="form-group row">
-                                                            <input type="hidden" name="no6" id="no6"
-                                                                value="<?php echo $id;?>">
+                                                           
                                                             <label for="examplename"
                                                                 class="col-sm-3 col-form-label-sm">Name<label
                                                                     style="color:Red">*</label></label>
@@ -851,10 +886,9 @@ if(isset($_GET['id'])){
                                                     </div>
                                                 </div>
                                                 <div class="col" align="right">
-                                                    <!-- <a href="family.php?id=<?php echo $fid;?>"><button type="button" class="btn btn-primary btn-lg" style="color: aliceblue"><i class="mdi mdi-chevron-left"></i>Previous</button></a> -->
-                                                    <button type="button" name="submitaminities" id="submitaminities"
+                                                    <button type="button" id="submitaminitie"
                                                         class="btn btn-info" data-tt="tooltip" title=""
-                                                        data-original-title="Click here to Save">Save as
+                                                       >Save as
                                                         Draft</button>&nbsp;
                                                     <button type="button" class="btn btn-primary "
                                                         style="color: aliceblue">Next<i
@@ -874,13 +908,20 @@ if(isset($_GET['id'])){
                                                         </tr>
                                                     </thead>
                                                     <tbody id="displayaminities">
-
+<?php
+if(isset($_GET['id'])){
+    $basiid=$_GET['id'];
+                     $query3=mysqli_query($conn,"select * from amenities where document_no='$basiid'");
+                 while($arr=mysqli_fetch_array($query3)){ ?>
+                  
+                               
                                                         <tr>
-                                                            <td><?php echo $name4 ?></td>
-                                                            <td><?php echo $number  ?></td>
-                                                            <td><a href="edit_newagreementform.php?deleteid=<?php echo $amenitiesid; ?>"
+                                                            <td><?php echo $arr['name'] ?></td>
+                                                            <td><?php echo $arr['number']  ?></td>
+                                                            <td><a href="edit_newagreement.php?deleteid=<?php echo $arr['id']; ?>"
                                                                     alt="delete"><i class="fas fa-trash"></i></a></td>
                                                         </tr>
+                                                        <?php } } ?>
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -890,10 +931,11 @@ if(isset($_GET['id'])){
                                         aria-labelledby="custom-tabs-two-settings-tab">
                                         <form method="post">
                                             <div class="form-group row">
+                                                 <input type="hidden" name="no7" id="no7" value="<?php echo $basiid;?>">
                                                 <label for="examplename" class="col-sm-2 col-form-label-sm">Security
                                                     Deposit<label style="color:Red">*</label></label>
                                                 <div class="col-sm-4">
-                                                    <input type="hidden" name="no7" id="no7" value="<?php echo $id;?>">
+                                                   
                                                     <input type="number" id="deposit" class="form-control"
                                                         name="security_deposit" value="<?php echo $security_deposit ?>"
                                                         placeholder="Deposit" required>
@@ -917,12 +959,12 @@ if(isset($_GET['id'])){
                                                         data-select2-id="3" tabindex="-1" aria-hidden="true">
                                                         <option selected="selected" data-select2-id="4"
                                                             value="<?php echo $method ?>"><?php echo $method ?></option>
-                                                        <option>Alaska</option>
-                                                        <option>California</option>
-                                                        <option>Delaware</option>
-                                                        <option>Tennessee</option>
-                                                        <option>Texas</option>
-                                                        <option>Washington</option>
+                                                        <option>CASH</option>
+                                                        <option>CHEQUE</option>
+                                                        <option>BANK TRASFER</option>
+                                                        <option>GOOGLE PAY</option>
+                                                        <option>PHONE PAY</option>
+                                                        <option>PAYTYM</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -935,16 +977,25 @@ if(isset($_GET['id'])){
                                                         tabindex="-2" aria-hidden="true">
                                                         <option selected="selected" data-select2-id="2"
                                                             value="<?php echo $bank ?>"><?php echo $bank ?></option>
-                                                        <option>Alaska</option>
-                                                        <option>California</option>
-                                                        <option>Delaware</option>
-                                                        <option>Tennessee</option>
-                                                        <option>Texas</option>
-                                                        <option>Washington</option>
+                                                         <option>SBI</option>
+                                                        <option>UNION</option>
+                                                        <option>AXIS</option>
+                                                        <option>KOTAK</option>
+                                                        <option>HDFC</option>
+                                                        <option>ICICI</option>
+                                                        <option>BOI</option>
+                                                        <option>YES BANK</option>
                                                     </select>
                                                 </div>
                                             </div>
-
+                                            <div class="form-group row">
+                                                <label for="exampldate" class="col-sm-2 col-form-label">Date Of 
+                                                    Rent Payment<label style="color:Red">*</label></label>
+                                                <div class="col-sm-4">
+                                                    <input type="number" class="form-control" id="rentpay" oninput="javascript: if (this.value.1 > this.31) this.value = this.value.slice(0, this.31);"
+                                                        required>
+                                                </div>
+                                            </div>
                                             <div class="form-group row">
                                                 <label for="exampldate" class="col-sm-2 col-form-label">Date Of
                                                     Payment<label style="color:Red">*</label></label>
@@ -978,15 +1029,17 @@ if(isset($_GET['id'])){
                                     </div>
                                 </div>
                             </div>
-
+                            </div>
                         </div>
                     </div>
-                </div>
             </section>
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
         <?php include 'include/footer.php'; ?>
+
+     
+       
 
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
@@ -1046,7 +1099,7 @@ if(isset($_GET['id'])){
     $(document).ready(function() {
         //owner
         $("#subm").on("click", function() {
-            let no = $("#no").val();
+            let no1 = $("#no1").val();
             let examplemr = $("#examplemr").val();
             let txtname = $("#txtname").val();
             let id1 = $("#id1").val();
@@ -1060,7 +1113,7 @@ if(isset($_GET['id'])){
                 url: "edit_newagreementform.php",
                 type: "POST",
                 data: {
-                    no: no,
+                    no1: no1,
                     examplemr: examplemr,
                     txtname: txtname,
                     id1: id1,
@@ -1071,14 +1124,17 @@ if(isset($_GET['id'])){
                     subm: subm
                 },
                 cache: false,
-                success: function(res) {
-                    alert(res);
-                },
+                success: function (res) {
+                swal("Done!", res, "success");
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                swal("Error !", res, "error");
+            },
             });
         });
 
         //tenant
-        $("#submitenan").on("click", function() {
+        $("#submitenan").on("click",function() {
             let exampledno = $("#exampledno").val();
             let exampleSelectmr = $("#exampleSelectmr").val();
             let txtname3 = $("#txtname3").val();
@@ -1116,9 +1172,12 @@ if(isset($_GET['id'])){
                     submitenan: submitenan,
                 },
                 cache: false,
-                success: function(res2) {
-                    alert(res2);
-                },
+                success: function (res2) {
+                swal("Done!", res2, "success");
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                swal("Error!", res2, "error");
+            },
             });
         });
 
@@ -1127,7 +1186,7 @@ if(isset($_GET['id'])){
             let no3 = $("#no3").val();
             let exampleproperties = $("#exampleproperties").val();
             let addressPro = $("#addressPro").val();
-            let sector = $("#sector").val();
+            let sector = $("#sector").val(); 
             let plotno = $("#plotno").val();
             let cidco = $("#cidco").val();
             let area = $("#area").val();
@@ -1151,9 +1210,12 @@ if(isset($_GET['id'])){
                     submitproperty: submitproperty,
                 },
                 cache: false,
-                success: function(res3) {
-                    alert(res3);
-                },
+                success: function (res3) {
+                swal("Done!", res3, "success");
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                swal("Error!", res3, "error");
+            },
             });
         });
 
@@ -1178,10 +1240,13 @@ if(isset($_GET['id'])){
                     submitmember: submitmember
                 },
                 cache: false,
-                success: function(res4) {
+                success: function (res4) {
                     $("#displayfamily").html(res4);
-                    alert(res4);
-                },
+                swal("Done!","Successfully Inserted", "success");
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                swal("Error!","Please try again", "error");
+            },
             });
 
 
@@ -1208,18 +1273,21 @@ if(isset($_GET['id'])){
                     submitwitness: submitwitness,
                 },
                 cache: false,
-                success: function(res5) {
-                    alert(res5);
-                },
+                success: function (res5) {
+                swal("Done!", res5, "success");
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                swal("Error!", res5, "error");
+            },
             });
         });
 
         //aminities
-        $("#submitaminities").on("click", function() {
+        $("#submitaminitie").on("click", function() {
             let no6 = $("#no6").val();
             let txtname2 = $("#txtname2").val();
             let itemnumbe = $("#itemnumbe").val();
-            let submitaminities = $("#submitaminities").val();
+            let submitaminitie = $("#submitaminitie").val();
 
             $.ajax({
                 url: "edit_newagreementform.php",
@@ -1228,13 +1296,16 @@ if(isset($_GET['id'])){
                     no6: no6,
                     txtname2: txtname2,
                     itemnumbe: itemnumbe,
-                    submitaminities: submitaminities,
+                    submitaminitie: submitaminitie,
                 },
                 cache: false,
-                success: function(res6) {
+                success: function (res6) {
                     $("#displayaminities").html(res6);
-                    alert(res6);
-                },
+                swal("Done!","Successfully Inserted", "success");
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                swal("Error","please try again", "error");
+            },
             });
         });;
         //payment
@@ -1245,6 +1316,7 @@ if(isset($_GET['id'])){
             let checkselec = $("#checkselec").val();
             let bank = $("#bank").val();
             let date = $("#date").val();
+            let rentpay = $("#rentpay").val();
             let tid = $("#tid").val();
             let submitpayment = $("#submitpayment").val();
 
@@ -1259,12 +1331,16 @@ if(isset($_GET['id'])){
                     bank: bank,
                     date: date,
                     tid: tid,
+                    rentpay:rentpay,
                     submitpayment: submitpayment,
                 },
                 cache: false,
-                success: function(res7) {
-                    alert(res7);
-                },
+                success: function (res7) {
+                swal("Done!",res7, "success");
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                swal("Error",res7, "error");
+            },
             });
         });
 

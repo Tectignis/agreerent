@@ -1,12 +1,15 @@
 <?php
 session_start();
-if(isset($_SESSION['id'])) // If session is not set then redirect to Login Page
+if(!isset($_SESSION['admin']) == 1) // If session is not set then redirect to Login Page
 {
- header("Location:clientlogin.php"); 
+  header("Location:adminlogin"); 
 }
+if(!isset($_SESSION['aid'])) 
+{
+ header("Location:adminlogin.php"); 
+}
+//new_agreement
 include("../config/config.php");
-
-
 
 
 //owner
@@ -21,9 +24,7 @@ if(isset($_POST['subm'])){
   $age=$_POST['id1'];
 	
 $query=mysqli_query($conn,"select * from owner where document_no='$id' order by document_no desc");
-$num=mysqli_num_rows($query);
-$document=$num['document_no'];
-if($document!=$id){
+if(!mysqli_num_rows($query)>0){
 	$sql=mysqli_query($conn,"INSERT INTO `owner`(`document_no`, `abbreviation`, `fullname`,`age`, `address`, `mobile`, `aadhaar`, `pan_card`) VALUES ('$id','$abbreviation','$name','$age','$address','$mobile','$aadhaar','$pancard')");
 	if($sql==1){	
     echo "successfully updated";
@@ -32,7 +33,7 @@ if($document!=$id){
 	}
 }
 else{
-	$sql=mysqli_query($conn,"UPDATE `owner` SET `document_no`='$id',`abbreviation`='$abbreviation',`fullname`='$name',`age`='$age',`address`='$address',`mobile`='$mobile',`aadhaar`='$aadhaar',`pan_card`='$pancard' WHERE document_no='$id')");
+	$sql=mysqli_query($conn,"UPDATE `owner` SET `document_no`='$id',`abbreviation`='$abbreviation',`fullname`='$name',`age`='$age',`address`='$address',`mobile`='$mobile',`aadhaar`='$aadhaar',`pan_card`='$pancard' WHERE document_no='$id'");
 	if($sql==1){	
      echo "successfully updated";
 	}else{
@@ -43,41 +44,39 @@ else{
 
 //tenant
 if(isset($_POST['submitenan'])){
-	$idtenant=$_POST['exampledno'];
-   $surname=$_POST['exampleSelectmr'];
-   $name=$_POST['txtname3'];
- $age=$_POST['id2'];
- $permanent_address=$_POST['presentAddress'];
- $officename=$_POST['officename'];
- $officeno=$_POST['officeno'];
- $officeaddress=$_POST['officeaddress'];
-   $address=$_POST['residenceAddress'];
-   $mobile=$_POST['phone'];
-   $aadhaar=$_POST['txtAadhar1'];
-   $pancard=$_POST['txtPANCard1'];
- $email=$_POST['emailcheck'];
-   $passport=$_POST['passport'];
+     $idtenant=$_POST['exampledno'];
+	$surname=$_POST['exampleSelectmr'];
+	$name=$_POST['txtname3'];
+  $age=$_POST['id2'];
+  $permanent_address=$_POST['presentAddress'];
+  $officename=$_POST['officename'];
+  $officeno=$_POST['officeno'];
+  $officeaddress=$_POST['officeaddress'];
+	$address=$_POST['residenceAddress'];
+	$mobile=$_POST['phone'];
+	$aadhaar=$_POST['txtAadhar1'];
+	$pancard=$_POST['txtPANCard1'];
+  $email=$_POST['emailcheck'];
+	$passport=$_POST['passport'];
 
-$query=mysqli_query($conn,"select * from tenant where document_no='$id' order by document_no desc");
+$query=mysqli_query($conn,"select * from tenant where document_no='$idtenant'");
 $num=mysqli_fetch_array($query);
-$document=$num['document_no'];
-
-   if($document!=$idtenant){
-	   $sql=mysqli_query($conn,"INSERT INTO `tenant`(`document_no`, `abbreviation`, `fullname`,`age`, `address`,`permanent_address`, `mobile`, `email`,`passport`,`aadhaar`, `pan_card`,`office_name`, `office_addres`, `office_phone`) VALUES 
- ('$idtenant','$surname','$name','$age','$address','$permanent_address','$mobile','$email','$passport','$aadhaar','$pancard','$officename','$officeaddress','$officeno')");
-   if($sql==1){	
-	echo "successfully updated";
-	 }else{
-	   echo "something went wrong";
-   }
-   }
-   else{
-   $sql=mysqli_query($conn,"UPDATE `tenant` SET `document_no`='$idtenant',`abbreviation`='$surname',`fullname`='$name',`age`='$age',`address`='$address',`permanent_address`='$permanent_address',`mobile`='$mobile',`email`='$email',`passport`='$passport',`aadhaar`='$aadhaar',`pan_card`='$pancard',`office_name`='$officename',`office_addres`='$officeaddress',`office_phone`='$officeno' WHERE document_no='$idtenant'");
-   if($sql==1){	
-	echo "successfully updated";
-	 }else{
-	   echo "something went wrong";
-   }
+	if(!mysqli_num_rows($query)>0){
+		$sql=mysqli_query($conn,"INSERT INTO `tenant`(`document_no`, `abbreviation`, `fullname`,`age`, `address`,`permanent_address`, `mobile`, `email`,`passport`,`aadhaar`, `pan_card`,`office_name`, `office_addres`, `office_phone`) VALUES 
+  ('$idtenant','$surname','$name','$age','$address','$permanent_address','$mobile','$email','$passport','$aadhaar','$pancard','$officename','$officeaddress','$officeno')");
+	if($sql==1){	
+     echo "successfully inserted";
+  	}else{
+		echo "something went wrong";
+	}
+	}
+	else{
+	$sql=mysqli_query($conn,"UPDATE `tenant` SET `document_no`='$idtenant',`abbreviation`='$surname',`fullname`='$name',`age`='$age',`address`='$address',`permanent_address`='$permanent_address',`mobile`='$mobile',`email`='$email',`passport`='$passport',`aadhaar`='$aadhaar',`pan_card`='$pancard',`office_name`='$officename',`office_addres`='$officeaddress',`office_phone`='$officeno' WHERE document_no='$idtenant'");
+	if($sql==1){	
+     echo "successfully updated";
+  	}else{
+		echo "something went wrong";
+	}
 }
 }
 
@@ -93,11 +92,8 @@ if(isset($_POST['submitproperty'])){
   $chs=$_POST['chs'];
   $node=$_POST['node'];
 
-  	$query=mysqli_query($conn,"select * from property_details where document_no='$id' order by document_no desc");
-$num=mysqli_num_rows($query);
-$document=$num['document_no'];
-
-if($document!=$idproperty){
+$query=mysqli_query($conn,"select * from property_details where document_no='$idproperty'");
+if(!mysqli_num_rows($query)>0){
 	$sql=mysqli_query($conn,"INSERT INTO `property_details`(`document_no`,`property_type`, `address`, `sector`, `plot_no`,`cidco`, `area`, `chs`, `node`) VALUES ('$idproperty','$type','$address','$sector','$plotno','$cidco','$area','$chs','$node')");
 	if($sql==1){	
     echo "successfully updated";
@@ -125,13 +121,11 @@ if(isset($_POST['submitmember'])){
 	
 	
 	$sql=mysqli_query($conn,"INSERT INTO `family_members`(`document_no`,`name`, `age`, `relation`, `gender`) VALUES 
-  ('$idfamily','$name','$age','$relation','$gender')'
+  ('$idfamily','$name','$age','$relation','$gender')
 ");
 	if($sql==1){	
-   echo "successfully updated";
-  	}else{
-		echo "something went wrong";
-	}
+   echo "successfully Inserted";
+  	}
 
 }
 if(isset($_POST['submitmember'])){
@@ -144,6 +138,8 @@ if(isset($_POST['submitmember'])){
         <td>". $arr['relation'] ."</td>
        <td>". $arr['age'] ."</td>
        <td>". $arr['gender'] ."</td>
+	   <td><a href='edit_newagreement.php?familydelid=".$arr['id']." ?>'
+                                                                    alt='delete'><i class='fas fa-trash' onclick='return confirm('Are you sure you want to delete this data')'></i></a></td>
       </tr>";
        } 
 
@@ -163,7 +159,7 @@ if(isset($_POST['submitwitness'])){
 
 	if($sql==1){	
 
-     echo "successfully updated";
+     echo "successfully updated witness";
   	}else{
 		echo "something went wrong";
 	}
@@ -171,31 +167,37 @@ if(isset($_POST['submitwitness'])){
 
 
 //aminities
-if(isset($_POST['submitaminities'])){
-	$idaminities=$_POST['no6'];
+if(isset($_POST['submitaminitie'])){
+		$idaminities=$_POST['no6'];
 	$name=$_POST['txtname2'];  
   $number=$_POST['itemnumbe'];
+	
+	
 	$sql=mysqli_query($conn,"INSERT INTO `amenities`(`document_no`,`name`,`number`) VALUES 
   ('$idaminities','$name','$number')");
-	if($sql==1){	
-     echo "successfully updated";
-  	}else{
-		 echo "something went wrong";
-	}
-}
 
-if(isset($_POST['submitaminities'])){
+	if($sql==1){	
+   echo "successfully updated member";
+  	}
+
+}
+if(isset($_POST['submitaminitie'])){
 	$idaminities=$_POST['no6'];
 	
 	$sql=mysqli_query($conn,"select * from amenities where document_no='$idaminities'");
-	
+	echo '<tr></tr>';
 	while($arr=mysqli_fetch_array($sql)){
      echo " <tr>
         <td>". $arr['name']."</td>
         <td>". $arr['number'] ."</td>
+		 <td><a href='edit_newagreement.php?deleteid=".$arr['id']."'
+                                                                    alt='delete'><i class='fas fa-trash'></i></a></td>
       </tr>";
        } 
 }
+
+
+
 
 //payment
 if(isset($_POST['submitpayment'])){
@@ -205,86 +207,64 @@ if(isset($_POST['submitpayment'])){
   $method=$_POST['checkselec'];  
   $bank=$_POST['bank'];  
   $date=$_POST['date'];  
+  $rentpay=$_POST['rentpay'];
   $tid=$_POST['tid'];
 
   $document='';
 
-$query=mysqli_query($conn,"SELECT document_no FROM owner order by document_no desc");
-$arr=mysqli_fetch_assoc($query);
-$document=$arr['document_no'];
+  $query=mysqli_query($conn,"SELECT document_no FROM owner where document_no ='$idpayment'");
 
-$query1=mysqli_query($conn,"SELECT document_no FROM tenant order by document_no desc");
-$arr1=mysqli_fetch_assoc($query1);
-$document1=$arr1['document_no'];
+  $query1=mysqli_query($conn,"SELECT document_no FROM tenant where document_no ='$idpayment'");
+  
+  $query2=mysqli_query($conn,"SELECT document_no FROM property_details where document_no ='$idpayment'");
+  
+  $query3=mysqli_query($conn,"SELECT document_no FROM family_members where document_no ='$idpayment'");
+  
+  $query4=mysqli_query($conn,"SELECT document_no FROM amenities where document_no ='$idpayment'");
+  
+  $query6=mysqli_query($conn,"SELECT document_no FROM payment where document_no ='$idpayment'");
+  
+  $query5=mysqli_query($conn,"SELECT * FROM owner where document_no ='$idpayment' ");
+  $arr5=mysqli_fetch_assoc($query5);
+  $name1=$arr5['name1'];
+  
+  
+  if(!mysqli_num_rows($query)>0){
+  echo "please fill owner details";
+  }
+  else if(!mysqli_num_rows($query1)>0){
+  echo "please fill tenant details";
+  }
+  else if(!mysqli_num_rows($query2)>0){
+  echo "please fill family details";
+  }
+  elseif(!mysqli_num_rows($query3)>0){
+  echo "please fill property details";
+  }
+  else if(!mysqli_num_rows($query4)>0){
+  echo "please fill amenities details";
+  }
+  else if($name1==''){
+  echo "please fill witness details";
+  }
+  else if(mysqli_num_rows($query6)>0){
+  $sql=mysqli_query($conn,"UPDATE `payment` SET `document_no`='$idpayment',`security_deposit`='$security_deposit',`rent_amount`='$rent_amount',`bank`='$bank',`method`='$method',`date_of_payment`='$rentpay',`date`='$date',`tid`='$tid' WHERE document_no='$idpayment'");
+  if($sql==1){
+  echo "Successfully updated";
+  }else{
+  echo "Something went wrong";
+  }
 
-$query2=mysqli_query($conn,"SELECT document_no FROM property_details order by document_no desc");
-$arr2=mysqli_fetch_array($query2);
-$doc2=$arr2['document_no'];
-
-$query3=mysqli_query($conn,"SELECT document_no FROM family_members order by document_no desc");
-$arr3=mysqli_fetch_assoc($query3);
-$document3=$arr3['document_no'];
-
-$query4=mysqli_query($conn,"SELECT document_no FROM amenities order by document_no desc");
-$arr4=mysqli_fetch_assoc($query4);
-$document4=$arr4['document_no'];
-
-$query5=mysqli_query($conn,"SELECT * FROM owner order by document_no desc ");
-$arr5=mysqli_fetch_assoc($query5);
-$name1=$arr5['name1'];
-
-$query6=mysqli_query($conn,"SELECT * FROM payment order by document_no desc ");
-$arr6=mysqli_fetch_assoc($query6);
-$document6=$arr4['document_no'];
-
-// echo "<script>alert('$document , $idpayment');</script>";
-
-if($document!=$idpayment){
-echo "please fill owner details";
- }
- else if($document1!=$idpayment){
-echo "please fill tenant details";
- }
- else if($document3!=$idpayment){
-echo "please fill family details";
- }
- else if($document4!=$idpayment){
-echo "please fill amenities details";
- }
- else if($name1==""){
-echo "please fill witness details";
- }
- else if($document6!=$idpayment){
-
- }
+}
 else{
-	$sql=mysqli_query($conn,"	UPDATE `payment` SET `document_no`='$idpayment',`security_deposit`='$security_deposit',`rent_amount`='$rent_amount',`bank`='$bank',`method`='$method',`date`='$date',`tid`='$tid' WHERE document_no='$idpayment'");
-	if($sql==1){	
-    echo "successfully updated";
-  	}else{
-		echo "something went wrong";
-	}
-
+	$sql=mysqli_query($conn,"INSERT INTO `payment`(`document_no`, `security_deposit`, `rent_amount`, `bank`, `method`,`date_of_payment`, `date`, `tid`) VALUES ('$idpayment','$security_deposit','$rent_amount','$bank','$method','$rentpay','$date','$tid')");
+	if($sql==1){
+		echo "Successfully Inserted";
+		}else{
+		echo "Something went wrong";
+		}
 }
 }
 
-if(isset($_GET['familydelid'])){
-$deleteid=$_GET['familydelid'];	
-	$sql=mysqli_query($conn,"delete from family_members where id='$deleteid'");
-	if($sql==1){	
-	header("edit_newagreement.php");
-  	}else{
-		echo "<script>alert('Something went wrong');</script>";
-	}
-}
 
-if(isset($_GET['deleteid'])){
-$deleteid=$_GET['deleteid'];	
-	$sql=mysqli_query($conn,"delete from amenities where id='$deleteid'");
-	if($sql==1){	
-	header("edit_newagreement.php");
-  	}else{
-		echo "<script>alert('Something went wrong');</script>";
-	}
-}
 ?>

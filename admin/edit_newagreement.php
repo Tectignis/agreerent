@@ -204,6 +204,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
     <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -223,12 +224,12 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Create New Agreement</h1>
+                            <h1>Edit Agreement</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Create New Agreement</li>
+                                <li class="breadcrumb-item active">Edit Agreement</li>
                             </ol>
                         </div>
                     </div>
@@ -987,7 +988,14 @@ if(isset($_GET['id'])){
                                                     </select>
                                                 </div>
                                             </div>
-
+                                            <div class="form-group row">
+                                                <label for="exampldate" class="col-sm-2 col-form-label">Date Of 
+                                                    Rent Payment<label style="color:Red">*</label></label>
+                                                <div class="col-sm-4">
+                                                    <input type="number" class="form-control" id="rentpay" oninput="javascript: if (this.value.1 > this.31) this.value = this.value.slice(0, this.31);"
+                                                        required>
+                                                </div>
+                                            </div>
                                             <div class="form-group row">
                                                 <label for="exampldate" class="col-sm-2 col-form-label">Date Of
                                                     Payment<label style="color:Red">*</label></label>
@@ -1120,7 +1128,7 @@ if(isset($_GET['id'])){
                 swal("Done!", res, "success");
             },
             error: function (xhr, ajaxOptions, thrownError) {
-                swal("Error deleting!", res, "error");
+                swal("Error !", res, "error");
             },
             });
         });
@@ -1164,9 +1172,12 @@ if(isset($_GET['id'])){
                     submitenan: submitenan,
                 },
                 cache: false,
-                success: function(res2) {
-                    alert(res2);
-                },
+                success: function (res2) {
+                swal("Done!", res2, "success");
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                swal("Error!", res2, "error");
+            },
             });
         });
 
@@ -1199,9 +1210,12 @@ if(isset($_GET['id'])){
                     submitproperty: submitproperty,
                 },
                 cache: false,
-                success: function(res3) {
-                    alert(res3);
-                },
+                success: function (res3) {
+                swal("Done!", res3, "success");
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                swal("Error!", res3, "error");
+            },
             });
         });
 
@@ -1226,10 +1240,13 @@ if(isset($_GET['id'])){
                     submitmember: submitmember
                 },
                 cache: false,
-                success: function(res4) {
+                success: function (res4) {
                     $("#displayfamily").html(res4);
-                    alert(res4);
-                },
+                swal("Done!","Successfully Inserted", "success");
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                swal("Error!","Please try again", "error");
+            },
             });
 
 
@@ -1256,9 +1273,12 @@ if(isset($_GET['id'])){
                     submitwitness: submitwitness,
                 },
                 cache: false,
-                success: function(res5) {
-                    alert(res5);
-                },
+                success: function (res5) {
+                swal("Done!", res5, "success");
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                swal("Error!", res5, "error");
+            },
             });
         });
 
@@ -1279,9 +1299,13 @@ if(isset($_GET['id'])){
                     submitaminitie: submitaminitie,
                 },
                 cache: false,
-                success: function(res6) {
+                success: function (res6) {
                     $("#displayaminities").html(res6);
-                },
+                swal("Done!","Successfully Inserted", "success");
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                swal("Error","please try again", "error");
+            },
             });
         });;
         //payment
@@ -1292,6 +1316,7 @@ if(isset($_GET['id'])){
             let checkselec = $("#checkselec").val();
             let bank = $("#bank").val();
             let date = $("#date").val();
+            let rentpay = $("#rentpay").val();
             let tid = $("#tid").val();
             let submitpayment = $("#submitpayment").val();
 
@@ -1306,12 +1331,16 @@ if(isset($_GET['id'])){
                     bank: bank,
                     date: date,
                     tid: tid,
+                    rentpay:rentpay,
                     submitpayment: submitpayment,
                 },
                 cache: false,
-                success: function(res7) {
-                    alert(res7);
-                },
+                success: function (res7) {
+                swal("Done!",res7, "success");
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                swal("Error",res7, "error");
+            },
             });
         });
 
