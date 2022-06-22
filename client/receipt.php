@@ -1,15 +1,15 @@
 <?php  
 session_start();
 
-if(!isset($_SESSION['id'])) 
+if(!isset($_SESSION['aid'])) 
 {
  header("Location:clientlogin.php"); 
 }
 
 if($_GET['id']==''){
-    header('Location:basic_detail.php');
+    header('Location:new_agreement.php');
     } 
-include("../config/config.php");
+    include("../config/config.php");
 $fid=$_GET['id'];
 function AmountInWords(float $amount)
 {
@@ -79,13 +79,13 @@ th {
 </head>
 
 <body ><h1 style="text-align: center">Receipt</h1>
-<?php $sql=mysqli_query($conn,"select tenant.fullname as tname, payment.document_no as dno, payment.rent_amount as rent from payment inner join tenant on payment.document_no=tenant.document_no where payment.document_no");
+<?php $sql=mysqli_query($conn,"select tenant.fullname as tname, payment.document_no as dno, payment.rent_amount as rent from payment inner join tenant on payment.document_no=tenant.document_no where payment.document_no='$fid'");
                  
           
 
 
         $arr=mysqli_fetch_array($sql);
-        $document_no=$arr['dno'];
+        $doc=$arr['dno'];
 		$amt_words=$arr['rent'];
 		$get_amount=AmountInWords($amt_words);
 
@@ -93,14 +93,14 @@ th {
 
 		<p>RECEIVED OF AND FROM the withinamed LICENSEE MR/Mss:&nbsp;<b><u><?php echo $arr['tname'];?>.</u></b>
 		The sum of Rs.<b><u><?php echo $arr['rent'];?></u></b>/- (<b><u><?php echo $get_amount;?>Only</u></b>)</p>
-<?php if($doc==$fid){echo $arr['property_type']; }else{ echo ' - ' ;} ?>
+
 	<br>
 	<br>
 	<div>
 	<table style="width: 100%;">
 	<?php 
 	
-	$sql=mysqli_query($conn,"select * from property_details where document_no");
+	$sql=mysqli_query($conn,"select * from property_details where document_no='$fid'");
     $arr=mysqli_fetch_array($sql);
     $doc=$arr['document_no'];
 	?>
@@ -139,7 +139,7 @@ th {
 		<table style="width: 100%;">
 		<?php 
 	
-	$sql=mysqli_query($conn,"select * from payment where document_no");
+	$sql=mysqli_query($conn,"select * from payment where document_no='$fid'");
     $arr=mysqli_fetch_array($sql);
     $doc=$arr['document_no'];
 	?>
@@ -160,7 +160,7 @@ th {
 			<td><b><?php echo $arr['bank'];?></b></td>
 		</tr>
 	</tbody>
-	<?php if($doc==$fid){echo $arr['property_type']; }else{ echo ' - ' ;} ?>
+
 		</table>
 	</div>
 
@@ -173,7 +173,7 @@ th {
 			<br>
 			<br>
 			<br>
-			<?php $sql=mysqli_query($conn,"select owner.fullname as oname,payment.document_no as pdno, owner.name1 as o1,owner.name2 as o2,owner.abbreviation as abb, payment.security_deposit as rent from payment inner join owner on payment.document_no=owner.document_no where payment.document_no");
+			<?php $sql=mysqli_query($conn,"select owner.fullname as oname,payment.document_no as pdno, owner.name1 as o1,owner.name2 as o2,owner.abbreviation as abb, payment.security_deposit as rent from payment inner join owner on payment.document_no=owner.document_no where payment.document_no='$fid'");
                  
                  $arr=mysqli_fetch_array($sql);
                  $doc=$arr['pdno'];
@@ -192,6 +192,6 @@ th {
 			<br>
 			<br>
 			<div>2.<?php echo $arr['o2'];?></div>
-			<?php if($doc==$fid){echo $arr['property_type']; }else{ echo ' - ' ;} ?>
+		
 </body>
 </html>
