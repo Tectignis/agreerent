@@ -596,7 +596,7 @@ else{
                     cache: false,
                     success: function(datadnk)
                     {
-                        alert("success");
+                        alert(datadnk);
                     }
                 });
             });
