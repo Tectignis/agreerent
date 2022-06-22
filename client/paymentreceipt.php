@@ -10,8 +10,6 @@ if(!isset($_SESSION['id']))
 }
 include("../config/config.php");
 
-
-
 ?>
 
 <!DOCTYPE html>
