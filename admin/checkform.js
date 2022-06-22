@@ -72,8 +72,8 @@ $(document).ready(function () {
       },
       cache: false,
       success: function (res2) {
-        if(success){
-        swal("", res2, "success");}
+       
+        swal("", res2, "success");
       },
     });
   });
