@@ -716,7 +716,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                             </div>
                                         </div>
                                     </div>
-                                    </div>
+                                    
                                     <div class="tab-pane fade " id="payment" role="tabpanel"
                                         aria-labelledby="custom-tabs-two-settings-tab">
                                         <form method="post">
@@ -1026,37 +1026,7 @@ if(no7 == "" || rent_amount == "" || method == "" || date_of_payment == "" || ba
 });
 </script>
 
-<script>
-    $(document).ready(function(){
-        $(".delete").click(function(){
-    alert('gff');
-    // var el = this;
-    // var deleteid = $(this).data('id');
-    // var confirmalert = confirm("Are you sure?");
-    // if (confirmalert == true) {
-    //    $.ajax({
-    //      url: 'form.php',
-    //      type: 'POST',
-    //      data: { delid:deleteid },
-    //      success: function(response){
- 
-    //        if(response == 1){
-    //    $(el).closest('tr').css('background','tomato');
-    //    $(el).closest('tr').fadeOut(800,function(){
-    //       $(this).remove();
-    //    });
-    //        }else{
-    //    alert('Invalid ID.');
-    //        }
- 
-    //      }
-    //    });
-    // }
- 
-  });
-    })
-   
-</script>
+
 
 </body>
 

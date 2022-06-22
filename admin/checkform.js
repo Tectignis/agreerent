@@ -140,9 +140,6 @@ $(document).ready(function () {
     });
   });
 
-  
- 
-
   //witness
   $("#submitwitness").on("click", function () {
     let no5 = $("#no5").val();
@@ -221,7 +218,7 @@ $(document).ready(function () {
       },
       cache: false,
       success: function (res7) {
-        alert(res7);
+        swal("", res7, "success");
       },
     });
   });
@@ -253,8 +250,8 @@ $(document).ready(function () {
         savepayment: savepayment,
       },
       cache: false,
-      success: function (res7) {
-        alert(res7);
+      success: function (res8) {
+        swal("", res8, "success");
       },
     });
   });

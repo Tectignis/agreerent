@@ -168,29 +168,19 @@ if(isset($_POST['submitmember'])){
     </thead>
     <tbody>";
 	while($arr=mysqli_fetch_array($sql)){
-    
-     echo " 
+     echo " <tr>
+     
         <td>". $arr['name']."</td>
         <td>". $arr['relation'] ."</td>
        <td>". $arr['age'] ."</td>
        <td>". $arr['gender'] ."</td>
-	     <td><button type='button' class='btn btn-primary delete' data-id='".$arr['id']."'><i class='fas fa-trash'></i></button></td> 
+	   <td><a href='newagreement.php?familydelid=".$arr['id']." ?>'
+                                                                    alt='delete'><i class='fas fa-trash'></i></a></td>
       </tr>";
        } 
     echo "</tbody>
   </table>";
 
-}
-
-if(isset($_GET['delid'])){
-  $delid=$_GET['delid'];
-
-  $dnk=mysqli_query($conn,"delete from family_members where id='$delid");
-  if($dnk==1){
-    echo "deleted successfully";
-  }else{
-    echo "Not delete";
-  }
 }
 
 //witness
@@ -264,13 +254,13 @@ if(isset($_POST['savepayment'])){
   $date=$_POST['date'];
   $tid=$_POST['tid'];
 
-  $query2=mysqli_query($conn,"select * from payment where document_no='$idpayment' order by document_no desc");
+  $query2=mysqli_query($conn,"select * from payment where document_no='$idpayment' ");
 $num2=mysqli_fetch_array($query2);
-$document2=$num2['document_no'];
-if($document2==$idpayment){
+if(mysqli_num_rows($query2)>0){
+  $document2=$num2['document_no'];
 $sql=mysqli_query($conn,"UPDATE `payment` SET `document_no`='$idpayment',`security_deposit`='$security_deposit',`rent_amount`='$rent_amount',`bank`='$bank',`method`='$method',`date_of_payment`='$rentpay',`date`='$date',`tid`='$tid' WHERE document_no='$idpayment'");
 if($sql==1){
-echo "Successfully Added";
+echo "Successfully updated";
 }else{
 echo "Something went wrong";
 }	
@@ -300,58 +290,47 @@ if(isset($_POST['submitpayment'])){
 
   $document='';
 
-$query=mysqli_query($conn,"SELECT document_no FROM owner order by document_no desc");
-$arr=mysqli_fetch_assoc($query);
-$document=$arr['document_no'];
+$query=mysqli_query($conn,"SELECT document_no FROM owner where document_no ='$idpayment'");
 
-$query1=mysqli_query($conn,"SELECT document_no FROM tenant order by document_no desc");
-$arr1=mysqli_fetch_assoc($query1);
-$document1=$arr1['document_no'];
+$query1=mysqli_query($conn,"SELECT document_no FROM tenant where document_no ='$idpayment'");
 
-$query2=mysqli_query($conn,"SELECT document_no FROM property_details order by document_no desc");
-$arr2=mysqli_fetch_array($query2);
-$doc2=$arr2['document_no'];
+$query2=mysqli_query($conn,"SELECT document_no FROM property_details where document_no ='$idpayment'");
 
-$query3=mysqli_query($conn,"SELECT document_no FROM family_members order by document_no desc");
-$arr3=mysqli_fetch_assoc($query3);
-$document3=$arr3['document_no'];
+$query3=mysqli_query($conn,"SELECT document_no FROM family_members where document_no ='$idpayment'");
 
-$query4=mysqli_query($conn,"SELECT document_no FROM amenities order by document_no desc");
-$arr4=mysqli_fetch_assoc($query4);
-$document4=$arr4['document_no'];
+$query4=mysqli_query($conn,"SELECT document_no FROM amenities where document_no ='$idpayment'");
 
-$query5=mysqli_query($conn,"SELECT * FROM owner order by document_no desc ");
+$query6=mysqli_query($conn,"SELECT document_no FROM payment where document_no ='$idpayment'");
+
+$query5=mysqli_query($conn,"SELECT * FROM owner where document_no ='$idpayment' ");
 $arr5=mysqli_fetch_assoc($query5);
 $name1=$arr5['name1'];
-// echo "<script>alert('$document , $idpayment');
 
 
-if($document!=$idpayment){
+if(!mysqli_num_rows($query)>0){
 echo "please fill owner details";
 }
-else if($document1!=$idpayment){
+else if(!mysqli_num_rows($query1)>0){
 echo "please fill tenant details";
 }
-else if($document3!=$idpayment){
+else if(!mysqli_num_rows($query2)>0){
 echo "please fill family details";
 }
-elseif($doc2!=$idpayment){
+elseif(!mysqli_num_rows($query3)>0){
 echo "please fill property details";
 }
-else if($document4!=$idpayment){
+else if(!mysqli_num_rows($query4)>0){
 echo "please fill amenities details";
 }
-else if($name1==""){
+else if($name1==''){
 echo "please fill witness details";
 }
-else{
-$sql=mysqli_query($conn,"UPDATE `payment` SET `document_no`='$idpayment',`security_deposit`='$security_deposit',`rent_amount`='$rent_amount',`bank`='$bank',`method`='$method',`date`='$date',`date_of_payment`='$rentpay',`tid`='$tid' WHERE document_no='$idpayment'");
+else if(mysqli_num_rows($query6)>0){
+$sql=mysqli_query($conn,"UPDATE `payment` SET `document_no`='$idpayment',`security_deposit`='$security_deposit',`rent_amount`='$rent_amount',`bank`='$bank',`method`='$method',`date_of_payment`='$rentpay',`date`='$date',`tid`='$tid' WHERE document_no='$idpayment'");
 if($sql==1){
-echo "Successfully Added";
+echo "Successfully updated";
 }else{
-echo "<script>
-alert('Something went wrong');
-</script>";
+echo "Something went wrong";
 }
 
 

@@ -72,8 +72,7 @@ $(document).ready(function () {
       },
       cache: false,
       success: function (res2) {
-        alert(res2)
-        swal("Oops...", res2, "error");
+        swal("", res2, "success");
       },
     });
   });
@@ -219,7 +218,7 @@ $(document).ready(function () {
       },
       cache: false,
       success: function (res7) {
-        alert(res7);
+        swal("", res7, "success");
       },
     });
   });
@@ -251,8 +250,8 @@ $(document).ready(function () {
         savepayment: savepayment,
       },
       cache: false,
-      success: function (res7) {
-        alert(res7);
+      success: function (res8) {
+        swal("", res8, "success");
       },
     });
   });
