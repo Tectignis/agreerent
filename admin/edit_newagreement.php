@@ -1172,7 +1172,7 @@ if(isset($_GET['id'])){
             let no3 = $("#no3").val();
             let exampleproperties = $("#exampleproperties").val();
             let addressPro = $("#addressPro").val();
-            let sector = $("#sector").val();
+            let sector = $("#sector").val(); 
             let plotno = $("#plotno").val();
             let cidco = $("#cidco").val();
             let area = $("#area").val();

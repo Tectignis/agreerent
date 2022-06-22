@@ -14,8 +14,9 @@ $client_code=$_POST['number'];
 date_default_timezone_set('Asia/Kolkata');
     $date=date('Y-m-d H:i:s');
 	$status='Open';
+    $sess=$_SESSION['id'];
 	
-	$sql = mysqli_query($conn,"INSERT INTO `ticket`( `user_id`,`complaint_code`, `email_id`, `subject`, `description`, `date`,`status`) VALUES ('".$_SESSION['id']."','$client_code','$email', '$subject','$description', '$date','$status')") ;
+	$sql = mysqli_query($conn,"INSERT INTO `ticket`( `user_id`,`complaint_code`, `email_id`, `subject`, `description`, `date`,`status`) VALUES ('$sess','$client_code','$email', '$subject','$description', '$date','$status')") ;
   if($sql==1){
     echo "<script>alert('Register successfully'),window.location='listofcomplaint.php';</script>";
    
