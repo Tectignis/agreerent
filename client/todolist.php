@@ -11,7 +11,7 @@ if(isset($_POST['submit'])){
 	
 	$sql=mysqli_query($conn,"INSERT INTO `todo`(`user_id`, `task`, `status`) VALUES ('".$_SESSION['id']."','$todo','$status')");
 	if($sql==1){	
-    header("location:table");
+    header("location:todolist");
 	}else{
 		echo "<script>alert('Something went wrong');</script>";
 	}
@@ -21,7 +21,7 @@ if(isset($_GET['delid'])){
   $id=mysqli_real_escape_string($conn,$_GET['delid']);
   $sql=mysqli_query($conn,"delete from todo where id='$id'");
   if($sql=1){
-    header("location:table");
+    header("location:todolist");
   }
 }
 
@@ -212,13 +212,13 @@ function get_time_ago( $time )
                 <!-- content-wrapper ends -->
                 <!-- partial:../../partials/_footer.html -->
                 <?php include 'include/footer.php'; ?>
-                <!-- partial -->
 
-            </div>
-            <!-- main-panel ends -->
-        </div>
-        <!-- page-body-wrapper ends -->
-    </div>
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+  <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
+</div>
     <!-- container-scroller -->
 
     <!-- plugins:js -->

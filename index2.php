@@ -898,7 +898,14 @@ if(isset($_POST["login"])){
       <!-- container -->
       <div id="particles-2"></div>
     
-    </footer>
+    </footer> <?php include 'include/footer.php'; ?>
+
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+  <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
+</div>
     <!--====== FOOTER PART ENDS ======-->
 
     <!--====== BACK TOP TOP PART START ======-->

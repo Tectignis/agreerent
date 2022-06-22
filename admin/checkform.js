@@ -72,7 +72,6 @@ $(document).ready(function () {
       },
       cache: false,
       success: function (res2) {
-       
         swal("", res2, "success");
       },
     });
@@ -140,6 +139,9 @@ $(document).ready(function () {
       },
     });
   });
+
+  
+ 
 
   //witness
   $("#submitwitness").on("click", function () {

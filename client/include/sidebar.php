@@ -96,6 +96,14 @@
                   </li>
                   <li class="nav-header">Other</li>
                   <li class="nav-item">
+                      <a href="listofproperty" class="nav-link">
+                      <i class="nav-icon fa fa-puzzle-piece" aria-hidden="true"></i>
+                          <p>
+                             Add Property
+                          </p>
+                      </a>
+                  </li>
+                  <li class="nav-item">
                       <a href="todolist" class="nav-link">
                           <i class="nav-icon fas fa-columns"></i>
                           <p>

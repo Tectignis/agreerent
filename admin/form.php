@@ -168,18 +168,29 @@ if(isset($_POST['submitmember'])){
     </thead>
     <tbody>";
 	while($arr=mysqli_fetch_array($sql)){
-     echo " <tr>
+    
+     echo " 
         <td>". $arr['name']."</td>
         <td>". $arr['relation'] ."</td>
        <td>". $arr['age'] ."</td>
        <td>". $arr['gender'] ."</td>
-	   <td><a href='newagreement.php?familydelid=".$arr['id']." ?>'
-                                                                    alt='delete'><i class='fas fa-trash'></i></a></td>
+	     <td><button type='button' class='btn btn-primary delete' data-id='".$arr['id']."'><i class='fas fa-trash'></i></button></td> 
       </tr>";
        } 
     echo "</tbody>
   </table>";
 
+}
+
+if(isset($_GET['delid'])){
+  $delid=$_GET['delid'];
+
+  $dnk=mysqli_query($conn,"delete from family_members where id='$delid");
+  if($dnk==1){
+    echo "deleted successfully";
+  }else{
+    echo "Not delete";
+  }
 }
 
 //witness
