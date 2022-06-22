@@ -101,16 +101,14 @@ if($sql=1){
                                                 <th>Client Name</th>
                                                 <th>Mobile No</th>
                                                 <th>Property Type</th>
-                                                <th>Area</th>
-                                                <th>Requirement</th>
-                                                <th>Location</th>
+                                                <th>Firm Name</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php 
                         
-                        $sql=mysqli_query($conn,"select * from `leads` where user_id='$_SESSION[aid]'");
+                        $sql=mysqli_query($conn,"select leads.user_id,leads.id, leads.type,leads.client_name,leads.mobile,agent_details.firm_name from leads inner join agent_details on leads.user_id=agent_details.user_id");
                         $count=1;
                          while($arr=mysqli_fetch_array($sql)){
                         ?>
@@ -119,10 +117,9 @@ if($sql=1){
                                                 <td><?php echo $arr['user_id'];?> </td>
                                                 <td> <?php echo $arr['client_name'];?></td>
                                                 <td> <?php echo $arr['mobile'];?></td>
-                                                <td> <?php echo $arr['type'];?></td>
-                                                <td> <?php echo $arr['area'];?> </td>
-                                                <td> <?php echo $arr['requirement'];?></td>
-                                                <td> <?php echo $arr['location'];?> </td>
+                                                <td> <?php echo $arr['type'];?> </td>
+                                                <td> <?php echo $arr['firm_name'];?> </td>
+                                               
                                                 <td>
                                                     <a href="paidleads.php?delid=<?php echo $arr['id']; ?>"><button
                                                             type="button" class="btn btn-danger btn-rounded btn-icon"
