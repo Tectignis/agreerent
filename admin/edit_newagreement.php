@@ -1072,6 +1072,7 @@ if(isset($_GET['id'])){
     <!-- AdminLTE for demo purposes -->
     <!-- Page specific script -->
     <script src="checkform.js"></script>
+    
     <script>
     $(function() {
         //Initialize Select2 Elements
@@ -1412,6 +1413,7 @@ if(isset($_GET['id'])){
         $('.nav-tabs > .nav-item > .active').parent().prev('li').find('a').trigger('click');
     });
     </script>
+    <script src="dist/js/valid.js"></script>
 </body>
 
 </html>
