@@ -398,14 +398,15 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
 
                                                     <div class="col-sm-2 col-lg-2">
                                                         
-
+<?php
+$quer=mysqli_query($conn,"select * from new_agreement where user_id='$basicid'");
+$result=mysqli_fetch_array($quer);
+$propertytype=$result['property_type'];
+?>
                                                         <!-- <input type="text" for="examplename" name="type" id="propertyTypeVal" class="form-control" readonly> -->
-                                                        <select class="form-control" name="type" id="exampleproperties"
-                                                            required>
-                                                            <option value="" disabled selected hidden>select</option>
-                                                            <option>Flat</option>
-                                                            <option>Shop</option>
-                                                        </select>
+                                                        <input class="form-control" name="type" value="<?php echo $propertytype; ?>" id="exampleproperties"
+                                                            readonly>
+                                                            
 
                                                     </div>
                                                     <div class="col-sm-8 col-lg-8">
@@ -875,18 +876,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
         })
     })
     </script>
-    <script>
-    function getproperty(val) {
-        $.ajax({
-            type: 'post',
-            url: 'form.php',
-            data: 'typeid=' + val,
-            success: function(data) {
-                $("#propertyTypeVal").html(data);
-            }
-        });
-    }
-    </script>
+   
     <script>
     $('.next').click(function() {
         $('.nav-tabs > .nav-item > .active').parent().next('li').find('a').trigger('click');

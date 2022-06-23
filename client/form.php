@@ -46,6 +46,7 @@ if($document==$id){
 else{
 	$sql=mysqli_query($conn,"INSERT INTO `owner`(`document_no`, `abbreviation`, `fullname`,`age`, `address`, `mobile`, `aadhaar`, `pan_card`) VALUES ('$id','$abbreviation','$name','$age','$address','$mobile','$aadhaar','$pancard')");
 	if($sql==1){	
+    echo "successfully inserted";
 	}else{
 	echo "Something went wrong";
 	}
