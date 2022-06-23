@@ -101,7 +101,7 @@ $(document).ready(function () {
 
   //property
   $("#submitproperty").on("click", function () {
-    if(propertyname == "no" ){
+    if(propertydnkname == "no" ){
       swal("Oops...", "Please fill all the fields correctly", "error");
     }
       else{
@@ -137,7 +137,7 @@ $(document).ready(function () {
       },
       cache: false,
       success: function (res3) {
-        swal("saved..", res3, "success");;
+        swal("saved..",res3, "success");;
       },
     });
   }

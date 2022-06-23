@@ -30,6 +30,7 @@ $otp=$otprow['otp'];
 if($veriotp == ""){
     echo "<script>alert('please Verify your email first then submit');</script>";
 }else{
+if($firm_name == )
 if($otp==$veriotp){
   $image=$_FILES['file']['name'];
   $tmp_name = $_FILES['file']['tmp_name']; 
@@ -370,6 +371,7 @@ else{
 
 else{
   echo "<script>alert('Invalid Otp');</script>";
+}
 }
 }
 }
@@ -767,14 +769,6 @@ else{
         
     let submitenant = document.getElementById("otpverifysub");
      submitenant.addEventListener("click", function(){
-     let txtname = document.getElementById("example").value;
-     let phone = document.getElementById("firmName").value;
-    let email = document.getElementById("email").value;
-    let otp = document.getElementById("veriotp").value;
-    let name = document.getElementById("rera").value;
-    let exampledno = document.getElementById("examplemob").value;
-    let validenqName = document.getElementById("image_input_field").value;
-
      
    
      if(validenqName == "no" || validenqFirm == "no" || validenqEmail == "no" || veriotp == "" || rera == "" || validenqtMobile == "no" || image_input_field == ""){
