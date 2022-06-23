@@ -319,9 +319,6 @@ include("../config/config.php");
 			   }
 			   else{return false;}
 		  });
-
-
-
     });
 </script>
 
@@ -774,7 +771,7 @@ else{
 }
 
 else{
- echo "<script>alert('Invalid Otp');</script>";
+ echo "<script>swal('oops...','Invalid Otp','warning');</script>";
 }
 }
 }
