@@ -1,76 +1,12 @@
 $(document).ready(function () {
+  
   //owner
-  $("#subm").prop('disabled',true);
-  $("#spanname").hide();
-  $("#spanAadharCard").hide();
-  $("#spanCard").hide();
-
-  let odnkname=true;
-  let odnkadhar=true;
-  let odnkpan=true;
-
-  $("#txtname").keyup(function(){
-      ownname_fun();
-  });
-  function ownname_fun(){
-      let txt=$("#txtname").val();
-     let vali =/^[A-Za-z ]+$/;
-     if(!vali.test(txt)){
-      $("#spanname").show().html("Enter Alphabets only").css("color","red").focus();
-      odnkname = false;
-      return false;
-    
-     }
-         else{
-          $("#spanname").hide()
-         }
-  }
-
-  $("#txAdhar").keyup(function(){
-      owneradhar_fun();
-  });
-  function owneradhar_fun(){
-      let aadharcard=$("#txAdhar").val();
-     let vali =/^\d{12}$/; 
-     if(!vali.test(aadharcard)){
-        $("#spanAadharCard").show().html("*Invalid Aadhar No").css("color","red").focus();
-              odnkadhar = false;
-        return false;
-     }
-         else{
-          $("#spanAadharCard").hide();                             
-         }
-  }
-
-  $("#txtPANCard").keyup(function(){
-      ownpan_fun();
-  });
-  function ownpan_fun(){
-      let pancard=$("#txtPANCard").val();
-     let vali =/([A-Za-z]){5}([0-9]){4}([A-Za-z]){1}$/;  
-     if(!vali.test(pancard)){
-        $("#spanCard").show().html("*Invalid Pan No").css("color","red").focus();
-              odnkpan = false;
-        return false;
-     }
-         else{
-          $("#spanCard").hide();
-         }
-  }
-
-  $("#subm").on("click", function(){
-
-    ownname_fun();
-    owneradhar_fun();
-    ownpan_fun();
-
-    if(odnkname == true && odnkadhar == true && odnkpan == true){
-      $("#subm").prop('disabled',false);
-    }
-    else{$("#subm").prop('disabled',true); }
-       
-  });
+  
   $("#subm").on("click", function () {
+    if(odnkname == "no" || odnkadhar == "no" || odnkpan == "no"){
+      swal("Oops...", "Please fill all the fields correctly", "error");
+    }
+      else{
     let no = $("#no").val();
     let examplemr = $("#examplemr").val();
     let txtname = $("#txtname").val();
@@ -82,7 +18,7 @@ $(document).ready(function () {
     let subm = $("#subm").val();
     
     if(examplemr==''|| txtname==''|| id1==''|| mobile=='' || address=='' || txtPANCard=='' ||txAdhar=='') {
-      swal("oops sorry", "Please fill all fields.", "error")
+      swal("oops..", "Please fill all fields.", "error");
       return false;
   }else{
     $.ajax({
@@ -101,10 +37,11 @@ $(document).ready(function () {
       },
       cache: false,
       success: function (res) {
-        // alert(res);
+        swal("saved..", res, "success");
       },
     });
   }
+}
   });
 
   //tenant
@@ -125,6 +62,10 @@ $(document).ready(function () {
     let presentAddress = $("#presentAddress").val();
     let tenant = $("#submitenant").val();
 
+    if(exampleSelectmr==''|| txtname3==''|| phone==''|| officename=='' || officeno=='' || officeaddress=='' || emailcheck=='' || passport=='' || txAdhartr=='' || id2=='' || txtPANCard1=='' || residenceAddress=='' || presentAddress=='') {
+      swal("oops..", "Please fill all fields.", "error");
+      return false;
+  }else{
     $.ajax({
       url: "form.php",
       type: "POST",
@@ -147,9 +88,10 @@ $(document).ready(function () {
       },
       cache: false,
       success: function (res2) {
-        // swal("", res2, "success");
+        swal("saved..", res2, "success");
       },
     });
+  }
   });
 
   //property
@@ -332,4 +274,5 @@ $(document).ready(function () {
       },
     });
   });
+  
 });

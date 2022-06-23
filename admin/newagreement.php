@@ -260,7 +260,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                         <input type="text" class="form-control" name="name1"
                                                             id="txtname3" placeholder="Enter Name"
                                                             style="text-transform:uppercase" required>
-                                                        <span id="spanname"></span>
+                                                        <span id="spannamete"></span>
                                                     </div>
                                                 </div>
                                                 <!-- ss -->
