@@ -168,6 +168,8 @@ input[type=number] {
                       <div class="col-sm-9">
                         <input type="tel" class="form-control" id="examplemob" name="mobile_no" placeholder="Enter Mobile Number" minlength="10" maxlength="10" required>
                       </div>
+                      <span id="mobilespan"></span>		
+
                     </div>
 						</div>
 
@@ -312,20 +314,57 @@ $(document).ready(function(){
         }
 		  });
 
+      //MOBILE NO VALIDATION
+		   $("#mobilespan").hide();
+	    $("#examplemob").keyup(function(){
+			mobile_check();
+	   });
+	   function mobile_check(){
+		   let mobileno=$("#examplemob").val();
+		   let vali =/^[6-9]\d{9}$/; 
+		   if(!vali.test(mobileno)){
+			validMobile="no";
+			    $("#mobilespan").show().html("*Invalid Mobile No").css("color","red").focus();
+				mobile_err=false;
+			 return false;
+		   }
+		   else{
+			validMobile="yes";
+		       $("#mobilespan").hide(); 
+		   }
+	   }
+
+	   $("#sub").click(function(){
+		mobile_err = true;
+			   mobile_check();
+			   
+			   if((mobile_err==true)){
+			      return true;
+			   }
+			   else{return false;}
+		  });
+
     });
-</script>
 
-<script>
-let sub = document.getElementById("sub");
-sub.addEventListener("click", function(){
 
-if(valid == "no"){
-         swal("Oops...", "Please fill all the fields", "error");
-     }
-         else{
-             swal("Saved!", "Agreement Save", "success");
-         }
-});
+let subm = document.getElementById("sub");
+  subm.addEventListener("click", function(){
+  let firm = document.getElementById("firm").value;
+  let example = document.getElementById("example").value;
+  let examplemob = document.getElementById("examplemob").value;
+  let exampleSelectProperty = document.getElementById("exampleSelectProperty").value;
+  let examplereq = document.getElementById("examplereq").value;
+  let examplearea = document.getElementById("examplearea").value;
+  let examplelocation = document.getElementById("examplelocation").value;
+  if(firm =="" || validMobile =="no"|| valid == "no" || example == "" || examplemob == "" || exampleSelectProperty== "" || examplereq=="" || examplearea == "" || examplelocation==""){
+    swal("Oops...", "Please fill all the fields", "error");
+  }
+      else{
+      swal("Saved!", "Agreement Save", "success");
+    }
+  });
+    
+
 </script>
 </body>
 

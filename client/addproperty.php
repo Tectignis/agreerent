@@ -91,7 +91,7 @@ if(isset($_POST['submit'])){
                     <div class="form-group row">
                       <label for="exampleprop" class="col-sm-3 col-form-label">Add Property <label style="color:Red">*</label></label>
                       <div class="col-sm-9">
-                        <select class="form-control" name="property_for" id="pro" >
+                        <select class="form-control" name="property_for" id="pro" required>
                         <option value="" disabled selected hidden>select</option>
                           <option>sale</option>
                           <option> Rent</option>
@@ -125,8 +125,9 @@ if(isset($_POST['submit'])){
                     <div class="form-group row">
                       <label for="exampleprop" class="col-sm-3 col-form-label">Property Type</label>
                       <div class="col-sm-9">
-                        <select class="form-control" id="exampleSelectProperty" name="type">
-                          <option>Flat</option>
+                        <select class="form-control" id="exampleSelectProperty" name="type" required>
+                        <option value="" disabled selected hidden>select</option>  
+                        <option>Flat</option>
                           <option>Shop</option>
                         </select>
                       </div>
@@ -265,7 +266,7 @@ if(isset($_POST['submit'])){
     });
 
 
-    let subm = document.getElementById("sub");
+  let subm = document.getElementById("sub");
   subm.addEventListener("click", function(){
   let pro = document.getElementById("pro").value;
   let cname = document.getElementById("cname").value;
@@ -274,7 +275,7 @@ if(isset($_POST['submit'])){
   let examplereq = document.getElementById("examplereq").value;
   let examplearea = document.getElementById("examplearea").value;
   let examplelocation = document.getElementById("examplelocation").value;
-  if(pro=="" || validMobile=="no" || valid == "no" || cname == "" || mobile == "" || exampleSelectProperty== "" || examplereq=="" || examplearea == "" || examplelocation==""){
+  if(pro =="" || validMobile =="no" || valid == "no" || cname == "" || mobile == "" || exampleSelectProperty== "" || examplereq=="" || examplearea == "" || examplelocation==""){
     swal("Oops...", "Please fill all the fields", "error");
   }
       else{
