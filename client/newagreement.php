@@ -411,7 +411,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                     <div class="col-sm-8 col-lg-8">
                                                         <input type="text" class="form-control" name="address"
                                                             id="addressPro" placeholder="Enter Address" required>
-                                                            <span id="spanCardTenant"></span>
+                                                            <span id="spanCardpenant"></span>
                                                     </div>
                                                 </div>
                                                 <div class="row">

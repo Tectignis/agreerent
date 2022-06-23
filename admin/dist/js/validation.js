@@ -159,7 +159,7 @@ function tentpancard_fun(){
 //property
 let propertydnkname
 $(document).ready(function(){
-    $("#spanCardTenant").hide();
+    $("#spanCardpenant").hide();
 
 $("#addressPro").keyup(function(){
     propname_fun();
@@ -169,12 +169,12 @@ function propname_fun(){
 		   let vali =/^[A-Za-z ]+$/;
 		   if(!vali.test(txt)){
             propertydnkname="no";
-			  $("#spanCardTenant").show().html("** Enter Alphabets only").css("color","red").focus();
+			  $("#spanCardpenant").show().html("** Enter Alphabets only").css("color","red").focus();
 			  return false;
 		   }
            else{
             propertydnkname="yes";
-            $("#spanCardTenant").hide();}
+            $("#spanCardpenant").hide();}
 }
 });
 
