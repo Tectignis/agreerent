@@ -51,6 +51,7 @@ if(isset($_POST['submit'])){
     <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
       <!-- Theme style -->
   <!-- <link rel="stylesheet" href="dist/css/adminlte.min.css"> -->
   <!-- <link rel="stylesheet" href="dist/css/adminlte.css"> -->
@@ -58,6 +59,19 @@ if(isset($_POST['submit'])){
        <!-- Select2 -->
    <!-- <link rel="stylesheet" href="plugins/select2/css/select2.min.css"> -->
    <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+
+   <style>
+  input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -113,7 +127,7 @@ if(isset($_POST['submit'])){
                   ?>
 
 
-                      <select class="form-control select2" name="firm_name" style="width: 100%;">
+                      <select class="form-control select2" name="firm_name" id="firm" style="width: 100%;">
                         <option selected="selected">select</option>
                         <?php
                    while($sql=mysqli_fetch_array($query))
@@ -143,6 +157,7 @@ if(isset($_POST['submit'])){
                       <label for="example" class="col-sm-3 col-form-label">Client Name<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
                         <input type="text" class="form-control" id="example" name="client_name" placeholder="Enter Client Name"  required>
+                        <span id="spanclientname"></span>
                       </div>
                     </div>
 						</div>
@@ -189,7 +204,7 @@ if(isset($_POST['submit'])){
                     <div class="form-group row">
                       <label for="exampledno" class="col-sm-3 col-form-label">Location<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="examplelocation"name="location" placeholder="Enter Location" reqired>
+                        <input type="text" class="form-control" id="examplelocation"name="location" placeholder="Enter Location" required>
                       </div>
                     </div>
 						</div> 
@@ -243,6 +258,7 @@ if(isset($_POST['submit'])){
     <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- Select2 -->
 <script src="plugins/select2/js/select2.full.min.js"></script>
+<!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
     <!-- AdminLTE App -->
     <script src="dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
@@ -260,6 +276,57 @@ if(isset($_POST['submit'])){
     })
     
     </script>
+
+<script>
+    let valid;
+$(document).ready(function(){
+   //TEXT VALIDATION
+   $("#spanclientname").hide();
+	    $("#example").keyup(function(){
+	     txt_check();
+	   });
+	   function txt_check(){
+		   let txt=$("#example").val();
+		   let vali =/^[A-Za-z ]+$/;
+		   if(!vali.test(txt)){
+            valid="no";
+			  $("#spanclientname").show().html("Enter Alphabets only").css("color","red").focus();
+			  txt_err=false;
+			  return false;
+		   }
+		   else{
+            valid="yes";
+		       $("#spanclientname").hide();
+		       
+		   }
+	   }
+
+       $("#sub").click(function(){
+       txt_err = true;
+             txt_check();
+			   
+			   if((txt_err==true)){
+			      return true;
+			   }
+			   else{return false;
+        }
+		  });
+
+    });
+</script>
+
+<script>
+let sub = document.getElementById("sub");
+sub.addEventListener("click", function(){
+
+if(valid == "no"){
+         swal("Oops...", "Please fill all the fields", "error");
+     }
+         else{
+             swal("Saved!", "Agreement Save", "success");
+         }
+});
+</script>
 </body>
 
 </html>
