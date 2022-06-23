@@ -748,7 +748,7 @@ if( mail($sendTo,$subject,$emailText, "From:" .$from)){
  $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`firm_name`,`status`,`image`) 
   VALUES ('$user_id','$agent_name','$email_no','$passwordhash','$rera','$office_address','$mobile_no','$firm_name','$status','$image')");
   if($sql=1){
-    echo "<script>swal('success','Agent Registered Successfully. Password send in your Gmail','success');</script>";    }
+    echo "<script>swal('success','Agent Registered Successfully. Password send in your Gmail','success');window.location.href='consultant.php'</script>";    }
   else{
     echo "<script>swal('error','Something Wrong','error');</script>";
   }
