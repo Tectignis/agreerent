@@ -683,36 +683,36 @@ let validenqName,validenqtfirm, validenqEmail;
 
   
 
-       $("#spanemail").hide();
-	    $("#email").keyup(function(){
-	     txt_check();
-	   });
-	   function txt_check(){
-        validenqEmail="no";
-		   let txt=$("#email").val();
-		   var vali = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-		   if(!vali.test(txt)){
-			  $("#spanemail").show().html("Enter Valid Email Id").css("color","red").focus();
-			  txt_err=false;
-			  return false;
-		   }
-		   else{
-            validenqEmail="yes";
-		       $("#spanemail").hide();
+    //    $("#spanemail").hide();
+	//     $("#email").keyup(function(){
+	//      txt_check();
+	//    });
+	//    function txt_check(){
+    //     validenqEmail="no";
+	// 	   let txt=$("#email").val();
+	// 	   var vali = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	// 	   if(!vali.test(txt)){
+	// 		  $("#spanemail").show().html("Enter Valid Email Id").css("color","red").focus();
+	// 		  txt_err=false;
+	// 		  return false;
+	// 	   }
+	// 	   else{
+    //         validenqEmail="yes";
+	// 	       $("#spanemail").hide();
 		       
-		   }
-	   }
+	// 	   }
+	//    }
 
 
-       $("#otp").click(function(){
-       txt_err = true;
-             txt_check();
+    //    $("#otp").click(function(){
+    //    txt_err = true;
+    //          txt_check();
 			   
-			   if((txt_err==true)){
-			      return true;
-			   }
-			   else{return false;}
-		  });
+	// 		   if((txt_err==true)){
+	// 		      return true;
+	// 		   }
+	// 		   else{return false;}
+	// 	  });
 
 
 
@@ -720,31 +720,31 @@ let validenqName,validenqtfirm, validenqEmail;
 
 
 
- let submitenant = document.getElementById("otpverifysub");
-     submitenant.addEventListener("click", function(){
-     let txtname = document.getElementById("example").value;
-     let phone = document.getElementById("firmName").value;
+//  let submitenant = document.getElementById("otpverifysub");
+//      submitenant.addEventListener("click", function(){
+//      let txtname = document.getElementById("example").value;
+//      let phone = document.getElementById("firmName").value;
      
    
-     if(validenqName == "no" || validenqtfirm == "no"){
-         swal("Oops...", "Please fill all the fields", "error");
-     }
-         else{
-             swal("Saved!", "Agreement Save", "success");
-         }
-     });
+//      if(validenqName == "no" || validenqtfirm == "no"){
+//          swal("Oops...", "Please fill all the fields", "error");
+//      }
+//          else{
+//              swal("Saved!", "Agreement Save", "success");
+//          }
+//      });
 
-    //  let submitt = document.getElementById("otp");
-    //  submitt.addEventListener("click", function(){
-    //  let txtname = document.getElementById("email").value;
+//     //  let submitt = document.getElementById("otp");
+//     //  submitt.addEventListener("click", function(){
+//     //  let txtname = document.getElementById("email").value;
    
-    //  if(validenqEmail == "no"){`
-    //      swal("Oops...", "Please fill all the fields", "error");
-    //  }
-    //      else{
-    //          swal("Saved!", "Agreement Save", "success");
-    //      }
-    //  });
+//     //  if(validenqEmail == "no"){`
+//     //      swal("Oops...", "Please fill all the fields", "error");
+//     //  }
+//     //      else{
+//     //          swal("Saved!", "Agreement Save", "success");
+//     //      }
+//     //  });
    
 });
 

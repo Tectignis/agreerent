@@ -609,6 +609,8 @@ else{
 </script>
 
 <script>
+    let validenqName;
+
   $(document).ready(function(){
    //TEXT VALIDATION
    $("#spanclientname").hide();
@@ -616,6 +618,7 @@ else{
 	     txt_check();
 	   });
 	   function txt_check(){
+        validenqName="no";
 		   let txt=$("#example").val();
 		   let vali =/^[A-Za-z ]+$/;
 		   if(!vali.test(txt)){
@@ -624,6 +627,7 @@ else{
 			  return false;
 		   }
 		   else{
+            validenqName="yes";
 		       $("#spanclientname").hide();
 		       
 		   }
@@ -644,12 +648,14 @@ else{
 </script>
 
 <script>
+    let validenqFirm;
     $(document).ready(function(){
        $("#spanfirmname").hide();
 	    $("#firmName").keyup(function(){
 	     txt_check();
 	   });
 	   function txt_check(){
+        validenqFirm="no";
 		   let txt=$("#firmName").val();
 		   let vali =/^[A-Za-z ]+$/;
 		   if(!vali.test(txt)){
@@ -658,6 +664,7 @@ else{
 			  return false;
 		   }
 		   else{
+            validenqFirm="yes";
 		       $("#spanfirmname").hide();
 		       
 		   }
@@ -680,12 +687,14 @@ else{
 </script>
 
 <script>
+    let validenqEmail;
     $(document).ready(function(){
        $("#spanemail").hide();
 	    $("#email").keyup(function(){
 	     txt_check();
 	   });
 	   function txt_check(){
+        validenqEmail="no";
 		   let txt=$("#email").val();
 		   var vali = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 		   if(!vali.test(txt)){
@@ -694,6 +703,7 @@ else{
 			  return false;
 		   }
 		   else{
+            validenqEmail="yes";
 		       $("#spanemail").hide();
 		       
 		   }
@@ -715,9 +725,27 @@ else{
     });
 
 
-    
+
 </script>
-	
+
+	<script>
+        
+    let submitenant = document.getElementById("otpverifysub");
+     submitenant.addEventListener("click", function(){
+     let txtname = document.getElementById("example").value;
+     let phone = document.getElementById("firmName").value;
+    let email = document.getElementById("email").value;
+     
+   
+     if(validenqName == "no" || validenqFirm == "no" || validenqEmail == "no"){
+         swal("Oops...", "Please fill all the fields", "error");
+     }
+         else{
+             swal("Saved!", "Agreement Save", "success");
+         }
+     });
+
+        </script>
 
 
 </body>
