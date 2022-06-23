@@ -1,6 +1,12 @@
 $(document).ready(function () {
+  
   //owner
+  
   $("#subm").on("click", function () {
+    if(odnkname == "no" || odnkadhar == "no" || odnkpan == "no"){
+      swal("Oops...", "Please fill all the fields correctly", "error");
+    }
+      else{
     let no = $("#no").val();
     let examplemr = $("#examplemr").val();
     let txtname = $("#txtname").val();
@@ -10,7 +16,11 @@ $(document).ready(function () {
     let txtPANCard = $("#txtPANCard").val();
     let address = $("#address").val();
     let subm = $("#subm").val();
-
+    
+    if(examplemr==''|| txtname==''|| id1==''|| mobile=='' || address=='' || txtPANCard=='' ||txAdhar=='') {
+      swal("oops..", "Please fill all fields.", "error");
+      return false;
+  }else{
     $.ajax({
       url: "form.php",
       type: "POST",
@@ -27,9 +37,11 @@ $(document).ready(function () {
       },
       cache: false,
       success: function (res) {
-        // alert(res);
+        swal("saved..", res, "success");
       },
     });
+  }
+}
   });
 
   //tenant
@@ -43,13 +55,17 @@ $(document).ready(function () {
     let officeaddress = $("#officeaddress").val();
     let emailcheck = $("#emailcheck").val();
     let passport = $("#passport").val();
-    let txAdhar = $("#txAdhar").val();
+    let txAdhartr = $("#txAdhartr").val();
     let id2 = $("#id2").val();
     let txtPANCard1 = $("#txtPANCard1").val();
     let residenceAddress = $("#residenceAddress").val();
     let presentAddress = $("#presentAddress").val();
     let tenant = $("#submitenant").val();
 
+    if(exampleSelectmr==''|| txtname3==''|| phone==''|| officename=='' || officeno=='' || officeaddress=='' || emailcheck=='' || passport=='' || txAdhartr=='' || id2=='' || txtPANCard1=='' || residenceAddress=='' || presentAddress=='') {
+      swal("oops..", "Please fill all fields.", "error");
+      return false;
+  }else{
     $.ajax({
       url: "form.php",
       type: "POST",
@@ -64,7 +80,7 @@ $(document).ready(function () {
         emailcheck: emailcheck,
         passport: passport,
         id2: id2,
-        txAdhar: txAdhar,
+        txAdhartr: txAdhartr,
         txtPANCard1: txtPANCard1,
         residenceAddress: residenceAddress,
         presentAddress: presentAddress,
@@ -72,9 +88,10 @@ $(document).ready(function () {
       },
       cache: false,
       success: function (res2) {
-        // swal("", res2, "success");
+        swal("saved..", res2, "success");
       },
     });
+  }
   });
 
   //property
@@ -257,4 +274,5 @@ $(document).ready(function () {
       },
     });
   });
+  
 });

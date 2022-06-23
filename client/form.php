@@ -65,7 +65,7 @@ if(isset($_POST['tenant'])){
   $permanent_address=$_POST['presentAddress'];
 	$address=$_POST['residenceAddress'];
 	$mobile=$_POST['phone'];
-	$aadhaar=$_POST['txAdhar'];
+	$aadhaar=$_POST['txAdhartr'];
 	$pancard=$_POST['txtPANCard1'];
   $email=$_POST['emailcheck'];
 	$passport=$_POST['passport'];

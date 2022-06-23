@@ -125,7 +125,7 @@ if($sql=1){
                                                
                                                 <td>
                                           
- <button class="btn btn-sm btn-primary dnkediti1" data-id='<?php echo $arr['user_id']; ?>'><i class="fas fa-eye"></i></button>
+ <button class="btn btn-sm btn-primary dnkediti1" data-id='<?php echo $arr['id']; ?>'><i class="fas fa-eye"></i></button>
 
                                                     <a href="paidleads.php?delid=<?php echo $arr['id']; ?>"><button
                                                             type="button" class="btn btn-sm btn-danger btn-rounded btn-icon"
