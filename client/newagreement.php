@@ -399,7 +399,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                     <div class="col-sm-2 col-lg-2">
                                                         
 <?php
-$quer=mysqli_query($conn,"select * from new_agreement where user_id='$basicid'");
+$quer=mysqli_query($conn,"select * from new_agreement where document_no='$basicid'");
 $result=mysqli_fetch_array($quer);
 $propertytype=$result['property_type'];
 ?>
