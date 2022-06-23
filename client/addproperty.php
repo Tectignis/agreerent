@@ -42,6 +42,7 @@ if(isset($_POST['submit'])){
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -90,29 +91,34 @@ if(isset($_POST['submit'])){
                     <div class="form-group row">
                       <label for="exampleprop" class="col-sm-3 col-form-label">Add Property <label style="color:Red">*</label></label>
                       <div class="col-sm-9">
-                        <select class="form-control" name="property_for" id="exampleSelectGender" required>
+                        <select class="form-control" name="property_for" id="pro" >
                         <option value="" disabled selected hidden>select</option>
                           <option>sale</option>
                           <option> Rent</option>
                         </select>
                       </div>
+                    	
                     </div>
 						</div>
-					  <div class="col-md-6 ">
+        				  
+              <div class="col-md-6 ">
               
                     <div class="form-group row">
                       <label for="exampledno" class="col-sm-3 col-form-label">Client Name</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="exampledno" name="client_name"  placeholder="Enter Name">
+                        <input type="text" class="form-control" id="cname" name="client_name"  placeholder="Enter Name">
                       </div>
+                      <span id="spanname"></span>		
                     </div>
-						</div>					  
+						</div>		
+          			  
 						<div class="col-md-6 ">
                     <div class="form-group row">
                       <label for="exampledno" class="col-sm-3 col-form-label">Mobile No.</label>
                       <div class="col-sm-9">
-                        <input type="tel" class="form-control" id="examplemob" name="mobile_no"  placeholder="Enter Mobile No">
+                        <input type="tel" class="form-control" id="mobile" name="mobile_no"  minlength="10" maxlength="10" placeholder="Enter Mobile No">
                       </div>
+                      <span id="mobilespan"></span>		
                     </div>
 						</div> 
 					   <div class="col-md-6 ">
@@ -130,15 +136,16 @@ if(isset($_POST['submit'])){
                     <div class="form-group row">
                       <label for="exampledno" class="col-sm-3 col-form-label">Requirement</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="examplereq" name="requirement"  placeholder="Enter Requirement">
+                        <input type="text" class="form-control" id="examplereq" required name="requirement"  placeholder="Enter Requirement">
                       </div>
+
                     </div>
 					  </div>
 					  <div class="col-md-6 ">
                     <div class="form-group row">
                       <label for="exampledno" class="col-sm-3 col-form-label">Area</label>
                       <div class="col-sm-9">
-                        <input type="number" class="form-control" id="examplearea" name="area" placeholder="Enter Area">
+                        <input type="number" class="form-control" id="examplearea" name="area" placeholder="Enter Area" required>
                       </div>
                     </div>
 					  </div> 
@@ -147,13 +154,13 @@ if(isset($_POST['submit'])){
                     <div class="form-group row">
                       <label for="exampledno" class="col-sm-3 col-form-label">Location</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="examplelocation"name="location" placeholder="Enter Location">
+                        <input type="text" class="form-control" id="examplelocation"name="location" placeholder="Enter Location" required>
                       </div>
                     </div>
 						</div> 
 					  
 					  <div class="col" align="right">
-            <button type="submit" name="submit" class="btn btn-primary  btn-lg" style="color: aliceblue">Submit<i class="mdi mdi-chevron-right"></i></button>
+            <button type="submit" name="submit" class="btn btn-primary  btn-lg" id="sub" style="color: aliceblue">Submit<i class="mdi mdi-chevron-right"></i></button>
             </div>
             </div>
                   </form>
@@ -192,6 +199,92 @@ if(isset($_POST['submit'])){
 <script src="plugins/filterizr/jquery.filterizr.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <!-- Page specific script -->
+<script>
+  let valid,validMobile;
+  $(document).ready(function(){
+   //TEXT VALIDATION
+   $("#spanname").hide();
+	    $("#cname").keyup(function(){
+	     txt_check();
+	   });
+	   function txt_check(){
+		   let txt=$("#cname").val();
+		   let vali =/^[A-Za-z ]+$/;
+		   if(!vali.test(txt)){
+        valid="no";
+			  $("#spanname").show().html("Enter Alphabets only").css("color","red").focus();
+			  txt_err=false;
+			  return false;
+		   }
+		   else{
+        valid="yes";
+		       $("#spanname").hide();
+		       
+		   }
+	   }
+
+	   $("#sub").click(function(){
+       txt_err = true;
+             txt_check();
+			   
+			   if((txt_err==true)){
+			      return true;
+			   }
+			   else{return false;}
+		  });
+
+       //MOBILE NO VALIDATION
+		   $("#mobilespan").hide();
+	    $("#mobile").keyup(function(){
+			mobile_check();
+	   });
+	   function mobile_check(){
+		   let mobileno=$("#mobile").val();
+		   let vali =/^[6-9]\d{9}$/; 
+		   if(!vali.test(mobileno)){
+			validMobile="no";
+			    $("#mobilespan").show().html("*Invalid Mobile No").css("color","red").focus();
+				mobile_err=false;
+			 return false;
+		   }
+		   else{
+			validMobile="yes";
+		       $("#mobilespan").hide(); 
+		   }
+	   }
+
+	   $("#sub").click(function(){
+		mobile_err = true;
+			   mobile_check();
+			   
+			   if((mobile_err==true)){
+			      return true;
+			   }
+			   else{return false;}
+		  });
+    });
+
+
+    let subm = document.getElementById("sub");
+  subm.addEventListener("click", function(){
+  let pro = document.getElementById("pro").value;
+  let cname = document.getElementById("cname").value;
+  let mobile = document.getElementById("mobile").value;
+  let exampleSelectProperty = document.getElementById("exampleSelectProperty").value;
+  let examplereq = document.getElementById("examplereq").value;
+  let examplearea = document.getElementById("examplearea").value;
+  let examplelocation = document.getElementById("examplelocation").value;
+  if(pro=="" || validMobile=="no" || valid == "no" || cname == "" || mobile == "" || exampleSelectProperty== "" || examplereq=="" || examplearea == "" || examplelocation==""){
+    swal("Oops...", "Please fill all the fields", "error");
+  }
+      else{
+      swal("Saved!", "Agreement Save", "success");
+    }
+  });
+    
+
+  </script>
+  
 <script>
   $(function () {
 
