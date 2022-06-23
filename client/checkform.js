@@ -43,7 +43,7 @@ $(document).ready(function () {
     let officeaddress = $("#officeaddress").val();
     let emailcheck = $("#emailcheck").val();
     let passport = $("#passport").val();
-    let txAdhar = $("#txAdhar").val();
+    let txAdhartr = $("#txAdhartr").val();
     let id2 = $("#id2").val();
     let txtPANCard1 = $("#txtPANCard1").val();
     let residenceAddress = $("#residenceAddress").val();
@@ -64,7 +64,7 @@ $(document).ready(function () {
         emailcheck: emailcheck,
         passport: passport,
         id2: id2,
-        txAdhar: txAdhar,
+        txAdhartr: txAdhartr,
         txtPANCard1: txtPANCard1,
         residenceAddress: residenceAddress,
         presentAddress: presentAddress,

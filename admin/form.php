@@ -65,7 +65,7 @@ if(isset($_POST['tenant'])){
   $permanent_address=$_POST['presentAddress'];
 	$address=$_POST['residenceAddress'];
 	$mobile=$_POST['phone'];
-	$aadhaar=$_POST['txAdhar'];
+	$aadhaar=$_POST['txAdhartr'];
 	$pancard=$_POST['txtPANCard1'];
   $email=$_POST['emailcheck'];
 	$passport=$_POST['passport'];
@@ -501,7 +501,7 @@ if(isset($_POST['compsubmit'])){
 	}
 }
 if(isset($_POST['dnkidno1'])){
-	$sql=mysqli_query($conn,"select leads.user_id,leads.requirement,leads.location,leads.mobile,leads.area,leads.id,leads.type,leads.client_name,agent_details.firm_name from leads inner join agent_details on leads.user_id=agent_details.user_id  where leads.user_id='".$_POST['dnkidno1']."'");
+	$sql=mysqli_query($conn,"select leads.user_id,leads.requirement,leads.location,leads.mobile,leads.area,leads.id,leads.type,leads.client_name,agent_details.firm_name from leads inner join agent_details on leads.user_id=agent_details.user_id  where leads.id='".$_POST['dnkidno1']."'");
  
 	$arr=mysqli_fetch_array($sql);
 	echo '<div class="modal-header">

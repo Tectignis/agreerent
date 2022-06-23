@@ -310,7 +310,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                         Card No.<label style="color:Red">*</label></label>
                                                     <div class="col-sm-4">
                                                     <input type="tel" name="aadhaar" class="form-control"
-                                                            id="txAdhar" placeholder="Enter Aadhaar card No" minlength="12"
+                                                            id="txAdhartr" placeholder="Enter Aadhaar card No" minlength="12"
                                                             maxlength="12" required>
                                                         <span id="spanAadharCard"></span>
                                                     </div>
@@ -856,7 +856,9 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
     <script src="dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <!-- Page specific script -->
+    <script src="dist/js/validation.js"></script>
     <script src="checkform.js"></script>
+    
 
     <script>
     $(function() {
@@ -891,23 +893,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
     });
     </script>
 <script>
-let subm = document.getElementById("subm");
-subm.addEventListener("click", function(){
-let no1 = document.getElementById("no").value;
-let abbreviation = document.getElementById("examplemr").value;
-let name = document.getElementById("txtname").value;
-let age = document.getElementById("id1").value;
-let mobile = document.getElementById("mobile").value;
-let aadhaar = document.getElementById("txAdhar").value;
-let pancard = document.getElementById("txtPANCard").value;
-let address = document.getElementById("address").value;
-if(no1 == "" || abbreviation == "" || name == "" || age == "" || mobile == "" || aadhaar== "" || pancard== "" || address== ""  ){
-    swal("Oops...", "Please fill all the fields", "error");
-}
-    else{
-      swal("Saved!", "Agreement Save", "success");
-    }
-});
+
 </script>
 
 <script>
