@@ -714,7 +714,7 @@ else{
 	   }
 
 
-       $("#otp").click(function(){
+       $("#otpverifysub").click(function(){
        txt_err = true;
              txt_check();
 			   
