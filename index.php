@@ -77,7 +77,7 @@ if(isset($_POST["login"])){
                
                   <input type="text" class="forms" name="name" id="name" placeholder="Enter Your Name" required>
                   <span id="spanname"></span>
-                  <input type="email" class="forms" name="email" id="exampleInputEmail1" placeholder="Enter Your Email">
+                  <input type="email" class="forms" name="email" id="exampleInputEmail1" placeholder="Enter Your Email" required>
                   <input type="tel" class="forms"name="mob_no" id="exampleInputPassword1" placeholder="Enter Your Mobile No"  minlength="10" maxlength="10" required>
                   <textarea class="forms" name="description" id="exampleInputPassword1" placeholder="Description" required></textarea>
                 
