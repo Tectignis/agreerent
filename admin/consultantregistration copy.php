@@ -609,6 +609,9 @@ else{
 </script>
 
 <script>
+
+let validenqName,validenqtfirm, validenqEmail;
+
   $(document).ready(function(){
    //TEXT VALIDATION
    $("#spanclientname").hide();
@@ -616,6 +619,7 @@ else{
 	     txt_check();
 	   });
 	   function txt_check(){
+        validenqName="no";
 		   let txt=$("#example").val();
 		   let vali =/^[A-Za-z ]+$/;
 		   if(!vali.test(txt)){
@@ -624,6 +628,7 @@ else{
 			  return false;
 		   }
 		   else{
+            validenqName="yes";
 		       $("#spanclientname").hide();
 		       
 		   }
@@ -640,16 +645,15 @@ else{
 
          
 
-    });
-</script>
+    
 
-<script>
-    $(document).ready(function(){
+    
        $("#spanfirmname").hide();
 	    $("#firmName").keyup(function(){
 	     txt_check();
 	   });
 	   function txt_check(){
+        validenqtfirm="no";
 		   let txt=$("#firmName").val();
 		   let vali =/^[A-Za-z ]+$/;
 		   if(!vali.test(txt)){
@@ -658,6 +662,7 @@ else{
 			  return false;
 		   }
 		   else{
+            validenqtfirm="yes";
 		       $("#spanfirmname").hide();
 		       
 		   }
@@ -676,16 +681,14 @@ else{
 
 
 
-    });
-</script>
+  
 
-<script>
-    $(document).ready(function(){
        $("#spanemail").hide();
 	    $("#email").keyup(function(){
 	     txt_check();
 	   });
 	   function txt_check(){
+        validenqEmail="no";
 		   let txt=$("#email").val();
 		   var vali = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 		   if(!vali.test(txt)){
@@ -694,6 +697,7 @@ else{
 			  return false;
 		   }
 		   else{
+            validenqEmail="yes";
 		       $("#spanemail").hide();
 		       
 		   }
@@ -712,7 +716,39 @@ else{
 
 
 
-    });
+
+
+
+
+ let submitenant = document.getElementById("otpverifysub");
+     submitenant.addEventListener("click", function(){
+     let txtname = document.getElementById("example").value;
+     let phone = document.getElementById("firmName").value;
+     
+   
+     if(validenqName == "no" || validenqtfirm == "no"){
+         swal("Oops...", "Please fill all the fields", "error");
+     }
+         else{
+             swal("Saved!", "Agreement Save", "success");
+         }
+     });
+
+    //  let submitt = document.getElementById("otp");
+    //  submitt.addEventListener("click", function(){
+    //  let txtname = document.getElementById("email").value;
+   
+    //  if(validenqEmail == "no"){`
+    //      swal("Oops...", "Please fill all the fields", "error");
+    //  }
+    //      else{
+    //          swal("Saved!", "Agreement Save", "success");
+    //      }
+    //  });
+   
+});
+
+    
 </script>
 	
 
