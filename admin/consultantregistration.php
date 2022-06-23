@@ -492,9 +492,12 @@ else{
                                         <label for="exampleaadhaar" class="col-sm-2 col-form-label">Mobile No.<label
                                                 style="color:Red">*</label></label>
                                         <div class="col-sm-10">
-                                            <input type="tel" class="form-control" id="examplemob" name="mobile_no"
+                                            <input type="tel" class="form-control" id="phone" name="mobile_no"
                                                 placeholder="Enter Mobile Number" minlength="10" maxlength="10"
                                                 required>
+                                                <span id="phoneSpan"></span>
+                                                
+
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -727,6 +730,37 @@ else{
 
 
 </script>
+<script>
+    $("#phoneSpan").hide();
+	    $("#phone").keyup(function(){
+	     mobile_check();
+	   });
+	   function mobile_check(){
+		   let mobileno=$("#phone").val();
+		   let vali =/^[6-9]\d{9}$/; 
+		   if(!vali.test(mobileno)){
+        validenqtMobile="no";
+			    $("#phoneSpan").show().html("*Invalid Mobile No").css("color","red").focus();
+				mobile_err=false;
+			 return false;
+		   }
+		   else{
+        validenqtMobile="yes";
+		       $("#phoneSpan").hide(); 
+		   }
+	   }
+
+	   $("#otpverifysub").click(function(){
+		mobile_err = true;
+		mobile_check();
+			   
+			   if((mobile_err==true)){
+			      return true;
+			   }
+			   else{return false;}
+		  });
+
+    </script>
 
 	<script>
         
@@ -742,7 +776,7 @@ else{
 
      
    
-     if(validenqName == "no" || validenqFirm == "no" || validenqEmail == "no" || veriotp == "" || rera == "" || examplemob == "" || image_input_field == ""){
+     if(validenqName == "no" || validenqFirm == "no" || validenqEmail == "no" || veriotp == "" || rera == "" || validenqtMobile == "no" || image_input_field == ""){
          swal("Oops...", "Please fill all the fields", "error");
      }
          else{
