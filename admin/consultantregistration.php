@@ -590,11 +590,11 @@ else{
     
     <script>
         $(document).ready(function(){
-            if(validenqName == "no" || validenqFirm == "no" || validenqEmail == "no" ||validenqtMobile == "no"){
-         swal("Oops...", "Please fill all the fields", "error");
-     }
-         else{
             $("#otp").on("click", function () {
+                if(validenqName == "no" || validenqFirm == "no" || validenqEmail == "no" ||validenqtMobile == "no"){
+            swal("Oops...", "Please fill all the fields", "error");
+          }
+         else{
             let exampledno = $("#exampledno").val();
             let email = $("#email").val();
             let name = $("#name").val();
@@ -614,8 +614,8 @@ else{
                         swal("Saved!",datadnk, "success");
                     }
                 });
+            }
             });
-        }
         });
 
 </script>
@@ -644,7 +644,7 @@ else{
 		       
 		   }
 	   }
-       $("#otpverifysub").click(function(){
+       $("#otpverifysub ,#otp").click(function(){
        txt_err = true;
              txt_check();
 			   
@@ -683,7 +683,7 @@ else{
 	   }
 
 
-       $("#otpverifysub").click(function(){
+       $("#otpverifysub , #otp").click(function(){
        txt_err = true;
              txt_check();
 			   
@@ -722,7 +722,7 @@ else{
 	   }
 
 
-       $("#otpverifysub").click(function(){
+       $("#otpverifysub, #otp").click(function(){
        txt_err = true;
              txt_check();
 			   
@@ -760,7 +760,7 @@ else{
 		   }
 	   }
 
-	   $("#otpverifysub").click(function(){
+	   $("#otpverifysub, #otp").click(function(){
 		mobile_err = true;
 		mobile_check();
 			   
