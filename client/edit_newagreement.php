@@ -4,9 +4,9 @@ if(!isset($_SESSION['admin']) == 1) // If session is not set then redirect to Lo
 {
   header("Location:adminlogin"); 
 }
-if(!isset($_SESSION['aid'])) 
+if(!isset($_SESSION['id'])) 
 {
- header("Location:adminlogin.php"); 
+ header("Location:clientlogin.php"); 
 }
 
 include("../config/config.php");

@@ -1,12 +1,8 @@
 <?php
-session_start();
-if(!isset($_SESSION['admin']) == 1) // If session is not set then redirect to Login Page
+session_start();rt
+if(!isset($_SESSION['id'])) 
 {
-  header("Location:adminlogin"); 
-}
-if(!isset($_SESSION['aid'])) 
-{
- header("Location:adminlogin.php"); 
+ header("Location:clientlogin.php"); 
 }
 //new_agreement
 include("../config/config.php");
