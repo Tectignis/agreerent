@@ -30,7 +30,6 @@ $otp=$otprow['otp'];
 if($veriotp == ""){
     echo "<script>alert('please Verify your email first then submit');</script>";
 }else{
-if($firm_name == )
 if($otp==$veriotp){
   $image=$_FILES['file']['name'];
   $tmp_name = $_FILES['file']['tmp_name']; 
@@ -38,6 +37,10 @@ if($otp==$veriotp){
     $type     = $_FILES['file']['type']; 
     $error     = $_FILES['file']['error'];
   $loc="dist/img/agent_photo/".basename($image);
+  if($firm_name == "" || $agent_name == "" || $mobile_no== "" || $office_address=="" || $email_no == "" || $rera == "" || $image==""){
+    echo "<script>alert('please fill all the fields');</script>";
+
+}
     move_uploaded_file($tmp_name, $loc);
 
 $imgEncoded = base64_encode(file_get_contents($tmp_name));
@@ -374,7 +377,6 @@ else{
 }
 }
 }
-}
 
 
 
@@ -588,7 +590,10 @@ else{
     
     <script>
         $(document).ready(function(){
-
+            if(validenqName == "no" || validenqFirm == "no" || validenqEmail == "no" ||validenqtMobile == "no"){
+         swal("Oops...", "Please fill all the fields", "error");
+     }
+         else{
             $("#otp").on("click", function () {
             let exampledno = $("#exampledno").val();
             let email = $("#email").val();
@@ -606,10 +611,11 @@ else{
                     cache: false,
                     success: function(datadnk)
                     {
-                        alert(datadnk);
+                        swal("Saved!",datadnk, "success");
                     }
                 });
             });
+        }
         });
 
 </script>
@@ -764,23 +770,6 @@ else{
 		  });
 
     </script>
-
-	<script>
-        
-    let submitenant = document.getElementById("otpverifysub");
-     submitenant.addEventListener("click", function(){
-     
-   
-     if(validenqName == "no" || validenqFirm == "no" || validenqEmail == "no" || veriotp == "" || rera == "" || validenqtMobile == "no" || image_input_field == ""){
-         swal("Oops...", "Please fill all the fields", "error");
-     }
-         else{
-             swal("Saved!", "Agreement Save", "success");
-         }
-     });
-
-        </script>
-
 
 </body>
 
