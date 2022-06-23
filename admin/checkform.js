@@ -3,7 +3,7 @@ $(document).ready(function () {
   //owner
   
   $("#subm").on("click", function () {
-    if(odnkname == "no" || odnkadhar == "no" || odnkpan == "no"){
+    if(odnkname == "no" || odnkadhar == "no" || odnkpan == "no" || odnkmobil == "no"){
       swal("Oops...", "Please fill all the fields correctly", "error");
     }
       else{
@@ -46,7 +46,7 @@ $(document).ready(function () {
 
   //tenant
   $("#submitenant").on("click", function () {
-    if(tenanttname == "no" || validTenantPan == "no" || validTenantAadhar == "no"){
+    if(tenanttname == "no" || validTenantPan == "no" || validTenantAadhar == "no" || tdnkmob=="no"){
       swal("Oops...", "Please fill all the fields correctly", "error");
     }
       else{
@@ -137,7 +137,7 @@ $(document).ready(function () {
       },
       cache: false,
       success: function (res3) {
-        swal("saved..",res3, "success");;
+        swal("saved..", res3, "success");;
       },
     });
   }
