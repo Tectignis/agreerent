@@ -101,7 +101,7 @@ $(document).ready(function () {
 
   //property
   $("#submitproperty").on("click", function () {
-    if(propertyname == "no" ){
+    if(propertydnkname == "no" ){
       swal("Oops...", "Please fill all the fields correctly", "error");
     }
       else{
