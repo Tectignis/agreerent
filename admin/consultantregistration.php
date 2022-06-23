@@ -740,6 +740,7 @@ else{
 
 </script>
 <script>
+    let validenqtMobile;
     $("#phoneSpan").hide();
 	    $("#phone").keyup(function(){
 	     mobile_check();

@@ -226,6 +226,8 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
                                             <div class="btn-group btn-group-sm" role="group" aria-label="">
                                         <a href="agreement.php?id=<?php echo $row['newdoc'];?>"
                                         class="btn col btn-primary btn-rounded btn-sm btn-icon"><i class="fas fa-eye"></i></a>
+                                        <a href="agreement.php?id=<?php echo $row['newdoc'];?>"
+                                        class="btn col btn-primary btn-rounded btn-sm btn-icon"><i class="fas fa-eye"></i></a>
                                        
 
 

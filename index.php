@@ -74,10 +74,12 @@ if(isset($_POST["login"])){
                       <div class="modal-body" >
                        
               <form method="post">
-                  <input type="text" class="forms" name="name" id="name" placeholder="Enter Your Name">
+               
+                  <input type="text" class="forms" name="name" id="name" placeholder="Enter Your Name" required>
+                  <span id="spanname"></span>
                   <input type="email" class="forms" name="email" id="exampleInputEmail1" placeholder="Enter Your Email">
-                  <input type="tel" class="forms"name="mob_no" id="exampleInputPassword1" placeholder="Enter Your Mobile No">
-                  <textarea class="forms" name="description" id="exampleInputPassword1" placeholder="Description"></textarea>
+                  <input type="tel" class="forms"name="mob_no" id="exampleInputPassword1" placeholder="Enter Your Mobile No"  minlength="10" maxlength="10" required>
+                  <textarea class="forms" name="description" id="exampleInputPassword1" placeholder="Description" required></textarea>
                 
                 
                 <div class="my-2 d-flex justify-content-between align-items-center">
@@ -88,7 +90,7 @@ if(isset($_POST["login"])){
                       </div>
                       <div class="modal-footer" style="justify-content:center;">
                         <div class="mt-6">
-                          <input type="submit" class="main-btn btn btn-block font-weight-medium auth-form-btn" value="Submit" name="login">
+                          <input type="submit" id="sub" class="main-btn btn btn-block font-weight-medium auth-form-btn" value="Submit" name="login">
                         </div>
                       </form>
                       </div>
@@ -875,5 +877,41 @@ if(isset($_POST["login"])){
     <script src="assets/js/particles.min.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <script>
+    $(document).ready(function(){
+       $("#spanname").hide();
+	    $("#name").keyup(function(){
+	     txt_check();
+	   });
+	   function txt_check(){
+		   let txt=$("#name").val();
+		   let vali =/^[A-Za-z ]+$/;
+		   if(!vali.test(txt)){
+			  $("#spanname").show().html("Enter Alphabets only").css("color","red").focus();
+			  txt_err=false;
+			  return false;
+		   }
+		   else{
+		       $("#spanname").hide();
+		       
+		   }
+	   }
+
+
+       $("#sub").click(function(){
+       txt_err = true;
+             txt_check();
+			   
+			   if((txt_err==true)){
+			      return true;
+			   }
+			   else{return false;}
+		  });
+
+
+
+    });
+</script>
   </body>
 </html>
