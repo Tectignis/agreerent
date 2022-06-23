@@ -735,9 +735,14 @@ else{
      let txtname = document.getElementById("example").value;
      let phone = document.getElementById("firmName").value;
     let email = document.getElementById("email").value;
+    let otp = document.getElementById("veriotp").value;
+    let name = document.getElementById("rera").value;
+    let exampledno = document.getElementById("examplemob").value;
+    let validenqName = document.getElementById("image_input_field").value;
+
      
    
-     if(validenqName == "no" || validenqFirm == "no" || validenqEmail == "no"){
+     if(validenqName == "no" || validenqFirm == "no" || validenqEmail == "no" || veriotp == "" || rera == "" || examplemob == "" || image_input_field == ""){
          swal("Oops...", "Please fill all the fields", "error");
      }
          else{
