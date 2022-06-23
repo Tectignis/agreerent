@@ -1,9 +1,9 @@
 <?php 
 session_start();
 
-if(!isset($_SESSION['id'])) 
+if(!isset($_SESSION['aid'])) 
 {
- header("Location:clientlogin.php"); 
+ header("Location:adminlogin.php"); 
 }
 include("../config/config.php");
 
@@ -260,7 +260,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                         <input type="text" class="form-control" name="name1"
                                                             id="txtname3" placeholder="Enter Name"
                                                             style="text-transform:uppercase" required>
-                                                        <span id="spanname"></span>
+                                                        <span id="spannameTenant"></span>
                                                     </div>
                                                 </div>
                                                 <!-- ss -->
@@ -312,7 +312,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                     <input type="tel" name="aadhaar" class="form-control"
                                                             id="txAdhartr" placeholder="Enter Aadhaar card No" minlength="12"
                                                             maxlength="12" required>
-                                                        <span id="spanAadharCard"></span>
+                                                        <span id="spanAadharCardTenant"></span>
                                                     </div>
                                                 </div>
 
@@ -333,7 +333,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                         <input type="text" class="form-control" name="pancard"
                                                             id="txtPANCard1" placeholder="Enter Pancard number"
                                                             style="text-transform:uppercase" required>
-                                                        <span id="spanCard"></span>
+                                                        <span id="spanCardTenant"></span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -409,6 +409,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                     <div class="col-sm-8 col-lg-8">
                                                         <input type="text" class="form-control" name="address"
                                                             id="addressPro" placeholder="Enter Address" required>
+                                                            <span id="spanCardTenant"></span>
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -478,7 +479,6 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                     </div>
                                                 </div>
                                                 <div class="col" align="right">
-                                                    <!-- <a href="tenant.php?id=<?php echo $did;?>"><button type="button" class="btn btn-primary  btn-lg" style="color: aliceblue"><i class="mdi mdi-chevron-left"></i>Previous</button></a> -->
                                                     <button type="button" name="submitproperty" id="submitproperty"
                                                         class="btn btn-info" data-tt="tooltip" title=""
                                                         data-original-title="Click here to Save">Save as
@@ -507,7 +507,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                             <div class="col-sm-9">
                                                                 <input type="text" class="form-control" id="txtname1"
                                                                     name="name2" placeholder="Enter Name" required>
-                                                                <span id="spanname"></span>
+                                                                <span id="spanfamname"></span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -602,6 +602,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                         <input type="text" style="text-transform:uppercase"
                                                             class="form-control " id="nameowner" name="owitness1"
                                                             placeholder="Enter Name" required>
+                                                            <span id="spanownername"></span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -612,7 +613,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                         <input type="text" style="text-transform:uppercase"
                                                             class="form-control txtname" id="nameowner2"
                                                             name="owitness2" placeholder="Enter Name" required>
-
+                                                            <span id="spanowner2name"></span>
 
                                                     </div>
                                                 </div>
@@ -630,7 +631,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                         <input type="text" style="text-transform:uppercase"
                                                             class="form-control " id="twitness1" name="twitness1"
                                                             placeholder="Enter Name" txtname required>
-
+                                                            <span id="spantenantname"></span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -641,7 +642,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                         <input type="text" style="text-transform:uppercase"
                                                             class="form-control " id="twitness2" name="twitness2"
                                                             placeholder="Enter Name" txtname required>
-
+                                                            <span id="spantenant2name"></span>
                                                     </div>
                                                 </div>
                                                 <div class="col" align="right">
@@ -677,7 +678,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                                 <input type="text" style="text-transform:uppercase"
                                                                     class="form-control" id="txtname2" name="name3"
                                                                     placeholder="Enter Name" required>
-                                                                <span id="spanname"></span>
+                                                                <span id="spanaminitiesname"></span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -741,12 +742,13 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                     <select class="form-control select2 select2-hidden-accessible"
                                                         name="method" id="checkselec" style="width: 100%;"
                                                         data-select2-id="3" tabindex="-1" aria-hidden="true">
-                                                        <option selected="selected" data-select2-id="4">CASH</option>
-                                                        <option>CHEQUE</option>
-                                                        <option>BANK TRASFER</option>
-                                                        <option>GOOGLE PAY</option>
-                                                        <option>PHONE PAY</option>
-                                                        <option>PAYTYM</option>
+                                                        <option selected="selected" data-select2-id="4" value="" disabled>Select</option>
+                                                        <option value="CASH">CASH</option>
+                                                        <option value="CHEQUE">CHEQUE</option>
+                                                        <option value="BANK TRASFER">BANK TRASFER</option>
+                                                        <option value="GOOGLE PAY">GOOGLE PAY</option>
+                                                        <option value="PHONE PAY">PHONE PAY</option>
+                                                        <option value="PAYTYM">PAYTYM</option>
                                                         
                                                     </select>
                                                 </div>
@@ -856,7 +858,9 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
     <script src="dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <!-- Page specific script -->
+    <script src="dist/js/validation.js"></script>
     <script src="checkform.js"></script>
+    
 
     <script>
     $(function() {
@@ -890,120 +894,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
         $('.nav-tabs > .nav-item > .active').parent().prev('li').find('a').trigger('click');
     });
     </script>
-<script>
-let subm = document.getElementById("subm");
-subm.addEventListener("click", function(){
-let no1 = document.getElementById("no").value;
-let abbreviation = document.getElementById("examplemr").value;
-let name = document.getElementById("txtname").value;
-let age = document.getElementById("id1").value;
-let mobile = document.getElementById("mobile").value;
-let aadhaar = document.getElementById("txAdhar").value;
-let pancard = document.getElementById("txtPANCard").value;
-let address = document.getElementById("address").value;
-if(no1 == "" || abbreviation == "" || name == "" || age == "" || mobile == "" || aadhaar== "" || pancard== "" || address== ""  ){
-    swal("Oops...", "Please fill all the fields", "error");
-}
-    else{
-      swal("Saved!", "Agreement Save", "success");
-    }
-});
-</script>
 
-<script>
-// let submitenant = document.getElementById("submitenant");
-// submitenant.addEventListener("click", function(){
-// let abbreviation = document.getElementById("exampleSelectmr").value;
-// let name1 = document.getElementById("txtname3").value;
-// let mobile = document.getElementById("phone").value;
-// let email = document.getElementById("emailcheck").value;
-
-// let aadhaar = document.getElementById("txtAadhar1").value;
-// let age = document.getElementById("id2").value;
-// let pancard = document.getElementById("txtPANCard1").value;
-// let address = document.getElementById("residenceAddress").value;
-// let permanent_address = document.getElementById("presentAddress").value;
-// if( abbreviation == "" || name1 == "" || mobile == "" || email == "" || aadhaar == "" || age == "" || pancard == "" || address == "" || permanent_address == ""  ){
-//     swal("Oops...", "Please fill all the fields", "error");
-// }
-//     else{
-//         swal("Saved!", "Agreement Save", "success");
-//     }
-// });
-</script>
-
-<script>
-let submitproperty = document.getElementById("submitproperty");
-submitproperty.addEventListener("click", function(){
-let exampleproperties = document.getElementById("exampleproperties").value;
-let address = document.getElementById("addressPro").value;
-let sector = document.getElementById("sector").value;
-let plotno = document.getElementById("plotno").value;
-let cidco = document.getElementById("cidco").value;
-let area = document.getElementById("area").value;
-let chs = document.getElementById("chs").value;
-let node = document.getElementById("node").value;
-
-if(exampleproperties == "" || address == "" || sector == "" || plotno == "" || cidco == "" || area == "" || chs == "" || node == ""  ){
-    swal("Oops...", "Please fill all the fields", "error");
-}
-    else{
-        swal("Saved!", "Agreement Save", "success");
-    }
-});
-</script>
-<script>
-let submitmember = document.getElementById("submitmember");
-submitmember.addEventListener("click", function(){
-let no4 = document.getElementById("no4").value;
-let name2 = document.getElementById("txtname1").value;
-let relation = document.getElementById("exampleSelectrelation").value;
-let age = document.getElementById("relativeage").value;
-let gender = document.getElementById("relativegender").value;
-
-if(no4 == "" || name2 == "" || relation == "" || age == "" || gender == ""  ){
-    swal("Oops...", "Please fill all the fields", "error");
-}
-    else{
-        swal("Saved!", "Agreement Save", "success");
-    }
-});
-</script>
-<script>
-let submitwitness = document.getElementById("submitwitness");
-submitwitness.addEventListener("click", function(){
-let no5 = document.getElementById("no5").value;
-let owitness1 = document.getElementById("nameowner").value;
-let owitness2 = document.getElementById("nameowner2").value;
-let twitness1 = document.getElementById("twitness1").value;
-let twitness2 = document.getElementById("twitness2").value;
-
-
-if(no5 == "" || owitness1 == "" || owitness2 == "" || twitness1 == "" || twitness2 == ""  ){
-    swal("Oops...", "Please fill all the fields", "error");
-}
-    else{
-        swal("Saved!", "Agreement Save", "success");
-    }
-});
-</script>
-<script>
-let submitaminities = document.getElementById("submitaminities");
-submitaminities.addEventListener("click", function(){
-let no6 = document.getElementById("no6").value;
-let name3 = document.getElementById("txtname2").value;
-let number = document.getElementById("itemnumbe").value;
-
-
-
-if(no6 == "" || name3 == "" || number == ""   ){
-    swal("Oops...", "Please fill all the fields", "error");
-}
-    else{
-        swal("Saved!", "Agreement Save", "success");
-    }
-});
-</script>
 <script>
 let submitpayment = document.getElementById("submitpayment");
 submitpayment.addEventListener("click", function(){
@@ -1023,7 +914,21 @@ if(no7 == "" || rent_amount == "" || method == "" || date_of_payment == "" || ba
 });
 </script>
 
+<script>
 
+$('#checkselec').change(function(){
+
+   if($('#checkselec option:selected').text() == "CASH")
+   {
+     $('#bank').prop('disabled',true);
+   }
+   else
+   {
+     $('#bank').prop('disabled',false);
+   }
+ });
+
+</script>
 
 </body>
 
