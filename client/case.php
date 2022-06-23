@@ -147,8 +147,8 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
                                                                     <tr>
                                                                         <td><?php echo $count; ?> </td>
                                                                         <td><?php echo $row['newdoc']; ?></td>
-                                                                        <td><?php echo $row['tname']; ?></td>
                                                                         <td><?php echo $row['owname']; ?></td>
+                                                                        <td><?php echo $row['tname']; ?></td>
                                                                         <td><?php echo $row['newdate']; ?></td>
                                                                         <td><?php echo $row['month']; ?></td>
                                                                         <td style="color:red">Pending</td>
@@ -217,8 +217,8 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
                                          <tr>
                                              <td><?php echo $count; ?> </td>
                                             <td><?php echo $row['newdoc']; ?></td>
-                                            <td><?php echo $row['tname']; ?></td>
                                             <td><?php echo $row['owname']; ?></td>
+                                                                        <td><?php echo $row['tname']; ?></td>
                                             <td><?php echo $row['newdate']; ?></td>
                                             <td><?php echo $row['month']; ?></td>
                                             <td style="color:blue">Complete</td>
