@@ -1,9 +1,9 @@
 <?php 
 session_start();
 
-if(!isset($_SESSION['id'])) 
+if(!isset($_SESSION['aid'])) 
 {
- header("Location:clientlogin.php"); 
+ header("Location:adminlogin.php"); 
 }
 include("../config/config.php");
 
@@ -741,12 +741,13 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                     <select class="form-control select2 select2-hidden-accessible"
                                                         name="method" id="checkselec" style="width: 100%;"
                                                         data-select2-id="3" tabindex="-1" aria-hidden="true">
-                                                        <option selected="selected" data-select2-id="4">CASH</option>
-                                                        <option>CHEQUE</option>
-                                                        <option>BANK TRASFER</option>
-                                                        <option>GOOGLE PAY</option>
-                                                        <option>PHONE PAY</option>
-                                                        <option>PAYTYM</option>
+                                                        <option selected="selected" data-select2-id="4" value="" disabled>Select</option>
+                                                        <option value="CASH">CASH</option>
+                                                        <option value="CHEQUE">CHEQUE</option>
+                                                        <option value="BANK TRASFER">BANK TRASFER</option>
+                                                        <option value="GOOGLE PAY">GOOGLE PAY</option>
+                                                        <option value="PHONE PAY">PHONE PAY</option>
+                                                        <option value="PAYTYM">PAYTYM</option>
                                                         
                                                     </select>
                                                 </div>
@@ -1009,7 +1010,21 @@ if(no7 == "" || rent_amount == "" || method == "" || date_of_payment == "" || ba
 });
 </script>
 
+<script>
 
+$('#checkselec').change(function(){
+
+   if($('#checkselec option:selected').text() == "CASH")
+   {
+     $('#bank').prop('disabled',true);
+   }
+   else
+   {
+     $('#bank').prop('disabled',false);
+   }
+ });
+
+</script>
 
 </body>
 
