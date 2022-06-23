@@ -1376,7 +1376,10 @@ if(isset($_GET['id'])){
             let rentpay = $("#rentpay").val();
             let tid = $("#tid").val();
             let submitpayment = $("#submitpayment").val();
-
+            if(deposit==''|| rent==''|| checkselec==''|| bank=='' || date=='' || rentpay==''|| tid=='') {
+      swal("oops..", "Please fill all fields.", "error");
+      return false;
+  }else{
             $.ajax({
                 url: "edit_newagreementform.php",
                 type: "POST",
@@ -1401,6 +1404,7 @@ if(isset($_GET['id'])){
                 swal("Error",res7, "error");
             },
             });
+        }
         });
     });
     </script>
