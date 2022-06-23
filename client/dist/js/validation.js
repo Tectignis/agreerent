@@ -1,9 +1,10 @@
 //owner
-let odnkname,odnkadhar, odnkpan;
+let odnkname,odnkadhar, odnkpan, odnkmobil;
 $(document).ready(function(){
     $("#spanname").hide();
     $("#spanAadharCard").hide();
     $("#spanCard").hide();
+    $("#spanownermobi").hide();
   
     $("#txtname").keyup(function(){
         ownname_fun();
@@ -22,6 +23,23 @@ $(document).ready(function(){
             $("#spanname").hide()
            }
     }
+
+    $("#mobile").keyup(function(){
+        oenmob_fun();
+    });
+    function oenmob_fun(){
+        let aadharcard=$("#mobile").val();
+        let vali =/^\d{10}$/; 
+        if(!vali.test(aadharcard)){
+            odnkmobil="no";
+           $("#spanownermobi").show().html("**Please enter 10 digit mobile No").css("color","red").focus();
+           return false;
+        }
+            else{
+                odnkmobil="yes";
+             $("#spanownermobi").hide();                             
+            }
+    }
   
     $("#txAdhar").keyup(function(){
         owneradhar_fun();
@@ -32,7 +50,6 @@ $(document).ready(function(){
        if(!vali.test(aadharcard)){
         odnkadhar="no";
           $("#spanAadharCard").show().html("**Invalid Aadhar No").css("color","red").focus();
-                odnkadhar = false;
           return false;
        }
            else{
@@ -62,11 +79,12 @@ $(document).ready(function(){
 });
 
 //tenant
-let tenanttname,validTenantPan,validTenantAadhar;
+let tenanttname,validTenantPan,validTenantAadhar,tdnkmob;
 $(document).ready(function(){
 $("#spannameTenant").hide();
 $("#spanAadharCardTenant").hide();
 $("#spanCardTenant").hide();
+$("#spantenrmobi").hide();
 
 $("#txtname3").keyup(function(){
    tentname_fun();
@@ -83,6 +101,23 @@ function tentname_fun(){
         tenanttname="yes";
         $("#spannameTenant").hide();
      }
+}
+
+$("#phone").keyup(function(){
+   tentmob_fun();
+});
+function tentmob_fun(){
+    let aadharcard=$("#phone").val();
+        let vali =/^\d{10}$/; 
+        if(!vali.test(aadharcard)){
+            tdnkmob="no";
+           $("#spantenrmobi").show().html("**Please enter 10 digit mobile No").css("color","red").focus();
+           return false;
+        }
+            else{
+                tdnkmob="yes";
+             $("#spantenrmobi").hide();                             
+            }
 }
 
 $("#txAdhartr").keyup(function(){

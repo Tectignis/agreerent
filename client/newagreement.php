@@ -188,6 +188,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                         <input type="tel" name="mobile" id="mobile" class="form-control"
                                                             minlength="10" maxlength="10" pattern="[7-9]{1}[0-9]{9}"
                                                             placeholder="Enter Mobile Number" required>
+                                                            <span id="spanownermobi"></span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -289,6 +290,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                         <input type="tel" class="form-control" id="phone" name="mobile"
                                                             placeholder="Enter Mobile Number" minlength="10"
                                                             maxlength="10" required>
+                                                            <span id="spantenrmobi"></span>
                                                     </div>
 
                                                     <label for="exampleaadhaar" class="col-sm-2 col-  form-label">E-mail
