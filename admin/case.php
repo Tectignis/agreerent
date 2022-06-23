@@ -18,6 +18,25 @@ if(isset($_GET['gen'])){
    header("location:case.php");
   }
 }
+
+
+
+
+if(isset($_GET['delid'])){
+    $id=mysqli_real_escape_string($conn,$_GET['delid']);
+    $sql=mysqli_query($conn,"delete from noc where document_no='$id'");
+    $sql=mysqli_query($conn,"delete from tenant where document_no='$id'");
+    $sql=mysqli_query($conn,"delete from property_details where document_no='$id'");
+    $sql=mysqli_query($conn,"delete from new_agreement where document_no='$id'");
+    $sql=mysqli_query($conn,"delete from noc where document_no='$id'");
+    $sql=mysqli_query($conn,"delete from family_members where document_no='$id'");
+    $sql=mysqli_query($conn,"delete from amenities where document_no='$id'");
+    $sql=mysqli_query($conn,"delete from payment where document_no='$id'");
+
+    if($sql=1){
+        header("location:case.php");
+    }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -185,7 +204,7 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
                                                                                 class="btn btn-warning btn-rounded btn-icon"><i class="fa fa-file-invoice-dollar"></i>
                                                                                </a> -->
 
-                                                                               <a href="case.php?delid=<?php echo $arr['id']; ?>"><button
+                                                                               <a href="case.php?delid=<?php echo $row['newdoc']; ?>"><button
                                                             type="button" class="btn btn-danger btn-rounded btn-icon"
                                                             onclick="ConfirmDelete()" style="color: aliceblue"> <i
                                                                 class="fas fa-trash"></i> </button></a>
