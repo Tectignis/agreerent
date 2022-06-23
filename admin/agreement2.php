@@ -675,7 +675,7 @@ $arr=mysqli_fetch_array($sql);
 			<td><b><?php echo $arr['bank'];?></b></td>
 		</tr>
 	</tbody>
-	<?php if($doc==$fid){echo $arr['property_type']; }else{ echo ' - ' ;} ?>
+	
 		</table>
 	</div>
 

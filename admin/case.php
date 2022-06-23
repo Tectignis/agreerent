@@ -173,8 +173,8 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
                                                                     <tr>
                                                                         <td><?php echo $count; ?> </td>
                                                                         <td><?php echo $row['newdoc']; ?></td>
-                                                                        <td><?php echo $row['tname']; ?></td>
                                                                         <td><?php echo $row['owname']; ?></td>
+                                                                        <td><?php echo $row['tname']; ?></td>
                                                                         <td><?php echo $row['newdate']; ?></td>
                                                                         <td><?php echo $row['month']; ?></td>
                                                                         <td style="color:red">Pending</td>
@@ -260,8 +260,8 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
                                             <tr>
                                                 <td><?php echo $count; ?> </td>
                                                 <td><?php echo $row['newdoc']; ?></td>
-                                                <td><?php echo $row['tname']; ?></td>
-                                             <td><?php echo $row['owname']; ?></td>
+                                                <td><?php echo $row['owname']; ?></td>
+                                                                        <td><?php echo $row['tname']; ?></td>
                                          <td><?php echo $row['newdate']; ?></td>
                                                  <td><?php echo $row['month']; ?></td>
                                          <td style="color:blue">Complete</td>
@@ -296,7 +296,7 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
                                                                                </a>
 
                                                                                &nbsp;
-                                                                               <a data-toggle="tooltip" data-placement="bottom" title="Agreement" href="agreement.php?eid=<?php echo $row['newdoc'];?>"  target="_blank"
+                                                                               <a data-toggle="tooltip" data-placement="bottom" title="Agreement" href="agreement.php?id=<?php echo $row['newdoc'];?>"  target="_blank"
                                                                                 class="btn btn-info btn-rounded btn-icon"><i class="fa fa-file-contract"></i>
                                                                               </a>&nbsp;
                                                                             <!-- <a data-toggle="tooltip" data-placement="bottom" title="NOC" href="case.php?eid=<?php echo $row['newdoc'];?>"  target="_blank"
