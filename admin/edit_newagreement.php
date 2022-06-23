@@ -246,9 +246,6 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                     <li class="pt-2 px-3">
                                         <h3 class="card-title">Card Title</h3>
                                     </li>
-                                    <!-- <li class="nav-item">
-<a class="nav-link active" id="custom-tabs-two-home-tab" data-toggle="pill" href="#basic-details" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true">Basic Details</a>
-</li> -->
                                     <li class="nav-item">
                                         <a class="nav-link active" id="custom-tabs-two-profile-tab" data-toggle="pill"
                                             href="#owner" role="tab" aria-controls="custom-tabs-two-profile"
@@ -334,6 +331,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                         <input type="tel" name="mobile" id="mobile" class="form-control"
                                                             value="<?php echo $mobile?>" minlength="10" maxlength="10"
                                                             placeholder="Enter Mobile Number" required>
+                                                            <span id="spanownermobi"></span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -409,7 +407,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                             value="<?php echo $fullname1; ?>" id="txtname3"
                                                             placeholder="Enter Name" style="text-transform:uppercase"
                                                             required>
-                                                        <span id="spanname"></span>
+                                                        <span id="spannameTenant"></span>
                                                     </div>
                                                 </div>
                                                  <!-- ss -->
@@ -439,6 +437,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                             value="<?php echo $mobile1; ?>"
                                                             placeholder="Enter Mobile Number" minlength="10"
                                                             maxlength="10" required>
+                                                            <span id="spantenrmobi"></span>
                                                     </div>
 
                                                     <label for="exampleaadhaar" class="col-sm-2 col-  form-label">E-mail
@@ -464,7 +463,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                         <input type="text" class="form-control" name="aadhaar"
                                                             id="txtAadhar1" value="<?php echo $aadhaar1?>"
                                                             placeholder="Enter Aadhaar Card number" required>
-                                                        <span id="spanAadharCard"></span>
+                                                        <span id="spanAadharCardTenant"></span>
                                                     </div>
                                                 </div>
 
@@ -487,7 +486,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                             id="txtPANCard1" value="<?php echo $pan_card1 ?>"
                                                             placeholder="Enter Pancard number"
                                                             style="text-transform:uppercase" required>
-                                                        <span id="spanCard"></span>
+                                                        <span id="spanCardTenant"></span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -560,6 +559,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                         <input type="text" class="form-control" name="address"
                                                             id="addressPro" value="<?php echo $address;?>"
                                                             placeholder="Enter Address" required>
+                                                            <span id="spanCardpenant"></span>
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -661,7 +661,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                                 <input type="text" class="form-control" id="txtname1"
                                                                     value="" name="name2" placeholder="Enter Name"
                                                                     required>
-                                                                <span id="spanname"></span>
+                                                                <span id="spanfamname"></span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -789,6 +789,7 @@ if(isset($_GET['id'])){
                                                             value="<?php echo $ownername1; ?>" class="form-control "
                                                             id="nameowner" name="owitness1" placeholder="Enter Name"
                                                             required>
+                                                            <input id="spanownername"></span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -800,7 +801,7 @@ if(isset($_GET['id'])){
                                                             value="<?php echo $ownername2 ?>"
                                                             class="form-control txtname" id="nameowner2"
                                                             name="owitness2" placeholder="Enter Name" required>
-
+<span id="spanowner2name"></span>
 
                                                     </div>
                                                 </div>
@@ -820,7 +821,7 @@ if(isset($_GET['id'])){
                                                             class="form-control " value="<?php echo $tenantname1 ?>"
                                                             id="twitness1" name="twitness1" placeholder="Enter Name"
                                                             txtname required>
-
+                                                            <span id="spantenantname"></span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -832,7 +833,7 @@ if(isset($_GET['id'])){
                                                             class="form-control " value="<?php echo $tenantname1 ?>"
                                                             id="twitness2" name="twitness2" placeholder="Enter Name"
                                                             txtname required>
-
+                                                            <span id="spantenant2name"></span>
                                                     </div>
                                                 </div>
                                                 <div class="col" align="right">
@@ -867,7 +868,7 @@ if(isset($_GET['id'])){
                                                                 <input type="text" style="text-transform:uppercase"
                                                                     class="form-control" value="" id="txtname2"
                                                                     name="name3" placeholder="Enter Name" required>
-                                                                <span id="spanname"></span>
+                                                                <span id="spanaminitiesname"></span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1071,6 +1072,7 @@ if(isset($_GET['id'])){
     <!-- AdminLTE for demo purposes -->
     <!-- Page specific script -->
     <script src="checkform.js"></script>
+    
     <script>
     $(function() {
         //Initialize Select2 Elements
@@ -1098,6 +1100,10 @@ if(isset($_GET['id'])){
     $(document).ready(function() {
         //owner
         $("#subm").on("click", function() {
+            if(odnkname == "no" || odnkadhar == "no" || odnkpan == "no" || odnkmobil == "no"){
+      swal("Oops...", "Please fill all the fields correctly", "error");
+    }
+      else{
             let no1 = $("#no1").val();
             let examplemr = $("#examplemr").val();
             let txtname = $("#txtname").val();
@@ -1107,7 +1113,10 @@ if(isset($_GET['id'])){
             let txtPANCard = $("#txtPANCard").val();
             let address = $("#address").val();
             let subm = $("#subm").val();
-
+            if(examplemr==''|| txtname==''|| id1==''|| mobile=='' || address=='' || txtPANCard=='' ||txAdhar=='') {
+      swal("oops..", "Please fill all fields.", "error");
+      return false;
+  }else{
             $.ajax({
                 url: "edit_newagreementform.php",
                 type: "POST",
@@ -1130,10 +1139,16 @@ if(isset($_GET['id'])){
                 swal("Error !", res, "error");
             },
             });
+        }
+    }
         });
 
         //tenant
         $("#submitenan").on("click",function() {
+            if(tenanttname == "no" || validTenantPan == "no" || validTenantAadhar == "no" || tdnkmob=="no"){
+      swal("Oops...", "Please fill all the fields correctly", "error");
+    }
+      else{
             let exampledno = $("#exampledno").val();
             let exampleSelectmr = $("#exampleSelectmr").val();
             let txtname3 = $("#txtname3").val();
@@ -1150,6 +1165,10 @@ if(isset($_GET['id'])){
             let presentAddress = $("#presentAddress").val();
             let submitenan = $("#submitenan").val();
 
+            if(exampleSelectmr==''|| txtname3==''|| phone==''|| officename=='' || officeno=='' || officeaddress=='' || emailcheck=='' || passport=='' || txtAadhar1=='' || id2=='' || txtPANCard1=='' || residenceAddress=='' || presentAddress=='') {
+      swal("oops..", "Please fill all fields.", "error");
+      return false;
+  }else{
             $.ajax({
                 url: "edit_newagreementform.php",
                 type: "POST",
@@ -1178,10 +1197,16 @@ if(isset($_GET['id'])){
                 swal("Error!", res2, "error");
             },
             });
+        }
+    }
         });
 
         //property
         $("#submitproperty").on("click", function() {
+            if(propertydnkname == "no" ){
+      swal("Oops...", "Please fill all the fields correctly", "error");
+    }
+      else{
             let no3 = $("#no3").val();
             let exampleproperties = $("#exampleproperties").val();
             let addressPro = $("#addressPro").val();
@@ -1193,6 +1218,10 @@ if(isset($_GET['id'])){
             let node = $("#node").val();
             let submitproperty = $("#submitproperty").val();
 
+            if(exampleproperties==''|| addressPro==''|| sector==''|| plotno=='' || cidco=='' || area=='' || chs=='' || node=='') {
+      swal("oops..", "Please fill all fields.", "error");
+      return false;
+  }else{
             $.ajax({
                 url: "edit_newagreementform.php",
                 type: "POST",
@@ -1216,10 +1245,16 @@ if(isset($_GET['id'])){
                 swal("Error!", res3, "error");
             },
             });
+        }
+    }
         });
 
         //family
         $("#submitber").on("click", function() {
+            if(familydnkname == "no" ){
+      swal("Oops...", "Please fill all the fields correctly", "error");
+    }
+      else{
             let no4 = $("#no4").val();
             let txtname1 = $("#txtname1").val();
             let exampleSelectrelation = $("#exampleSelectrelation").val();
@@ -1227,6 +1262,10 @@ if(isset($_GET['id'])){
             let relativegender = $("#relativegender").val();
             let submitmember = $("#submitber").val();
 
+            if(txtname1==''|| exampleSelectrelation==''|| relativeage==''|| relativegender=='') {
+      swal("oops..", "Please fill all fields.", "error");
+      return false;
+  }else{
             $.ajax({
                 url: "edit_newagreementform.php",
                 type: "POST",
@@ -1246,12 +1285,16 @@ if(isset($_GET['id'])){
                 swal("Error!","Please try again", "error");
             },
             });
-
-
+        }
+    }
         });
 
         //witness
         $("#submitwitness").on("click", function() {
+            if(ownerdnkname == "no" || ownerdnkname=="no" || tendnkname=="no" || ten2dnkna=="no"){
+      swal("Oops...", "Please fill all the fields correctly", "error");
+    }
+      else{
             let no5 = $("#no5").val();
             let nameowner = $("#nameowner").val();
             let nameowner2 = $("#nameowner2").val();
@@ -1259,6 +1302,10 @@ if(isset($_GET['id'])){
             let twitness2 = $("#twitness2").val();
             let submitwitness = $("#submitwitness").val();
 
+            if(nameowner==''|| nameowner2==''|| twitness1==''|| twitness2=='') {
+      swal("oops..", "Please fill all fields.", "error");
+      return false;
+  }else{
             $.ajax({
                 url: "edit_newagreementform.php",
                 type: "POST",
@@ -1278,15 +1325,25 @@ if(isset($_GET['id'])){
                 swal("Error!", res5, "error");
             },
             });
+        }
+    }
         });
 
         //aminities
         $("#submitaminitie").on("click", function() {
+            if(amindnkval == "no" ){
+      swal("Oops...", "Please fill all the fields correctly", "error");
+    }
+      else{
             let no6 = $("#no6").val();
             let txtname2 = $("#txtname2").val();
             let itemnumbe = $("#itemnumbe").val();
             let submitaminitie = $("#submitaminitie").val();
 
+            if(txtname2==''|| itemnumbe=='') {
+      swal("oops..", "Please fill all fields.", "error");
+      return false;
+  }else{
             $.ajax({
                 url: "edit_newagreementform.php",
                 type: "POST",
@@ -1305,6 +1362,8 @@ if(isset($_GET['id'])){
                 swal("Error","please try again", "error");
             },
             });
+        }
+    }
         });;
         //payment
         $("#submitpayment").on("click", function() {
@@ -1354,6 +1413,7 @@ if(isset($_GET['id'])){
         $('.nav-tabs > .nav-item > .active').parent().prev('li').find('a').trigger('click');
     });
     </script>
+    <script src="dist/js/valid.js"></script>
 </body>
 
 </html>
