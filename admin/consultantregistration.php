@@ -771,7 +771,16 @@ else{
 		  });
 
     </script>
-
+<script>
+    $("#otpverifysub").on("click", function () {
+                if(validenqName == "no" || validenqFirm == "no" || validenqEmail == "no" ||validenqtMobile == "no"){
+            swal("Oops...", "Please fill all the fields", "error");
+          }
+         else{
+            swal("saved...", "success", "success");
+         }
+         });
+</script>
 </body>
 
 </html>
