@@ -1,6 +1,12 @@
 $(document).ready(function () {
+  
   //owner
+  
   $("#subm").on("click", function () {
+    if(odnkname == "no" || odnkadhar == "no" || odnkpan == "no"){
+      swal("Oops...", "Please fill all the fields correctly", "error");
+    }
+      else{
     let no = $("#no").val();
     let examplemr = $("#examplemr").val();
     let txtname = $("#txtname").val();
@@ -10,7 +16,11 @@ $(document).ready(function () {
     let txtPANCard = $("#txtPANCard").val();
     let address = $("#address").val();
     let subm = $("#subm").val();
-
+    
+    if(examplemr==''|| txtname==''|| id1==''|| mobile=='' || address=='' || txtPANCard=='' ||txAdhar=='') {
+      swal("oops..", "Please fill all fields.", "error");
+      return false;
+  }else{
     $.ajax({
       url: "form.php",
       type: "POST",
@@ -27,13 +37,19 @@ $(document).ready(function () {
       },
       cache: false,
       success: function (res) {
-        // alert(res);
+        swal("saved..", res, "success");
       },
     });
+  }
+}
   });
 
   //tenant
   $("#submitenant").on("click", function () {
+    if(tenanttname == "no" || validTenantPan == "no" || validTenantAadhar == "no"){
+      swal("Oops...", "Please fill all the fields correctly", "error");
+    }
+      else{
     let exampledno = $("#no3").val();
     let exampleSelectmr = $("#exampleSelectmr").val();
     let txtname3 = $("#txtname3").val();
@@ -50,6 +66,10 @@ $(document).ready(function () {
     let presentAddress = $("#presentAddress").val();
     let tenant = $("#submitenant").val();
 
+    if(exampleSelectmr==''|| txtname3==''|| phone==''|| officename=='' || officeno=='' || officeaddress=='' || emailcheck=='' || passport=='' || txAdhartr=='' || id2=='' || txtPANCard1=='' || residenceAddress=='' || presentAddress=='') {
+      swal("oops..", "Please fill all fields.", "error");
+      return false;
+  }else{
     $.ajax({
       url: "form.php",
       type: "POST",
@@ -72,13 +92,19 @@ $(document).ready(function () {
       },
       cache: false,
       success: function (res2) {
-        swal("", res2, "success");
+        swal("saved..", res2, "success");
       },
     });
+  }
+}
   });
 
   //property
   $("#submitproperty").on("click", function () {
+    if(propertydnkname == "no" ){
+      swal("Oops...", "Please fill all the fields correctly", "error");
+    }
+      else{
     let no3 = $("#no3").val();
     let exampleproperties = $("#exampleproperties").val();
     let addressPro = $("#addressPro").val();
@@ -90,6 +116,10 @@ $(document).ready(function () {
     let node = $("#node").val();
     let submitproperty = $("#submitproperty").val();
 
+    if(exampleproperties==''|| addressPro==''|| sector==''|| plotno=='' || cidco=='' || area=='' || chs=='' || node=='') {
+      swal("oops..", "Please fill all fields.", "error");
+      return false;
+  }else{
     $.ajax({
       url: "form.php",
       type: "POST",
@@ -107,20 +137,29 @@ $(document).ready(function () {
       },
       cache: false,
       success: function (res3) {
-        //  alert(res3);
+        swal("saved..", res3, "success");;
       },
     });
+  }
+}
   });
 
   //family
   $("#submitmember").on("click", function () {
+    if(familydnkname == "no" ){
+      swal("Oops...", "Please fill all the fields correctly", "error");
+    }
+      else{
     let no4 = $("#no4").val();
     let txtname1 = $("#txtname1").val();
     let exampleSelectrelation = $("#exampleSelectrelation").val();
     let relativeage = $("#relativeage").val();
     let relativegender = $("#relativegender").val();
     let submitmember = $("#submitmember").val();
-
+    if(txtname1==''|| exampleSelectrelation==''|| relativeage==''|| relativegender=='') {
+      swal("oops..", "Please fill all fields.", "error");
+      return false;
+  }else{
     $.ajax({
       url: "form.php",
       type: "POST",
@@ -135,20 +174,29 @@ $(document).ready(function () {
       cache: false,
       success: function (res4) {
         $("#displayfamily").html(res4);
-        //  alert(res4);
+        swal("saved..","Successfully Added", "success");
       },
     });
+  }
+}
   });
 
   //witness
   $("#submitwitness").on("click", function () {
+    if(ownerdnkname == "no" || ownerdnkname=="no" || tendnkname=="no" || ten2dnkna=="no"){
+      swal("Oops...", "Please fill all the fields correctly", "error");
+    }
+      else{
     let no5 = $("#no5").val();
     let nameowner = $("#nameowner").val();
     let nameowner2 = $("#nameowner2").val();
     let twitness1 = $("#twitness1").val();
     let twitness2 = $("#twitness2").val();
     let submitwitness = $("#submitwitness").val();
-
+    if(nameowner==''|| nameowner2==''|| twitness1==''|| twitness2=='') {
+      swal("oops..", "Please fill all fields.", "error");
+      return false;
+  }else{
     $.ajax({
       url: "form.php",
       type: "POST",
@@ -162,18 +210,27 @@ $(document).ready(function () {
       },
       cache: false,
       success: function (res5) {
-        // alert(res5);
+        swal("saved..",res5, "success");
       },
     });
+  }
+}
   });
 
   //aminities
   $("#submitaminities").on("click", function () {
+    if(amindnkval == "no" ){
+      swal("Oops...", "Please fill all the fields correctly", "error");
+    }
+      else{
     let no6 = $("#no6").val();
     let txtname2 = $("#txtname2").val();
     let itemnumbe = $("#itemnumbe").val();
     let submitaminities = $("#submitaminities").val();
-
+    if(txtname2==''|| itemnumbe=='') {
+      swal("oops..", "Please fill all fields.", "error");
+      return false;
+  }else{
     $.ajax({
       url: "form.php",
       type: "POST",
@@ -186,9 +243,11 @@ $(document).ready(function () {
       cache: false,
       success: function (res6) {
         $("#displayaminities").html(res6);
-        //  alert(res6);
+        swal("saved..","Successfully Inserted", "success");
       },
     });
+  }
+}
   });
   //payment
   $("#submitpayment").on("click", function () {
@@ -257,4 +316,5 @@ $(document).ready(function () {
       },
     });
   });
+  
 });

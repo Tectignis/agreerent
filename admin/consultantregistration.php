@@ -37,6 +37,10 @@ if($otp==$veriotp){
     $type     = $_FILES['file']['type']; 
     $error     = $_FILES['file']['error'];
   $loc="dist/img/agent_photo/".basename($image);
+  if($firm_name == "" || $agent_name == "" || $mobile_no== "" || $office_address=="" || $email_no == "" || $rera == "" || $image==""){
+    echo "<script>alert('please fill all the fields');</script>";
+
+}
     move_uploaded_file($tmp_name, $loc);
 
 $imgEncoded = base64_encode(file_get_contents($tmp_name));
@@ -395,6 +399,7 @@ else{
     <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -492,9 +497,12 @@ else{
                                         <label for="exampleaadhaar" class="col-sm-2 col-form-label">Mobile No.<label
                                                 style="color:Red">*</label></label>
                                         <div class="col-sm-10">
-                                            <input type="tel" class="form-control" id="examplemob" name="mobile_no"
+                                            <input type="tel" class="form-control" id="phone" name="mobile_no"
                                                 placeholder="Enter Mobile Number" minlength="10" maxlength="10"
                                                 required>
+                                                <span id="phoneSpan"></span>
+                                                
+
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -582,8 +590,11 @@ else{
     
     <script>
         $(document).ready(function(){
-
             $("#otp").on("click", function () {
+                if(validenqName == "no" || validenqFirm == "no" || validenqEmail == "no" ||validenqtMobile == "no"){
+            swal("Oops...", "Please fill all the fields", "error");
+          }
+         else{
             let exampledno = $("#exampledno").val();
             let email = $("#email").val();
             let name = $("#name").val();
@@ -600,15 +611,18 @@ else{
                     cache: false,
                     success: function(datadnk)
                     {
-                        alert(datadnk);
+                        swal("Saved!",datadnk, "success");
                     }
                 });
+            }
             });
         });
 
 </script>
 
 <script>
+    let validenqName;
+
   $(document).ready(function(){
    //TEXT VALIDATION
    $("#spanclientname").hide();
@@ -616,6 +630,7 @@ else{
 	     txt_check();
 	   });
 	   function txt_check(){
+        validenqName="no";
 		   let txt=$("#example").val();
 		   let vali =/^[A-Za-z ]+$/;
 		   if(!vali.test(txt)){
@@ -624,11 +639,12 @@ else{
 			  return false;
 		   }
 		   else{
+            validenqName="yes";
 		       $("#spanclientname").hide();
 		       
 		   }
 	   }
-       $("#otpverifysub").click(function(){
+       $("#otpverifysub ,#otp").click(function(){
        txt_err = true;
              txt_check();
 			   
@@ -644,12 +660,14 @@ else{
 </script>
 
 <script>
+    let validenqFirm;
     $(document).ready(function(){
        $("#spanfirmname").hide();
 	    $("#firmName").keyup(function(){
 	     txt_check();
 	   });
 	   function txt_check(){
+        validenqFirm="no";
 		   let txt=$("#firmName").val();
 		   let vali =/^[A-Za-z ]+$/;
 		   if(!vali.test(txt)){
@@ -658,13 +676,14 @@ else{
 			  return false;
 		   }
 		   else{
+            validenqFirm="yes";
 		       $("#spanfirmname").hide();
 		       
 		   }
 	   }
 
 
-       $("#otpverifysub").click(function(){
+       $("#otpverifysub , #otp").click(function(){
        txt_err = true;
              txt_check();
 			   
@@ -680,12 +699,14 @@ else{
 </script>
 
 <script>
+    let validenqEmail;
     $(document).ready(function(){
        $("#spanemail").hide();
 	    $("#email").keyup(function(){
 	     txt_check();
 	   });
 	   function txt_check(){
+        validenqEmail="no";
 		   let txt=$("#email").val();
 		   var vali = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 		   if(!vali.test(txt)){
@@ -694,13 +715,14 @@ else{
 			  return false;
 		   }
 		   else{
+            validenqEmail="yes";
 		       $("#spanemail").hide();
 		       
 		   }
 	   }
 
 
-       $("#otp").click(function(){
+       $("#otpverifysub, #otp").click(function(){
        txt_err = true;
              txt_check();
 			   
@@ -713,10 +735,52 @@ else{
 
 
     });
+
+
+
 </script>
-	
+<script>
+    let validenqtMobile;
+    $("#phoneSpan").hide();
+	    $("#phone").keyup(function(){
+	     mobile_check();
+	   });
+	   function mobile_check(){
+		   let mobileno=$("#phone").val();
+		   let vali =/^[6-9]\d{9}$/; 
+		   if(!vali.test(mobileno)){
+        validenqtMobile="no";
+			    $("#phoneSpan").show().html("*Invalid Mobile No").css("color","red").focus();
+				mobile_err=false;
+			 return false;
+		   }
+		   else{
+        validenqtMobile="yes";
+		       $("#phoneSpan").hide(); 
+		   }
+	   }
 
+	   $("#otpverifysub, #otp").click(function(){
+		mobile_err = true;
+		mobile_check();
+			   
+			   if((mobile_err==true)){
+			      return true;
+			   }
+			   else{return false;}
+		  });
 
+    </script>
+<script>
+    $("#otpverifysub").on("click", function () {
+                if(validenqName == "no" || validenqFirm == "no" || validenqEmail == "no" ||validenqtMobile == "no"){
+            swal("Oops...", "Please fill all the fields", "error");
+          }
+         else{
+            swal("saved...", "success", "success");
+         }
+         });
+</script>
 </body>
 
 </html>
