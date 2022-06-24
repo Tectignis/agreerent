@@ -183,7 +183,7 @@ $(document).ready(function () {
 
   //witness
   $("#submitwitness").on("click", function () {
-    if(ownerdnkname == "no" || ownerdnkname=="no" || tendnkname=="no" || ten2dnkna=="no"){
+    if(ownerdnkname == "no" || ownerdnk2name=="no" || tendnkname=="no" || ten2dnkna=="no"){
       swal("Oops...", "Please fill all the fields correctly", "error");
     }
       else{
