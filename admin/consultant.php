@@ -275,8 +275,8 @@ if(isset($_POST['submit'])){
     <script>
     $(document).ready(function() {
         $(".fetchid").on('click', function() {
-            let category = $(this).closest("tr").find("td:nth-child(2)").text().trim();
-            $(".category").val(category);
+            let categor = $(this).closest("tr").find("td:nth-child(2)").text().trim();
+            $(".category").val(categor);
         });
 
     });
