@@ -116,7 +116,7 @@ $(document).ready(function () {
     let node = $("#node").val();
     let submitproperty = $("#submitproperty").val();
 
-    if(exampleproperties==''|| addressPro==''|| sector==''|| plotno=='' || cidco=='' || area=='' || chs=='' || node=='') {
+    if(exampleproperties==''|| addressPro==''|| sector==''|| plotno=='' || area=='' || chs=='') {
       swal("oops..", "Please fill all fields.", "error");
       return false;
   }else{
