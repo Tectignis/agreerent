@@ -243,9 +243,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                         <div class="card card-primary card-tabs">
                             <div class="card-header p-0 pt-1">
                                 <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
-                                    <li class="pt-2 px-3">
-                                        <h3 class="card-title">Card Title</h3>
-                                    </li>
+                                   
                                     <li class="nav-item">
                                         <a class="nav-link active" id="custom-tabs-two-profile-tab" data-toggle="pill"
                                             href="#owner" role="tab" aria-controls="custom-tabs-two-profile"
