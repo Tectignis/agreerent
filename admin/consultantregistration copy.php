@@ -22,7 +22,8 @@ if(isset($_POST['sub'])){
   $rera=$_POST['rera'];
   $veriotp=$_POST['veriotp'];
   date_default_timezone_set('Asia/Kolkata');
-  $date=date('Y-m-d h:i A');
+  $date= date("Y-m-d H:i A");
+
   $status=1;
   $pass= rand(100000, 999999);
   $email=$row['email'];
