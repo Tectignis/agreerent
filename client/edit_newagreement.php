@@ -789,7 +789,7 @@ if(isset($_GET['id'])){
                                                             value="<?php echo $ownername1; ?>" class="form-control "
                                                             id="nameowner" name="owitness1" placeholder="Enter Name"
                                                             required>
-                                                            <input id="spanownername"></span>
+                                                            <span id="spanownername"></span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
