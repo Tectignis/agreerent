@@ -340,11 +340,15 @@ let el=idd;
            type: 'POST',
            data: { idImage:idImage },
            success: function(del){
-            $(this).closest('tr').css('background','tomato');
-            $(this).closest('tr').fadeOut(800,function(){
+            if(del==1){
+            $(el).closest('tr').css('background','tomato');
+            $(el).closest('tr').fadeOut(800,function(){
                $(this).remove();
             });
-   
+          }
+          else{
+            alert("invalid otp");
+          }
            }
          });
       }
@@ -353,7 +357,7 @@ let el=idd;
 
     //family Delete
     function familyfun(faidd) {
-      let el=faidd;
+      let fel=faidd;
             let famidImage = faidd;
             let confirmalert = confirm("Are you sure?");
             if (confirmalert == true) {
@@ -363,11 +367,15 @@ let el=idd;
                  type: 'POST',
                  data: { famidImage:famidImage },
                  success: function(famdel){
-                  $(this).closest('tr').css('background','tomato');
-                  $(this).closest('tr').fadeOut(800,function(){
+                  if(famdel==1){
+                  $(fel).closest('tr').css('background','tomato');
+                  $(fel).closest('tr').fadeOut(800,function(){
                      $(this).remove();
                   });
-         
+                }
+                else{
+                  alert("invalid otp");
+                }
                  }
                });
             }
