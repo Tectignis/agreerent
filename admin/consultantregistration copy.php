@@ -21,6 +21,8 @@ if(isset($_POST['sub'])){
   $email_no=$_POST['email'];
   $rera=$_POST['rera'];
   $veriotp=$_POST['veriotp'];
+  date_default_timezone_set('Asia/Kolkata');
+  $date=date('Y-m-d h:i A');
   $status=1;
   $pass= rand(100000, 999999);
   $email=$row['email'];
@@ -343,8 +345,8 @@ try{
  if( mail($sendTo,$subject,$emailText, "From:" .$from)){
   $passwordhash=password_hash($pass,PASSWORD_BCRYPT);
 
-  $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`firm_name`,`status`,`image`) 
-   VALUES ('$user_id','$agent_name','$email_no','$passwordhash','$rera','$office_address','$mobile_no','$firm_name','$status','$image')");
+  $sql=mysqli_query($conn,"INSERT INTO `agent_details`(`user_id`,`agent_name`, `email`, `password`, `rera_no`, `office_address`,`mobile_no`,`firm_name`,`status`,`image`,`created_date`) 
+   VALUES ('$user_id','$agent_name','$email_no','$passwordhash','$rera','$office_address','$mobile_no','$firm_name','$status','$image','$date')");
    if($sql=1){
      echo "<script>alert('Agent Registered Successfully');</script>";    }
    else{
