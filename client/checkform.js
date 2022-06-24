@@ -260,7 +260,10 @@ $(document).ready(function () {
     let date = $("#date").val();
     let tid = $("#tid").val();
     let submitpayment = $("#submitpayment").val();
-
+    if(deposit==''|| rent==''|| checkselec==''|| rentpay=='' || bank=='' || date=='' || tid=='') {
+      swal("oops..", "Please fill all fields.", "error");
+      return false;
+  }else{
     $.ajax({
       url: "form.php",
       type: "POST",
@@ -282,6 +285,7 @@ $(document).ready(function () {
       });
       },
     });
+  }
   });
 
   //insert payment
@@ -295,7 +299,10 @@ $(document).ready(function () {
     let date = $("#date").val();
     let tid = $("#tid").val();
     let savepayment = $("#savepayment").val();
-
+    if(deposit==''|| rent==''|| checkselec==''|| rentpay=='' || bank=='' || date=='' || tid=='') {
+      swal("oops..", "Please fill all fields.", "error");
+      return false;
+  }else{
     $.ajax({
       url: "form.php",
       type: "POST",
@@ -315,6 +322,7 @@ $(document).ready(function () {
         swal("", res8, "success");
       },
     });
+  }
   });
   
 });
