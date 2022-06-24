@@ -494,7 +494,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                         class="col-sm-2 col-form-label">Residence Address<label
                                                             style="color:Red">*</label></label>
                                                     <div class="col-sm-10">
-                                                        <textarea name="address" cols="66" rows="4"
+                                                        <textarea class="form-control" name="address" cols="66" rows="4"
                                                             placeholder="Enter Address" id="residenceAddress"
                                                             required><?php echo $address1 ?></textarea>
                                                     </div>
@@ -504,7 +504,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                         class="col-sm-2 col-form-label">Present Address<label
                                                             style="color:Red">*</label></label>
                                                     <div class="col-sm-10">
-                                                        <textarea name="permanent_address" cols="66" rows="4"
+                                                        <textarea  class="form-control" name="permanent_address" cols="66" rows="4"
                                                             placeholder="Enter Address" id="presentAddress"
                                                             required><?php echo $permanent_address1 ?></textarea>
                                                     </div>
