@@ -243,9 +243,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                         <div class="card card-primary card-tabs">
                             <div class="card-header p-0 pt-1">
                                 <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
-                                    <li class="pt-2 px-3">
-                                        <h3 class="card-title">Card Title</h3>
-                                    </li>
+                                   
                                     <li class="nav-item">
                                         <a class="nav-link active" id="custom-tabs-two-profile-tab" data-toggle="pill"
                                             href="#owner" role="tab" aria-controls="custom-tabs-two-profile"
@@ -298,7 +296,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                             value="<?php echo $basiid;?>">
                                                         <select class="form-control" name="abbreviation" id="examplemr"
                                                             required>
-                                                            <option value="" disabled selected hidden>select</option>
+                                                            <option value="" disabled selected >select</option>
                                                             <option value="<?php echo $abbreviation?>" selected>
                                                                 <?php echo $abbreviation ?></option>
                                                             <option value="mr.">Mr.</option>
@@ -394,6 +392,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                         
                                                         <select class="form-control" id="exampleSelectmr"
                                                             name="abbreviation" required>
+                                                            <option selected="selected" disabled>select</option>
                                                             <option value="<?php echo $abbreviation1 ?>" selected>
                                                                 <?php echo $abbreviation1; ?></option>
 
@@ -494,7 +493,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                         class="col-sm-2 col-form-label">Residence Address<label
                                                             style="color:Red">*</label></label>
                                                     <div class="col-sm-10">
-                                                        <textarea name="address" cols="66" rows="4"
+                                                        <textarea class="form-control" name="address" cols="66" rows="4"
                                                             placeholder="Enter Address" id="residenceAddress"
                                                             required><?php echo $address1 ?></textarea>
                                                     </div>
@@ -504,7 +503,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
                                                         class="col-sm-2 col-form-label">Present Address<label
                                                             style="color:Red">*</label></label>
                                                     <div class="col-sm-10">
-                                                        <textarea name="permanent_address" cols="66" rows="4"
+                                                        <textarea  class="form-control" name="permanent_address" cols="66" rows="4"
                                                             placeholder="Enter Address" id="presentAddress"
                                                             required><?php echo $permanent_address1 ?></textarea>
                                                     </div>
