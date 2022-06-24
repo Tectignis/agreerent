@@ -32,10 +32,8 @@ if(isset($_POST['subm'])){
 	$pancard=$_POST['txtPANCard'];
   $age=$_POST['id1'];
 	
-  $query=mysqli_query($conn,"select * from owner where document_no='$id' order by document_no desc");
-$num=mysqli_fetch_array($query);
-$document=$num['document_no'];
-if($document==$id){
+  $query=mysqli_query($conn,"select * from owner where document_no='$id'");
+if(mysqli_num_rows($query)>0){
 	$sql=mysqli_query($conn,"UPDATE `owner` SET `document_no`='$id',`abbreviation`='$abbreviation',`fullname`='$name',`age`='$age',`address`='$address',`mobile`='$mobile',`aadhaar`='$aadhaar',`pan_card`='$pancard' WHERE document_no='$id'");
 	if($sql==1){	
      echo "successfully updated";
@@ -71,11 +69,9 @@ if(isset($_POST['tenant'])){
   $email=$_POST['emailcheck'];
 	$passport=$_POST['passport'];
 	
-	$query1=mysqli_query($conn,"select document_no from tenant where document_no='$idtenant' order by document_no desc");
-$num1=mysqli_fetch_array($query1);
-$document1=$num1['document_no'];
+	$query1=mysqli_query($conn,"select document_no from tenant where document_no='$idtenant' ");
 
-	if($document1==$idtenant){
+	if(mysqli_num_rows($query1)>0){
 		$sql=mysqli_query($conn,"UPDATE `tenant` SET `document_no`='$idtenant',`abbreviation`='$surname',`fullname`='$name',`age`='$age',`address`='$address',`permanent_address`='$permanent_address',`mobile`='$mobile',`email`='$email',`passport`='$passport',`aadhaar`='$aadhaar',`pan_card`='$pancard',`office_name`='$officename',`office_addres`='$officeaddress',`office_phone`='$officeno'  WHERE document_no='$idtenant'");
 	if($sql==1){	
      echo "successfully updated";
@@ -108,11 +104,8 @@ if(isset($_POST['submitproperty'])){
   $chs=$_POST['chs'];
   $node=$_POST['node'];
 	
-  $query=mysqli_query($conn,"select * from property_details where document_no='$idproperty' order by document_no desc");
-$num2=mysqli_fetch_assoc($query);
-$document2=$num2['document_no'];
-
-if($document2==$idproperty){
+  $query=mysqli_query($conn,"select * from property_details where document_no='$idproperty' ");
+if(mysqli_num_rows($query)>0){
 	$sql=mysqli_query($conn,"UPDATE `property_details` SET `document_no`='$idproperty',`property_type`='$type',`address`='$address',`sector`='$sector',`plot_no`='$plotno',`cidco`='$cidco',`area`='$area',`chs`='$chs',`node`='$node' WHERE document_no='$document2'");
 	if($sql==1){	
    echo "successfully updated";

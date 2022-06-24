@@ -11,7 +11,7 @@ if(isset($_POST['submit'])){
   $place=$_POST['place'];
   $status=0;
 	
-	$sql=mysqli_query($conn,"INSERT INTO `new_agreement`(`user_id`,`document_no`, `property_type`, `date_of_agreement`, `no_of_month`,`place_of_agreement`) VALUES ('".$_SESSION['id']."','$document_main','$type','$date','$month','$place')");
+	$sql=mysqli_query($conn,"INSERT INTO `new_agreement`(`user_id`,`document_no`, `property_type`, `date_of_agreement`, `no_of_month`,`place_of_agreement`) VALUES ('".$_SESSION['aid']."','$document_main','$type','$date','$month','$place')");
   $sql =mysqli_query($conn,"INSERT INTO `noc`(`document_no`, `status`) VALUES ('$document_main','$status')");
 	if($sql==1){			
       
@@ -32,10 +32,8 @@ if(isset($_POST['subm'])){
 	$pancard=$_POST['txtPANCard'];
   $age=$_POST['id1'];
 	
-  $query=mysqli_query($conn,"select * from owner where document_no='$id' order by document_no desc");
-$num=mysqli_fetch_array($query);
-$document=$num['document_no'];
-if($document==$id){
+  $query=mysqli_query($conn,"select * from owner where document_no='$id'");
+if(mysqli_num_rows($query)>0){
 	$sql=mysqli_query($conn,"UPDATE `owner` SET `document_no`='$id',`abbreviation`='$abbreviation',`fullname`='$name',`age`='$age',`address`='$address',`mobile`='$mobile',`aadhaar`='$aadhaar',`pan_card`='$pancard' WHERE document_no='$id'");
 	if($sql==1){	
      echo "successfully updated";
@@ -46,7 +44,7 @@ if($document==$id){
 else{
 	$sql=mysqli_query($conn,"INSERT INTO `owner`(`document_no`, `abbreviation`, `fullname`,`age`, `address`, `mobile`, `aadhaar`, `pan_card`) VALUES ('$id','$abbreviation','$name','$age','$address','$mobile','$aadhaar','$pancard')");
 	if($sql==1){	
-    echo "successfully inserted";
+    echo "successfully Added";
 	}else{
 	echo "Something went wrong";
 	}
@@ -71,11 +69,9 @@ if(isset($_POST['tenant'])){
   $email=$_POST['emailcheck'];
 	$passport=$_POST['passport'];
 	
-	$query1=mysqli_query($conn,"select document_no from tenant where document_no='$idtenant' order by document_no desc");
-$num1=mysqli_fetch_array($query1);
-$document1=$num1['document_no'];
+	$query1=mysqli_query($conn,"select document_no from tenant where document_no='$idtenant' ");
 
-	if($document1==$idtenant){
+	if(mysqli_num_rows($query1)>0){
 		$sql=mysqli_query($conn,"UPDATE `tenant` SET `document_no`='$idtenant',`abbreviation`='$surname',`fullname`='$name',`age`='$age',`address`='$address',`permanent_address`='$permanent_address',`mobile`='$mobile',`email`='$email',`passport`='$passport',`aadhaar`='$aadhaar',`pan_card`='$pancard',`office_name`='$officename',`office_addres`='$officeaddress',`office_phone`='$officeno'  WHERE document_no='$idtenant'");
 	if($sql==1){	
      echo "successfully updated";
@@ -108,11 +104,8 @@ if(isset($_POST['submitproperty'])){
   $chs=$_POST['chs'];
   $node=$_POST['node'];
 	
-  $query=mysqli_query($conn,"select * from property_details where document_no='$idproperty' order by document_no desc");
-$num2=mysqli_fetch_assoc($query);
-$document2=$num2['document_no'];
-
-if($document2==$idproperty){
+  $query=mysqli_query($conn,"select * from property_details where document_no='$idproperty' ");
+if(mysqli_num_rows($query)>0){
 	$sql=mysqli_query($conn,"UPDATE `property_details` SET `document_no`='$idproperty',`property_type`='$type',`address`='$address',`sector`='$sector',`plot_no`='$plotno',`cidco`='$cidco',`area`='$area',`chs`='$chs',`node`='$node' WHERE document_no='$document2'");
 	if($sql==1){	
    echo "successfully updated";
@@ -501,14 +494,12 @@ if(isset($_POST['compsubmit'])){
 		echo "Something went wrong";
 	}
 }
-
-
-if(isset($_POST['dnkid1'])){
-	$sql=mysqli_query($conn,"select * from property where id='".$_POST['dnkid1']."'");
+if(isset($_POST['dnkidno1'])){
+	$sql=mysqli_query($conn,"select leads.user_id,leads.requirement,leads.location,leads.mobile,leads.area,leads.id,leads.type,leads.client_name,agent_details.firm_name from leads inner join agent_details on leads.user_id=agent_details.user_id  where leads.id='".$_POST['dnkidno1']."'");
  
 	$arr=mysqli_fetch_array($sql);
 	echo '<div class="modal-header">
-              <h4 class="modal-title">'.$arr['client_name'].'</h4>
+              <h4 class="modal-title">'.$arr['firm_name'].'</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -533,7 +524,14 @@ if(isset($_POST['dnkid1'])){
                </div>
                </div>
 
-             
+               <div class="row">   
+               <div class="col-4">
+              <b> Firm Name :</b><br>
+              </div>
+              <div class="col-8">
+              <p> '.$arr['firm_name'].' </p>
+              </div>
+              </div>
 
               
 
@@ -542,7 +540,7 @@ if(isset($_POST['dnkid1'])){
                 <b> Mobile No :</b><br>
                 </div>
                 <div class="col-8">
-                <p> '.$arr['mobile_no'].' </p>
+                <p> '.$arr['mobile'].' </p>
                 </div>
                 </div>
 
@@ -587,8 +585,6 @@ if(isset($_POST['dnkid1'])){
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div></form>';
 }
-
-
 
 
 ?>
