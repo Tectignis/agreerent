@@ -159,7 +159,7 @@ include("../config/config.php");
                                         <label for="examplepan" class="col-sm-2 col-form-label">Rera No.</label>
                                         <div class="col-sm-10">
                                             <input type="text" class="form-control" name="rera"
-                                                placeholder="Enter Number" id="rera" required>
+                                                placeholder="Enter Number" id="rera" >
                                         </div>
                                     </div>
 

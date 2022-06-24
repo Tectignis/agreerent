@@ -158,7 +158,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
 
                                                         <select class="form-control" name="abbreviation" id="examplemr"
                                                             required>
-                                                            <option value="" disabled selected hidden>select</option>
+                                                            <option selected="selected" disabled>select</option>
                                                             <option value="mr.">Mr.</option>
                                                             <option value="mrs.">Mrs.</option>
                                                             <option value="mrs.">Miss.</option>
