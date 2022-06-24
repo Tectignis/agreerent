@@ -3,7 +3,7 @@ session_start();
 
 if(!isset($_SESSION['aid'])) 
 {
- header("Location:clientlogin.php"); 
+ header("Location:adminlogin.php"); 
 }
 
 if($_GET['id']==''){
