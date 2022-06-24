@@ -167,8 +167,9 @@ input[type=number] {
                       <label for="exampledno" class="col-sm-3 col-form-label">Mobile No.<label style="color:Red">*</label></label>
                       <div class="col-sm-9">
                         <input type="tel" class="form-control" id="examplemob" name="mobile_no" placeholder="Enter Mobile Number" minlength="10" maxlength="10" required>
+                        <span id="mobilespan"></span>		
                       </div>
-                      <span id="mobilespan"></span>		
+                      
 
                     </div>
 						</div>
