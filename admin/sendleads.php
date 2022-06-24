@@ -127,8 +127,8 @@ input[type=number] {
                   ?>
 
 
-                      <select class="form-control select2" name="firm_name" id="firm" style="width: 100%;">
-                        <option selected="selected">select</option>
+                      <select class="form-control select2" name="firm_name" id="firm" style="width: 100%;" required>
+                        <option selected="selected" disabled>select</option>
                         <?php
                    while($sql=mysqli_fetch_array($query))
                    {
