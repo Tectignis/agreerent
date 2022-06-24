@@ -66,7 +66,7 @@ $(document).ready(function () {
     let presentAddress = $("#presentAddress").val();
     let tenant = $("#submitenant").val();
 
-    if(exampleSelectmr==''|| txtname3==''|| phone==''|| officename=='' || officeno=='' || officeaddress=='' || emailcheck=='' || passport=='' || txAdhartr=='' || id2=='' || txtPANCard1=='' || residenceAddress=='' || presentAddress=='') {
+    if(exampleSelectmr==''|| txtname3==''|| phone==''|| officename=='' || officeno=='' || officeaddress=='' || emailcheck=='' || txAdhartr=='' || id2=='' || txtPANCard1=='' || residenceAddress=='' || presentAddress=='') {
       swal("oops..", "Please fill all fields.", "error");
       return false;
   }else{
