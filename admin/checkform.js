@@ -326,3 +326,53 @@ $(document).ready(function () {
   });
   
 });
+
+  
+    // Aminities Delete 
+function fun(idd) {
+let el=idd;
+      let idImage = idd;
+      let confirmalert = confirm("Are you sure?");
+      if (confirmalert == true) {
+         // AJAX Request
+         $.ajax({
+           url: 'form.php',
+           type: 'POST',
+           data: { idImage:idImage },
+           success: function(del){
+            $(this).closest('tr').css('background','tomato');
+            $(this).closest('tr').fadeOut(800,function(){
+               $(this).remove();
+            });
+   
+           }
+         });
+      }
+   
+    }
+
+    //family Delete
+    function familyfun(faidd) {
+      let el=faidd;
+            let famidImage = faidd;
+            let confirmalert = confirm("Are you sure?");
+            if (confirmalert == true) {
+               // AJAX Request
+               $.ajax({
+                 url: 'form.php',
+                 type: 'POST',
+                 data: { famidImage:famidImage },
+                 success: function(famdel){
+                  $(this).closest('tr').css('background','tomato');
+                  $(this).closest('tr').fadeOut(800,function(){
+                     $(this).remove();
+                  });
+         
+                 }
+               });
+            }
+         
+          }
+   
+   
+  

@@ -1165,7 +1165,7 @@ if(isset($_GET['id'])){
             let presentAddress = $("#presentAddress").val();
             let submitenan = $("#submitenan").val();
 
-            if(exampleSelectmr==''|| txtname3==''|| phone==''|| officename=='' || officeno=='' || officeaddress=='' || emailcheck=='' || passport=='' || txtAadhar1=='' || id2=='' || txtPANCard1=='' || residenceAddress=='' || presentAddress=='') {
+            if(exampleSelectmr==''|| txtname3==''|| phone==''|| officename=='' || officeno=='' || officeaddress=='' || emailcheck=='' || txtAadhar1=='' || id2=='' || txtPANCard1=='' || residenceAddress=='' || presentAddress=='') {
       swal("oops..", "Please fill all fields.", "error");
       return false;
   }else{
@@ -1218,7 +1218,7 @@ if(isset($_GET['id'])){
             let node = $("#node").val();
             let submitproperty = $("#submitproperty").val();
 
-            if(exampleproperties==''|| addressPro==''|| sector==''|| plotno=='' || cidco=='' || area=='' || chs=='' || node=='') {
+            if(exampleproperties==''|| addressPro==''|| sector==''|| plotno=='' || area=='' || chs=='') {
       swal("oops..", "Please fill all fields.", "error");
       return false;
   }else{
