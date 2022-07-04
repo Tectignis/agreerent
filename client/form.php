@@ -168,8 +168,7 @@ if(isset($_POST['submitmember'])){
         <td>". $arr['relation'] ."</td>
        <td>". $arr['age'] ."</td>
        <td>". $arr['gender'] ."</td>
-	   <td><a href='newagreement.php?familydelid=".$arr['id']." ?>'
-                                                                    alt='delete'><i class='fas fa-trash'></i></a></td>
+	   <td><a onclick='familyfun(".$arr['id'].")'  alt='delete'><i class='fas fa-trash'></i></a></td>
       </tr>";
        } 
     echo "</tbody>
@@ -229,8 +228,7 @@ if(isset($_POST['submitaminities'])){
      echo " <tr>
         <td>". $arr['name']."</td>
         <td>". $arr['number'] ."</td>
-		<td><a href='newagreement.php?deleteid=".$arr['id']."'
-                                                                    alt='delete'><i class='fas fa-trash'></i></a></td>
+		<td><a onclick='fun(".$arr['id'].")'  alt='delete'><i class='fas fa-trash'></i></a></td>
       </tr>";
        } 
     echo "</tbody>
@@ -586,5 +584,25 @@ if(isset($_POST['dnkidno1'])){
             </div></form>';
 }
 
+if(isset($_POST['idImage'])){
+  $delid=$_POST['idImage'];
+  $sql=mysqli_query($conn,"delete from amenities where id='$delid'");
+  if($sql==1){
+    echo 1;
+  }
+  else{
+    echo 0;
+  }
+}
 
+if(isset($_POST['famidImage'])){
+  $dnkdelid=$_POST['famidImage'];
+  $sql=mysqli_query($conn,"delete from family_members where id='$dnkdelid'");
+  if($sql==1){
+    echo 1;
+  }
+  else{
+    echo 0;
+  }
+}
 ?>

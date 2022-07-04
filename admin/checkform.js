@@ -183,7 +183,7 @@ $(document).ready(function () {
 
   //witness
   $("#submitwitness").on("click", function () {
-    if(ownerdnkname == "no" || ownerdnkname=="no" || tendnkname=="no" || ten2dnkna=="no"){
+    if(ownerdnkname == "no" || ownerdnk2name=="no" || tendnkname=="no" || ten2dnkna=="no"){
       swal("Oops...", "Please fill all the fields correctly", "error");
     }
       else{
@@ -326,3 +326,61 @@ $(document).ready(function () {
   });
   
 });
+
+  
+    // Aminities Delete 
+function fun(idd) {
+let el=idd;
+      let idImage = idd;
+      let confirmalert = confirm("Are you sure?");
+      if (confirmalert == true) {
+         // AJAX Request
+         $.ajax({
+           url: 'form.php',
+           type: 'POST',
+           data: { idImage:idImage },
+           success: function(del){
+            if(del==1){
+            $(el).closest('tr').css('background','tomato');
+            $(el).closest('tr').fadeOut(800,function(){
+               $(this).remove();
+            });
+          }
+          else{
+            alert("invalid otp");
+          }
+           }
+         });
+      }
+   
+    }
+
+    //family Delete
+    function familyfun(faidd) {
+      let fel=faidd;
+            let famidImage = faidd;
+            let confirmalert = confirm("Are you sure?");
+            if (confirmalert == true) {
+               // AJAX Request
+               $.ajax({
+                 url: 'form.php',
+                 type: 'POST',
+                 data: { famidImage:famidImage },
+                 success: function(famdel){
+                  if(famdel==1){
+                  $(fel).closest('tr').css('background','tomato');
+                  $(fel).closest('tr').fadeOut(800,function(){
+                     $(this).remove();
+                  });
+                }
+                else{
+                  alert("invalid otp");
+                }
+                 }
+               });
+            }
+         
+          }
+   
+   
+  

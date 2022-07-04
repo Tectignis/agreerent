@@ -116,7 +116,7 @@ $(document).ready(function () {
     let node = $("#node").val();
     let submitproperty = $("#submitproperty").val();
 
-    if(exampleproperties==''|| addressPro==''|| sector==''|| plotno=='' || cidco=='' || area=='' || chs=='' || node=='') {
+    if(exampleproperties==''|| addressPro==''|| sector==''|| plotno=='' || area=='' || chs=='') {
       swal("oops..", "Please fill all fields.", "error");
       return false;
   }else{
@@ -183,7 +183,7 @@ $(document).ready(function () {
 
   //witness
   $("#submitwitness").on("click", function () {
-    if(ownerdnkname == "no" || ownerdnkname=="no" || tendnkname=="no" || ten2dnkna=="no"){
+    if(ownerdnkname == "no" || ownerdnk2name=="no" || tendnkname=="no" || ten2dnkna=="no"){
       swal("Oops...", "Please fill all the fields correctly", "error");
     }
       else{
@@ -326,3 +326,50 @@ $(document).ready(function () {
   });
   
 });
+
+
+    // Aminities Delete 
+    function fun(idd) {
+      let el=idd;
+            let idImage = idd;
+            let confirmalert = confirm("Are you sure?");
+            if (confirmalert == true) {
+               // AJAX Request
+               $.ajax({
+                 url: 'form.php',
+                 type: 'POST',
+                 data: { idImage:idImage },
+                 success: function(del){
+                  $(this).closest('tr').css('background','tomato');
+                  $(this).closest('tr').fadeOut(800,function(){
+                     $(this).remove();
+                  });
+         
+                 }
+               });
+            }
+         
+          }
+      
+          //family Delete
+          function familyfun(faidd) {
+            let el=faidd;
+                  let famidImage = faidd;
+                  let confirmalert = confirm("Are you sure?");
+                  if (confirmalert == true) {
+                     // AJAX Request
+                     $.ajax({
+                       url: 'form.php',
+                       type: 'POST',
+                       data: { famidImage:famidImage },
+                       success: function(famdel){
+                        $(this).closest('tr').css('background','tomato');
+                        $(this).closest('tr').fadeOut(800,function(){
+                           $(this).remove();
+                        });
+               
+                       }
+                     });
+                  }
+               
+                }
