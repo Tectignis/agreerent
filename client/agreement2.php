@@ -7,7 +7,7 @@ if(!isset($_SESSION['admin']) == 1) // If session is not set then redirect to Lo
 }
 if(!isset($_SESSION['aid'])) 
 {
- header("Location:adminlogin.php"); 
+ header("Location:clientlogin.php"); 
 }
 include("../config/config.php");
 $fid=$_GET['id'];

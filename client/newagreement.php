@@ -1,9 +1,9 @@
 <?php 
 session_start();
 
-if(!isset($_SESSION['aid'])) 
+if(!isset($_SESSION['id'])) 
 {
- header("Location:adminlogin.php"); 
+ header("Location:clientlogin.php"); 
 }
 include("../config/config.php");
 

@@ -5,9 +5,9 @@ if(!isset($_SESSION['admin']) == 1) // If session is not set then redirect to Lo
 {
  header("Location:login.php"); 
 }
-if(!isset($_SESSION['aid'])) 
+if(!isset($_SESSION['id'])) 
 {
- header("Location:adminlogin.php"); 
+ header("Location:clientlogin.php"); 
 }
 include("../config/config.php");
 $fid=$_GET['id'];
@@ -178,7 +178,7 @@ $doc=$arr['docno'];
     <p><b>AND WHERE AS:</b></p>
     <p>The owner who on account of certain personal reasons is not occupying the said premise; and the LICENSEE being
         temporarily in need of a RESIDENTIAL ACCOMODATION/BUSINESS PREMISES requested the owner to give on ''LEAVE &
-        LICENSE BASIS , as a temporary facility, the use of the said premises, together with the fixtures and lying
+        LICENSE BASIS , as a temporary facility, the use of the s premises, together with the fixtures and lying
         thereon, on the terms and conditions recorded hereinafter.</p>  <?php if($doc==$fid){echo $arr['property_type']; }else{ echo ' - ' ;} ?>
     <p><b>AND WHERE AS:</b></p>
     <?php 
