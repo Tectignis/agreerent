@@ -270,12 +270,6 @@ $(function () {
      let email = document.getElementById("email").value;
     let desc = document.getElementById("desc").value;
 
-     // if(no2 == "" || abbreviation == "" || name1 == "" || mobile == "" || email == "" || aadhaar == "" || age == "" || pancard == "" || address == "" || permanent_address == ""  ){
-     //     swal("Oops...", "Please fill all the fields", "error");
-     // }
-     // if( no2 == "" || abbreviation == "" || validTenantName == "no" || validTenantMobile == "no" || validTenantEmail == "no" || validTenantAadhar == "no" || validTenantAge == "no" || validTenantPan == "no" || address == "" || permanent_address == ""  ){
-     //     swal("Oops...", "Please fill all the fields", "error");
-     // }
      if(validenqName == "no" || validenqtMobile == "no" || validenqEmail == "no" || desc == ""){
          swal("Oops...", "Please fill all the fields", "error");
      }

@@ -295,7 +295,7 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
 
                                                     <label for="exampleaadhaar" class="col-sm-2 col-  form-label">E-mail
                                                         ID<label style="color:Red">*</label></label>
-                                                    <div class="col-sm-4">
+                                                     <div class="col-sm-4">
                                                         <input type="email" class="form-control" name="email"
                                                             id="emailcheck" placeholder="Enter Email" required>
                                                     </div>
@@ -401,10 +401,8 @@ $query=mysqli_query($conn,"select * from amenities where id='$deleteid'");
 <?php
 $quer=mysqli_query($conn,"select * from new_agreement where document_no='$basicid'");
 $result=mysqli_fetch_array($quer);
-$propertytype=$result['property_type'];
 ?>
-                                                        <!-- <input type="text" for="examplename" name="type" id="propertyTypeVal" class="form-control" readonly> -->
-                                                        <input class="form-control" name="type" value="<?php echo $propertytype; ?>" id="exampleproperties"
+                                                        <input class="form-control" name="type" value="<?php echo $result['property_type']; ?>" id="exampleproperties"
                                                             readonly>
                                                             
 
