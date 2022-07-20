@@ -302,7 +302,9 @@ Sales
 <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
 </div>
 </div> -->
- <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
+ <div class="chart" id="sales-chart" style="position: relative; height: 300px;">
+<canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
+</div>
 </div>
 </div>
 
