@@ -270,48 +270,7 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
 </section>
 <!--box-->
 
-<!-- TO DO List -->
-<div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">
-                                    <i class="ion ion-clipboard mr-1"></i>
-                                    To Do List
-                                </h3>
-                            </div>
-                            <!-- /.card-header -->
-                            <div class="card-body">
-                                <ul class="todo-list" data-widget="todo-list">
-                                    <?php                
-                                $sql=mysqli_query($conn,"select * from todo where user_id='".$_SESSION['aid']."' AND status='1'");
-                                while($arr=mysqli_fetch_array($sql)){
 
-                                    // $date = time_elapsed_string($arr['date']);
-                                ?>
-                                    <li>
-                                        <!-- todo text -->
-                                        <span class="text"> <?php echo $arr['task'];?></span>
-                                        <!-- Emphasis label -->
-                                        <small class="badge badge-danger"><i
-                                                class="far fa-clock"></i><?php  echo get_time_ago(strtotime($arr['date']) );?></small>
-                                        <!-- General tools such as edit or delete-->
-                                        <div class="tools">
-                                        <a href="index.php?delid=<?php echo $arr['id'] ?>"
-                                        class="btn btn-tool">
-
-
-                                            <i class="fas fa-trash"></i>
-                                        </div>
-                                    </li>
-                                    <?php } ?>
-                                </ul>
-                            </div>
-                            <!-- /.card-body -->
-                            <div class="card-footer clearfix">
-                                <a href="todo"> <button type="button" class="btn btn-primary float-right" ><i class="fas fa-plus"></i>
-                                    Add item</button></a>
-                            </div>
-                        </div>
-<!--to do list-->
 <div class="row">
 
 <section class="col-lg-7 connectedSortable">
@@ -325,7 +284,7 @@ Sales
 <div class="card-tools">
 <ul class="nav nav-pills ml-auto">
 <li class="nav-item">
-<a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
+<!-- <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a> -->
 </li>
 <li class="nav-item">
 <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
@@ -532,7 +491,52 @@ Kenneth M.
 </div>
 </form>
 </div>
+
 </div>
+
+
+<!-- TO DO List -->
+<div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    <i class="ion ion-clipboard mr-1"></i>
+                                    To Do List
+                                </h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <ul class="todo-list" data-widget="todo-list">
+                                    <?php                
+                                $sql=mysqli_query($conn,"select * from todo where user_id='".$_SESSION['aid']."' AND status='1'");
+                                while($arr=mysqli_fetch_array($sql)){
+
+                                    // $date = time_elapsed_string($arr['date']);
+                                ?>
+                                    <li>
+                                        <!-- todo text -->
+                                        <span class="text"> <?php echo $arr['task'];?></span>
+                                        <!-- Emphasis label -->
+                                        <small class="badge badge-danger"><i
+                                                class="far fa-clock"></i><?php  echo get_time_ago(strtotime($arr['date']) );?></small>
+                                        <!-- General tools such as edit or delete-->
+                                        <div class="tools">
+                                        <a href="index.php?delid=<?php echo $arr['id'] ?>"
+                                        class="btn btn-tool">
+
+
+                                            <i class="fas fa-trash"></i>
+                                        </div>
+                                    </li>
+                                    <?php } ?>
+                                </ul>
+                            </div>
+                            <!-- /.card-body -->
+                            <div class="card-footer clearfix">
+                                <a href="todo"> <button type="button" class="btn btn-primary float-right" ><i class="fas fa-plus"></i>
+                                    Add item</button></a>
+                            </div>
+                        </div>
+<!--to do list-->
 
 </section>
 
