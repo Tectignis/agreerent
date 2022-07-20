@@ -281,7 +281,7 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
 <i class="fas fa-chart-pie mr-1"></i>
 Sales
 </h3>
-<!-- <div class="card-tools">
+<div class="card-tools">
  <ul class="nav nav-pills ml-auto">
 <li class="nav-item invisible">
  <a class="nav-link" href="#revenue-chart" data-toggle="tab">Area</a> 
@@ -290,10 +290,10 @@ Sales
 <a class="nav-link active" href="#sales-chart" data-toggle="tab">Donut</a>
 </li>
 </ul>
-</div> -->
+</div>
 </div>
 <div class="card-body">
-<!-- <div class="tab-content p-0">
+<div class="tab-content p-0">
 
 <div class="chart tab-pane invisible" id="revenue-chart" style="position: relative; height: 300px;">
 <canvas id="revenue-chart-canvas" height="300" style="height: 300px;"></canvas>
@@ -301,10 +301,8 @@ Sales
 <div class="chart tab-pane active" id="sales-chart" style="position: relative; height: 300px;">
 <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
 </div>
-</div> -->
- <div class="chart" id="sales-chart" style="height: 300px;">
-<canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
 </div>
+
 </div>
 </div>
 
