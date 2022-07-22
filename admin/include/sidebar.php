@@ -49,13 +49,9 @@
                           <i class="nav-icon fas fa-th"></i>
                           <p>
                               Paid Leads
-                             
                           </p>
                       </a>
-                      
                   </li>
-
-
                   <li class="nav-header">Rent Agreement</li>
                   <li class="nav-item">
                       <a href="case" class="nav-link">

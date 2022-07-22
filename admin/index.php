@@ -43,7 +43,18 @@ function get_time_ago( $time )
     }
 }
 
+$sql=mysqli_query($conn,"select new_agreement.document_no as newdoc,new_agreement.date_of_agreement as newdate, new_agreement.no_of_month as month,tenant.fullname as tname,owner.fullname as owname,owner.document_no as owdoc,tenant.document_no as tdoc,property_details.document_no as pdoc,family_members.document_no as memdoc,amenities.document_no as amdoc, noc.status as nstatus, noc.document_no as ndoc from new_agreement inner join owner on new_agreement.document_no=owner.document_no inner join tenant on tenant.document_no=new_agreement.document_no inner join family_members on family_members.document_no=new_agreement.document_no inner join amenities on new_agreement.document_no=amenities.document_no inner join payment on new_agreement.document_no=payment.document_no inner join  property_details on new_agreement.document_no=property_details.document_no inner join noc on new_agreement.document_no=noc.document_no where new_agreement.user_id='".$_SESSION['aid']."' group by new_agreement.document_no");
+$count=mysqli_num_rows($sql);
+$fetcharr=mysqli_fetch_array($sql);
 
+$sqlfull=mysqli_query($conn,"select new_agreement.document_no as newdoc,new_agreement.date_of_agreement as newdate, new_agreement.no_of_month as month,tenant.fullname as tname,owner.fullname as owname,owner.document_no as owdoc,tenant.document_no as tdoc,property_details.document_no as pdoc,family_members.document_no as memdoc,amenities.document_no as amdoc, noc.status as nstatus, noc.document_no as ndoc from new_agreement inner join owner on new_agreement.document_no=owner.document_no inner join tenant on tenant.document_no=new_agreement.document_no inner join family_members on family_members.document_no=new_agreement.document_no inner join amenities on new_agreement.document_no=amenities.document_no inner join payment on new_agreement.document_no=payment.document_no inner join  property_details on new_agreement.document_no=property_details.document_no inner join noc on new_agreement.document_no=noc.document_no group by new_agreement.document_no");
+$countfull=mysqli_num_rows($sqlfull);
+
+$sql3=mysqli_query($conn,"select document_no from new_agreement where NOT Exists (select * from owner inner join payment on new_agreement.document_no=owner.document_no inner join tenant on new_agreement.document_no=tenant.document_no inner join amenities on new_agreement.document_no=amenities.document_no inner join family_members on new_agreement.document_no=amenities.document_no inner join property_details on new_agreement.document_no=property_details.document_no)");
+$pencount1=mysqli_num_rows($sql3);
+
+$sql2=mysqli_query($conn,"select document_no from new_agreement where NOT Exists (select * from owner inner join payment on new_agreement.document_no=owner.document_no inner join tenant on new_agreement.document_no=tenant.document_no inner join amenities on new_agreement.document_no=amenities.document_no inner join family_members on new_agreement.document_no=amenities.document_no inner join property_details on new_agreement.document_no=property_details.document_no) and user_id='".$_SESSION['aid']."'");
+$pencount=mysqli_num_rows($sql2);
 ?>
 
 <!DOCTYPE html>
@@ -58,27 +69,82 @@ function get_time_ago( $time )
 <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
 
 <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-
 <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-
 <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-
 <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
-
 <link rel="stylesheet" href="dist/css/adminlte.min.css?v=3.2.0">
-
 <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-
 <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
-
 <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<script type="text/javascript" src="jscript/graph.js"></script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-core.min.js"></script>
+<script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-pie.min.js"></script>
+
+<style>
+    .we{
+        height: 100%;
+  width: 100%;
+  position: relative;
+  margin: 0 15% 15% 0;
+    }
+    
+    .we:before{
+        content: "";
+  display: block;
+  position: absolute;
+  z-index: 1;
+  width: 50%;
+  height: 50%;
+  background: #fff;
+  border-radius: 50%;
+  top: 30%;
+  left: 25%;
+    }
+    .dropbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 2px 30px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  float:right;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+</style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
-
 <div class="preloader flex-column justify-content-center align-items-center">
 <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
 </div>
+
 
 <?php include 'include/header.php'; ?>
 <!-- Main Sidebar Container -->
@@ -131,8 +197,7 @@ function get_time_ago( $time )
 <div class="small-box bg-success">
 <div class="inner">
 <?php
-                                $sql=mysqli_query($conn,"select new_agreement.document_no as newdoc,new_agreement.date_of_agreement as newdate, new_agreement.no_of_month as month,tenant.fullname as tname,owner.fullname as owname,owner.document_no as owdoc,tenant.document_no as tdoc,property_details.document_no as pdoc,family_members.document_no as memdoc,amenities.document_no as amdoc, noc.status as nstatus, noc.document_no as ndoc from new_agreement inner join owner on new_agreement.document_no=owner.document_no inner join tenant on tenant.document_no=new_agreement.document_no inner join family_members on family_members.document_no=new_agreement.document_no inner join amenities on new_agreement.document_no=amenities.document_no inner join payment on new_agreement.document_no=payment.document_no inner join  property_details on new_agreement.document_no=property_details.document_no inner join noc on new_agreement.document_no=noc.document_no where new_agreement.user_id='".$_SESSION['aid']."' group by new_agreement.document_no");
-                                $count=mysqli_num_rows($sql);
+                                
                                 ?>
                                 <h3><?php echo $count; ?></h3>
 
@@ -149,23 +214,8 @@ function get_time_ago( $time )
 
 <div class="small-box bg-warning">
 <div class="inner">
-<?php
-                                 $sql=mysqli_query($conn,"select new_agreement.document_no as newdoc,new_agreement.date_of_agreement as newdate, new_agreement.no_of_month as month,tenant.fullname as tname,owner.fullname as owname,owner.document_no as owdoc,tenant.document_no as tdoc,property_details.document_no as pdoc,family_members.document_no as memdoc,amenities.document_no as amdoc FROM new_agreement Left join owner on new_agreement.document_no=owner.document_no Left join tenant on new_agreement.document_no=tenant.document_no Left join family_members on new_agreement.document_no= family_members.document_no Left join amenities on new_agreement.document_no=amenities.document_no Left join payment on new_agreement.document_no=payment.document_no Left join property_details on new_agreement.document_no=property_details.document_no where new_agreement.user_id='".$_SESSION['aid']."' group by new_agreement.document_no");
-                                 while($row=mysqli_fetch_array($sql)){
-                                 $newdoc=$row['newdoc'];
-$owdoc=$row['owdoc'];
-$tdoc=$row['tdoc'];
-$memdoc=$row['memdoc'];
-$amdoc=$row['amdoc'];
-$pdoc=$row['pdoc'];
-
-
-if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $newdoc!=$pdoc){
-    $count=mysqli_num_rows($sql);
-
-                                ?>
-                                <h3><?php echo $count ?></h3>
-<?php } } ?>
+                              
+<h3><?php echo $pencount; ?></h3>
                                 <p>No of Agreement pending</p>
 </div>
 <div class="icon">
@@ -273,227 +323,58 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
 
 <div class="row">
 
-<section class="col-lg-7 connectedSortable">
+<section class="col-lg-6 connectedSortable">
 
+
+<!--pie chart-->
 <div class="card">
 <div class="card-header">
-<h3 class="card-title">
+<h3 class="card-title"  style="width:100%">
 <i class="fas fa-chart-pie mr-1"></i>
-Sales
+Agreement
+</div>
 </h3>
-<div class="card-tools">
-<ul class="nav nav-pills ml-auto">
-<li class="nav-item">
-<!-- <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a> -->
-</li>
-<li class="nav-item">
-<a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
-</li>
-</ul>
-</div>
-</div>
 <div class="card-body">
 <div class="tab-content p-0">
+  <div id="container" style="width: 100%; height:300px; margin: 0; padding: 0; "></div>
+<script>
+   anychart.onDocumentReady(function () {
+  var data = anychart.data.set([
+    ['complete',<?php echo $countfull; ?>],
+    ['pending',<?php echo $pencount1; ?>],
+  ]);
+  
+  var chart = anychart.pie(data);
+  chart.innerRadius('55%')
+  var palette = anychart.palettes.distinctColors();
+  palette.items([
+    { color: '#2ecc71' },
+    { color: '#3498db' },
+  ]);
 
-<!-- <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;">
-<canvas id="revenue-chart-canvas" height="300" style="height: 300px;"></canvas>
-</div> -->
-<div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
-<canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
+  chart.palette(palette);
+ 
+  chart.legend(false);
+  
+  var label = anychart.standalones.label();
+  label
+    .useHtml(true)
+    .text(
+      '<span style = "color:#3498db; font-size:20px;">pending<br/></span>' +
+      '<br/><br/></br><span style="color:#2ecc71; font-size:20px;"><i>complete</span>'
+    )
+    .position('center')
+    .anchor('center')
+    .hAlign('center')
+    .vAlign('middle');
+  chart.center().content(label);
+  chart.container('container');
+    chart.draw();
+});
+</script>
 </div>
 </div>
 </div>
-</div>
-
-
-<div class="card direct-chat direct-chat-primary">
-<div class="card-header">
-<h3 class="card-title">Direct Chat</h3>
-<div class="card-tools">
-<span title="3 New Messages" class="badge badge-primary">3</span>
-<button type="button" class="btn btn-tool" data-card-widget="collapse">
-<i class="fas fa-minus"></i>
-</button>
-<button type="button" class="btn btn-tool" title="Contacts" data-widget="chat-pane-toggle">
-<i class="fas fa-comments"></i>
-</button>
-<button type="button" class="btn btn-tool" data-card-widget="remove">
-<i class="fas fa-times"></i>
-</button>
-</div>
-</div>
-
-<div class="card-body">
-
-<div class="direct-chat-messages">
-
-<div class="direct-chat-msg">
-<div class="direct-chat-infos clearfix">
-<span class="direct-chat-name float-left">Alexander Pierce</span>
-<span class="direct-chat-timestamp float-right">23 Jan 2:00 pm</span>
-</div>
-
-<img class="direct-chat-img" src="dist/img/user1-128x128.jpg" alt="message user image">
-
-<div class="direct-chat-text">
-Is this template really for free? That's unbelievable!
-</div>
-
-</div>
-
-
-<div class="direct-chat-msg right">
-<div class="direct-chat-infos clearfix">
-<span class="direct-chat-name float-right">Sarah Bullock</span>
-<span class="direct-chat-timestamp float-left">23 Jan 2:05 pm</span>
-</div>
-
-<img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image">
-
-<div class="direct-chat-text">
-You better believe it!
-</div>
-
-</div>
-
-
-<div class="direct-chat-msg">
-<div class="direct-chat-infos clearfix">
-<span class="direct-chat-name float-left">Alexander Pierce</span>
-<span class="direct-chat-timestamp float-right">23 Jan 5:37 pm</span>
-</div>
-
-<img class="direct-chat-img" src="dist/img/user1-128x128.jpg" alt="message user image">
-
-<div class="direct-chat-text">
-Working with AdminLTE on a great new app! Wanna join?
-</div>
-
-</div>
-
-
-<div class="direct-chat-msg right">
-<div class="direct-chat-infos clearfix">
-<span class="direct-chat-name float-right">Sarah Bullock</span>
-<span class="direct-chat-timestamp float-left">23 Jan 6:10 pm</span>
-</div>
-
-<img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image">
-
-<div class="direct-chat-text">
-I would love to.
-</div>
-
-</div>
-
-</div>
-
-
-<div class="direct-chat-contacts">
-<ul class="contacts-list">
-<li>
-<a href="#">
-<img class="contacts-list-img" src="dist/img/user1-128x128.jpg" alt="User Avatar">
-<div class="contacts-list-info">
-<span class="contacts-list-name">
-Count Dracula
-<small class="contacts-list-date float-right">2/28/2015</small>
-</span>
-<span class="contacts-list-msg">How have you been? I was...</span>
-</div>
-
-</a>
-</li>
-
-<li>
-<a href="#">
-<img class="contacts-list-img" src="dist/img/user7-128x128.jpg" alt="User Avatar">
-<div class="contacts-list-info">
-<span class="contacts-list-name">
-Sarah Doe
-<small class="contacts-list-date float-right">2/23/2015</small>
-</span>
-<span class="contacts-list-msg">I will be waiting for...</span>
-</div>
-
-</a>
-</li>
-
-<li>
-<a href="#">
-<img class="contacts-list-img" src="dist/img/user3-128x128.jpg" alt="User Avatar">
-<div class="contacts-list-info">
-<span class="contacts-list-name">
-Nadia Jolie
-<small class="contacts-list-date float-right">2/20/2015</small>
-</span>
-<span class="contacts-list-msg">I'll call you back at...</span>
-</div>
-
-</a>
-</li>
-
-<li>
-<a href="#">
-<img class="contacts-list-img" src="dist/img/user5-128x128.jpg" alt="User Avatar">
-<div class="contacts-list-info">
-<span class="contacts-list-name">
-Nora S. Vans
-<small class="contacts-list-date float-right">2/10/2015</small>
-</span>
-<span class="contacts-list-msg">Where is your new...</span>
-</div>
-
-</a>
-</li>
-
-<li>
-<a href="#">
-<img class="contacts-list-img" src="dist/img/user6-128x128.jpg" alt="User Avatar">
-<div class="contacts-list-info">
-<span class="contacts-list-name">
-John K.
-<small class="contacts-list-date float-right">1/27/2015</small>
-</span>
-<span class="contacts-list-msg">Can I take a look at...</span>
-</div>
-
-</a>
-</li>
-
-<li>
-<a href="#">
-<img class="contacts-list-img" src="dist/img/user8-128x128.jpg" alt="User Avatar">
-<div class="contacts-list-info">
-<span class="contacts-list-name">
-Kenneth M.
-<small class="contacts-list-date float-right">1/4/2015</small>
-</span>
-<span class="contacts-list-msg">Never mind I found...</span>
-</div>
-
-</a>
-</li>
-
-</ul>
-
-</div>
-
-</div>
-
-<div class="card-footer">
-<form action="#" method="post">
-<div class="input-group">
-<input type="text" name="message" placeholder="Type Message ..." class="form-control">
-<span class="input-group-append">
-<button type="button" class="btn btn-primary">Send</button>
-</span>
-</div>
-</form>
-</div>
-
-</div>
-
 
 <!-- TO DO List -->
 <div class="card">
@@ -522,8 +403,6 @@ Kenneth M.
                                         <div class="tools">
                                         <a href="index.php?delid=<?php echo $arr['id'] ?>"
                                         class="btn btn-tool">
-
-
                                             <i class="fas fa-trash"></i>
                                         </div>
                                     </li>
@@ -537,61 +416,103 @@ Kenneth M.
                             </div>
                         </div>
 <!--to do list-->
+<!--area chart-->
+<div class="card">
+<div class="card-header">
+<h3 class="card-title"  style="width:100%">
+<i class="fas fa-chart-pie mr-1"></i>
+Leads
+</div>
+</h3>
+<div class="card-body">
+<div class="tab-content p-0">
 
+<div class="chart">
+                  <canvas id="areaChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
+<script>
+  var options = {
+  chart: {
+    height: 280,
+    type: "area"
+  },
+  dataLabels: {
+    enabled: false
+  },
+  series: [
+    {
+      name: "Series 1",
+      data: [45, 52, 38, 45, 19, 23, 2]
+    }
+  ],
+  fill: {
+    type: "gradient",
+    gradient: {
+      shadeIntensity: 1,
+      opacityFrom: 0.7,
+      opacityTo: 0.9,
+      stops: [0, 90, 100]
+    }
+  },
+  xaxis: {
+    categories: [
+      "01 Jan",
+      "02 Jan",
+      "03 Jan",
+      "04 Jan",
+      "05 Jan",
+      "06 Jan",
+      "07 Jan"
+    ]
+  }
+};
+
+var chart = new ApexCharts(document.querySelector("#chart"), options);
+
+chart.render();
+
+</script>
+</div>
+</div>
+</div>
+<!--area chart-->
 </section>
 
+<section class="col-lg-6 connectedSortable">
+<!--pie chart-->
+<div class="card">
+<div class="card-header">
+<h3 class="card-title"  style="width:100%">
+<i class="fas fa-chart-pie mr-1"></i>
+Agreement by User
+<div class="dropdown">
+<select id="demo_overview_minimal_multiselect" class="dropbtn" onChange="get(this.value)">
+    <option>Select User</option>
+<?php
+        $sqlagreement1=mysqli_query($conn,"select * from new_agreement group by user_id");
+        while($arragreement1=mysqli_fetch_array($sqlagreement1)){
+        ?>
+        <option value="<?php echo $arragreement1['user_id']; ?>"><?php echo $arragreement1['user_id']; ?></option>
+        <?php } ?>
+</select>
+</div>
 
-<section class="col-lg-5 connectedSortable">
-
-<div class="card bg-gradient-primary">
-<div class="card-header border-0">
-<h3 class="card-title">
-<i class="fas fa-map-marker-alt mr-1"></i>
-Visitors
+</div>
 </h3>
-
-<div class="card-tools">
-<button type="button" class="btn btn-primary btn-sm daterange" title="Date range">
-<i class="far fa-calendar-alt"></i>
-</button>
-<button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse">
-<i class="fas fa-minus"></i>
-</button>
-</div>
-
-</div>
-<div class="card-body">
-<div id="world-map" style="height: 250px; width: 100%;"></div>
-</div>
-
-<div class="card-footer bg-transparent">
-<div class="row">
-<div class="col-4 text-center">
-<div id="sparkline-1"></div>
-<div class="text-white">Visitors</div>
-</div>
-
-<div class="col-4 text-center">
-<div id="sparkline-2"></div>
-<div class="text-white">Online</div>
-</div>
-
-<div class="col-4 text-center">
-<div id="sparkline-3"></div>
-<div class="text-white">Sales</div>
-</div>
-
-</div>
-
+<div class="card-body cdfdfd">
+<div class="tab-content p-0">
+  <div id="contain" style="width: 100%; height:300px; margin: 0; padding: 0; "></div>
 </div>
 </div>
 
 
-<div class="card bg-gradient-info">
+</div>
+<!--pie  bg-gradient-info-->
+<div class="card card-success">
 <div class="card-header border-0">
 <h3 class="card-title">
 <i class="fas fa-th mr-1"></i>
-Sales Graph
+Agreement per month
 </h3>
 <div class="card-tools">
 <button type="button" class="btn bg-info btn-sm" data-card-widget="collapse">
@@ -603,34 +524,82 @@ Sales Graph
 </div>
 </div>
 <div class="card-body">
-<canvas class="chart" id="line-chart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+<div id="chartContainer" style="height: 300px; width: 100%;">
 </div>
+<?php
+$sqlline=mysqli_query($conn,'SELECT user_id ,date_time, (DATE_FORMAT(date_time,"%M")) AS "Month", COUNT(*) AS Number_of_registered_users, (DATE_FORMAT(date_time,"%Y")) AS "Year",(DATE_FORMAT(date_time,"%D")) AS "date" FROM new_agreement WHERE year(date_time)= year(date_time) GROUP BY (DATE_FORMAT(date_time,"%M")) ORDER BY "Month" ASC;');
+?>
+<script type="text/javascript">
+  window.onload = function () {
+    var chart = new CanvasJS.Chart("chartContainer",
+    {
 
-<div class="card-footer bg-transparent">
-<div class="row">
-<div class="col-4 text-center">
-<input type="text" class="knob" data-readonly="true" value="20" data-width="60" data-height="60" data-fgColor="#39CCCC">
-<div class="text-white">Mail-Orders</div>
+      title:{
+      text: "Agreement - per month"
+      },
+       data: [
+      {
+        type: "line",
+
+        dataPoints: [
+          <?php while($arrline=mysqli_fetch_array($sqlline)){ 
+           $rr=$arrline['date_time'];
+           ?>
+          { x: new Date(<?php echo date('Y, m, d',strtotime($rr)); ?>), y: <?php echo $arrline['Number_of_registered_users']; ?> }, <?php } ?>
+        
+        ]
+      }
+      ]
+    });
+
+    chart.render();
+  }
+  </script>
 </div>
-
-<div class="col-4 text-center">
-<input type="text" class="knob" data-readonly="true" value="50" data-width="60" data-height="60" data-fgColor="#39CCCC">
-<div class="text-white">Online</div>
 </div>
-
-<div class="col-4 text-center">
-<input type="text" class="knob" data-readonly="true" value="30" data-width="60" data-height="60" data-fgColor="#39CCCC">
-<div class="text-white">In-Store</div>
+<!--barchart-->
+<div class="card card-success">
+<div class="card-header">
+<h3 class="card-title">Agreerent</h3>
+<div class="card-tools">
+<button type="button" class="btn btn-tool" data-card-widget="collapse">
+<i class="fas fa-minus"></i>
+</button>
+<button type="button" class="btn btn-tool" data-card-widget="remove">
+<i class="fas fa-times"></i>
+</button>
 </div>
-
 </div>
-
+<div class="card-body">
+<div class="chart">
+<div>
+    <canvas id="mybarChart"></canvas>
+  </div>
 </div>
-
 </div>
+<?php
+$sqlagreement=mysqli_query($conn,"SELECT user_id, COUNT(*) as usercount FROM new_agreement GROUP BY user_id HAVING COUNT(*) > 1");
+$sqlad=mysqli_query($conn,"SELECT user_id, COUNT(*) as usercount FROM new_agreement GROUP BY user_id HAVING COUNT(*) > 1");
 
-
-
+?>
+<script>
+    var ctx = document.getElementById("mybarChart").getContext('2d');
+var mybarChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: [<?php while($arragreementcount=mysqli_fetch_array($sqlad)){ ?><?php echo '"'.$arragreementcount['user_id'].'",' ?> <?php } ?>],
+    datasets: [{
+      label: 'apples',
+      data: [<?php while($arragreementcount1=mysqli_fetch_array($sqlagreement)){ ?><?php echo $arragreementcount1['usercount'].',' ?> <?php } ?>],
+      backgroundColor: "rgba(153,255,51,1)"
+    },
+  ]
+  }
+});
+</script>
+<?php  ?>
+</div>
+<!--barchart-->
 </section>
 
 </div>
@@ -675,12 +644,121 @@ Sales Graph
 
 <script src="plugins/summernote/summernote-bs4.min.js"></script>
 
-<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script> -->
 
 <script src="dist/js/adminlte.js?v=3.2.0"></script>
+<!--linechart-->
+<?php
+$areachart=mysqli_query($conn,"select user_id, COUNT(*) as ff from leads group by user_id HAVING COUNT(*) > 1;");
+$areachart1=mysqli_query($conn,"select user_id, COUNT(*) as ff from leads group by user_id HAVING COUNT(*) > 1;");
+?>
+<script>
+    function get(val){
+      
+        $.ajax({
+        type: "POST",
+        url: "newcheck.php",
+        data: {
+            dnkid: val
+        },
+        success: function(data){
+            $(".cdfdfd").html(data);
+        }
+        });
+    }
 
-<script src="dist/js/demo.js"></script>
+    //user piechart
+   anychart.onDocumentReady(function () {
+  var dataw = anychart.data.set([
+    ['complete',<?php echo $count; ?>],
+    ['pending',<?php echo $pencount ?>],
+  ]);
+  
+  var charte = anychart.pie(dataw);
+  charte.innerRadius('55%')
+  var palette = anychart.palettes.distinctColors();
+  palette.items([
+    { color: '#2ecc71' },
+    { color: '#3498db' },
+  ]);
 
-<script src="dist/js/pages/dashboard.js"></script>
+//   charte.palette(palette);
+  charte.legend(false);
+  var label = anychart.standalones.label();
+  label
+    .useHtml(true)
+    .text(
+      '<span style = "color:#3498db; font-size:20px;"><?php echo $_SESSION['aid']; ?><br/></span>'
+    )
+    .position('center')
+    .anchor('center')
+    .hAlign('center')
+    .vAlign('middle');
+    charte.center().content(label);
+    charte.container('contain');
+    charte.draw();
+});
+</script>
+<script>
+  $(function () {
+    var areaChartCanvas = $('#areaChart').get(0).getContext('2d')
+
+    var areaChartData = {
+      labels  : [<?php while($areafetch=mysqli_fetch_array($areachart)){echo '"'.$areafetch['user_id'].'",';} ?> ],
+      datasets: [
+        {
+          label               : 'Digital Goods',
+          backgroundColor     : 'rgba(60,141,188,0.9)',
+          borderColor         : 'rgba(60,141,188,0.8)',
+          pointRadius          : false,
+          pointColor          : '#3b8bba',
+          pointStrokeColor    : 'rgba(60,141,188,1)',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(60,141,188,1)',
+          data                : [<?php while($areafetch=mysqli_fetch_array($areachart1)){echo $areafetch['ff'].',';} ?>]
+        },
+        {
+          label               : 'Electronics',
+          backgroundColor     : 'rgba(210, 214, 222, 1)',
+          borderColor         : 'rgba(210, 214, 222, 1)',
+          pointRadius         : false,
+          pointColor          : 'rgba(210, 214, 222, 1)',
+          pointStrokeColor    : '#c1c7d1',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(220,220,220,1)',
+          data                : [65, 59, 80, 81, 56, 55, 40]
+        },
+      ]
+    }
+
+    var areaChartOptions = {
+      maintainAspectRatio : false,
+      responsive : true,
+      legend: {
+        display: false
+      },
+      scales: {
+        xAxes: [{
+          gridLines : {
+            display : false,
+          }
+        }],
+        yAxes: [{
+          gridLines : {
+            display : false,
+          }
+        }]
+      }
+    }
+
+    new Chart(areaChartCanvas, {
+      type: 'line',
+      data: areaChartData,
+      options: areaChartOptions
+    })
+
+
+  })
+</script>
 </body>
 </html>

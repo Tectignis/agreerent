@@ -87,12 +87,12 @@ date_default_timezone_set('Asia/Kolkata');
                                 <!-- form start -->
                                 <form method="post">
                                     <?php $sql=mysqli_query($conn,"select * from ticket where user_id='".$_SESSION['id']."'");
-                            $query =mysqli_query($conn,"select * from agent_details where user_id='".$_SESSION['id']."'");
-                      $dnk=mysqli_num_rows($sql);
-                      $lastid=$dnk+1;
+                            $query =mysqli_query($conn,"select * from agent_details where user_id='".$_SESSION['id']."' order by id desc");
                       $arr=mysqli_fetch_array($query);
                       $name=$arr['agent_name'];
+                      $dnk=$arr['id'];
                       $first=$name;
+                      $lastid=$dnk+1;
                       
                       $res= preg_replace('~\S\K\S*\s*~u', '', $first);
                       if(empty($lastid)){

@@ -38,7 +38,11 @@ function get_time_ago( $time )
     }
 }
 
+$sql2=mysqli_query($conn,"select document_no from new_agreement where NOT Exists (select * from owner inner join payment on new_agreement.document_no=owner.document_no inner join tenant on new_agreement.document_no=tenant.document_no inner join amenities on new_agreement.document_no=amenities.document_no inner join family_members on new_agreement.document_no=amenities.document_no inner join property_details on new_agreement.document_no=property_details.document_no) and user_id='".$_SESSION['id']."'");
+$pencount=mysqli_num_rows($sql2);
 
+$sql=mysqli_query($conn,"select new_agreement.document_no as newdoc,new_agreement.date_of_agreement as newdate, new_agreement.no_of_month as month,tenant.fullname as tname,owner.fullname as owname,owner.document_no as owdoc,tenant.document_no as tdoc,property_details.document_no as pdoc,family_members.document_no as memdoc,amenities.document_no as amdoc, noc.status as nstatus, noc.document_no as ndoc from new_agreement inner join owner on new_agreement.document_no=owner.document_no inner join tenant on tenant.document_no=new_agreement.document_no inner join family_members on family_members.document_no=new_agreement.document_no inner join amenities on new_agreement.document_no=amenities.document_no inner join payment on new_agreement.document_no=payment.document_no inner join  property_details on new_agreement.document_no=property_details.document_no inner join noc on new_agreement.document_no=noc.document_no where new_agreement.user_id='".$_SESSION['id']."' group by new_agreement.document_no");
+$count=mysqli_num_rows($sql);
 ?>
 
 
@@ -70,6 +74,8 @@ function get_time_ago( $time )
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+  <script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-core.min.js"></script>
+<script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-pie.min.js"></script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -232,10 +238,66 @@ function get_time_ago( $time )
 
                 </a>
               </div>
+              
             </div>
+            <!--pie chart-->
+          
             <!-- /.card -->
           </section>
           <!-- /.Left col -->
+          <section class="col-lg-5 connectedSortable">
+                <!--pie chart-->
+<div class="card">
+<div class="card-header">
+<h3 class="card-title"  style="width:100%">
+<i class="fas fa-chart-pie mr-1"></i>
+Agreement Status
+</div>
+</h3>
+<div class="card-body">
+<div class="tab-content p-0">
+  <div id="container" style="width: 100%; height:300px; margin: 0; padding: 0; "></div>
+ 
+<script>
+   anychart.onDocumentReady(function () {
+  var data = anychart.data.set([
+    ['complete',<?php echo $count; ?>],
+    ['pending',<?php echo $pencount; ?>],
+  ]);
+  
+  var chart = anychart.pie(data);
+  chart.innerRadius('55%')
+  var palette = anychart.palettes.distinctColors();
+  palette.items([
+    { color: '#2ecc71' },
+    { color: '#3498db' },
+  ]);
+
+  chart.palette(palette);
+ 
+  chart.legend(false);
+  
+  var label = anychart.standalones.label();
+  label
+    .useHtml(true)
+    .text(
+      '<span style = "color:#3498db; font-size:20px;">pending<br/></span>' +
+      '<br/><br/></br><span style="color:#2ecc71; font-size:20px;"><i>complete</span>'
+    )
+    .position('center')
+    .anchor('center')
+    .hAlign('center')
+    .vAlign('middle');
+  chart.center().content(label);
+  chart.container('container');
+    chart.draw();
+});
+</script>
+</div>
+</div>
+</div>
+
+       </section>
 
         
         <!-- /.row (main row) -->

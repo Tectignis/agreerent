@@ -11,7 +11,7 @@ if(isset($_POST['submit'])){
   $place=$_POST['place'];
   $status=0;
 	
-	$sql=mysqli_query($conn,"INSERT INTO `new_agreement`(`user_id`,`document_no`, `property_type`, `date_of_agreement`, `no_of_month`,`place_of_agreement`) VALUES ('".$_SESSION['aid']."','$document_main','$type','$date','$month','$place')");
+	$sql=mysqli_query($conn,"INSERT INTO `new_agreement`(`user_id`,`document_no`, `property_type`, `date_of_agreement`, `no_of_month`,`place_of_agreement`) VALUES ('".$_SESSION['id']."','$document_main','$type','$date','$month','$place')");
   $sql =mysqli_query($conn,"INSERT INTO `noc`(`document_no`, `status`) VALUES ('$document_main','$status')");
 	if($sql==1){			
       
@@ -324,8 +324,14 @@ echo "Successfully updated";
 }else{
 echo "Something went wrong";
 }
-
-
+}
+else{
+  $sql=mysqli_query($conn,"INSERT INTO `payment`(`document_no`, `security_deposit`, `rent_amount`, `bank`, `method`,`date_of_payment`, `date`, `tid`) VALUES ('$idpayment','$security_deposit','$rent_amount','$bank','$method','$rentpay','$date','$tid')");
+  if($sql==1){
+    echo "Successfully updated";
+    }else{
+    echo "Something went wrong";
+    }
 }
 }
 

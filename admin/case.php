@@ -157,7 +157,7 @@ if(isset($_GET['delid'])){
                                                                     <?php
                                                                    
                                         $sql=mysqli_query($conn,"select new_agreement.document_no as newdoc,new_agreement.date_of_agreement as newdate, new_agreement.no_of_month as month,tenant.fullname as tname,owner.fullname as owname,owner.document_no as owdoc,tenant.document_no as tdoc,property_details.document_no as pdoc,family_members.document_no as memdoc,amenities.document_no as amdoc FROM new_agreement Left join owner on new_agreement.document_no=owner.document_no Left join tenant on new_agreement.document_no=tenant.document_no Left join family_members on new_agreement.document_no= family_members.document_no Left join amenities on new_agreement.document_no=amenities.document_no Left join payment on new_agreement.document_no=payment.document_no Left join property_details on new_agreement.document_no=property_details.document_no where new_agreement.user_id='".$_SESSION['aid']."' group by new_agreement.document_no");
-                                        $count='1';
+                                        $count1='1';
                                         while($row=mysqli_fetch_array($sql)){
 $newdoc=$row['newdoc'];
 $owdoc=$row['owdoc'];
@@ -171,7 +171,7 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
 
                                         ?>
                                                                     <tr>
-                                                                        <td><?php echo $count; ?> </td>
+                                                                        <td><?php echo $count1; ?> </td>
                                                                         <td><?php echo $row['newdoc']; ?></td>
                                                                         <td><?php echo $row['owname']; ?></td>
                                                                         <td><?php echo $row['tname']; ?></td>
@@ -211,7 +211,7 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
                                                                             </div>
                                                                         </td>
                                                                     </tr>
-                                                                    <?php } $count++; } ?>
+                                                                    <?php } $count1++; } ?>
                                                                 </tbody>
                                                                            <tfoot>
                                               

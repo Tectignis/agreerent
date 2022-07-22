@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("../config/config.php");
 
 if(isset($_POST['otp'])){
@@ -108,5 +109,51 @@ else{
 
 }
 //
+?>
 
+<?php
+if(isset($_POST['dnkid'])){
+  $id=$_POST['dnkid'];
+  $sql=mysqli_query($conn,"select new_agreement.document_no as newdoc,new_agreement.date_of_agreement as newdate, new_agreement.no_of_month as month,tenant.fullname as tname,owner.fullname as owname,owner.document_no as owdoc,tenant.document_no as tdoc,property_details.document_no as pdoc,family_members.document_no as memdoc,amenities.document_no as amdoc, noc.status as nstatus, noc.document_no as ndoc from new_agreement inner join owner on new_agreement.document_no=owner.document_no inner join tenant on tenant.document_no=new_agreement.document_no inner join family_members on family_members.document_no=new_agreement.document_no inner join amenities on new_agreement.document_no=amenities.document_no inner join payment on new_agreement.document_no=payment.document_no inner join  property_details on new_agreement.document_no=property_details.document_no inner join noc on new_agreement.document_no=noc.document_no where new_agreement.user_id='".$id."' group by new_agreement.document_no");
+$count=mysqli_num_rows($sql);
+
+$sql2=mysqli_query($conn,"select document_no from new_agreement where NOT Exists (select * from owner inner join payment on new_agreement.document_no=owner.document_no inner join tenant on new_agreement.document_no=tenant.document_no inner join amenities on new_agreement.document_no=amenities.document_no inner join family_members on new_agreement.document_no=amenities.document_no inner join property_details on new_agreement.document_no=property_details.document_no) and user_id='".$_SESSION['aid']."'");
+$pencount=mysqli_num_rows($sql2);
+  echo '<div class="tab-content p-0">
+    <div id="contain" style="width: 100%; height:300px; margin: 0; padding: 0; "></div>
+  <script>
+     anychart.onDocumentReady(function () {
+    var dataw = anychart.data.set([
+      ["complete", '.$count.'],
+      ["pending",'.$pencount.'],
+    ]);
+    
+    var charte = anychart.pie(dataw);
+    charte.innerRadius("55%")
+    var palette = anychart.palettes.distinctColors();
+    palette.items([
+      { color: "#2ecc71" },
+      { color: "#3498db" },
+    ]);
+  
+  //   charte.palette(palette);
+    charte.legend(false);
+    var label = anychart.standalones.label();
+    label
+      .useHtml(true)
+      .text(
+        "<span>'.$id.'<br/></span>"
+      )
+      .position("center")
+      .anchor("center")
+      .hAlign("center")
+      .vAlign("middle");
+      charte.center().content(label);
+      charte.container("contain");
+      charte.draw();
+  });
+  </script>
+  
+  </div>';
+}
 ?>
