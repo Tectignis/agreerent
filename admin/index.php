@@ -182,7 +182,7 @@ $pencount=mysqli_num_rows($sql2);
                             ?>
                                     <h3><?php echo $count1; ?></h3>
 
-                                    <p>No of Agents</p>
+                                    <p> Agents</p>
 </div>
 <div class="icon">
 <i class="ion ion-bag"></i>
@@ -201,7 +201,7 @@ $pencount=mysqli_num_rows($sql2);
                                 ?>
                                 <h3><?php echo $count; ?></h3>
 
-                                <p>No of Agreement Completed</p>
+                                <p>Complete Agreement </p>
 </div>
 <div class="icon">
 <i class="ion ion-stats-bars"></i>
@@ -216,7 +216,7 @@ $pencount=mysqli_num_rows($sql2);
 <div class="inner">
                               
 <h3><?php echo $pencount; ?></h3>
-                                <p>No of Agreement pending</p>
+                                <p> pending Agreement</p>
 </div>
 <div class="icon">
 <i class="ion ion-person-add"></i>
