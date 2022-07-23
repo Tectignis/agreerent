@@ -194,7 +194,7 @@ $pencount=mysqli_num_rows($sql2);
 
 <div class="col-lg-3 col-6">
 
-<div class="small-box bg-success">
+<div class="small-box" style="background:#ffb599">
 <div class="inner">
 <?php
                                 
