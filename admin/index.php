@@ -182,7 +182,7 @@ $pencount=mysqli_num_rows($sql2);
                             ?>
                                     <h3><?php echo $count1; ?></h3>
 
-                                    <p>No of Agents</p>
+                                    <p> Agents</p>
 </div>
 <div class="icon">
 <i class="ion ion-bag"></i>
@@ -194,14 +194,14 @@ $pencount=mysqli_num_rows($sql2);
 
 <div class="col-lg-3 col-6">
 
-<div class="small-box" style="background:#ffb599">
+<div class="small-box" style="background:#c0abe7">
 <div class="inner">
 <?php
                                 
                                 ?>
                                 <h3><?php echo $count; ?></h3>
 
-                                <p>No of Agreement Completed</p>
+                                <p>Complete Agreement </p>
 </div>
 <div class="icon">
 <i class="ion ion-stats-bars"></i>
@@ -216,7 +216,7 @@ $pencount=mysqli_num_rows($sql2);
 <div class="inner">
                               
 <h3><?php echo $pencount; ?></h3>
-                                <p>No of Agreement pending</p>
+                                <p> pending Agreement</p>
 </div>
 <div class="icon">
 <i class="ion ion-person-add"></i>
@@ -287,7 +287,7 @@ $pencount=mysqli_num_rows($sql2);
 <div class="clearfix hidden-md-up"></div>
 <div class="col-12 col-sm-6 col-md-3">
 <div class="info-box mb-3">
-<span class="info-box-icon bg-success elevation-1"><i class="fa fa-pause"></i></i></span>
+<span class="info-box-icon  elevation-1" style="background:#ffb599"><i class="fa fa-pause"></i></i></span>
 <div class="info-box-content">
 <?php
                                $query=mysqli_query($conn,"select * from ticket where status = 'Hold On'");
@@ -348,7 +348,7 @@ Agreement
   chart.innerRadius('55%')
   var palette = anychart.palettes.distinctColors();
   palette.items([
-    { color: '#2ecc71' },
+    { color: '#79dbcb' },
     { color: '#3498db' },
   ]);
 
@@ -486,7 +486,7 @@ chart.render();
 <i class="fas fa-chart-pie mr-1"></i>
 Agreement by User
 <div class="dropdown">
-<select id="demo_overview_minimal_multiselect" class="dropbtn" onChange="get(this.value)">
+<select id="demo_overview_minimal_multiselect" class="dropbtn" onChange="get(this.value)" style="background-color:#3b8ce3;">
     <option>Select User</option>
 <?php
         $sqlagreement1=mysqli_query($conn,"select * from new_agreement group by user_id");
@@ -509,7 +509,7 @@ Agreement by User
 </div>
 <!--pie  bg-gradient-info-->
 <div class="card card-success">
-<div class="card-header border-0">
+<div class="card-header border-0" style="background-color:#e73c67;">
 <h3 class="card-title">
 <i class="fas fa-th mr-1"></i>
 Agreement per month
@@ -559,7 +559,7 @@ $sqlline=mysqli_query($conn,'SELECT user_id ,date_time, (DATE_FORMAT(date_time,"
 </div>
 <!--barchart-->
 <div class="card card-success">
-<div class="card-header">
+<div class="card-header" style="background-color:#e73c67;">
 <h3 class="card-title">Agreerent</h3>
 <div class="card-tools">
 <button type="button" class="btn btn-tool" data-card-widget="collapse">
