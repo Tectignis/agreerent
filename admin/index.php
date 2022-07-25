@@ -589,7 +589,7 @@ var mybarChart = new Chart(ctx, {
   data: {
     labels: [<?php while($arragreementcount=mysqli_fetch_array($sqlad)){ ?><?php echo '"'.$arragreementcount['user_id'].'",' ?> <?php } ?>],
     datasets: [{
-      label: 'apples',
+      label: 'Agreerent',
       data: [<?php while($arragreementcount1=mysqli_fetch_array($sqlagreement)){ ?><?php echo $arragreementcount1['usercount'].',' ?> <?php } ?>],
       backgroundColor: "rgba(153,255,51,1)"
     },
