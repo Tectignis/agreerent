@@ -95,8 +95,8 @@ if(isset($_SESSION['id'])) // If session is not set then redirect to Login Page
  header("Location:clientlogin.php"); 
 }
 if(isset($_POST["login"])){
-	$email=$_POST["email"];
-	$password=$_POST["password"];
+	$email=mysqli_real_escape_string($conn,$_POST["email"]);
+	$password=mysqli_real_escape_string($conn,$_POST["password"]);
 
 	$sql = mysqli_query($conn,"SELECT * FROM agent_details WHERE email='$email' AND status='1'") ;
 	if(mysqli_num_rows($sql)>0){
