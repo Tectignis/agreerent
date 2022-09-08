@@ -15,7 +15,9 @@ if($_GET['id']==''){
     header('Location:new_agreement.php');
     } 
 ?>
-<!doctype html>
+
+
+<!Doctype html>
 <html>
 <head>
 <meta charset="utf-8">

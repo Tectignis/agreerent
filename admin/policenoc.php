@@ -9,14 +9,11 @@ if(!isset($_SESSION['aid']))
  header("Location:adminlogin.php"); 
 }
 include("../config/config.php");
-
-
-
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -142,8 +139,7 @@ include("../config/config.php");
                                                     <!-- <button type="button" class="btn btn-primary btn-rounded btn-icon" style="color: aliceblue"> <i class="mdi mdi-file-pdf"></i> </button>-->
                                                 </td>
                                             </tr>
-                                            <?php
-                                              $count++;}
+                                            <?php $count++;}
                                         }
                                 
                                           ?>

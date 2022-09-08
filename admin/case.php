@@ -18,10 +18,6 @@ if(isset($_GET['gen'])){
    header("location:case.php");
   }
 }
-
-
-
-
 if(isset($_GET['delid'])){
     $id=mysqli_real_escape_string($conn,$_GET['delid']);
     $sql=mysqli_query($conn,"delete from noc where document_no='$id'");
@@ -38,7 +34,6 @@ if(isset($_GET['delid'])){
     }
     }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,14 +56,13 @@ if(isset($_GET['delid'])){
     <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css"> -->
 
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
-<!-- Bootstrap -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -78,11 +72,8 @@ if(isset($_GET['delid'])){
         <!-- Main Sidebar Container -->
         <?php include 'include/header.php'; ?>
         <!-- /.navbar -->
-
         <!-- Main Sidebar Container -->
         <?php include 'include/sidebar.php'; ?>
-
-
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
