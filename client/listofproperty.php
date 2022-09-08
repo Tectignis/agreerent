@@ -87,9 +87,10 @@ if($dnk=1){
                                 <!-- /.card-header -->
                                 <div class="card-body">
                                
-                            <h1>List Of Property</h1>
-
+                                <h5>List Of Property</h5>
                                 <div class="card-tools my-3" style="text-align:end;">
+                          
+                                
                                                 <a class="btn btn-primary" href="addproperty.php" data-tt="tooltip" title="" data-original-title="Click here to Add New Enquiry">Add Property</a>
                                     
 </div>
