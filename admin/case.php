@@ -42,10 +42,10 @@ if(isset($_GET['delid'])){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AGREERENT | List of Agreement</title>
 
-   
+
     <!-- Google Font: Source Sans Pro -->
-      <!-- Google Font: Source Sans Pro -->
-      <link rel="stylesheet"
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
@@ -58,11 +58,11 @@ if(isset($_GET['delid'])){
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -98,54 +98,67 @@ if(isset($_GET['delid'])){
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
-                              <!-- <h3 class="card-title">Enquiry Details</h3> -->
-                                    <div class="card-tools my-3" style="text-align:end;">
-                                                <a class="btn btn-primary" href="basic_details.php" data-tt="tooltip" title=""
-                                                    data-original-title="Click here to Add New Enquiry"><i
-                                                        class="fas fa-user-friends mr-2"></i>Create New Agreement</a>
-                                    </div>
+                            <!-- <h3 class="card-title">Enquiry Details</h3> -->
+                            <div class="card-tools my-3" style="text-align:end;">
+                                <a class="btn btn-primary" href="basic_details.php" data-tt="tooltip" title=""
+                                    data-original-title="Click here to Add New Enquiry"><i
+                                        class="fas fa-user-friends mr-2"></i>Create New Agreement</a>
+                            </div>
                             <div class="card card-primary border-primary card-tabs">
-              <div class="card-header p-0 pt-1 ">
-                <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
-                  <li class="nav-item">
-                  <a class="nav-link active" id="custom-tabs-two-home-tab" data-toggle="pill" href="#custom-tabs-two-home" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true"><h6> Pending </h6></a> 
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" id="custom-tabs-two-profile-tab" data-toggle="pill" href="#custom-tabs-two-profile" role="tab" aria-controls="custom-tabs-two-profile" aria-selected="false"><h6>Complete</h6></a>
-                  </li>
-                </ul>
-                <!-- <div class="card-tools  " style="text-align:end;"> -->
-                                        <!-- <ul class="nav  nav-pills mr-0"> -->
-                                            
-                                        <!-- </ul> -->
+                                <div class="card-header p-0 pt-1 ">
+                                    <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="custom-tabs-two-home-tab" data-toggle="pill"
+                                                href="#custom-tabs-two-home" role="tab"
+                                                aria-controls="custom-tabs-two-home" aria-selected="true">
+                                                <h6> Pending </h6>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="custom-tabs-two-profile-tab" data-toggle="pill"
+                                                href="#custom-tabs-two-profile" role="tab"
+                                                aria-controls="custom-tabs-two-profile" aria-selected="false">
+                                                <h6>Complete</h6>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <!-- <div class="card-tools  " style="text-align:end;"> -->
+                                    <!-- <ul class="nav  nav-pills mr-0"> -->
+
+                                    <!-- </ul> -->
                                     <!-- </div> -->
-              </div>
-              <div class="card-body">
-                <div class="tab-content" id="custom-tabs-two-tabContent">
-                  <div class="tab-pane fade show active" id="custom-tabs-two-home" role="tabpanel" aria-labelledby="custom-tabs-two-home-tab">
-                  <div class="user-profile-list ">
-                                                       
-                                                        <div class="mt-3 box-datatable table-responsive">
-                                                            <div id="xin_table_expense_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-                                                        <div id="table_id_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                          <table id="table_id" class="table table-bordered table-striped dataTable dtr-inline" aria-describedby="table_id_info">
-                                                                          <thead>
-                                                                    <tr>
-                                                                       
-                                                                        <th>Sr.no</th>
-                                                                        <th>Document No</th>
-                                                                        <th>Owner Name</th>
-                                                                        <th>Tenant Name</th>
-                                                                        <th>Date of agreement</th>
-                                                                        <th>No of Month</th>
-                                                                        <th>Status</th>
-                                                                        <th>Action</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                                <tbody>
-                                                                    <?php
+                                </div>
+                                <div class="card-body">
+                                    <div class="tab-content" id="custom-tabs-two-tabContent">
+                                        <div class="tab-pane fade show active" id="custom-tabs-two-home" role="tabpanel"
+                                            aria-labelledby="custom-tabs-two-home-tab">
+                                            <div class="user-profile-list ">
+
+                                                <div class="mt-3 box-datatable table-responsive">
+                                                    <div id="xin_table_expense_wrapper"
+                                                        class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                                        <div id="table_id_wrapper"
+                                                            class="dataTables_wrapper dt-bootstrap4">
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    <table id="table_id"
+                                                                        class="table table-bordered table-striped dataTable dtr-inline"
+                                                                        aria-describedby="table_id_info">
+                                                                        <thead>
+                                                                            <tr>
+
+                                                                                <th>Sr.no</th>
+                                                                                <th>Document No</th>
+                                                                                <th>Owner Name</th>
+                                                                                <th>Tenant Name</th>
+                                                                                <th>Date of agreement</th>
+                                                                                <th>No of Month</th>
+                                                                                <th>Status</th>
+                                                                                <th>Action</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <?php
                                                                    
                                         $sql=mysqli_query($conn,"select new_agreement.document_no as newdoc,new_agreement.date_of_agreement as newdate, new_agreement.no_of_month as month,tenant.fullname as tname,owner.fullname as owname,owner.document_no as owdoc,tenant.document_no as tdoc,property_details.document_no as pdoc,family_members.document_no as memdoc,amenities.document_no as amdoc FROM new_agreement Left join owner on new_agreement.document_no=owner.document_no Left join tenant on new_agreement.document_no=tenant.document_no Left join family_members on new_agreement.document_no= family_members.document_no Left join amenities on new_agreement.document_no=amenities.document_no Left join payment on new_agreement.document_no=payment.document_no Left join property_details on new_agreement.document_no=property_details.document_no where new_agreement.user_id='".$_SESSION['aid']."' group by new_agreement.document_no");
                                         $count1='1';
@@ -161,84 +174,75 @@ $pdoc=$row['pdoc'];
 if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $newdoc!=$pdoc){
 
                                         ?>
-                                                                    <tr>
-                                                                        <td><?php echo $count1; ?> </td>
-                                                                        <td><?php echo $row['newdoc']; ?></td>
-                                                                        <td><?php echo $row['owname']; ?></td>
-                                                                        <td><?php echo $row['tname']; ?></td>
-                                                                        <td><?php echo $row['newdate']; ?></td>
-                                                                        <td><?php echo $row['month']; ?></td>
-                                                                        <td style="color:red">Pending</td>
-                                                                        <td class="row mx-1">
-                                                                        <div class="btn-group btn-group-sm" role="group" aria-label="">
-                                                                            <!-- <a data-toggle="tooltip" data-placement="bottom" title="view" href="agreement.php?id=<?php echo $row['newdoc'];?>" target="_blank"
-                                                                                class="btn btn-primary btn-rounded btn-icon" ><i
-                                                                                    class="fas fa-eye"></i></a>&nbsp; -->
-                                                                            <!-- <a href="edit_newagreement.php?id=<?php echo $row['newdoc'];?>" 
-                                                                                class="btn btn-warning btn-rounded btn-icon"
-                                                                                style="color: aliceblue"><i
-                                                                                    class="fas fa-pen"></i></i></a> -->
-                                                                                    <a href="edit_newagreement.php?id=<?php echo $row['newdoc'];?>"
-                                                                                class="btn btn-warning btn-rounded btn-icon"
-                                                                                style="color: aliceblue"><i
-                                                                                    class="fas fa-pen"></i></i></a>&nbsp;
-                                                                                    <!-- <a data-toggle="tooltip" data-placement="bottom" title="Stamp Paper" href="stamppaperpage.php?eid=<?php echo $row['newdoc'];?>"  target="_blank"
-                                                                                class="btn btn-success btn-rounded btn-icon"><i class="fa fa-stamp"></i>
-                                                                               </a>&nbsp; -->
-                                                                               <!-- <a data-toggle="tooltip" data-placement="bottom" title="Agreement" href="agreement.php?eid=<?php echo $row['newdoc'];?>"  target="_blank"
-                                                                                class="btn btn-info btn-rounded btn-icon"><i class="fa fa-file-contract"></i>
-                                                                              </a>&nbsp; -->
-                                                                            <!-- <a data-toggle="tooltip" data-placement="bottom" title="NOC" href="case.php?eid=<?php echo $row['newdoc'];?>"  target="_blank"
-                                                                                class="btn btn-danger btn-rounded btn-icon">
-                                                                               NOC</a>&nbsp; -->
-                                                                               <!-- <a data-toggle="tooltip" data-placement="bottom" title="Payment Receipt" href="receipt.php?eid=<?php echo $row['newdoc'];?>"  target="_blank"
-                                                                                class="btn btn-warning btn-rounded btn-icon"><i class="fa fa-file-invoice-dollar"></i>
-                                                                               </a> -->
+                                                                            <tr>
+                                                                                <td><?php echo $count1; ?> </td>
+                                                                                <td><?php echo $row['newdoc']; ?></td>
+                                                                                <td><?php echo $row['owname']; ?></td>
+                                                                                <td><?php echo $row['tname']; ?></td>
+                                                                                <td><?php echo $row['newdate']; ?></td>
+                                                                                <td><?php echo $row['month']; ?></td>
+                                                                                <td style="color:red">Pending</td>
+                                                                                <td class="row mx-1">
+                                                                                    <div class="btn-group btn-group-sm"
+                                                                                        role="group" aria-label="">
+                                                                                                                                 <a href="edit_newagreement.php?id=<?php echo $row['newdoc'];?>"
+                                                                                            class="btn btn-warning btn-rounded btn-icon"
+                                                                                            style="color: aliceblue"><i
+                                                                                                class="fas fa-pen"></i></i></a>&nbsp;
+                                                                                                      <a
+                                                                                            href="case.php?delid=<?php echo $row['newdoc']; ?>"><button
+                                                                                                type="button"
+                                                                                                class="btn btn-danger btn-rounded btn-icon"
+                                                                                                onclick="ConfirmDelete()"
+                                                                                                style="color: aliceblue">
+                                                                                                <i
+                                                                                                    class="fas fa-trash"></i>
+                                                                                            </button></a>
+                                                                                    </div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <?php } $count1++; } ?>
+                                                                        </tbody>
+                                                                        <tfoot>
 
-                                                                               <a href="case.php?delid=<?php echo $row['newdoc']; ?>"><button
-                                                            type="button" class="btn btn-danger btn-rounded btn-icon"
-                                                            onclick="ConfirmDelete()" style="color: aliceblue"> <i
-                                                                class="fas fa-trash"></i> </button></a>
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <?php } $count1++; } ?>
-                                                                </tbody>
-                                                                           <tfoot>
-                                              
-                                                                           </tfoot>
-                                                                          </table>
-                                                                        </div>
-                                                                    </div>
+                                                                        </tfoot>
+                                                                    </table>
                                                                 </div>
-                                                                </div>
-                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                  </div>
-                  <div class="tab-pane fade" id="custom-tabs-two-profile" role="tabpanel" aria-labelledby="custom-tabs-two-profile-tab">
-                  <div class="user-profile-list ">
-                                                        
-                                                        <div class="mt-3">
-                                                            <div class="box-datatable table-responsive">
-                                                                <div id="xin_table_expense_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-                                                                    <div id="table_check_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                                                                        <div class="row">
-                                                                            <div class="col-sm-12">
-                                                                              <table id="table_check" class="table table-bordered table-striped dataTable dtr-inline" aria-describedby="table_check_info">
-                                                                              <thead>
-                                                                    <tr>
-                                                                        <th>S.no</th>
-                                                                        <th>Document No</th>
-                                                                        <th>Owner Name</th>
-                                                                        <th>Tenant Name</th>
-                                                                        <th>Date of agreement</th>
-                                                                        <th>No of Month</th>
-                                                                        <th>Status</th>
-                                                                        <th>Action</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                                <tbody>
-                                                                    <?php
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="custom-tabs-two-profile" role="tabpanel"
+                                            aria-labelledby="custom-tabs-two-profile-tab">
+                                            <div class="user-profile-list ">
+
+                                                <div class="mt-3">
+                                                    <div class="box-datatable table-responsive">
+                                                        <div id="xin_table_expense_wrapper"
+                                                            class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                                            <div id="table_check_wrapper"
+                                                                class="dataTables_wrapper dt-bootstrap4">
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <table id="table_check"
+                                                                            class="table table-bordered table-striped dataTable dtr-inline"
+                                                                            aria-describedby="table_check_info">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th>S.no</th>
+                                                                                    <th>Document No</th>
+                                                                                    <th>Owner Name</th>
+                                                                                    <th>Tenant Name</th>
+                                                                                    <th>Date of agreement</th>
+                                                                                    <th>No of Month</th>
+                                                                                    <th>Status</th>
+                                                                                    <th>Action</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <?php
 
 
                                          $sql=mysqli_query($conn,"select new_agreement.document_no as newdoc,new_agreement.date_of_agreement as newdate, new_agreement.no_of_month as month,tenant.fullname as tname,owner.fullname as owname,owner.document_no as owdoc,tenant.document_no as tdoc,property_details.document_no as pdoc,family_members.document_no as memdoc,amenities.document_no as amdoc, noc.status as nstatus, noc.document_no as ndoc from new_agreement inner join owner on new_agreement.document_no=owner.document_no inner join tenant on tenant.document_no=new_agreement.document_no inner join family_members on family_members.document_no=new_agreement.document_no inner join amenities on new_agreement.document_no=amenities.document_no inner join payment on new_agreement.document_no=payment.document_no inner join  property_details on new_agreement.document_no=property_details.document_no inner join noc on new_agreement.document_no=noc.document_no where new_agreement.user_id='".$_SESSION['aid']."' group by new_agreement.document_no");
@@ -248,83 +252,108 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
                                         while($row=mysqli_fetch_array($sql)){
 
                                         ?>
-                                            <tr>
-                                                <td><?php echo $count; ?> </td>
-                                                <td><?php echo $row['newdoc']; ?></td>
-                                                <td><?php echo $row['owname']; ?></td>
-                                                                        <td><?php echo $row['tname']; ?></td>
-                                         <td><?php echo $row['newdate']; ?></td>
-                                                 <td><?php echo $row['month']; ?></td>
-                                         <td style="color:blue">Complete</td>
-                                          <td class="row mx-1">
-                                            <div class="btn-group btn-group-sm" role="group" aria-label="">
-                                            <a href="agreement2.php?id=<?php echo $row['newdoc'];?>"  class="btn col btn-primary btn-rounded btn-sm btn-icon"><i  class="fas fa-eye"></i></a>&nbsp;
-                                            <a href="agreement.php?id=<?php echo $row['newdoc'];?>"
-                                        class="btn col btn-info btn-rounded btn-sm btn-icon"><i class="fa fa-download"></i></a>
+                                                                                <tr>
+                                                                                    <td><?php echo $count; ?> </td>
+                                                                                    <td><?php echo $row['newdoc']; ?>
+                                                                                    </td>
+                                                                                    <td><?php echo $row['owname']; ?>
+                                                                                    </td>
+                                                                                    <td><?php echo $row['tname']; ?>
+                                                                                    </td>
+                                                                                    <td><?php echo $row['newdate']; ?>
+                                                                                    </td>
+                                                                                    <td><?php echo $row['month']; ?>
+                                                                                    </td>
+                                                                                    <td style="color:blue">Complete</td>
+                                                                                    <td class="row mx-1">
+                                                                                        <div class="btn-group btn-group-sm"
+                                                                                            role="group" aria-label="">
+                                                                                            <a href="agreement2.php?id=<?php echo $row['newdoc'];?>"
+                                                                                                class="btn col btn-primary btn-rounded btn-sm btn-icon"><i
+                                                                                                    class="fas fa-eye"></i></a>&nbsp;
+                                                                                            <a href="agreement.php?id=<?php echo $row['newdoc'];?>"
+                                                                                                class="btn col btn-info btn-rounded btn-sm btn-icon"><i
+                                                                                                    class="fa fa-download"></i></a>
 
 
-                                                                            <?php
+                                                                                            <?php
                                                                                 $status=$row['nstatus'];
                                                                                 if($status==1){
                                                                                 ?>
 
-                                                                            <?php
+                                                                                            <?php
                                                                                 }
                                                                                 elseif($status==0){
                                                                                 ?>
-                                                                            &nbsp;<a href="edit_newagreement.php?id=<?php echo $row['newdoc'];?>"
-                                                                                class="btn col btn-warning btn-rounded btn-sm btn-icon"
-                                                                                style="color: aliceblue"><i
-                                                                                    class="fas fa-pen"></i></a>
-                                                                                    &nbsp;
-                                                                            <a href="case.php?gen=<?php echo $row['newdoc'];?>"
-                                                                                class="btn col btn-success btn-sm btn-rounded btn-icon">
-                                                                                <i
-                                                                                    class="fa fa-file"></i></a>
-                                                                                    &nbsp;
-                                                                                     <a data-toggle="tooltip" data-placement="bottom" title="Stamp Paper" href="stamppaperpage.php?eid=<?php echo $row['newdoc'];?>"  target="_blank"
-                                                                                class="btn btn-success btn-rounded btn-icon"><i class="fa fa-stamp"></i>
-                                                                               </a>
+                                                                                            &nbsp;<a
+                                                                                                href="edit_newagreement.php?id=<?php echo $row['newdoc'];?>"
+                                                                                                class="btn col btn-warning btn-rounded btn-sm btn-icon"
+                                                                                                style="color: aliceblue"><i
+                                                                                                    class="fas fa-pen"></i></a>
+                                                                                            &nbsp;
+                                                                                            <a href="case.php?gen=<?php echo $row['newdoc'];?>"
+                                                                                                class="btn col btn-success btn-sm btn-rounded btn-icon">
+                                                                                                <i
+                                                                                                    class="fa fa-file"></i></a>
+                                                                                            &nbsp;
+                                                                                            <a data-toggle="tooltip"
+                                                                                                data-placement="bottom"
+                                                                                                title="Stamp Paper"
+                                                                                                href="stamppaperpage.php?eid=<?php echo $row['newdoc'];?>"
+                                                                                                target="_blank"
+                                                                                                class="btn btn-success btn-rounded btn-icon"><i
+                                                                                                    class="fa fa-stamp"></i>
+                                                                                            </a>
 
-                                                                               &nbsp;
-                                                                               <a data-toggle="tooltip" data-placement="bottom" title="Agreement" href="agreement.php?id=<?php echo $row['newdoc'];?>"  target="_blank"
-                                                                                class="btn btn-info btn-rounded btn-icon"><i class="fa fa-file-contract"></i>
-                                                                              </a>&nbsp;
-                                                                            <!-- <a data-toggle="tooltip" data-placement="bottom" title="NOC" href="case.php?eid=<?php echo $row['newdoc'];?>"  target="_blank"
+                                                                                            &nbsp;
+                                                                                            <a data-toggle="tooltip"
+                                                                                                data-placement="bottom"
+                                                                                                title="Agreement"
+                                                                                                href="agreement.php?id=<?php echo $row['newdoc'];?>"
+                                                                                                target="_blank"
+                                                                                                class="btn btn-info btn-rounded btn-icon"><i
+                                                                                                    class="fa fa-file-contract"></i>
+                                                                                            </a>&nbsp;
+                                                                                            <!-- <a data-toggle="tooltip" data-placement="bottom" title="NOC" href="case.php?eid=<?php echo $row['newdoc'];?>"  target="_blank"
                                                                                 class="btn btn-danger btn-rounded btn-icon">
                                                                                NOC</a>&nbsp; -->
-                                                                               <a data-toggle="tooltip" data-placement="bottom" title="Payment Receipt" href="receipt.php?eid=<?php echo $row['newdoc'];?>"  target="_blank"
-                                                                                class="btn btn-warning btn-rounded btn-icon"><i class="fa fa-file-invoice-dollar"></i>
-                                                                               </a>
-                                                                                    </div>
-                                                                            <?php
+                                                                                            <a data-toggle="tooltip"
+                                                                                                data-placement="bottom"
+                                                                                                title="Payment Receipt"
+                                                                                                href="receipt.php?eid=<?php echo $row['newdoc'];?>"
+                                                                                                target="_blank"
+                                                                                                class="btn btn-warning btn-rounded btn-icon"><i
+                                                                                                    class="fa fa-file-invoice-dollar"></i>
+                                                                                            </a>
+                                                                                        </div>
+                                                                                        <?php
                                                                           
 }
 ?>
 
-                                                                        </td>
-                                                                    </tr>
-                                                                    <?php $count++; } ?>
-                                                                </tbody>
-                                                                               <tfoot>
-                                                  
-                                                                               </tfoot>
-                                                                              </table>
-                                                                            </div>
-                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <?php $count++; } ?>
+                                                                            </tbody>
+                                                                            <tfoot>
+
+                                                                            </tfoot>
+                                                                        </table>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                 
-                                               </div>
-                                             </div>
-                                             <!-- /.card -->
-                                           </div>
-                          
-                         
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- /.card -->
+                            </div>
+
+
                             <!-- /.card -->
                         </div>
                         <!-- /.col -->
@@ -345,8 +374,8 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
     </div>
     <!-- ./wrapper -->
 
- <!-- jQuery -->
- <script src="plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery -->
+    <script src="plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- DataTables  & Plugins -->
@@ -371,42 +400,42 @@ if($newdoc!=$owdoc || $newdoc!=$tdoc || $newdoc!=$memdoc || $newdoc!=$amdoc || $
 </body>
 <!-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script> -->
 <script>
-// $(document).ready(function() {
-//     $('#table_id').DataTable();
-//     $('#table_check').DataTable();
-// });
+    // $(document).ready(function() {
+    //     $('#table_id').DataTable();
+    //     $('#table_check').DataTable();
+    // });
 
-$(function () {
-            $("#table_id").DataTable({
-                // "responsive": true,
-                // "buttons": [   "colvis"]
-            }).buttons().container().appendTo('#table_id_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
+    $(function () {
+        $("#table_id").DataTable({
+            // "responsive": true,
+            // "buttons": [   "colvis"]
+        }).buttons().container().appendTo('#table_id_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
         });
+    });
 
-        $(function () {
-            $("#table_check").DataTable({
-                // "responsive": true, "lengthChange": false, "autoWidth": false,
-                // "buttons": [   "colvis"]
-            }).buttons().container().appendTo('#table_check_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
+    $(function () {
+        $("#table_check").DataTable({
+            // "responsive": true, "lengthChange": false, "autoWidth": false,
+            // "buttons": [   "colvis"]
+        }).buttons().container().appendTo('#table_check_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
         });
+    });
 </script>
 
 </html>

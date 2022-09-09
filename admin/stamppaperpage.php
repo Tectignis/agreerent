@@ -9,8 +9,8 @@ if(!isset($_SESSION['aid']))
  header("Location:adminlogin.php"); 
 }
 include("../config/config.php");
-$fid=$_GET['id'];
-if($_GET['id']==''){
+$fid=$_GET['eid'];
+if($_GET['eid']==''){
     header('Location:new_agreement.php');
     } 
 ?>
@@ -43,7 +43,7 @@ while($arr=mysqli_fetch_array($sql)){
 
         <p align="center">AND</p>
         <p><b><?php echo $arr['tname'];?>, &nbsp;</b>&nbsp;Age:<b>&nbsp;About <?php echo $arr['tage'];?></b>&nbsp;Years,
-            Occupation:<b>&nbsp;<?php echo $arr['tooccupation'];?>,</b>&nbsp;PANCARD:<b>&nbsp;<?php echo $arr['tpancard'];?>,</b>&nbsp;
+            Occupation:<b>&nbsp;<?php echo $arr['ooccupation'];?>,</b>&nbsp;PANCARD:<b>&nbsp;<?php echo $arr['tpancard'];?>,</b>&nbsp;
             UID: <b><?php echo $arr['taadhaar'];?></b>
             . Residing at:<b><?php echo $arr['taddress'];?></b>
             HEREINAFTER called ‘the Licensee’ (which expression shall mean and include only Licensee

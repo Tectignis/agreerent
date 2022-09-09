@@ -6,11 +6,11 @@ if(!isset($_SESSION['aid']))
  header("Location:adminlogin.php"); 
 }
 
-if($_GET['id']==''){
+if($_GET['eid']==''){
     header('Location:new_agreement.php');
     } 
     include("../config/config.php");
-$fid=$_GET['id'];
+$fid=$_GET['eid'];
 function AmountInWords(float $amount)
 {
    $amount_after_decimal = round($amount - ($num = floor($amount)), 2) * 100;
