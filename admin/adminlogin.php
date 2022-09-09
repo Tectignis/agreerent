@@ -149,8 +149,8 @@ color: #FFFFFF;
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 </body>
-    <?php
-
+<?php
+session_start();
 if(isset($_SESSION['aid'])) // If session is not set then redirect to Login Page
 {
  header("Location:index.php"); 
@@ -163,6 +163,7 @@ if(isset($_POST["login"])){
 	if(mysqli_num_rows($sql)>0){
 		$row=mysqli_fetch_assoc($sql); 
 		$verify=password_verify($password,$row['password']);
+
 	 if($verify==1){
 	  $_SESSION['aemail']=$row['email'];
       $_SESSION['aname']=$row['agent_name'];
@@ -208,6 +209,7 @@ $(document).ready(function() {
 </script>
 
 <?php 
+
 }
 }else{
 echo"<script>
