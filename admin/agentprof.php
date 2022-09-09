@@ -149,7 +149,7 @@ if($_GET['id']==''){
                                                     value="<?php echo $arr["image"]; ?>">
                                             </div>
                                             <div class="col-sm-8">
-                                                <input type="file" class="form-control" name="rera"
+                                                <input type="file" class="form-control" name="image"
                                                     value="<?php echo $arr["image"]; ?>">
                                             </div>
                                            

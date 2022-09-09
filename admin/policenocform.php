@@ -140,7 +140,7 @@ th {
 		<tr>
 		<?php 
                         
-                        $sql=mysqli_query($conn,"select * from agent_details where user_id='$_SESSION[id]'");
+                        $sql=mysqli_query($conn,"select * from agent_details where user_id='$_SESSION[aid]'");
                         while($arr=mysqli_fetch_array($sql)){
                         ?>
 			<td>७</td>

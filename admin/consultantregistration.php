@@ -107,7 +107,7 @@ include("../config/config.php");
                                         <label for="exampleaddress" class="col-sm-2 col-form-label">Agent
                                             Name<label style="color:Red">*</label></label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="name" id="example" placeholder="Enter Name"
+                                            <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name"
                                                 required>
                                                 <span id="spanclientname"></span>
                                         </div>

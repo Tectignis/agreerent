@@ -89,7 +89,7 @@ if($dnk=1){
                                
                                 <h5>List Of Property</h5>
                                 <div class="card-tools my-3" style="text-align:end;">
-                          
+                        
                                 
                                                 <a class="btn btn-primary" href="addproperty.php" data-tt="tooltip" title="" data-original-title="Click here to Add New Enquiry">Add Property</a>
                                     
@@ -103,7 +103,7 @@ if($dnk=1){
                                                 <th>Mobile</th>
                                                 <th>Property type</th>
                                                 <th>Action</th>
-                                                
+                                            
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -125,7 +125,7 @@ if($dnk=1){
                             <a href="listofproperty.php?delid=<?php echo $arr['id']; ?>"><button type="button" class="btn btn-sm btn-danger btn-rounded btn-icon" style="color: aliceblue"> <i class="fas fa-trash"></i> </button></a>
                             
                               </td>
-                                                
+
                                             </tr>
 
                                             <?php $count++;   } ?>

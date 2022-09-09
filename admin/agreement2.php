@@ -551,8 +551,8 @@ $arr=mysqli_fetch_array($sql);
 		
 		<tr>
 		<?php 
-                        
-						$sql=mysqli_query($conn,"select * ,date_add(date_of_agreement, INTERVAL no_of_month month)as Enddate from new_agreement Where document_no");
+
+						$sql=mysqli_query($conn,"select * ,date_add(date_of_agreement, INTERVAL no_of_month month)as Enddate from new_agreement Where document_no= '$fid'");
                         $arr=mysqli_fetch_array($sql);
                         $doc=$arr['document_no'];
 						?>
@@ -566,7 +566,6 @@ $arr=mysqli_fetch_array($sql);
 
 			<label><b><?php echo $arr['no_of_month'];?></b>&nbsp;Months</label></td>
 			<?php if($doc==$fid){echo $arr['property_type']; }else{ echo ' - ' ;} ?>	
-
 		</tr>
 	</tbody>
 </table>
@@ -595,7 +594,7 @@ $arr=mysqli_fetch_array($sql);
 </div>
     <!-- receipt -->
     <div class="pagebreak">
-  
+        
     <h1 style="text-align: center">Receipt</h1>
 <?php $sql=mysqli_query($conn,"select tenant.fullname as tname, payment.document_no as dno, payment.security_deposit as rent from payment inner join tenant on payment.document_no=tenant.document_no where payment.document_no='$fid'");
                  

@@ -8,7 +8,7 @@ if(isset($_POST['otp'])){
   $email=$_POST['email'];
   $name=$_POST['name'];
   $otp= rand(100000, 999999);
-  $image=$_FILES['file']['name'];
+  // $image=$_FILES['file']['name'];
 
   $query=mysqli_query($conn,"select * from agent_details where email='$email'");
 if(mysqli_num_rows($query)>0){
