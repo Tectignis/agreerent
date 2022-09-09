@@ -6,93 +6,151 @@ if(isset($_SESSION['admin']) == 1)
 }
 ?>
 
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AGREERERNT | ADMIN LOGIN</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-    <!-- icheck bootstrap -->
-    <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <style>
 
-</head>
+.container {
+    padding: 60px;
+    padding-top: 0;
+    height: 200px;
+    background-color: #0a0a23;
+}
 
-<body class="hold-transition login-page">
-    <div class="login-box">
-        <!-- /.login-logo -->
-        <div class="card card-outline card-primary">
-            <div class="card-header text-center">
-                <h3><b>AGREERENT</b></h3>
-                <h6>Admin Login</h6>
-            </div>
-            <div class="card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
+img {
+    margin-left: 105px;
+    width: 363px;
+    margin-top: 80px;
+}
+.text{
+    text-decoration: solid;
+    color: #ffffff;
+    margin-top: 20px;
+}
+input[type=text]{
+  width: 53%;
+  padding: 5px 20px;
+  margin: 5px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+input[type=submit]{
+        
+        background-color:  #6fd943;
+        padding:5px 20px;
+        color:white;
+        font-size:14px;
+        margin:04px;
+        border-radius:5px;
+        border-style:none;
+    }
 
-                <form method="post">
-                    <div class="input-group mb-3">
-                        <input type="email" name="email" class="form-control" placeholder="Email">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="password" name="password" class="form-control" placeholder="Password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="row">
-                        <div class="col-8">
-                            <div class="icheck-primary">
-                                <input type="checkbox" name="remember" id="remember">
-                                <label for="remember">
-                                    Remember Me
-                                </label>
-                            </div>
-                        </div>
-                    </div> -->
-                    <div class="social-auth-links text-center mt-2 mb-3">
-                        <input type="submit" name="login" value="Login" class="btn btn-block btn-primary">
-                    </div>
-                </form>
+.t{
 
+ 
 
-                <!-- /.social-auth-links -->
+font-family: 'Inria Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 43px;
 
-                <p class="mb-1">
-                    <a href="userforgot-password.html">I forgot my password</a>
-                </p>
-            </div>
-            <!-- /.card-body -->
+color: #ffffff;
+
+}
+.t1{
+  font-family: 'Inria Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+
+color: #FFFFFF;
+}
+@media screen and (min-width: 480px) {
+  img {
+    width: 400px;
+  }
+}
+    </style>
+  </head>
+  <body>
+
+ <div class="main-contaainer">
+    <div class="row" style="margin: 20px; height: max-content;">
+
+        <div class="col-6" style="background-color:#ffffff;  height: max-content;border-radius: 10px 0 0 10px;">
+          <form method="post" style="margin-top:23%;margin-left:23%;">
+            <h3 style="font-family: Arial, Helvetica, sans-serif; font-size:25px;">Admin Login</h3>
+                     <div class="form-group mb-6">
+                         <div class="d-flex align-items-center justify-content-between">
+                             <div>
+                                 <label class="form-label">Email</label>
+                             </div>
+                         </div>
+                         <input  type="text" name="email" class="form-control " required autofocus>
+                                             </div>
+                     <div class="form-group mb-6">
+                         <div class="d-flex align-items-center justify-content-between">
+                                 <div>
+                                     <label class="form-label">Password</label>
+                                 </div>
+ 
+                         </div>
+ 
+                         <input type="text"  name="password" class="form-control "  required>
+                                              </div>
+                     <div class="form-group mb-6">
+                         <div class="mb-">
+                             <div class="text-left" style="font-size:12px;font-family:serif,Times New Roman">
+ 
+                             <a href="forgotpass.php">I forgot my password</a>
+                             
+                             </div>
+                         </div>
+                     </div>
+                 <br>
+
+                     <div class="d-grid">
+                         <input type="submit" name="login" value="Login" style="width:51%;font-family:Inria Sans;">
+                     </div>
+             </form>
         </div>
-        <!-- /.card -->
+        <div class="col-6 container" style="background-color:#6fd943; height: max-content; border-radius:24px;">
+<div style="margin-top:9px;">
+    <img src="dist/img/img-auth-3.svg" alt="FCC Logo" />
+</div>
+<div class="text t">
+<p>
+    <b style=" margin-left: 130px;">“Attention is the new currency”</b>
+</p>
+</div>
+                
+<div class="t1">
+  <p>
+      <h6 style="    margin-left: 130px; ">The more effortless the writing looks, the more effort the <br>
+        writer actually put into the process.</h6>
+  </p>
+  </div>  
+           
+        </div>
     </div>
-    <!-- /.login-box -->
-
-    <!-- jQuery -->
-    <script src="plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="dist/js/adminlte.min.js"></script>
+ </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 </body>
-<?php
-session_start();
+    <?php
+
 if(isset($_SESSION['aid'])) // If session is not set then redirect to Login Page
 {
  header("Location:index.php"); 
@@ -105,7 +163,6 @@ if(isset($_POST["login"])){
 	if(mysqli_num_rows($sql)>0){
 		$row=mysqli_fetch_assoc($sql); 
 		$verify=password_verify($password,$row['password']);
-
 	 if($verify==1){
 	  $_SESSION['aemail']=$row['email'];
       $_SESSION['aname']=$row['agent_name'];
@@ -151,7 +208,6 @@ $(document).ready(function() {
 </script>
 
 <?php 
-
 }
 }else{
 echo"<script>
