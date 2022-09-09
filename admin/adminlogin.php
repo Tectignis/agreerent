@@ -150,7 +150,7 @@ color: #FFFFFF;
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 </body>
 <?php
-session_start();
+
 if(isset($_SESSION['aid'])) // If session is not set then redirect to Login Page
 {
  header("Location:index.php"); 
