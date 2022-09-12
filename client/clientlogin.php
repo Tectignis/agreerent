@@ -144,7 +144,7 @@ width:100%;
                          <div class="mb-">
                              <div class="text-left" style="font-size:12px;font-family:serif,Times New Roman">
  
-                             <a href="forgotpass.php">I forgot my password</a>
+                             <a href="forgetpassw.php">I forgot my password</a>
                              
                              </div>
                          </div>
