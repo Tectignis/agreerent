@@ -1,6 +1,13 @@
 <?php
-session_start();
+
 include("../config/config.php");
+?>
+<?php
+session_start();
+if(isset($_SESSION['id'])) // If session is not set then redirect to Login Page
+{
+ header("Location:index.php"); 
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -10,7 +17,7 @@ include("../config/config.php");
     <title>AGREERERNT | CLIENT LOGIN</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
-    <style>
+<style>
 
 .container {
     padding: 60px;
@@ -76,12 +83,13 @@ color: #FFFFFF;
     width: 400px;
   }
 }
-    </style>
+
+</style>
   </head>
   <body>
 
  <div class="main-contaainer">
-    <div class="row" style="margin: 20px; height: max-content;">
+    <div class="row" style="margin: 20px; height: max-content;" >
 
         <div class="col-6" style="background-color:#ffffff;  height: max-content;border-radius: 10px 0 0 10px;">
           <form method="post" style="margin-top:23%;margin-left:23%;">
@@ -147,10 +155,7 @@ color: #FFFFFF;
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 </body>
 <?php
-if(isset($_SESSION['id'])) // If session is not set then redirect to Login Page
-{
- header("Location:index.php"); 
-}
+
 if(isset($_POST["login"])){
 	$email=mysqli_real_escape_string($conn,$_POST["email"]);
 	$password=mysqli_real_escape_string($conn,$_POST["password"]);
