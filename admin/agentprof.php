@@ -18,7 +18,7 @@ if(isset($_POST['edit'])){
   $rera=$_POST['rera'];  
 	$sql=mysqli_query($conn,"UPDATE `agent_details` SET `agent_name`='$name',`email`='$email',`office_address`='$address',`mobile_no`='$mobile',`rera_no`='$rera' where id='$aid'");
 	if($sql==1){	
-    header("location:agentprof.php?id=$aid");
+    header("location:consultant.php");
   	}else{
 		echo "<script>alert('Something went wrong');</script>";
 	}

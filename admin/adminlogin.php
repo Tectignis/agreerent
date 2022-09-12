@@ -76,19 +76,47 @@ line-height: 24px;
 
 color: #FFFFFF;
 }
-@media screen and (min-width: 480px) {
+@media screen and (max-width: 600px) {
   img {
     width: 400px;
   }
+  .design{
+    display:none;
+  }
+  .back_design{
+    background-color:#6fd943 !important;
+width:100%;
+
+  }
+  .a1{
+    margin-top:30% !important;
+  }
+  input[type=text]{
+  width: 80%;
+  padding: 5px 20px;
+  margin: 5px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+  .c2 {
+  background-image: url('dist/img/img-auth-3.svg');
+  height: 288px;
+  background-color: #6fd943;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-radius: 10px 10px 0 0;
+}
 }
     </style>
   </head>
   <body>
 
  <div class="main-contaainer">
-    <div class="row" style="margin: 20px; height: max-content;">
-
-        <div class="col-6" style="background-color:#ffffff;  height: max-content;border-radius: 10px 0 0 10px;">
+    <div class="row a1" style="margin: 20px; height: max-content;">
+<div class="c2"></div>
+        <div class="col-6 back_design" style="background-color:#ffffff;  height: max-content;border-radius: 0px 0px 10px 10px;">
           <form method="post" style="margin-top:23%;margin-left:23%;">
             <h3 style="font-family: Arial, Helvetica, sans-serif; font-size:25px;">Admin Login</h3>
                      <div class="form-group mb-6">
@@ -125,7 +153,7 @@ color: #FFFFFF;
                      </div>
              </form>
         </div>
-        <div class="col-6 container" style="background-color:#6fd943; height: max-content; border-radius:24px;">
+        <div class="col-6 container design" style="background-color:#6fd943; height: max-content; border-radius:24px;">
 <div style="margin-top:9px;">
     <img src="dist/img/img-auth-3.svg" alt="FCC Logo" />
 </div>
